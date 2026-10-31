@@ -1,0 +1,71 @@
+name: Build iOS
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unsigned-iphone:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - name: Check out only application source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check bundled resources have no embedded personal progress
+        run: |
+          python3 apps/ios/verify-resources.py
+      - name: Verify offline merge rules
+        run: node --test tests/sync-core.test.cjs
+      - name: Build the arm64 iPhone application without signing
+        run: |
+          set -euo pipefail
+          xcodebuild -version
+          xcodebuild \
+            -project apps/ios/JiufenVocabulary.xcodeproj \
+            -scheme JiufenVocabulary \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -sdk iphoneos \
+            -derivedDataPath build/ios \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            CURRENT_PROJECT_VERSION="${GITHUB_RUN_NUMBER}" \
+            ARCHS=arm64 ONLY_ACTIVE_ARCH=NO \
+            build | tee build-ios.log
+      - name: Package unsigned IPA for Windows signing
+        run: |
+          set -euo pipefail
+          APP="build/ios/Build/Products/Release-iphoneos/JiufenVocabulary.app"
+          test -f "$APP/JiufenVocabulary"
+          lipo -verify_arch arm64 "$APP/JiufenVocabulary"
+          test -f "$APP/Web/index.html"
+          mkdir -p build/package/Payload
+          cp -R "$APP" build/package/Payload/
+          (cd build/package && /usr/bin/zip -qry ../JiufenVocabulary-unsigned.ipa Payload)
+          /usr/bin/shasum -a 256 build/JiufenVocabulary-unsigned.ipa > build/SHA256SUMS.txt
+          printf '%s\n' 'Unsigned arm64 iPhone app. Sign on Windows before installing. This package contains no personal learning progress.' > build/INSTALL.txt
+      - name: Downloadable unsigned package
+        uses: actions/upload-artifact@v4
+        with:
+          name: JiufenVocabulary-unsigned
+          path: |
+            build/JiufenVocabulary-unsigned.ipa
+            build/SHA256SUMS.txt
+            build/INSTALL.txt
+          retention-days: 3
+          if-no-files-found: error
+      - name: Compiler diagnostic log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-compiler-log
+          path: build-ios.log
+          retention-days: 3
+          if-no-files-found: ignore

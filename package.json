@@ -1,0 +1,12 @@
+{
+  "name":"jiufen-offline-usb",
+  "version":"0.1.0",
+  "private":true,
+  "description":"九分常规词汇离线学习与 USB 双向同步",
+  "scripts":{
+    "prepare:web":"python tools/prepare_web.py",
+    "test":"node --test tests/sync-core.test.cjs",
+    "desktop":"npm --prefix apps/windows start",
+    "desktop:package":"npm --prefix apps/windows run package"
+  }
+}

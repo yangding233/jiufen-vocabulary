@@ -1,0 +1,14 @@
+{
+  "name": "jiufen-vocabulary-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline vocabulary desktop and USB synchronization",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test storage.test.cjs sync-manager.test.cjs",
+    "package": "node package.cjs",
+    "smoke": "electron . --smoke-test"
+  },
+  "devDependencies": {"electron": "41.10.6"}
+}
