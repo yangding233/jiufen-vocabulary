@@ -44,7 +44,7 @@ jobs:
           set -euo pipefail
           APP="build/ios/Build/Products/Release-iphoneos/JiufenVocabulary.app"
           test -f "$APP/JiufenVocabulary"
-          lipo -verify_arch arm64 "$APP/JiufenVocabulary"
+          lipo "$APP/JiufenVocabulary" -verify_arch arm64
           test -f "$APP/Web/index.html"
           mkdir -p build/package/Payload
           cp -R "$APP" build/package/Payload/
