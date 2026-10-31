@@ -13,7 +13,7 @@ VERSION = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["versi
 OUTPUT = ROOT / "dist" / "releases" / VERSION
 WINDOWS = ROOT / "dist" / "windows" / f"九分词汇离线学习-{VERSION}"
 SOURCE_DIRS = (".github", "apps", "docs", "shared", "tests", "tools", "web")
-SOURCE_FILES = (".gitignore", ".gitattributes", "package.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.txt", "CONTRACT.md")
+SOURCE_FILES = (".gitignore", ".gitattributes", "package.json", "package-lock.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.txt", "CONTRACT.md")
 SKIP_DIRS = {"node_modules", "__pycache__", ".git", ".venv", ".venv-usb", "dist", "build", "test-results", "private-fixtures", "data"}
 PRIVATE_FILES = ("*.sqlite*", "*.db*", "*.ipa", "*.p12", "*.mobileprovision", "*.cer", "*.key", "*.log", ".env*", "source.html", "source-app.js")
 
@@ -66,7 +66,7 @@ for archive in (source_archive, windows_archive):
     "Windows：解压 Windows ZIP，保留整个目录，双击九分词汇离线学习.exe。\n"
     "先在原 HTML 的备份与设置导出完整 JSON；新程序还未学习时导入，核对后再使用。\n"
     "日常备份使用新程序顶部的完整同步档案。原 HTML 文件没有被替换。\n\n"
-    "源码：解压 source ZIP，将内层目录的内容上传到自己的 GitHub 私有仓库。\n"
+    "源码：解压 source ZIP，或在 GitHub 仓库下载与克隆对应版本。\n"
     "源码不含学习进度、测试数据库、Apple 签名资料或已安装依赖。\n"
     "iOS：已通过 GitHub macOS 编译，未签名 IPA 在 dist/ios/run-2；需要 Windows 签名安装，再做真机同步验收。\n"
     "USB 设备枚举已实测；端到端真机学习进度同步尚未验收。\n",

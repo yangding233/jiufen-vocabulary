@@ -1,5 +1,5 @@
 // Emulates the iOS native file/SQLite bridge. This is NOT a real iPhone test.
-const {chromium}=require('C:/Users/23353/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const {chromium}=require('./playwright.cjs');
 const {pathToFileURL}=require('node:url'),path=require('node:path'),assert=require('node:assert/strict');
 const S=require('../shared/sync-core');
 (async()=>{

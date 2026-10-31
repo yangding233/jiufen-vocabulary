@@ -1,4 +1,4 @@
-"""Build this private repository using an existing Git Credential Manager login.
+"""Build a repository using an existing Git Credential Manager login.
 
 Credentials remain in memory and are sent only to api.github.com. This helper
 never creates tokens, changes repository visibility, or handles Apple secrets.
@@ -25,6 +25,7 @@ def main():
     parser.add_argument("command", choices=["info", "workflows", "dispatch", "runs", "jobs", "artifacts", "log", "download"])
     parser.add_argument("--repository", default="yangding233/jiufen-vocabulary")
     parser.add_argument("--id", type=int)
+    parser.add_argument("--require-private", action="store_true", help="Refuse to operate on a public repository")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", args.repository):
@@ -54,7 +55,7 @@ def main():
             return json.loads(content) if content else {"accepted": True, "status": response.status}
 
     info = api()
-    if not info.get("private"):
+    if args.require_private and not info.get("private"):
         raise ValueError("This helper requires the intended private repository. No build started.")
     if args.command == "info":
         output = {key: info.get(key) for key in ["full_name", "private", "default_branch", "size", "permissions"]}

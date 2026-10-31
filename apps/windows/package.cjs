@@ -8,6 +8,7 @@ const usbCheck=JSON.parse(require('node:child_process').execFileSync(path.join(u
 if(!usbCheck.ok||usbCheck.value?.ssl!==true)throw new Error('USB 加密运行组件自检失败，未发布。');
 if(fs.existsSync(dest))throw new Error('发布目录已存在；请先另存旧版或手动清理已核对的发布目录。');
 fs.mkdirSync(dest,{recursive:true});fs.cpSync(electronDist,dest,{recursive:true});
+fs.copyFileSync(path.join(electronDist,'LICENSE'),path.join(dest,'LICENSE.electron.txt'));
 fs.renameSync(path.join(dest,'electron.exe'),path.join(dest,'九分词汇离线学习.exe'));
 const appdir=path.join(dest,'resources','app');fs.mkdirSync(path.join(appdir,'apps','windows'),{recursive:true});
 fs.writeFileSync(path.join(appdir,'package.json'),JSON.stringify({name:'jiufen-vocabulary-offline',version,main:'apps/windows/main.cjs'},null,2));

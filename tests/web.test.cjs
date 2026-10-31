@@ -1,5 +1,5 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{pathToFileURL}=require('node:url');
-const {chromium}=require('C:/Users/23353/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const {chromium}=require('./playwright.cjs');
 const root=path.resolve(__dirname,'..'),app=pathToFileURL(path.join(root,'web/index.html')).href;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 (async()=>{

@@ -6,7 +6,9 @@
   "scripts":{
     "prepare:web":"python tools/prepare_web.py",
     "test":"node --test tests/sync-core.test.cjs",
+    "test:ui":"node tests/web.test.cjs && node tests/phone-bridge.test.cjs",
     "desktop":"npm --prefix apps/windows start",
     "desktop:package":"npm --prefix apps/windows run package"
-  }
+  },
+  "devDependencies":{"playwright":"1.62.1"}
 }

@@ -1,6 +1,6 @@
 param([Parameter(Mandatory=$true)][string]$RepositoryUrl)
 $ErrorActionPreference='Stop'
-if ($RepositoryUrl -notmatch '^https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+(?:\.git)?/?$') { throw '请填写自己的 GitHub 私有仓库 HTTPS 地址。' }
+if ($RepositoryUrl -notmatch '^https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+(?:\.git)?/?$') { throw '请填写自己的 GitHub 仓库 HTTPS 地址。' }
 $projectPath=(Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 Push-Location -LiteralPath $projectPath
 try {
@@ -8,7 +8,7 @@ try {
   & python apps/ios/verify-resources.py
   if ($LASTEXITCODE) { throw '离线资源或个人进度校验失败，已停止上传。' }
   Write-Host '仅上传源码与内置资源；数据库、测试结果、依赖环境、安装包和个人备份均排除。'
-  git add .github apps docs shared tests tools web .gitignore .gitattributes package.json README.md LICENSE THIRD_PARTY_NOTICES.txt CONTRACT.md
+  git add .github apps docs shared tests tools web .gitignore .gitattributes package.json package-lock.json README.md LICENSE THIRD_PARTY_NOTICES.txt CONTRACT.md
   if ($LASTEXITCODE) { throw '暂存失败' }
   git diff --cached --quiet
   if ($LASTEXITCODE -eq 1) { git -c user.name='Jiufen developer' -c user.email='developer@localhost' commit -m 'Build offline vocabulary apps and USB synchronization'; if($LASTEXITCODE){throw '提交失败'} }

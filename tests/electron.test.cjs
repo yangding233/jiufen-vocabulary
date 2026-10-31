@@ -1,4 +1,4 @@
-const { _electron:electron }=require('C:/Users/23353/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const { _electron:electron }=require('./playwright.cjs');
 const path=require('node:path'),fs=require('node:fs'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),data=path.join(root,'test-results','electron-'+Date.now()),exe=process.env.JIUFEN_TEST_EXE||path.join(root,'apps/windows/node_modules/electron/dist/electron.exe');
 (async()=>{

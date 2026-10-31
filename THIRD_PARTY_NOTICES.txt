@@ -1,6 +1,8 @@
 第三方组件说明
 
 新编写的同步/容器代码使用GPL-3.0，见LICENSE。原有词库及资源保留各自来源。
+词表、释义和助记参考资料的来源及许可范围详见 docs/数据来源与许可.md；GPL声明不自动覆盖第三方资料。
+Windows发行目录以 LICENSE.electron.txt 保留 Electron 原始 MIT 版权和许可全文。
 
 USB: pymobiledevice3 7.8.3 (GPL-3.0-or-later) https://github.com/doronz88/pymobiledevice3
 打包: PyInstaller (GPLv2+ with bootloader exception) https://pyinstaller.org/
