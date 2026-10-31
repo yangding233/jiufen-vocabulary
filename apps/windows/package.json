@@ -1,6 +1,6 @@
 {
   "name": "jiufen-vocabulary-desktop",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "Offline vocabulary desktop and USB synchronization",
   "main": "main.cjs",

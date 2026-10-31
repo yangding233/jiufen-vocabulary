@@ -2,7 +2,10 @@
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'../..'),version=require(path.join(root,'package.json')).version,electronDist=path.join(__dirname,'node_modules','electron','dist'),dest=path.join(root,'dist','windows','九分词汇离线学习-'+version);
 if(!fs.existsSync(path.join(electronDist,'electron.exe')))throw new Error('请先在 apps/windows 执行 npm install。');
-if(!fs.existsSync(path.join(root,'tools','dist','usb_transport.exe')))throw new Error('请先运行 tools/build-usb.ps1，生成 USB 组件。');
+const usbDist=path.join(root,'tools','dist','usb_transport');
+if(!fs.existsSync(path.join(usbDist,'usb_transport.exe')))throw new Error('请先运行 tools/build-usb.ps1，生成 USB 组件。');
+const usbCheck=JSON.parse(require('node:child_process').execFileSync(path.join(usbDist,'usb_transport.exe'),['self-test'],{encoding:'utf8',windowsHide:true}));
+if(!usbCheck.ok||usbCheck.value?.ssl!==true)throw new Error('USB 加密运行组件自检失败，未发布。');
 if(fs.existsSync(dest))throw new Error('发布目录已存在；请先另存旧版或手动清理已核对的发布目录。');
 fs.mkdirSync(dest,{recursive:true});fs.cpSync(electronDist,dest,{recursive:true});
 fs.renameSync(path.join(dest,'electron.exe'),path.join(dest,'九分词汇离线学习.exe'));
@@ -10,7 +13,7 @@ const appdir=path.join(dest,'resources','app');fs.mkdirSync(path.join(appdir,'ap
 fs.writeFileSync(path.join(appdir,'package.json'),JSON.stringify({name:'jiufen-vocabulary-offline',version,main:'apps/windows/main.cjs'},null,2));
 for(const name of ['main.cjs','preload.cjs','storage.cjs','transport.cjs','sync-manager.cjs'])fs.copyFileSync(path.join(__dirname,name),path.join(appdir,'apps','windows',name));
 for(const name of ['web','shared'])fs.cpSync(path.join(root,name),path.join(appdir,name),{recursive:true});
-fs.mkdirSync(path.join(dest,'resources','usb'),{recursive:true});fs.copyFileSync(path.join(root,'tools','dist','usb_transport.exe'),path.join(dest,'resources','usb','usb_transport.exe'));
+fs.cpSync(usbDist,path.join(dest,'resources','usb'),{recursive:true});
 for(const name of ['LICENSE','THIRD_PARTY_NOTICES.txt','README.md'])fs.copyFileSync(path.join(root,name),path.join(dest,name));
 fs.cpSync(path.join(root,'docs'),path.join(dest,'docs'),{recursive:true});
 fs.writeFileSync(path.join(dest,'启动说明.txt'),'双击“九分词汇离线学习.exe”。首次从旧网页导出JSON，在本程序中导入。iPhone App需先安装、解锁并信任电脑，在手机准备同步后点击电脑同步。USB真实连接需要已安装可用的Apple设备连接组件。\r\n本软件不连接互联网，不会上传学习数据。\r\n','utf8');

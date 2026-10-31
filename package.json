@@ -1,6 +1,6 @@
 {
   "name":"jiufen-offline-usb",
-  "version":"0.1.1",
+  "version":"0.1.2",
   "private":true,
   "description":"九分常规词汇离线学习与 USB 双向同步",
   "scripts":{

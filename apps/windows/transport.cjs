@@ -15,12 +15,13 @@ class UsbTransport {
   return new Promise((resolve,reject)=>{
    const child=execFile(cmd.executable,args,{windowsHide:true,encoding:'utf8',maxBuffer:60*1024*1024,timeout:45000},(error,stdout,stderr)=>{
     let result;try{result=JSON.parse(stdout.trim());}catch(_){return reject(new Error('USB 组件未返回有效结果：'+(stderr||error?.message||stdout).slice(0,600)));}
-    if(!result.ok)return reject(Object.assign(new Error(result.error||'USB 操作失败'),{code:result.code}));resolve(result.value);
+    if(!result.ok)return reject(Object.assign(new Error(result.error||'USB 操作失败'),{code:result.code,stage:result.stage,exceptionType:result.exceptionType}));resolve(result.value);
    });
    if(action==='push'){child.stdin.end(content);}else child.stdin.end();
   });
  }
  list(){return this.run('list');}
+ resolveApp(options){return this.run('resolve-app',options);}
  read(options,remote){return this.run('pull',{...options,remote});}
  write(options,remote,content){return this.run('push',{...options,remote,content});}
 }

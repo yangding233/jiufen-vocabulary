@@ -22,6 +22,12 @@ class SyncManager {
   const devices=await this.transport.list();this.checkCancelled();if(!devices.length)throw new Error('没有检测到 USB iPhone。请连接数据线，解锁并信任电脑。');
   if(!udid&&devices.length>1)throw new Error('检测到多个设备，请先只连接要同步的一台 iPhone。');
   const device=udid?devices.find(d=>d.udid===udid):devices[0];if(!device)throw new Error('指定的手机不在当前 USB 设备列表中。');
+  if(typeof this.transport.resolveApp==='function'){
+   const found=await this.transport.resolveApp({udid:device.udid,bundleId});this.checkCancelled();
+   if(!found||!/^[A-Za-z0-9][A-Za-z0-9.-]{2,199}$/.test(found.bundleId))throw new Error('手机 App 返回了无效标识。');
+   bundleId=found.bundleId;this.store.setMeta('phoneBundleId',bundleId);
+   this.emit({phase:'app-found',bundleId,message:'已自动识别手机上的九分词汇，正在读取同步记录。'});
+  }
   const options={udid:device.udid,bundleId};
   this.emit({phase:'reading',message:'正在读取手机同步包，请保持手机 App 的同步页面打开。'});
   const packet=this.core.decodePacket(await this.transport.read(options,'Exchange/outgoing.json'));this.checkCancelled();

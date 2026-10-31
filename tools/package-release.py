@@ -49,7 +49,7 @@ def write_archive(output, base, files, prefix):
 subprocess.run([sys.executable, str(ROOT / "apps" / "ios" / "verify-resources.py")], check=True)
 assert (WINDOWS / "九分词汇离线学习.exe").is_file(), "Package Windows first"
 assert_no_progress(WINDOWS / "resources" / "app" / "web" / "index.html")
-windows_files = sorted(path for path in WINDOWS.rglob("*") if path.is_file())
+windows_files = sorted(path for path in WINDOWS.rglob("*") if path.is_file() and not fnmatch.fnmatch(path.name, "*.log"))
 assert not any(any(fnmatch.fnmatch(path.name, pattern) for pattern in PRIVATE_FILES) for path in windows_files), "Private file in Windows package"
 OUTPUT.mkdir(parents=True, exist_ok=True)
 source_archive = OUTPUT / f"JiufenVocabulary-source-{VERSION}.zip"

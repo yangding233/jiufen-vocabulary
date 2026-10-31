@@ -7,6 +7,7 @@ function primeNativeStorage(){
  if(!nativeEnabled){showUsbStatus('浏览器预览模式：USB 同步和数据库保存需使用桌面程序或 iPhone App。');return;}
  const doc=VocabNative.call('load');
  if(doc){validate(OfflineSync.materialize(doc));usbDocument=doc;}
+ if(VocabNative.platform==='windows'){const status=VocabNative.call('syncStatus');if(status.phoneBundleId)el('usb-bundle').value=status.phoneBundleId;}
  showUsbStatus(VocabNative.platform==='ios'?'手机离线模式 · 所有学习操作保存到本机数据库':'电脑离线模式 · 连接手机后可同步');
 }
 function nativePersist(){
@@ -42,6 +43,7 @@ function setUsbLock(locked){
  el('usb-workspace').classList.toggle('usb-locked',locked);
  el('usb-finish').hidden=!locked;
  el('usb-start').disabled=locked;
+ el('usb-probe').disabled=locked;el('usb-bundle').disabled=locked;
  el('usb-archive-export').disabled=locked;el('usb-archive-import').disabled=locked;
 }
 for(const name of ['click','keydown','input','change','submit'])document.addEventListener(name,event=>{if(usbLocked&&el('usb-workspace').contains(event.target)){event.preventDefault();event.stopImmediatePropagation();}},true);
@@ -78,9 +80,10 @@ el('usb-start').addEventListener('click',()=>{
  }catch(e){setUsbLock(false);showUsbStatus('未开始同步：'+e.message);}
 });
 el('usb-finish').addEventListener('click',()=>{try{VocabNative.call('finishSync');if(VocabNative.platform==='windows'){showUsbStatus('正在停止同步，等待当前传输安全结束…');return;}setUsbLock(false);showUsbStatus('已退出同步准备，可继续离线学习。若刚才未双向确认，下次请重试。');}catch(e){showUsbStatus(e.message);}});
-el('usb-probe').addEventListener('click',()=>{try{const result=VocabNative.call('probeUsb');showUsbStatus(typeof result==='string'?result:JSON.stringify(result));}catch(e){showUsbStatus(e.message);}});
+el('usb-probe').addEventListener('click',()=>{try{VocabNative.call('probeUsb',{bundleId:el('usb-bundle').value.trim()});showUsbStatus('正在检查手机、已安装 App 和文件共享连接…');}catch(e){showUsbStatus(e.message);}});
 window.addEventListener('vocab-sync-status',e=>{
  const detail=e.detail||{};showUsbStatus(detail.message||detail.phase||'同步状态更新');
+ if(detail.bundleId)el('usb-bundle').value=detail.bundleId;
  if(['complete','error','timeout','cancelled'].includes(detail.phase)){
   setUsbLock(false);
   try{const doc=VocabNative.call('load');if(doc){usbDocument=doc;state=validate(OfflineSync.materialize(doc));ensureDailyPlan(state);fitSessionToPlan(state);render();renderUsbConflicts();}}catch(err){showUsbStatus('同步后载入失败：'+err.message);}

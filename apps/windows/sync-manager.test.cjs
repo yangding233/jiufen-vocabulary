@@ -18,6 +18,20 @@ test('first pairing requires confirmation and refuses two unrelated meaningful p
 test('damaged phone packet is rejected before modifying the local document',async()=>{
  const desktop=core.createDocument(state(),'pc'),store=new MemoryStore(desktop),transport={list:async()=>[{udid:'phone'}],read:async()=>'{broken'},manager=new SyncManager({store,transport,core,emit:()=>{}});await assert.rejects(manager.run({}),/JSON/);assert.deepEqual(store.doc,desktop);assert.equal(store.backups.length,0);
 });
+test('signed app is resolved before file access and the actual bundle ID is reused throughout exchange',async()=>{
+ const desktop=core.createDocument(state(),'pc'),store=new MemoryStore(desktop),transport=new Phone(core.adoptDocument(desktop,'phone')),events=[];
+ const read=transport.read.bind(transport),write=transport.write.bind(transport),actual='com.jiufen.vocabulary.signed';let resolutions=0;
+ transport.resolveApp=async options=>{resolutions++;assert.equal(options.bundleId,'com.jiufen.vocabulary');return {bundleId:actual};};
+ transport.read=async(options,file)=>{assert.equal(options.bundleId,actual);return read(options,file);};
+ transport.write=async(options,file,text)=>{assert.equal(options.bundleId,actual);return write(options,file,text);};
+ const manager=new SyncManager({store,transport,core,emit:event=>events.push(event),ackTimeout:100,pollInterval:1});await manager.run({});
+ assert.equal(resolutions,1);assert.equal(store.getMeta('phoneBundleId'),actual);assert.equal(events.find(event=>event.phase==='app-found').bundleId,actual);assert.equal(events.at(-1).phase,'complete');
+});
+test('ambiguous installed apps stop before modifying learning records or writing to phone',async()=>{
+ const desktop=core.createDocument(state(),'pc'),store=new MemoryStore(desktop),transport=new Phone(core.adoptDocument(desktop,'phone'));
+ transport.resolveApp=async()=>{throw Object.assign(new Error('多个候选 App'),{code:'AMBIGUOUS_APP'});};
+ const manager=new SyncManager({store,transport,core,emit:()=>{}});await assert.rejects(manager.run({}),error=>error.code==='AMBIGUOUS_APP');assert.deepEqual(store.doc,desktop);assert.equal(transport.writes,0);
+});
 test('stale acknowledgments cannot confirm new data, and cancel preserves pending local data',async()=>{
  const desktop=core.createDocument(state(),'pc'),store=new MemoryStore(desktop),transport=new Phone(core.adoptDocument(desktop,'phone')),events=[];
  const ordinary=transport.read.bind(transport);transport.read=async(o,file)=>file.endsWith('ack.json')?JSON.stringify({format:'jiufen-sync-ack',schema:1,deviceId:'phone',batchId:'stale-old-batch'}):ordinary(o,file);

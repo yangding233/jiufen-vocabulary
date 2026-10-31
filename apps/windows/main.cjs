@@ -3,7 +3,7 @@ const {app,BrowserWindow,ipcMain,dialog}=require('electron');
 const path=require('node:path'),fs=require('node:fs'),{fileURLToPath}=require('node:url');
 const {Store}=require('./storage.cjs'),{UsbTransport}=require('./transport.cjs'),{SyncManager}=require('./sync-manager.cjs');
 const projectRoot=path.resolve(__dirname,'../..'),webFile=path.join(projectRoot,'web','index.html'),core=require(path.join(projectRoot,'shared','sync-core.js'));
-let window,store,manager;
+let window,store,manager,probing=false;
 const smoke=process.argv.includes('--smoke-test'),fixtureArg=process.argv.find(a=>a.startsWith('--usb-fixture='));
 const fixtureDirectory=fixtureArg?path.resolve(fixtureArg.slice('--usb-fixture='.length)):null;
 const emit=detail=>{if(window&&!window.isDestroyed())window.webContents.send('vocab-sync-status',detail);};
@@ -12,11 +12,20 @@ function nativeCall(method,payload){
  switch(method){
   case 'load':return store.load();
   case 'save':if(manager.busy)throw new Error('正在进行 USB 同步，暂时不能修改学习记录。');return store.save(payload);
-  case 'syncStatus':return {platform:'windows',deviceId:store.getMeta('deviceId'),connected:false,busy:manager.busy,lastSync:store.getMeta('lastSync'),pendingBatch:store.getMeta('pendingBatch'),message:fixtureDirectory?'测试目录模式（不是真实手机）':'本机离线保存；数据线连接后点击同步。'};
+  case 'syncStatus':return {platform:'windows',deviceId:store.getMeta('deviceId'),phoneBundleId:store.getMeta('phoneBundleId'),connected:false,busy:manager.busy,lastSync:store.getMeta('lastSync'),pendingBatch:store.getMeta('pendingBatch'),message:fixtureDirectory?'测试目录模式（不是真实手机）':'本机离线保存；数据线连接后点击同步。'};
   case 'probeUsb':
-   if(manager.busy)throw new Error('同步进行中，请稍候。');
-   transport.list().then(devices=>emit({phase:'devices',devices,message:devices.length?`检测到 ${devices.length} 台 USB 设备。`:'没有检测到 USB iPhone。请连接数据线、解锁并信任电脑。'})).catch(e=>emit({phase:'error',message:e.message}));return {started:true};
-  case 'syncUsb':return manager.start(payload||{});
+   if(manager.busy||probing)throw new Error('正在连接手机，请稍候。');
+   probing=true;
+   (async()=>{
+    const devices=await transport.list();
+    if(devices.length!==1){emit({phase:'devices',devices,message:devices.length?'检测到多台手机，请只连接要同步的一台 iPhone。':'没有检测到 USB iPhone。请连接数据线、解锁并信任电脑。'});return;}
+    const found=await transport.resolveApp({udid:devices[0].udid,bundleId:payload?.bundleId||store.getMeta('phoneBundleId')||'com.jiufen.vocabulary'});
+    store.setMeta('phoneBundleId',found.bundleId);emit({phase:'app-found',bundleId:found.bundleId,message:'已识别手机上的九分词汇，正在检查文件共享连接。'});
+    const info=JSON.parse(await transport.read({udid:devices[0].udid,bundleId:found.bundleId},'Exchange/device-info.json'));
+    if(info.format!=='jiufen-device-info'||info.schema!==1||info.bundleId!==found.bundleId)throw new Error('手机应用信息不匹配，未开始同步。');
+    emit({phase:'devices',devices,bundleId:found.bundleId,connected:true,message:'手机和九分词汇已连接，文件共享可用。请在手机点击“准备与电脑同步”，再点击电脑的“数据线同步”。'});
+   })().catch(e=>emit({phase:'error',message:e.message})).finally(()=>{probing=false;});return {started:true};
+  case 'syncUsb':if(probing)throw new Error('正在检查手机连接，请稍后再同步。');return manager.start(payload||{});
   case 'finishSync':return manager.cancel();
   case 'export':{
    if(!payload||typeof payload.content!=='string'||Buffer.byteLength(payload.content)>50*1024*1024)throw new Error('导出内容为空或超过 50MB。');
@@ -27,8 +36,9 @@ function nativeCall(method,payload){
   default:throw new Error('不支持的本机操作：'+method);
  }
 }
-const transport=new UsbTransport({projectRoot,resourcesRoot:app.isPackaged?path.join(process.resourcesPath,'usb'):path.join(projectRoot,'tools','dist'),fixtureDirectory});
+const transport=new UsbTransport({projectRoot,resourcesRoot:app.isPackaged?path.join(process.resourcesPath,'usb'):path.join(projectRoot,'tools','dist','usb_transport'),fixtureDirectory});
 app.setName('九分词汇离线学习');
+if(process.env.JIUFEN_DATA_DIR){const isolatedProfile=path.join(path.resolve(process.env.JIUFEN_DATA_DIR),'electron-profile');fs.mkdirSync(isolatedProfile,{recursive:true});app.setPath('userData',isolatedProfile);}
 if(!app.requestSingleInstanceLock()){app.quit();}else{
  app.on('second-instance',()=>{if(window){if(window.isMinimized())window.restore();window.focus();}});
  app.whenReady().then(async()=>{

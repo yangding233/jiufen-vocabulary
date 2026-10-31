@@ -1,8 +1,10 @@
 # 九分词汇离线版 / USB 同步
 
-状态：Windows 0.1.1 开发测试版。Windows 原生保存及自动化同步测试已通过；iOS 已在 GitHub macOS 上编译成功并生成未签名 arm64 IPA，**尚待本机签名安装和 iPhone 实机同步验收**。不能将模拟目录或浏览器桥测试视为真机 USB 已通过。
+状态：Windows 0.1.2 开发测试版。Windows 原生保存及自动化同步测试已通过；iOS 已在 GitHub macOS 上编译成功并生成未签名 arm64 IPA，**尚待本机签名安装和 iPhone 实机同步验收**。不能将模拟目录或浏览器桥测试视为真机 USB 已通过。
 
 首个成功构建：[Build iOS #2](https://github.com/yangding233/jiufen-vocabulary/actions/runs/41191710069)，源码提交 `4786c9f`。下载后的 IPA 已核对 SHA256、arm64 真机格式、最低 iOS 15.4、文件共享配置及六项离线资源。后续签名与验收见 [安装与续签](docs/安装与续签.md)。
+
+本次电脑端修复：USB 组件补齐加密运行所需的 CA 资源，发布前必须通过冻结程序的 SSL 自检；自动识别签名后的手机 App 标识并记住实际值；检查连接会继续验证 App 文件共享，错误包含具体阶段。USB 组件改为随目录分发，避免每次同步解压运行环境。手机仍使用现有 Build iOS #2，无需重新签名安装。
 
 ## 直接使用 Windows 测试包
 
