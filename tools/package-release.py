@@ -62,13 +62,13 @@ for archive in (source_archive, windows_archive):
     hashes.append(f"{digest}  {archive.name}")
 (OUTPUT / "SHA256SUMS.txt").write_text("\n".join(hashes) + "\n", encoding="utf-8")
 (OUTPUT / "发布说明.txt").write_text(
-    "九分离线学习 0.1.0 开发测试版\n\n"
+    f"九分离线学习 Windows {VERSION} 开发测试版\n\n"
     "Windows：解压 Windows ZIP，保留整个目录，双击九分词汇离线学习.exe。\n"
     "先在原 HTML 的备份与设置导出完整 JSON；新程序还未学习时导入，核对后再使用。\n"
     "日常备份使用新程序顶部的完整同步档案。原 HTML 文件没有被替换。\n\n"
     "源码：解压 source ZIP，将内层目录的内容上传到自己的 GitHub 私有仓库。\n"
     "源码不含学习进度、测试数据库、Apple 签名资料或已安装依赖。\n"
-    "iOS：当前尚无 IPA。需要首次 GitHub macOS 编译，Windows 签名安装，再做真机同步验收。\n"
+    "iOS：已通过 GitHub macOS 编译，未签名 IPA 在 dist/ios/run-2；需要 Windows 签名安装，再做真机同步验收。\n"
     "USB 设备枚举已实测；端到端真机学习进度同步尚未验收。\n",
     encoding="utf-8",
 )
