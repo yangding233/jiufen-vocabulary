@@ -1,10 +1,12 @@
 from pathlib import Path
-import re,hashlib,json
+import re,hashlib,json,subprocess,sys
 R=Path(__file__).resolve().parents[1]
 html=(R/'tools/source.html').read_text(encoding='utf-8')
 assert re.search(r'<script id="portable-state" type="application/json">\s*null\s*</script>',html)
 scripts=list(re.finditer(r'<script>([\s\S]*?)</script>',html));app=scripts[-1][1]
 assert len(scripts)==2,'Expect one bundled pako library and one app'
+app,renderer_count=re.subn(r'function memoryHTML\(w,where=\'study\'\) \{[\s\S]*?\n\}\n(?=\nfunction renderNetwork)',lambda _: (R/'tools/mnemonic-rendering.js').read_text(encoding='utf-8').rstrip()+'\n',app,count=1)
+assert renderer_count==1,'Expect one mnemonic renderer in the legacy application'
 (R/'web/pako.min.js').write_text(scripts[0][1],encoding='utf-8')
 html=html.replace(scripts[0][0],'<script src="pako.min.js"></script>')
 def change(a,b):
@@ -38,6 +40,7 @@ html=html.replace('<main>','''<main><section class="panel usb-panel" aria-label=
 <p id="usb-message" role="status" aria-live="polite">正在载入本机记录…</p><div id="usb-desktop-options"><label class="field">手机 App 标识（连接后自动识别）<input id="usb-bundle" value="com.jiufen.vocabulary" maxlength="180"></label><label class="checks"><input type="checkbox" id="usb-bootstrap">首次配对：允许用已有进度初始化尚未学习的一端</label></div><div class="row"><button id="usb-start" class="primary">数据线同步</button><button id="usb-probe">检查手机连接</button><button id="usb-finish" hidden>退出同步准备</button></div><p class="muted small">首次迁移：在“备份与设置”导入旧网页的完整 JSON，核对后再初始化手机。同步前手机需解锁并打开 App。</p><details><summary>同步档案备份与恢复</summary><p class="small">日常备份请保存同步档案，它保留配对身份和操作记录。同档案恢复会合并；不同档案只允许导入空白设备。</p><button id="usb-archive-export">导出完整同步档案</button><label class="field">恢复／合并同步档案<input id="usb-archive-import" type="file" accept=".json,application/json"></label></details><div id="usb-conflicts"></div></section><div id="usb-workspace">''',1)
 html=html.replace('</main>','</div></main>',1)
 (R/'web/index.html').write_text(html,encoding='utf-8')
+subprocess.run([sys.executable,str(R/'tools/update_mnemonics.py')],check=True)
 core=R/'shared/sync-core.js'
 if core.exists():(R/'web/sync-core.js').write_bytes(core.read_bytes())
 print('Prepared offline shared web UI; source SHA256:',hashlib.sha256((R/'tools/source.html').read_bytes()).hexdigest())

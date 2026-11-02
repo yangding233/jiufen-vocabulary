@@ -4,12 +4,12 @@
 
 **学习记录保存在本机 SQLite 数据库，日常学习和 USB 同步不需要云端账户。**iPhone 安装与续签时需要联网完成 Apple 签名。
 
-[下载 v0.1.2 测试版](https://github.com/yangding233/jiufen-vocabulary/releases/tag/v0.1.2) · [安装、同步与续签](docs/安装与续签.md) · [验收记录](docs/验收清单.md) · [数据来源与许可](docs/数据来源与许可.md)
+[下载 v0.1.3 测试版](https://github.com/yangding233/jiufen-vocabulary/releases/tag/v0.1.3) · [安装、同步与续签](docs/安装与续签.md) · [验收记录](docs/验收清单.md) · [数据来源与许可](docs/数据来源与许可.md)
 
 ## 功能
 
 - 常规词库 1,493 条，30 个 List，保留词形与中文释义，补齐音标。
-- 熟词搭桥、拆分与场景联想；标记候选和待补内容，支持写自己的助记和笔记。
+- 1,493 条均有熟词搭桥、拼写联想或短语提示；基础词与派生词分步展示，支持写自己的助记和笔记。
 - 自定义每日新词数量，显示剩余词数、预计学习天数与完成日期。
 - 认识、模糊、忘记、熟知标记，以及撤销和恢复复习。
 - Windows 与 iPhone 离线保存；支持旧版完整 JSON 首次迁移、同步档案备份与恢复。
@@ -29,9 +29,11 @@
 
 ## 当前版本与验证范围
 
-Windows **0.1.2** 为开发测试版。iPhone 包已通过 GitHub macOS / Xcode 16.4 的 arm64 真机构建及签名安装；已实测 iPhone 17 的 USB 识别、App 文件共享读取和专用测试文件写入读回。核心合并、存储与 USB 自动化测试，以及 Windows 进程退出重开和页面持久化测试已通过。
+Windows **0.1.3** 为开发测试版。本轮补齐 428 条原待补巧记和 109 条形近候选，重写 156 条短语，改善基础词链与变形卡。词库更新的编写、校验和使用说明见[巧记内容维护](docs/巧记内容维护.md)。
 
-Windows 0.1.2 修复了便携 USB 组件缺失的加密运行资源，加入冻结程序 SSL 自检、签名 App 自动识别和分阶段错误提示。手机端仍可使用首个已验证的 Build iOS #2。
+早期 iPhone 包已通过 GitHub macOS / Xcode 的 arm64 真机构建及签名安装；已实测 iPhone 17 的 USB 识别、App 文件共享读取和专用测试文件写入读回。核心合并、存储与 USB 自动化测试，以及 Windows 进程退出重开和页面持久化测试已通过。
+
+Windows 0.1.2 修复了便携 USB 组件缺失的加密运行资源，加入冻结程序 SSL 自检、签名 App 自动识别和分阶段错误提示。两端内置巧记随安装包更新；USB 同步保留学习进度与个人联想，不替换安装包内容。手机要使用新巧记，请签名覆盖安装 v0.1.3 发布页配套 IPA。
 
 双端完整学习档案合并、飞行模式冷启动、断线重试和覆盖续签等验收项目，以 [验收清单](docs/验收清单.md) 中记录的实际结果为准。
 
@@ -45,6 +47,8 @@ npm --prefix apps/windows ci
 python -m venv .venv-usb
 .\.venv-usb\Scripts\python.exe -m pip install -r tools/usb-requirements-lock.txt
 node --test tests/sync-core.test.cjs
+python tools/update_mnemonics.py --check
+node --test tests/mnemonics.test.cjs
 npm --prefix apps/windows test
 .\.venv-usb\Scripts\python.exe apps/windows/usb_transport.test.py
 .\tools\build-usb.ps1

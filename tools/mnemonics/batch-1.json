@@ -1,0 +1,2635 @@
+[
+  {
+    "word": "Africa",
+    "parts": [
+      {
+        "text": "A",
+        "cue": "字母 A，想成尖顶金字塔"
+      },
+      {
+        "text": "fri",
+        "cue": "借 Friday（星期五），取前三字母 fri"
+      },
+      {
+        "text": "ca",
+        "cue": "借 car（汽车），去掉末尾 r"
+      }
+    ],
+    "scene": "星期五 fri，汽车 ca 停在 A 形金字塔旁；把这张非洲旅行照片贴到非洲地图上。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "age",
+    "parts": [
+      {
+        "text": "age",
+        "cue": "借 cage（笼子），去掉开头 c"
+      }
+    ],
+    "scene": "笼子 cage 的 c 被擦掉，剩下的 age 旁挂着动物年龄牌；年龄就是牌上的数字。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "air",
+    "parts": [
+      {
+        "text": "air",
+        "cue": "借 chair（椅子），去掉开头 ch"
+      }
+    ],
+    "scene": "把椅子 chair 的 ch 抽走，椅子消失，只剩一团空气 air；从熟词 chair 找回 air。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "America",
+    "parts": [
+      {
+        "text": "A",
+        "cue": "地图上的起点标记 A"
+      },
+      {
+        "text": "me",
+        "cue": "英语 me，我"
+      },
+      {
+        "text": "rica",
+        "cue": "借 rice（米饭），把末尾 e 换成 a"
+      }
+    ],
+    "scene": "我 me 从地图 A 点出发，带着米饭 rice 去美洲；饭袋末尾的 e 标签换成 a，按 A＋me＋rica 写 America。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "ankle",
+    "parts": [
+      {
+        "text": "ankle",
+        "cue": "借 angle（角度），把第3个字母 g 换成 k"
+      }
+    ],
+    "scene": "量角度 angle 的尺子卡住脚踝，g 弯钩被折成 k 尖角；卡住的部位就是 ankle。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "anniversary",
+    "parts": [
+      {
+        "text": "anni",
+        "cue": "借 Annie（常见人名），去掉末尾 e"
+      },
+      {
+        "text": "vers",
+        "cue": "借 verse（诗句），去掉末尾 e"
+      },
+      {
+        "text": "ary",
+        "cue": "借 diary（日记），去掉开头 di"
+      }
+    ],
+    "scene": "安妮 Annie 在日记 diary 里写纪念诗 verse：每到结婚周年纪念日就翻回这一页。三块删成 anni、vers、ary 后顺次拼接。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "anomalies",
+    "parts": [
+      {
+        "text": "an",
+        "cue": "英语 an，一个"
+      },
+      {
+        "text": "o",
+        "cue": "字母 o，想成圆形"
+      },
+      {
+        "text": "ma",
+        "cue": "“马”的拼音 ma"
+      },
+      {
+        "text": "lies",
+        "cue": "英语 lies，谎言（复数）"
+      }
+    ],
+    "scene": "一个 an 圆圆的 o 马 ma 说自己能潜水，这些谎言 lies 反常得令人吃惊；圆马的异常帮助记 anomalies。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "apology",
+    "parts": [
+      {
+        "text": "a",
+        "cue": "英语 a，一根"
+      },
+      {
+        "text": "po",
+        "cue": "“破”的拼音 po"
+      },
+      {
+        "text": "log",
+        "cue": "英语 log，木头"
+      },
+      {
+        "text": "y",
+        "cue": "字母 y，想成岔开的树枝"
+      }
+    ],
+    "scene": "一根 a 破 po 木头 log 带着 y 形岔枝，砸坏邻居窗户；抱着木头上门道歉，按 a＋po＋log＋y 记。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Argentina",
+    "parts": [
+      {
+        "text": "Ar",
+        "cue": "借 art（艺术），去掉末尾 t"
+      },
+      {
+        "text": "gent",
+        "cue": "借 gentle（温和的），去掉末尾 le"
+      },
+      {
+        "text": "in",
+        "cue": "英语 in，在……里面"
+      },
+      {
+        "text": "a",
+        "cue": "英语 a，一个"
+      }
+    ],
+    "scene": "阿根廷艺术 art 馆里 in，一个 a 温和的 gentle 导览员带我看探戈画作。门牌写 Argentina，取 Ar＋gent＋in＋a。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "art",
+    "parts": [
+      {
+        "text": "art",
+        "cue": "借 part（部分），去掉开头 p"
+      }
+    ],
+    "scene": "艺术画被切成几部分 part；拿走第一块 p，留下 art 艺术，靠 part 的后三个字母记住它。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "articles",
+    "parts": [
+      {
+        "text": "art",
+        "cue": "英语 art，艺术"
+      },
+      {
+        "text": "ic",
+        "cue": "借 ice（冰），去掉末尾 e"
+      },
+      {
+        "text": "les",
+        "cue": "借 less（更少），去掉末尾一个 s"
+      }
+    ],
+    "scene": "艺术 art 杂志的文章写道：冰 ice 融化，展品越来越少 less。三张提示缩成 art＋ic＋les，连起文章与物品。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "ash",
+    "parts": [
+      {
+        "text": "ash",
+        "cue": "借 cash（现金），去掉开头 c"
+      }
+    ],
+    "scene": "现金 cash 掉进炉子，开头 c 烧掉，只剩灰烬 ash；现金变灰的结果把两词连起来。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Asia",
+    "parts": [
+      {
+        "text": "A",
+        "cue": "亚洲地图上的大号标记 A"
+      },
+      {
+        "text": "si",
+        "cue": "“丝”的拼音 si"
+      },
+      {
+        "text": "a",
+        "cue": "英语 a，一条"
+      }
+    ],
+    "scene": "亚洲地图上画着大 A，一条 a 丝 si 带沿丝绸之路铺开；字母顺序是 A＋si＋a。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "audience",
+    "parts": [
+      {
+        "text": "au",
+        "cue": "借 autumn（秋天），取前两个字母 au"
+      },
+      {
+        "text": "di",
+        "cue": "“笛”的拼音 di"
+      },
+      {
+        "text": "ence",
+        "cue": "借 fence（栅栏），去掉开头 f"
+      }
+    ],
+    "scene": "秋天 autumn 的露天演出，观众围在栅栏 fence 边听笛 di；按 au＋di＋ence 写，栅栏前的人就是观众。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "automatic",
+    "parts": [
+      {
+        "text": "auto",
+        "cue": "借 automobile（汽车），保留开头 auto"
+      },
+      {
+        "text": "ma",
+        "cue": "“马”的拼音 ma"
+      },
+      {
+        "text": "tic",
+        "cue": "借 ticket（票），取前三字母 tic"
+      }
+    ],
+    "scene": "汽车 auto 拉一匹马 ma 到售票机前，机器不用人按就自动吐出票 ticket；auto＋ma＋tic，突出自动完成。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "axe",
+    "parts": [
+      {
+        "text": "axe",
+        "cue": "借 cake（蛋糕），去掉开头 c，再把 k 换成 x：ake→axe"
+      }
+    ],
+    "scene": "蛋糕 cake 里的 k 被两把交叉斧头劈成 x；去 c、k 换 x 得 axe，斧头是劈蛋糕的工具。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "back",
+    "parts": [
+      {
+        "text": "back",
+        "cue": "借 black（黑色的），去掉第2个字母 l"
+      }
+    ],
+    "scene": "黑色 black 外套后面的一条长 l 被抽走，露出后背 back；只删 l，其余字母顺序不变。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bacteria",
+    "parts": [
+      {
+        "text": "bac",
+        "cue": "借 back（背部），去掉末尾 k"
+      },
+      {
+        "text": "ter",
+        "cue": "借 term（学期），去掉末尾 m"
+      },
+      {
+        "text": "ia",
+        "cue": "借 piano（钢琴），取中间相邻字母 ia"
+      }
+    ],
+    "scene": "开学 term 时用显微镜看钢琴 piano 背面 back，上面爬满细菌；各截成 bac、ter、ia，记住细菌是画面焦点。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bag",
+    "parts": [
+      {
+        "text": "bag",
+        "cue": "借 big（大的），把中间 i 换成 a"
+      }
+    ],
+    "scene": "大大的 big 礼物装不进袋子，把细长 i 撑成圆肚 a；撑大的袋子就是 bag。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "ball",
+    "parts": [
+      {
+        "text": "ball",
+        "cue": "借 all（全部），在开头加 b"
+      }
+    ],
+    "scene": "全部 all 人抱着 b 形气球进舞会，气球滚成一个球；b 放在 all 前就是 ball。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "ban",
+    "parts": [
+      {
+        "text": "ban",
+        "cue": "借 bank（银行），去掉末尾 k"
+      }
+    ],
+    "scene": "银行 bank 门口挂禁令，最后的 k 被禁止线划掉；bank 去 k，留下 ban 禁止。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "band",
+    "parts": [
+      {
+        "text": "ban",
+        "cue": "英语 ban，禁止"
+      },
+      {
+        "text": "d",
+        "cue": "字母 d，想成竖起的鼓和鼓槌"
+      }
+    ],
+    "scene": "禁令 ban 贴在乐队大鼓 d 上，禁止敲鼓；ban 后放一面 d 形鼓，得到 band 乐队。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bank",
+    "parts": [
+      {
+        "text": "bank",
+        "cue": "借 back（后面），把第3个字母 c 换成 n"
+      }
+    ],
+    "scene": "走到房子后面 back，看见 n 形柜台的银行；c 换 n 记 bank。银行建在河岸，兼顾另一义项。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bay",
+    "parts": [
+      {
+        "text": "bay",
+        "cue": "借 day（一天），把开头 d 换成 b"
+      }
+    ],
+    "scene": "白天 day 坐船进海湾，岸边 d 形帆变成双肚 b；day 换首字母成 bay，海湾是停船的地方。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bear",
+    "parts": [
+      {
+        "text": "b",
+        "cue": "字母 b，想成熊鼓鼓的肚子"
+      },
+      {
+        "text": "ear",
+        "cue": "英语 ear，耳朵"
+      }
+    ],
+    "scene": "一只大肚 b 的熊竖着耳朵 ear，背上承受一袋蜂蜜；b＋ear 是熊 bear，也借背负蜂蜜提醒承受。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "beer",
+    "parts": [
+      {
+        "text": "beer",
+        "cue": "借 bear（熊），把第3个字母 a 换成 e"
+      }
+    ],
+    "scene": "熊 bear 把 a 形蜂蜜罐换成 e 形啤酒杯；a 换 e，啤酒写 beer，两个 e 连在一起。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "behaviour",
+    "parts": [
+      {
+        "text": "be",
+        "cue": "英语 be，是"
+      },
+      {
+        "text": "ha",
+        "cue": "“哈”的拼音 ha"
+      },
+      {
+        "text": "vi",
+        "cue": "借 video（视频），取开头 vi"
+      },
+      {
+        "text": "our",
+        "cue": "英语 our，我们的"
+      }
+    ],
+    "scene": "我们 our 的行为被视频 video 拍下，大家看完哈哈 ha 笑：这就是 be 我们的行为。按 be＋ha＋vi＋our 写，保留英式 our。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "belt",
+    "parts": [
+      {
+        "text": "belt",
+        "cue": "借 bell（铃），把最后一个 l 换成 t"
+      }
+    ],
+    "scene": "腰带上挂着铃 bell，最后一根 l 插上横扣变成 t；扣住腰的 belt 皮带只把末尾 l 换成 t。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "benefits",
+    "parts": [
+      {
+        "text": "bene",
+        "cue": "借 been（曾经是），把末尾 en 对调成 ne"
+      },
+      {
+        "text": "fit",
+        "cue": "英语 fit，健康的、适合的"
+      },
+      {
+        "text": "s",
+        "cue": "复数词尾 s"
+      }
+    ],
+    "scene": "员工曾经 been 身体不好，公司发健身福利，让大家更健康 fit；been 末尾 en 换位成 bene，再接 fit＋s，福利带来好处。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bike",
+    "parts": [
+      {
+        "text": "bike",
+        "cue": "借 like（喜欢），把开头 l 换成 b"
+      }
+    ],
+    "scene": "我喜欢 like 一辆双轮 b 形自行车；l 换成双肚 b，bike 就是喜欢骑的自行车。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bird",
+    "parts": [
+      {
+        "text": "bir",
+        "cue": "借 birthday（生日），取前三字母 bir"
+      },
+      {
+        "text": "d",
+        "cue": "字母 d，想成树枝上停着的圆身小鸟"
+      }
+    ],
+    "scene": "生日 birthday 那天，d 形树枝上的小鸟唱生日歌；bir 后接 d，记成 bird 鸟。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bitter",
+    "parts": [
+      {
+        "text": "bit",
+        "cue": "英语 bit，一小块"
+      },
+      {
+        "text": "ter",
+        "cue": "借 term（学期），去掉末尾 m"
+      }
+    ],
+    "scene": "学期 term 结束吃一小块 bit 苦巧克力，苦得皱眉；bit＋ter，双 t 在两块交界处。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "boat",
+    "parts": [
+      {
+        "text": "b",
+        "cue": "字母 b，想成船头鼓起的浮筒"
+      },
+      {
+        "text": "oat",
+        "cue": "英语 oat，燕麦"
+      }
+    ],
+    "scene": "装燕麦 oat 的船前面绑着 b 形浮筒；b＋oat 就是 boat，船里装的燕麦帮助记 oat。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bone",
+    "parts": [
+      {
+        "text": "b",
+        "cue": "字母 b，想成小狗的侧影"
+      },
+      {
+        "text": "one",
+        "cue": "英语 one，一根"
+      }
+    ],
+    "scene": "一只 b 形小狗叼着一根 one 骨头；b＋one 拼 bone，只给一根，不要多写字母。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bored",
+    "parts": [
+      {
+        "text": "bore",
+        "cue": "借 boring（令人厌烦的），把末尾 ing 换成 e"
+      },
+      {
+        "text": "d",
+        "cue": "形容词 bored 的末尾 d"
+      }
+    ],
+    "scene": "听无聊的 boring 报告，自己变得厌倦 bored；boring 的 ing 换 e 得 bore，再加 d。boring 说事物乏味，bored 说人的感受。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "boss",
+    "parts": [
+      {
+        "text": "bo",
+        "cue": "“波”的拼音 bo"
+      },
+      {
+        "text": "ss",
+        "cue": "两个 s，想成并排的两条蛇"
+      }
+    ],
+    "scene": "老板波 bo 先生养着两条并排的蛇 ss，开会时缠在老板椅上；bo＋ss，两个 s 都要保留。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "box",
+    "parts": [
+      {
+        "text": "box",
+        "cue": "借 fox（狐狸），把开头 f 换成 b"
+      }
+    ],
+    "scene": "狐狸 fox 躲进鼓肚 b 形纸箱，门上 f 换成 b；同样的 ox，box 是箱子，fox 是狐狸。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "boxing",
+    "parts": [
+      {
+        "text": "box",
+        "cue": "英语 box，箱子；此处借它的字母"
+      },
+      {
+        "text": "ing",
+        "cue": "常见词尾 ing，联系持续动作"
+      }
+    ],
+    "scene": "一个人戴两个箱子 box 当拳套，不停挥拳 ing；box＋ing 是 boxing 拳击，箱子拳套是人为联想。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bruised",
+    "parts": [
+      {
+        "text": "bru",
+        "cue": "借 brush（刷子），去掉末尾 sh"
+      },
+      {
+        "text": "is",
+        "cue": "英语 is，是"
+      },
+      {
+        "text": "ed",
+        "cue": "常见词尾 ed"
+      }
+    ],
+    "scene": "刷子 brush 猛撞手臂，手臂是 is 青紫的；brush 删 sh 成 bru，接 is＋ed 得 bruised 碰伤的。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "bus",
+    "parts": [
+      {
+        "text": "bus",
+        "cue": "借 busy（忙碌的），去掉末尾 y"
+      }
+    ],
+    "scene": "忙碌 busy 的人挤在公共汽车里，车太挤，把最后的 y 挤出去；busy 去 y 就是 bus。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cafe",
+    "parts": [
+      {
+        "text": "cafe",
+        "cue": "借 cake（蛋糕），把第3个字母 k 换成 f"
+      }
+    ],
+    "scene": "卖蛋糕 cake 的店加一把 f 形咖啡勺，招牌 k 改 f，店就成为 cafe 咖啡馆。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cake",
+    "parts": [
+      {
+        "text": "cake",
+        "cue": "借 lake（湖），把开头 l 换成 c"
+      }
+    ],
+    "scene": "湖 lake 中漂着一个 c 形蛋糕，水牌的 l 被换成 c；cake 蛋糕、lake 湖，用生日野餐图连起来。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "car",
+    "parts": [
+      {
+        "text": "car",
+        "cue": "借 cat（猫），把末尾 t 换成 r"
+      }
+    ],
+    "scene": "小猫 cat 开着汽车，方向盘像弯弯的 r；cat 的末尾 t 换 r，得到 car，猫是开车的角色。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "card",
+    "parts": [
+      {
+        "text": "car",
+        "cue": "英语 car，汽车"
+      },
+      {
+        "text": "d",
+        "cue": "字母 d，想成卡片上的圆章与直边"
+      }
+    ],
+    "scene": "汽车 car 图片卡上盖着 d 形印章；car 后加 d，就是 card 卡片。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Carnival",
+    "parts": [
+      {
+        "text": "Car",
+        "cue": "英语 car，汽车"
+      },
+      {
+        "text": "ni",
+        "cue": "“你”的拼音 ni"
+      },
+      {
+        "text": "val",
+        "cue": "借 value（价值），去掉末尾 ue"
+      }
+    ],
+    "scene": "你 ni 把汽车 car 装扮成标着天价 value 的花车，开进狂欢节游行；按 Car＋ni＋val 写 Carnival。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cars",
+    "parts": [
+      {
+        "text": "car",
+        "cue": "英语 car，汽车"
+      },
+      {
+        "text": "s",
+        "cue": "常见复数词尾 s"
+      }
+    ],
+    "scene": "停车场里一辆 car 后又来一辆，排成一列 cars；car 后加 s，记住不止一辆。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cash",
+    "parts": [
+      {
+        "text": "cash",
+        "cue": "借 case（箱；盒），把末尾 e 换成 h"
+      }
+    ],
+    "scene": "把现金塞进箱子 case，箱口用 h 形夹子夹紧；case 的 e 换 h，记 cash，目标是箱里的现金。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "catch",
+    "parts": [
+      {
+        "text": "cat",
+        "cue": "英语 cat，猫"
+      },
+      {
+        "text": "ch",
+        "cue": "“吃货”的拼音首字母 ch，作为人为编码"
+      }
+    ],
+    "scene": "吃货 ch 猫 cat 一爪抓住鱼；猫 cat 在前、吃货 ch 在后拼 catch，动作就是抓住。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cave",
+    "parts": [
+      {
+        "text": "cave",
+        "cue": "借 save（救），把开头 s 换成 c"
+      }
+    ],
+    "scene": "救援队 save 把困在 c 形洞口的人救出；s 换 c 成 cave，洞穴是救援地点。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "certificate",
+    "parts": [
+      {
+        "text": "certi",
+        "cue": "借 certain（确定的），删掉第5个字母 a 和末尾 n，留下 certi"
+      },
+      {
+        "text": "fi",
+        "cue": "借 fish（鱼），去掉末尾 sh"
+      },
+      {
+        "text": "cat",
+        "cue": "英语 cat，猫"
+      },
+      {
+        "text": "e",
+        "cue": "字母 e，想成证书末尾签名"
+      }
+    ],
+    "scene": "考试结果确定 certain 后，鱼 fish 给猫 cat 颁证，最后签上 e；certain 删第5位 a 和末尾 n 得 certi，再接 fi＋cat＋e，记证书 certificate。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "challenge",
+    "parts": [
+      {
+        "text": "ch",
+        "cue": "“冲哈”的拼音首字母 ch，作为口号编码"
+      },
+      {
+        "text": "all",
+        "cue": "英语 all，所有人"
+      },
+      {
+        "text": "enge",
+        "cue": "借 engine（发动机），把末尾 ine 换成 e"
+      }
+    ],
+    "scene": "喊“冲哈” ch，所有人 all 合力推发动机 engine，这是艰巨挑战；engine 换尾成 enge，接成 ch＋all＋enge。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Change",
+    "parts": [
+      {
+        "text": "Change",
+        "cue": "借 chance（机会），把第5个字母 c 换成 g，保留首字母大写"
+      }
+    ],
+    "scene": "抓住机会 chance，把 c 改成带小尾巴的 g，生活发生改变 Change；把大钞换成零钱，也连起“变化”和“零钱”。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "charges",
+    "parts": [
+      {
+        "text": "char",
+        "cue": "借 chair（椅子），去掉中间 i"
+      },
+      {
+        "text": "ges",
+        "cue": "借 guess（猜），去掉第2个字母 u 和末尾一个 s"
+      }
+    ],
+    "scene": "充电站椅子 chair 上贴收费单，坐下的人还在猜 guess 多少钱；删成 char、ges，charges 同时提醒收费和充电。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "chemical",
+    "parts": [
+      {
+        "text": "che",
+        "cue": "借 chess（国际象棋），去掉末尾 ss"
+      },
+      {
+        "text": "mi",
+        "cue": "“米”的拼音 mi"
+      },
+      {
+        "text": "cal",
+        "cue": "借 call（打电话），去掉末尾一个 l"
+      }
+    ],
+    "scene": "棋盘 chess 上的米 mi 遇试剂变色，大家立刻打电话 call 叫化学老师；che＋mi＋cal，变色试剂是化学品。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Chinese",
+    "parts": [
+      {
+        "text": "Chin",
+        "cue": "借 China（中国），去掉末尾 a"
+      },
+      {
+        "text": "ese",
+        "cue": "词尾 ese，记 e 在 s 两边"
+      }
+    ],
+    "scene": "把 China 地图末尾 a 换成写着 e－s－e 的中文课表；Chin＋ese 成 Chinese，联系中国的和中文。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "chocolate",
+    "parts": [
+      {
+        "text": "choco",
+        "cue": "借巧克力包装上常见的 choco 简称，只借包装字母"
+      },
+      {
+        "text": "late",
+        "cue": "英语 late，迟到的"
+      }
+    ],
+    "scene": "巧克力包装写 choco，送礼的人却迟到 late，整盒快化了；choco＋late 是 chocolate。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cigar",
+    "parts": [
+      {
+        "text": "ci",
+        "cue": "“刺”的拼音 ci"
+      },
+      {
+        "text": "gar",
+        "cue": "借 garden（花园），去掉末尾 den"
+      }
+    ],
+    "scene": "一支雪茄被刺 ci 扎住，挂在花园 garden 篱笆上；刺＋花园前半 gar，记 ci＋gar，雪茄是目标物。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "circulation",
+    "parts": [
+      {
+        "text": "cir",
+        "cue": "借 circle（圆圈），去掉末尾 cle"
+      },
+      {
+        "text": "cu",
+        "cue": "“醋”的拼音 cu"
+      },
+      {
+        "text": "la",
+        "cue": "“拉”的拼音 la"
+      },
+      {
+        "text": "tion",
+        "cue": "借 station（车站），取末尾 tion，只借字母块"
+      }
+    ],
+    "scene": "沿圆圈 circle 拉 la 着醋 cu 车，绕车站 station 一圈又一圈；cir＋cu＋la＋tion，绕圈运转记循环、流通。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "citizens",
+    "parts": [
+      {
+        "text": "citi",
+        "cue": "借 city（城市），把末尾 y 换成 i"
+      },
+      {
+        "text": "zen",
+        "cue": "“怎”的拼音 zen"
+      },
+      {
+        "text": "s",
+        "cue": "常见复数词尾 s"
+      }
+    ],
+    "scene": "城市 city 里的人围着告示问“怎 zen 样成为公民”；city 先变 citi，再接 zen＋s，记一群市民 citizens。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "city",
+    "parts": [
+      {
+        "text": "city",
+        "cue": "借 sit（坐），把首字母 s 换成 c，再在末尾加 y"
+      }
+    ],
+    "scene": "坐 sit 观光车游城市，起点 s 改 c，终点插一面 y 形路标；cit＋y 是 city 城市。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "classification",
+    "parts": [
+      {
+        "text": "class",
+        "cue": "英语 class，班级、类别"
+      },
+      {
+        "text": "ifi",
+        "cue": "借 WiFi 字母，去掉首字母 w 得 ifi"
+      },
+      {
+        "text": "cat",
+        "cue": "英语 cat，猫"
+      },
+      {
+        "text": "ion",
+        "cue": "借 lion（狮子），去掉开头 l"
+      }
+    ],
+    "scene": "给猫 cat 和狮子 lion 分类别 class，分类屏幕用 WiFi 更新；class＋ifi＋cat＋ion，猫归猫、狮归狮。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "club",
+    "parts": [
+      {
+        "text": "club",
+        "cue": "借 cup（杯子），在 c 后插入 l，再把末尾 p 换成 b"
+      }
+    ],
+    "scene": "俱乐部里每人举杯 cup，杯边插入细长 l，杯柄 p 变双圈 b；c＋l＋u＋b 是大家的俱乐部。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "coach",
+    "parts": [
+      {
+        "text": "co",
+        "cue": "借 coat（外套），取前两个字母 co"
+      },
+      {
+        "text": "ach",
+        "cue": "借 ache（疼痛），去掉末尾 e"
+      }
+    ],
+    "scene": "穿外套 coat 的教练见队员肌肉疼 ache，安排他们坐长途汽车休息；co＋ach，两种意思用同一位教练连接。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "code",
+    "parts": [
+      {
+        "text": "code",
+        "cue": "借 cold（冷的），去掉第3个字母 l，再在末尾加 e"
+      }
+    ],
+    "scene": "冷冻 cold 保险箱要输入代码才能开；抽走冰棍 l、末尾补 e 得 code，密码就是开箱关键。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cognitive",
+    "parts": [
+      {
+        "text": "cog",
+        "cue": "英语 cog，齿轮"
+      },
+      {
+        "text": "ni",
+        "cue": "“你”的拼音 ni"
+      },
+      {
+        "text": "tive",
+        "cue": "借 active（积极的），取末尾 tive"
+      }
+    ],
+    "scene": "你 ni 脑中的齿轮 cog 积极 active 转动，正在认知事物；cog＋ni＋tive 是脑齿轮的助记比喻。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "color",
+    "parts": [
+      {
+        "text": "col",
+        "cue": "借 cold（冷的），去掉末尾 d"
+      },
+      {
+        "text": "or",
+        "cue": "英语 or，或者"
+      }
+    ],
+    "scene": "画画时问“冷 cold 色，或者 or 暖色？”；col＋or，color 是美式拼写的颜色。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "colours",
+    "parts": [
+      {
+        "text": "col",
+        "cue": "借 cold（冷的），去掉末尾 d"
+      },
+      {
+        "text": "our",
+        "cue": "英语 our，我们的"
+      },
+      {
+        "text": "s",
+        "cue": "复数词尾 s"
+      }
+    ],
+    "scene": "我们 our 的画盒装满冷 cold 色颜料，颜色不止一种；col＋our＋s，英式复数 colours 保留 our。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "commercial",
+    "parts": [
+      {
+        "text": "com",
+        "cue": "借 company（公司），取前三字母 com"
+      },
+      {
+        "text": "mer",
+        "cue": "借 merchant（商人），取前三字母 mer"
+      },
+      {
+        "text": "cial",
+        "cue": "借 social（社会的），取末尾 cial"
+      }
+    ],
+    "scene": "公司 company 请商人 merchant 在社交 social 平台投商业广告；截成 com＋mer＋cial，广告就是 commercial。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "competition",
+    "parts": [
+      {
+        "text": "compet",
+        "cue": "借 compete（竞争），去掉末尾 e"
+      },
+      {
+        "text": "ition",
+        "cue": "借 position（位置），取末尾 ition"
+      }
+    ],
+    "scene": "为了争夺领奖位置 position，大家竞争 compete；compete 去 e，接 position 末尾 ition，得到比赛 competition。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "compulsory",
+    "parts": [
+      {
+        "text": "com",
+        "cue": "借 company（公司），取前三字母 com"
+      },
+      {
+        "text": "pul",
+        "cue": "借 pull（拉），去掉末尾一个 l"
+      },
+      {
+        "text": "sory",
+        "cue": "借 sorry（抱歉），去掉中间一个 r"
+      }
+    ],
+    "scene": "公司 company 把人拉 pull 去必修培训，说 sorry 也不能不来；com＋pul＋sory，规则要求必须参加才是强制的。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Congratulations",
+    "parts": [
+      {
+        "text": "Con",
+        "cue": "借 concert（音乐会），取前三字母 Con"
+      },
+      {
+        "text": "grat",
+        "cue": "借 grateful（感激的），取前四字母 grat"
+      },
+      {
+        "text": "u",
+        "cue": "借短信中 u 代指 you 的习惯，只作字母编码"
+      },
+      {
+        "text": "lations",
+        "cue": "借 relations（关系），去掉开头 re"
+      }
+    ],
+    "scene": "音乐会 concert 获奖后，亲友 relations 向你 u 祝贺，你满怀感激 grateful；Con＋grat＋u＋lations，保留末尾 s。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "convenient",
+    "parts": [
+      {
+        "text": "con",
+        "cue": "借 concert（音乐会），取前三字母 con"
+      },
+      {
+        "text": "veni",
+        "cue": "借 Venice（威尼斯），去掉末尾 ce"
+      },
+      {
+        "text": "ent",
+        "cue": "借 tent（帐篷），去掉开头 t"
+      }
+    ],
+    "scene": "去威尼斯 Venice 听音乐会 concert，旁边就有帐篷 tent 可住，真方便；con＋veni＋ent。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cookery",
+    "parts": [
+      {
+        "text": "cook",
+        "cue": "英语 cook，做饭"
+      },
+      {
+        "text": "ery",
+        "cue": "借 very（非常），去掉开头 v"
+      }
+    ],
+    "scene": "大家非常 very 想学做饭 cook，教室变成烹饪课堂；very 去 v 成 ery，接在 cook 后写 cookery。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cooking",
+    "parts": [
+      {
+        "text": "cook",
+        "cue": "英语 cook，做饭"
+      },
+      {
+        "text": "ing",
+        "cue": "常见词尾 ing，联系正在做的动作"
+      }
+    ],
+    "scene": "厨师 cook 正在持续 ing 切菜翻锅，眼前就是 cooking 烹饪；cook 后直接接 ing，不删字母。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cooler",
+    "parts": [
+      {
+        "text": "cool",
+        "cue": "英语 cool，凉爽的"
+      },
+      {
+        "text": "er",
+        "cue": "比较级词尾 er；也借作冷藏箱的末尾字母提示"
+      }
+    ],
+    "scene": "凉爽 cool 的饮料进冷藏箱后更凉 cooler；cool＋er，冷藏箱和更凉在同一幅图里。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "cooperation",
+    "parts": [
+      {
+        "text": "co",
+        "cue": "借 company（公司），取前两个字母 co"
+      },
+      {
+        "text": "operation",
+        "cue": "英语 operation，操作、行动"
+      }
+    ],
+    "scene": "两家公司 company 一起完成一次操作 operation，各出一只手合作按开关；co 放在 operation 前，写 cooperation。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "copy",
+    "parts": [
+      {
+        "text": "copy",
+        "cue": "借 cup（杯子），把 u 换成 o，再在末尾加 y"
+      }
+    ],
+    "scene": "复印机复制杯子 cup，把杯口印圆成 o，还多印一条 y 形裂纹；c＋o＋p＋y 是 copy。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "corporate",
+    "parts": [
+      {
+        "text": "cor",
+        "cue": "借 corn（玉米），去掉末尾 n"
+      },
+      {
+        "text": "por",
+        "cue": "借 pork（猪肉），去掉末尾 k"
+      },
+      {
+        "text": "ate",
+        "cue": "英语 ate，吃了"
+      }
+    ],
+    "scene": "公司年会吃了 ate 玉米 corn 和猪肉 pork；各去尾字母成 cor＋por，再接 ate，想到企业的活动 corporate。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "course",
+    "parts": [
+      {
+        "text": "course",
+        "cue": "借 horse（马），把开头 ho 换成 cou，保留末尾 rse"
+      }
+    ],
+    "scene": "骑马 horse 沿课程规定的路线走，起点 ho 牌换成 cou；余下 rse 不变，course 既记课程也记路线。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "crack",
+    "parts": [
+      {
+        "text": "c",
+        "cue": "字母 c，想成裂开的圆口"
+      },
+      {
+        "text": "rack",
+        "cue": "英语 rack，架子"
+      }
+    ],
+    "scene": "架子 rack 被压出 c 形裂口；c＋rack 是 crack 裂缝，也记架子开裂的动作。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "crime",
+    "parts": [
+      {
+        "text": "crime",
+        "cue": "借 cream（奶油），把末尾 eam 换成 ime"
+      }
+    ],
+    "scene": "小偷犯罪偷奶油 cream，监控把包装上的 eam 涂改为 ime；cr 保留，crime 是这次犯罪。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "critical",
+    "parts": [
+      {
+        "text": "crit",
+        "cue": "借 critic（批评者），去掉末尾 ic"
+      },
+      {
+        "text": "ic",
+        "cue": "借 ice（冰），去掉末尾 e"
+      },
+      {
+        "text": "al",
+        "cue": "借 all（所有），去掉末尾一个 l"
+      }
+    ],
+    "scene": "批评者 critic 在所有 all 人面前指出冰 ice 桥的关键裂缝，情况严重；crit＋ic＋al 连起批评、关键、严重。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "current",
+    "parts": [
+      {
+        "text": "cur",
+        "cue": "借 curl（卷曲），去掉末尾 l"
+      },
+      {
+        "text": "rent",
+        "cue": "英语 rent，租金"
+      }
+    ],
+    "scene": "水流卷 curl 走了当前要交的租金 rent，卷线又像电线里的电流；cur＋rent 记 current。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "dance",
+    "parts": [
+      {
+        "text": "dance",
+        "cue": "借 chance（机会），把开头 ch 换成 d"
+      }
+    ],
+    "scene": "抓住上台机会 chance，d 形舞者开始跳舞；ch 换 d，剩余 ance 不动，得到 dance。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "dark",
+    "parts": [
+      {
+        "text": "dark",
+        "cue": "借 park（公园），把开头 p 换成 d"
+      }
+    ],
+    "scene": "公园 park 天黑关灯，入口 p 牌被黑影挡成 d；dark 黑暗的，公园里的 ark 不变。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "data",
+    "parts": [
+      {
+        "text": "data",
+        "cue": "借 date（日期），把末尾 e 换成 a"
+      }
+    ],
+    "scene": "表格里一列日期 date 被收集成数据，末尾 e 标签改成 a；同一个 dat，data 是数据。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "deck",
+    "parts": [
+      {
+        "text": "deck",
+        "cue": "借 duck（鸭子），把第2个字母 u 换成 e"
+      }
+    ],
+    "scene": "鸭子 duck 跳上船甲板，u 形水面被铺成 e 形木板；u 换 e，甲板写 deck。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "decline",
+    "parts": [
+      {
+        "text": "dec",
+        "cue": "借 December（十二月），取前三字母 dec"
+      },
+      {
+        "text": "line",
+        "cue": "英语 line，线"
+      }
+    ],
+    "scene": "十二月 December 销售曲线 line 一路下降；dec＋line。推销员再来，我指着下降曲线表示拒绝。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "deep",
+    "parts": [
+      {
+        "text": "deep",
+        "cue": "借 sheep（羊），把开头 sh 换成 d"
+      }
+    ],
+    "scene": "羊 sheep 跳进深坑，sh 被坑沿挡住，前面竖起深度标杆 d；sh 换 d，d＋eep 是 deep。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "democratic",
+    "parts": [
+      {
+        "text": "demo",
+        "cue": "借 demo（演示），完整保留"
+      },
+      {
+        "text": "crat",
+        "cue": "借 craft（手工艺），去掉第4个字母 f"
+      },
+      {
+        "text": "ic",
+        "cue": "借 ice（冰），去掉末尾 e"
+      }
+    ],
+    "scene": "演示 demo 课堂里大家投票选手工 craft 制作哪座冰 ice 雕；demo＋crat＋ic，投票决定体现民主。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "depression",
+    "parts": [
+      {
+        "text": "de",
+        "cue": "“得”的拼音 de，只作字母编码"
+      },
+      {
+        "text": "press",
+        "cue": "英语 press，压"
+      },
+      {
+        "text": "ion",
+        "cue": "借 lion（狮子），去掉开头 l"
+      }
+    ],
+    "scene": "狮子 lion 被重物压 press 得 de 抬不起头，心情低落；de＋press＋ion，压低的画面提醒抑郁、萧条。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "depth",
+    "parts": [
+      {
+        "text": "dep",
+        "cue": "借 deep（深的），去掉第3个字母 e"
+      },
+      {
+        "text": "th",
+        "cue": "“探海”的拼音首字母 th，作为编码"
+      }
+    ],
+    "scene": "深 deep 海探测队探海 th，量出海沟深度；deep 少一个 e 成 dep，再接 th，depth 是深度。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "diagram",
+    "parts": [
+      {
+        "text": "dia",
+        "cue": "借 diary（日记），去掉末尾 ry"
+      },
+      {
+        "text": "gram",
+        "cue": "英语 gram，克"
+      }
+    ],
+    "scene": "日记 diary 里画图表，记录每天吃了多少克 gram；dia＋gram，日记里的克数图就是 diagram。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "dinner",
+    "parts": [
+      {
+        "text": "din",
+        "cue": "借 dinosaur（恐龙），取前三字母 din"
+      },
+      {
+        "text": "ner",
+        "cue": "借 partner（伙伴），取末尾 ner"
+      }
+    ],
+    "scene": "恐龙 dinosaur 邀伙伴 partner 吃晚餐；各取 din、ner，晚餐桌上坐着两个提示角色。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Disco",
+    "parts": [
+      {
+        "text": "Dis",
+        "cue": "借 disc（唱片），去掉末尾 c"
+      },
+      {
+        "text": "co",
+        "cue": "借 company（公司），取前两个字母 co"
+      }
+    ],
+    "scene": "公司 company 年会放唱片 disc，大家跳迪斯科舞；Dis＋co，保留词表首字母 D。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "dismiss",
+    "parts": [
+      {
+        "text": "dis",
+        "cue": "借 distance（距离），取前三字母 dis"
+      },
+      {
+        "text": "miss",
+        "cue": "英语 miss，错过、想念"
+      }
+    ],
+    "scene": "老板把人打发到很远距离 distance，他从此错过 miss 上班，原来被解雇了；dis＋miss。把不成立的诉求打发走，联想驳回。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "distribution",
+    "parts": [
+      {
+        "text": "dis",
+        "cue": "借 distance（距离），取前三字母 dis"
+      },
+      {
+        "text": "tri",
+        "cue": "借 trip（旅行），去掉末尾 p"
+      },
+      {
+        "text": "but",
+        "cue": "英语 but，但是"
+      },
+      {
+        "text": "ion",
+        "cue": "借 lion（狮子），去掉开头 l"
+      }
+    ],
+    "scene": "旅行 trip 送货覆盖很远距离 distance，但是 but 狮子 lion 还没分到；dis＋tri＋but＋ion，最后把物资逐处分发。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "dive",
+    "parts": [
+      {
+        "text": "dive",
+        "cue": "借 five（五），把开头 f 换成 d"
+      }
+    ],
+    "scene": "五个 five 人跳水，f 形跳台变成 d 形水花；f 换 d，潜水写 dive。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "documentary",
+    "parts": [
+      {
+        "text": "document",
+        "cue": "英语 document，文件、记录"
+      },
+      {
+        "text": "ary",
+        "cue": "借 diary（日记），去掉开头 di"
+      }
+    ],
+    "scene": "把文件 document 与日记 diary 中的真实记录拍成纪录片；document＋ary，纪实内容来自真实记录。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "documentation",
+    "parts": [
+      {
+        "text": "document",
+        "cue": "英语 document，文件、记录"
+      },
+      {
+        "text": "ation",
+        "cue": "借 station（车站），去掉开头 st"
+      }
+    ],
+    "scene": "车站 station 为每趟列车整理文件 document，形成完整文档；document＋ation，station 删 st 接在后面。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "door",
+    "parts": [
+      {
+        "text": "door",
+        "cue": "借 floor（地板），把开头 fl 换成 d"
+      }
+    ],
+    "scene": "地板 floor 竖起来成为一扇门，开头 fl 换成门把 d；floor→door，保留 oor。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "drive",
+    "parts": [
+      {
+        "text": "drive",
+        "cue": "借 dive（潜水），在 d 后插入 r"
+      }
+    ],
+    "scene": "潜水 dive 员坐进车里驾驶，方向盘 r 插到 d 后；d＋r＋ive 是 drive，开车送潜水员去海边。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "drugs",
+    "parts": [
+      {
+        "text": "drug",
+        "cue": "借 drum（鼓），把末尾 m 换成 g"
+      },
+      {
+        "text": "s",
+        "cue": "复数词尾 s"
+      }
+    ],
+    "scene": "药房用鼓 drum 当药箱，把 m 标签换成 g；drug 后加 s 得 drugs。箱上分别标注药物和毒品，别把两类用途混同。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Dust",
+    "parts": [
+      {
+        "text": "Dust",
+        "cue": "借 must（必须），把开头 m 换成 d，并保留首字母大写"
+      }
+    ],
+    "scene": "写着“必须 must 清扫”的牌子落满灰，m 被灰尘遮成 d；must 换首字母为 Dust，灰尘就是要扫走的东西。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "East",
+    "parts": [
+      {
+        "text": "East",
+        "cue": "借 feast（盛宴），去掉开头 f，再把 e 大写"
+      }
+    ],
+    "scene": "早晨朝东方摆盛宴 feast，太阳把开头 f 照没了，只剩 East 东方。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "effect",
+    "parts": [
+      {
+        "text": "ef",
+        "cue": "借 effort（努力），取前两个字母 ef"
+      },
+      {
+        "text": "fect",
+        "cue": "借 perfect（完美的），去掉开头 per"
+      }
+    ],
+    "scene": "付出努力 effort 得到完美 perfect 的效果；分别截成 ef、fect，拼 effect，两个 f 在交界处连写。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "efficient",
+    "parts": [
+      {
+        "text": "ef",
+        "cue": "借 effort（努力），取前两个字母 ef"
+      },
+      {
+        "text": "fi",
+        "cue": "借 fish（鱼），去掉末尾 sh"
+      },
+      {
+        "text": "cient",
+        "cue": "借 scientist（科学家），取第2至第6个连续字母 cient"
+      }
+    ],
+    "scene": "科学家 scientist 努力 effort 设计喂鱼 fish 机器，一次完成许多工作，十分高效；ef＋fi＋cient，两个 f 都保留。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "egg",
+    "parts": [
+      {
+        "text": "egg",
+        "cue": "字形编码：一个 e 像小蛋壳，两个 g 像两枚带尾巴的蛋"
+      }
+    ],
+    "scene": "小蛋壳 e 滚到两枚带尾巴的蛋 gg 旁，挤成 egg；一个 e、两个 g，目标是鸡蛋，形状只是提示。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "elephant",
+    "parts": [
+      {
+        "text": "ele",
+        "cue": "借 electric（电的），取前三字母 ele"
+      },
+      {
+        "text": "ph",
+        "cue": "借 phone（电话），取前两个字母 ph"
+      },
+      {
+        "text": "ant",
+        "cue": "英语 ant，蚂蚁"
+      }
+    ],
+    "scene": "电动 electric 电话 phone 屏幕上，一只大象与蚂蚁 ant 比大小；ele＋ph＋ant，庞大长鼻子对比小蚂蚁，记 elephant。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "emperor",
+    "parts": [
+      {
+        "text": "em",
+        "cue": "借 empty（空的），取前两个字母 em"
+      },
+      {
+        "text": "per",
+        "cue": "借 person（人），取前三字母 per"
+      },
+      {
+        "text": "or",
+        "cue": "英语 or，或者"
+      }
+    ],
+    "scene": "空 empty 王座前站着一个人 person：他是皇帝，或者 or 只是演员？em＋per＋or，王座皇冠指向皇帝。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "end",
+    "parts": [
+      {
+        "text": "end",
+        "cue": "借 send（发送），去掉开头 s"
+      }
+    ],
+    "scene": "发送 send 最后一封信后关机，工作结束；删掉发射出去的 s，end 就是结束与末端。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "enlargements",
+    "parts": [
+      {
+        "text": "en",
+        "cue": "借 end（结束），去掉末尾 d"
+      },
+      {
+        "text": "large",
+        "cue": "英语 large，大的"
+      },
+      {
+        "text": "ment",
+        "cue": "借 moment（时刻），取末尾 ment"
+      },
+      {
+        "text": "s",
+        "cue": "复数词尾 s"
+      }
+    ],
+    "scene": "旅行结束 end 的时刻 moment，把照片洗得很大 large，放大了好几张；en＋large＋ment＋s，目标是放大照片。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "equal",
+    "parts": [
+      {
+        "text": "e",
+        "cue": "借 email 的开头 e，联系电子邮件"
+      },
+      {
+        "text": "qual",
+        "cue": "借 quality（质量），去掉末尾 ity"
+      }
+    ],
+    "scene": "两份邮件 e 报告显示产品质量 quality 相等；e＋qual，比较天平的两边一样高，记相等、平等。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "erosion",
+    "parts": [
+      {
+        "text": "ero",
+        "cue": "借 hero（英雄），去掉开头 h"
+      },
+      {
+        "text": "sion",
+        "cue": "借 television（电视），取末尾 sion"
+      }
+    ],
+    "scene": "电视 television 播出英雄 hero 挡海浪，脚下岩石却一点点遭侵蚀；hero 去 h，接电视末尾 sion，写 ero＋sion。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "essays",
+    "parts": [
+      {
+        "text": "ess",
+        "cue": "借 chess（国际象棋），去掉开头 ch"
+      },
+      {
+        "text": "ays",
+        "cue": "借 days（天），去掉开头 d"
+      }
+    ],
+    "scene": "下棋 chess 的这些天 days，每天写一篇散文记录棋局；ess＋ays 是 essays，保留末尾 s 表示多篇。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "estimate",
+    "parts": [
+      {
+        "text": "esti",
+        "cue": "借 festival（节日），取第2至第5个连续字母 esti"
+      },
+      {
+        "text": "mate",
+        "cue": "英语 mate，伙伴"
+      }
+    ],
+    "scene": "节日 festival 聚餐前，伙伴 mate 估计需要多少食材；取 esti＋mate，估算动作把两词连接。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Europe",
+    "parts": [
+      {
+        "text": "Eu",
+        "cue": "借 euro（欧元），取开头 Eu，按词表保留大写"
+      },
+      {
+        "text": "rope",
+        "cue": "英语 rope，绳子"
+      }
+    ],
+    "scene": "用绳 rope 把一枚枚欧元 euro 串在欧洲地图上；Eu＋rope，绳子圈住欧洲。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "evaporation",
+    "parts": [
+      {
+        "text": "e",
+        "cue": "字母 e，想成锅边卷起的小缕蒸汽"
+      },
+      {
+        "text": "vapor",
+        "cue": "英语 vapor，水汽"
+      },
+      {
+        "text": "ation",
+        "cue": "借 station（车站），去掉开头 st"
+      }
+    ],
+    "scene": "车站 station 热水锅冒出 e 形水汽 vapor，水逐渐蒸发；e＋vapor＋ation，水汽就是蒸发的结果。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "exclusive",
+    "parts": [
+      {
+        "text": "ex",
+        "cue": "借 exit（出口），取前两个字母 ex"
+      },
+      {
+        "text": "clu",
+        "cue": "借 club（俱乐部），去掉末尾 b"
+      },
+      {
+        "text": "sive",
+        "cue": "借 expensive（昂贵的），取末尾 sive"
+      }
+    ],
+    "scene": "昂贵 expensive 的俱乐部 club 只给会员开门，其他人请到出口 exit；ex＋clu＋sive，独享资格体现独有、排他。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "exercise",
+    "parts": [
+      {
+        "text": "ex",
+        "cue": "借 exam（考试），取前两个字母 ex"
+      },
+      {
+        "text": "er",
+        "cue": "借 teacher（老师），取末尾 er"
+      },
+      {
+        "text": "cise",
+        "cue": "借 precise（精确的），去掉开头 pre"
+      }
+    ],
+    "scene": "考试 exam 前老师 teacher 要大家做精确 precise 的动作练习；取 ex＋er＋cise，连起练习与身体锻炼。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "exhibition",
+    "parts": [
+      {
+        "text": "ex",
+        "cue": "借 exit（出口），取前两个字母 ex"
+      },
+      {
+        "text": "hi",
+        "cue": "英语 hi，你好"
+      },
+      {
+        "text": "bit",
+        "cue": "英语 bit，一小块"
+      },
+      {
+        "text": "ion",
+        "cue": "借 lion（狮子），去掉开头 l"
+      }
+    ],
+    "scene": "展览出口 exit，狮子 lion 对参观者说 hi，嘴衔一小块 bit 展品；ex＋hi＋bit＋ion，场所是展览会。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "expensive",
+    "parts": [
+      {
+        "text": "ex",
+        "cue": "借 exam（考试），取前两个字母 ex"
+      },
+      {
+        "text": "pens",
+        "cue": "英语 pens，钢笔的复数"
+      },
+      {
+        "text": "ive",
+        "cue": "借 five（五），去掉开头 f"
+      }
+    ],
+    "scene": "考试 exam 用的五支 five 钢笔 pens 标价很高；ex＋pens＋ive，五先去 f，重点是钢笔很昂贵。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "experience",
+    "parts": [
+      {
+        "text": "ex",
+        "cue": "借 exam（考试），取前两个字母 ex"
+      },
+      {
+        "text": "per",
+        "cue": "借 person（人），取前三字母 per"
+      },
+      {
+        "text": "ience",
+        "cue": "借 science（科学），去掉开头 sc"
+      }
+    ],
+    "scene": "每个人 person 做科学 science 考试 exam，都积累实验经历与经验；ex＋per＋ience，拼 experience。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "exposure",
+    "parts": [
+      {
+        "text": "ex",
+        "cue": "借 exit（出口），取前两个字母 ex"
+      },
+      {
+        "text": "po",
+        "cue": "“破”的拼音 po"
+      },
+      {
+        "text": "sure",
+        "cue": "英语 sure，确信的"
+      }
+    ],
+    "scene": "出口 exit 的遮布破 po 了，里面展品肯定 sure 暴露出来；ex＋po＋sure，看到里面并接触光线联想暴露、接触。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "external",
+    "parts": [
+      {
+        "text": "ex",
+        "cue": "借 exit（出口），取前两个字母 ex"
+      },
+      {
+        "text": "ter",
+        "cue": "借 term（学期），去掉末尾 m"
+      },
+      {
+        "text": "nal",
+        "cue": "借 final（最后的），去掉开头 fi"
+      }
+    ],
+    "scene": "最后 final 一个学期 term 结束，我走到出口 exit 外面拍校舍；ex＋ter＋nal，人在建筑外部。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "eye",
+    "parts": [
+      {
+        "text": "eye",
+        "cue": "字形编码：两个 e 是两眼，中间 y 想成鼻梁"
+      }
+    ],
+    "scene": "把 eye 看作简笔脸：左眼 e、鼻梁 y、右眼 e；两眼夹鼻梁，别写成 eey。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fabric",
+    "parts": [
+      {
+        "text": "fab",
+        "cue": "借 fabulous（极好的），取前三字母 fab"
+      },
+      {
+        "text": "ric",
+        "cue": "借 rice（米饭），去掉末尾 e"
+      }
+    ],
+    "scene": "极好 fabulous 的布把米饭 rice 包得严实；fab＋ric，重点看包饭的织物 fabric。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "face",
+    "parts": [
+      {
+        "text": "face",
+        "cue": "借 race（比赛），把开头 r 换成 f"
+      }
+    ],
+    "scene": "比赛 race 结束，运动员脸上出现 f 形汗痕；r 换 f，face 是脸；转脸面对观众也联系面对。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fan",
+    "parts": [
+      {
+        "text": "fan",
+        "cue": "借 fun（乐趣），把中间 u 换成 a"
+      }
+    ],
+    "scene": "粉丝坐风扇前享受乐趣 fun，张大嘴把 u 吹成 a；fun 的 u 换 a，fan 是风扇或粉丝。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fat",
+    "parts": [
+      {
+        "text": "fat",
+        "cue": "借 cat（猫），把开头 c 换成 f"
+      }
+    ],
+    "scene": "猫 cat 吃得太胖，肚子把首字母 c 顶成 f；cat 换首字母成 fat，肚子上的脂肪也叫 fat。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "feminism",
+    "parts": [
+      {
+        "text": "fem",
+        "cue": "借 female（女性），取前三字母 fem"
+      },
+      {
+        "text": "in",
+        "cue": "英语 in，在……里面"
+      },
+      {
+        "text": "ism",
+        "cue": "借 tourism（旅游业），取末尾 ism，只借字母块"
+      }
+    ],
+    "scene": "女性 female 在 in 会场讨论平等权利，旅游 tourism 手册也宣传这一理念；fem＋in＋ism，主题是女权主义。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fence",
+    "parts": [
+      {
+        "text": "fence",
+        "cue": "借 face（脸），把中间 a 换成 en"
+      }
+    ],
+    "scene": "脸 face 贴到篱笆上，两根栅栏 en 把 a 挤走；f＋en＋ce 是 fence，脸外面的栏杆就是目标。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fifth",
+    "parts": [
+      {
+        "text": "fif",
+        "cue": "借 five（五），把末尾 ve 换成 f"
+      },
+      {
+        "text": "th",
+        "cue": "常见序数词尾 th，此处接在 fif 后"
+      }
+    ],
+    "scene": "五位 five 选手排队，第五位把号码牌 ve 折成 f，再接序数牌 th；five→fif＋th，记 fifth 第五。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fight",
+    "parts": [
+      {
+        "text": "fight",
+        "cue": "借 light（灯光），把开头 l 换成 f"
+      }
+    ],
+    "scene": "灯光 light 下两人打架，长灯柱 l 被打成 f；light 换首字母得 fight，保留 ight。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "film",
+    "parts": [
+      {
+        "text": "film",
+        "cue": "借 fill（填满），把最后一个 l 换成 m"
+      }
+    ],
+    "scene": "电影胶片填满 fill 放映机，最后一根 l 展成双折胶片 m；fill 的末尾 l 换 m，记 film。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "finance",
+    "parts": [
+      {
+        "text": "fin",
+        "cue": "借 finish（完成），取前三字母 fin"
+      },
+      {
+        "text": "ance",
+        "cue": "借 dance（跳舞），去掉开头 d"
+      }
+    ],
+    "scene": "完成 finish 财务报表后，金融部门全员跳舞 dance 庆祝；fin＋ance，舞会门口贴着财务报告。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fire",
+    "parts": [
+      {
+        "text": "fire",
+        "cue": "借 five（五），把第3个字母 v 换成 r"
+      }
+    ],
+    "scene": "五个 five 消防员面对一团火，v 形火苗卷成 r；five 换 v 为 r，fire 是火；另把“开火”“解雇”两义记到指令牌上。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fish",
+    "parts": [
+      {
+        "text": "fish",
+        "cue": "借 dish（盘子），把开头 d 换成 f"
+      }
+    ],
+    "scene": "盘子 dish 上放着鱼，鱼鳍把 d 顶成 f；dish 换首字母为 fish，鱼是盘里的目标物。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "flat",
+    "parts": [
+      {
+        "text": "f",
+        "cue": "字母 f，想成建筑支柱"
+      },
+      {
+        "text": "lat",
+        "cue": "借 late（迟到的），去掉末尾 e"
+      }
+    ],
+    "scene": "迟到 late 的住户回到平顶公寓，f 形支柱托住平平的屋顶；f＋lat，既记平的，也记公寓。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "flour",
+    "parts": [
+      {
+        "text": "fl",
+        "cue": "借 flower（花），取前两个字母 fl"
+      },
+      {
+        "text": "our",
+        "cue": "英语 our，我们的"
+      }
+    ],
+    "scene": "我们 our 用面粉捏一朵花 flower；fl＋our 写 flour。面粉与花的拼写不同，这里不要接 wer。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fly",
+    "parts": [
+      {
+        "text": "fly",
+        "cue": "借 flat（平的），保留 fl，把末尾 at 换成 y"
+      }
+    ],
+    "scene": "一片平 flat 纸折成 y 形小飞机飞走；fl 保留，at 换 y，fly 表示飞，苍蝇也在旁边飞。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "focus",
+    "parts": [
+      {
+        "text": "fo",
+        "cue": "借 food（食物），取前两个字母 fo"
+      },
+      {
+        "text": "cus",
+        "cue": "借 circus（马戏团），去掉开头 cir"
+      }
+    ],
+    "scene": "镜头集中对准马戏团 circus 小丑手里的食物 food，食物成为焦点；fo＋cus，记 focus。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fog",
+    "parts": [
+      {
+        "text": "fog",
+        "cue": "借 dog（狗），把开头 d 换成 f"
+      }
+    ],
+    "scene": "狗 dog 钻进浓雾，d 形尾巴被雾遮成 f；dog 首字母换 f，fog 是遮住小狗的雾。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "food",
+    "parts": [
+      {
+        "text": "food",
+        "cue": "借 foot（脚），把末尾 t 换成 d"
+      }
+    ],
+    "scene": "脚 foot 踢到食物袋，t 形袋口鼓成 d；foot 的 t 换 d 得 food，两个 o 不变。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "foot",
+    "parts": [
+      {
+        "text": "foot",
+        "cue": "借 boot（靴子），把开头 b 换成 f"
+      }
+    ],
+    "scene": "靴子 boot 脱下露出脚，首字母 b 换 f；foot 是脚，用这只脚量一英尺也连起长度义。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "foundation",
+    "parts": [
+      {
+        "text": "found",
+        "cue": "英语 found，建立"
+      },
+      {
+        "text": "ation",
+        "cue": "借 station（车站），去掉开头 st"
+      }
+    ],
+    "scene": "建立 found 一座车站 station，首先要打地基；found＋ation，建立基金会也需要基础。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "frame",
+    "parts": [
+      {
+        "text": "frame",
+        "cue": "借 flame（火焰），把第2个字母 l 换成 r"
+      }
+    ],
+    "scene": "火焰 flame 被关进画框，细长 l 烧弯成 r；l 换 r 得 frame，记围住火焰的框。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "France",
+    "parts": [
+      {
+        "text": "Fran",
+        "cue": "借 frank（坦率的），去掉末尾 k，并保留首字母大写"
+      },
+      {
+        "text": "ce",
+        "cue": "“册”的拼音 ce"
+      }
+    ],
+    "scene": "坦率 frank 的导游翻开法国旅游册 ce，指着法国地图；Fran＋ce，把册上 France 与国家联系起来。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fresh",
+    "parts": [
+      {
+        "text": "fresh",
+        "cue": "借 flesh（肉），把第2个字母 l 换成 r"
+      }
+    ],
+    "scene": "肉 flesh 的保鲜标签把 l 改 r，表示新鲜 fresh；同一块肉连接形近词，只有 l、r 不同。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "friction",
+    "parts": [
+      {
+        "text": "fric",
+        "cue": "借 fridge（冰箱），把末尾 dge 换成 c"
+      },
+      {
+        "text": "tion",
+        "cue": "借 station（车站），取末尾 tion"
+      }
+    ],
+    "scene": "车站 station 里拖冰箱 fridge，箱底与地面摩擦发热；fridge 换尾成 fric，再接 tion，friction 就是摩擦。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "frost",
+    "parts": [
+      {
+        "text": "f",
+        "cue": "借 frozen（冰冻的），取开头 f"
+      },
+      {
+        "text": "ro",
+        "cue": "借 rose（玫瑰），取前两个字母 ro"
+      },
+      {
+        "text": "st",
+        "cue": "借 star（星星），取前两个字母 st"
+      }
+    ],
+    "scene": "冰冻 frozen 的玫瑰 rose 上结着星星 star 状白霜；f＋ro＋st，玫瑰上的白晶体就是霜。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fuel",
+    "parts": [
+      {
+        "text": "fu",
+        "cue": "“斧”的拼音 fu"
+      },
+      {
+        "text": "el",
+        "cue": "借 elephant（大象），取前两个字母 el"
+      }
+    ],
+    "scene": "用斧 fu 劈柴，堆到大象 elephant 旁作为燃料；fu＋el，木柴是要记住的燃料。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fun",
+    "parts": [
+      {
+        "text": "fun",
+        "cue": "借 run（跑），把开头 r 换成 f"
+      }
+    ],
+    "scene": "大家跑 run 着追逐一面 f 形彩旗，玩得很开心有乐趣；run 的 r 改 f，得到 fun。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "fungus",
+    "parts": [
+      {
+        "text": "fun",
+        "cue": "英语 fun，乐趣"
+      },
+      {
+        "text": "gus",
+        "cue": "借 gust（阵风），去掉末尾 t"
+      }
+    ],
+    "scene": "一阵风 gust 吹来，真菌蘑菇像伞转，孩子看得很有乐趣 fun；fun＋gus，蘑菇提示真菌。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "gap",
+    "parts": [
+      {
+        "text": "gap",
+        "cue": "借 cap（帽子），把开头 c 换成 g"
+      }
+    ],
+    "scene": "帽子 cap 裂开缺口，c 多一小横变 g；cap 换首字母为 gap，裂开的间隔就是 gap。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "gas",
+    "parts": [
+      {
+        "text": "gas",
+        "cue": "借 glass（玻璃杯），去掉第2个字母 l 和末尾一个 s"
+      }
+    ],
+    "scene": "玻璃杯 glass 里的液体冒成气体，长 l 和一个 s 随气泡跑掉，留下 gas；只删指定字母，顺序不变。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "gate",
+    "parts": [
+      {
+        "text": "gate",
+        "cue": "借 game（游戏），把第3个字母 m 换成 t"
+      }
+    ],
+    "scene": "游戏 game 开始前要推开大门，门闩 t 顶替 m；game 的 m 换 t，大门写 gate。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "general",
+    "parts": [
+      {
+        "text": "gene",
+        "cue": "英语 gene，基因"
+      },
+      {
+        "text": "ral",
+        "cue": "借 oral（口头的），去掉开头 o"
+      }
+    ],
+    "scene": "将军口头 oral 给大家讲一般的基因 gene 知识；gene＋ral，用将军的一般性讲话连起 general 的两类意思。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Germany",
+    "parts": [
+      {
+        "text": "Germ",
+        "cue": "英语 germ，细菌，首字母按词表大写"
+      },
+      {
+        "text": "any",
+        "cue": "英语 any，任何"
+      }
+    ],
+    "scene": "德国展馆科学家说：任何 any 细菌 germ 都要检验；Germ＋any，展馆上挂德国地图牌。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "glass",
+    "parts": [
+      {
+        "text": "g",
+        "cue": "字母 g，想成玻璃杯弯柄"
+      },
+      {
+        "text": "lass",
+        "cue": "借 class（班级），去掉开头 c"
+      }
+    ],
+    "scene": "班级 class 每人拿一只 g 形弯柄玻璃杯；g＋lass，杯子透明，记 glass 玻璃杯。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "gold",
+    "parts": [
+      {
+        "text": "gold",
+        "cue": "借 cold（冷的），把开头 c 换成 g"
+      }
+    ],
+    "scene": "冷 cold 冰块里冻着金子，c 添小横成 g；cold 换首字母为 gold，闪亮金块是目标。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "golf",
+    "parts": [
+      {
+        "text": "golf",
+        "cue": "借 gold（黄金），把末尾 d 换成 f"
+      }
+    ],
+    "scene": "用金 gold 球打高尔夫，球杆 f 挤掉最后的 d；gold 换 d 为 f，golf 就是高尔夫球。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "grass",
+    "parts": [
+      {
+        "text": "grass",
+        "cue": "借 glass（玻璃），把第2个字母 l 换成 r"
+      }
+    ],
+    "scene": "玻璃 glass 罩里长满小草，直直的 l 向下生根弯成 r；glass 的 l 换 r，得到 grass。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "Green",
+    "parts": [
+      {
+        "text": "G",
+        "cue": "字母 G，想成张口的绿色怪兽"
+      },
+      {
+        "text": "reen",
+        "cue": "借 queen（女王），把开头 qu 换成 r"
+      }
+    ],
+    "scene": "女王 queen 给 G 形怪兽刷绿，qu 王冠换成 r；G＋reen 得 Green，保留词表首字母大写。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "grey",
+    "parts": [
+      {
+        "text": "grey",
+        "cue": "借 great（很棒的），把末尾 at 换成 y"
+      }
+    ],
+    "scene": "很棒 great 的彩画被雨淋成灰色，画角 at 被雨冲成 y；gre 不动，at 换 y，写 grey。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "guide",
+    "parts": [
+      {
+        "text": "gui",
+        "cue": "“龟”的拼音 gui"
+      },
+      {
+        "text": "de",
+        "cue": "“的”的拼音 de"
+      }
+    ],
+    "scene": "导游举着“龟 gui 的 de 旅行团”旗子带路；gui＋de，导游、指南、引导都联系这只领路龟。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "gum",
+    "parts": [
+      {
+        "text": "gum",
+        "cue": "借 gun（枪），把末尾 n 换成 m"
+      }
+    ],
+    "scene": "玩具枪 gun 枪口被口香糖粘成双峰 m；gun 换 n 为 m，gum 是口香糖，也想到粘黏的树胶。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "gun",
+    "parts": [
+      {
+        "text": "gun",
+        "cue": "借 sun（太阳），把开头 s 换成 g"
+      }
+    ],
+    "scene": "太阳 sun 图案靶子被玩具枪击中，s 变成带小横的 g；sun 换首字母为 gun，枪是击中靶子的工具。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "gym",
+    "parts": [
+      {
+        "text": "gym",
+        "cue": "借 gum（口香糖），把中间 u 换成 y"
+      }
+    ],
+    "scene": "健身房里嚼口香糖 gum 的人举起 y 形双臂；gum 的 u 换 y，gym 是举手锻炼的健身房。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "hair",
+    "parts": [
+      {
+        "text": "h",
+        "cue": "字母 h，想成翘起的一缕头发"
+      },
+      {
+        "text": "air",
+        "cue": "英语 air，空气"
+      }
+    ],
+    "scene": "一缕 h 形头发飘在空气 air 中；h＋air 是 hair，风吹头发连接两个提示。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "hard",
+    "parts": [
+      {
+        "text": "hard",
+        "cue": "借 card（卡片），把开头 c 换成 h"
+      }
+    ],
+    "scene": "卡片 card 硬得折不动，c 被支架撑成 h；card 换首字母为 hard，硬卡难折也提醒困难。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "harp",
+    "parts": [
+      {
+        "text": "harp",
+        "cue": "借 sharp（锋利的），去掉开头 s"
+      }
+    ],
+    "scene": "锋利 sharp 的剪刀剪掉竖琴前一根 s 形装饰弦，剩 harp；只去首 s，目标是带弦的竖琴。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "hat",
+    "parts": [
+      {
+        "text": "hat",
+        "cue": "借 cat（猫），把开头 c 换成 h"
+      }
+    ],
+    "scene": "猫 cat 戴着 h 形高帽，c 被帽架 h 换掉；cat 换首字母得 hat，帽子是头上的目标物。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "health",
+    "parts": [
+      {
+        "text": "heal",
+        "cue": "英语 heal，治愈"
+      },
+      {
+        "text": "th",
+        "cue": "“挺好”的拼音首字母 th，作为字母编码"
+      }
+    ],
+    "scene": "伤口治愈 heal 后说“挺好” th，身体恢复健康；heal＋th，健康是治愈后的结果。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "heavy",
+    "parts": [
+      {
+        "text": "hea",
+        "cue": "借 head（头），去掉末尾 d"
+      },
+      {
+        "text": "vy",
+        "cue": "借 navy（海军），去掉开头 na"
+      }
+    ],
+    "scene": "海军 navy 头 head 上顶着重箱，压得抬不起头；hea＋vy，箱子重量帮助记 heavy。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "helicopter",
+    "parts": [
+      {
+        "text": "heli",
+        "cue": "借 helium（氦），去掉末尾 um"
+      },
+      {
+        "text": "cop",
+        "cue": "英语 cop，警察"
+      },
+      {
+        "text": "ter",
+        "cue": "借 term（学期），去掉末尾 m"
+      }
+    ],
+    "scene": "新学期 term，警察 cop 乘旁挂氦气 helium 气球的直升机进校演示；heli＋cop＋ter，旋翼直升机是中心物。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "high",
+    "parts": [
+      {
+        "text": "high",
+        "cue": "借 sigh（叹息），把开头 s 换成 h"
+      }
+    ],
+    "scene": "爬到高高山顶喘气叹息 sigh，气柱把 s 拉成 h；sigh 换首字母为 high，记高处。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "horizontal",
+    "parts": [
+      {
+        "text": "horizon",
+        "cue": "英语 horizon，地平线"
+      },
+      {
+        "text": "tal",
+        "cue": "借 talk（说话），去掉末尾 k"
+      }
+    ],
+    "scene": "老师说话 talk 时沿地平线 horizon 画水平线；horizon＋tal，水平与地平线的方向相连。",
+    "method": "熟词与编码搭桥"
+  },
+  {
+    "word": "horror",
+    "parts": [
+      {
+        "text": "horr",
+        "cue": "借 sorry（抱歉），把开头 s 换成 h，再去掉末尾 y"
+      },
+      {
+        "text": "or",
+        "cue": "英语 or，或者"
+      }
+    ],
+    "scene": "恐怖片演员说 sorry，再问“继续吓人，或者 or 停下？”；sorry 换首 s 为 h、去 y 得 horr，接 or 成 horror，两个 r 连写。",
+    "method": "熟词与编码搭桥"
+  }
+]

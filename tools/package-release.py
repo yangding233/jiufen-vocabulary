@@ -53,7 +53,7 @@ windows_files = sorted(path for path in WINDOWS.rglob("*") if path.is_file() and
 assert not any(any(fnmatch.fnmatch(path.name, pattern) for pattern in PRIVATE_FILES) for path in windows_files), "Private file in Windows package"
 OUTPUT.mkdir(parents=True, exist_ok=True)
 source_archive = OUTPUT / f"JiufenVocabulary-source-{VERSION}.zip"
-windows_archive = OUTPUT / f"九分词汇离线学习-Windows-{VERSION}.zip"
+windows_archive = OUTPUT / f"JiufenVocabulary-Windows-{VERSION}.zip"
 write_archive(source_archive, ROOT, source_paths(), "JiufenVocabulary-source")
 write_archive(windows_archive, WINDOWS, windows_files, WINDOWS.name)
 hashes = []
@@ -68,7 +68,8 @@ for archive in (source_archive, windows_archive):
     "日常备份使用新程序顶部的完整同步档案。原 HTML 文件没有被替换。\n\n"
     "源码：解压 source ZIP，或在 GitHub 仓库下载与克隆对应版本。\n"
     "源码不含学习进度、测试数据库、Apple 签名资料或已安装依赖。\n"
-    "iOS：已通过 GitHub macOS 编译，未签名 IPA 在 dist/ios/run-2；需要 Windows 签名安装，再做真机同步验收。\n"
+    "iOS：从当前版本 Release 下载配套的未签名 IPA，在 Windows 签名后覆盖安装。\n"
+    "内容更新：电脑使用本目录的新程序；手机也要安装新版 IPA。USB 合并学习进度，不会替换安装包中的内置巧记。\n"
     "USB 设备枚举已实测；端到端真机学习进度同步尚未验收。\n",
     encoding="utf-8",
 )

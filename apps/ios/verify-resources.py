@@ -17,6 +17,7 @@ assert vocabulary, "Vocabulary data is missing."
 words = json.loads(vocabulary.group(1))
 assert len(words) == 1493 and len({w["id"] for w in words}) == 1493, "Wrong bundled vocabulary."
 assert all(w["phonetic"].strip() for w in words), "Missing phonetic data."
+assert all(w["memory"]["kind"] not in {"待补巧记", "形近对照候选"} for w in words), "Unfinished built-in mnemonics."
 for source in re.findall(r'<(?:script|iframe)\b[^>]*\bsrc=["\']([^"\']+)', html, re.I):
     assert not re.match(r'^(?:https?:)?//', source), f"Offline app includes remote runtime: {source}"
     if not source.startswith("data:"):

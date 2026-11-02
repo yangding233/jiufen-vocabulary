@@ -1,0 +1,2528 @@
+[
+  {
+    "word": "shrimp",
+    "parts": [
+      {
+        "text": "sh",
+        "cue": "“上海”的拼音首字母 sh"
+      },
+      {
+        "text": "rim",
+        "cue": "rim，边缘；轮辋"
+      },
+      {
+        "text": "p",
+        "cue": "“盘”的拼音首字母 p"
+      }
+    ],
+    "scene": "上海 sh 的餐桌上，一圈虾沿着边缘 rim 围满了盘 p；记住虾绕盘边的画面。"
+  },
+  {
+    "word": "sight",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇的形状"
+      },
+      {
+        "text": "ight",
+        "cue": "借 light（光），删开头 l"
+      }
+    ],
+    "scene": "蛇 s 借着灯光 light 看清眼前景象；光的 light 去 l，换上蛇 s，得到视觉 sight。"
+  },
+  {
+    "word": "signal",
+    "parts": [
+      {
+        "text": "sign",
+        "cue": "sign，标志；指示牌"
+      },
+      {
+        "text": "al",
+        "cue": "“阿兰”的拼音首字母 al"
+      }
+    ],
+    "scene": "阿兰 al 举起指示牌 sign，向远处的人发信号；一块牌就是一个信号。"
+  },
+  {
+    "word": "signature",
+    "parts": [
+      {
+        "text": "sign",
+        "cue": "sign，签字"
+      },
+      {
+        "text": "ature",
+        "cue": "借 nature（自然），删开头 n"
+      }
+    ],
+    "scene": "签字 sign 时画上一片自然 nature 的小树叶，这个带树叶的签名就是你的特征；nature 去 n，接在 sign 后。"
+  },
+  {
+    "word": "silence",
+    "parts": [
+      {
+        "text": "silence",
+        "cue": "借 silent（安静的），把末尾 t 换成 ce"
+      }
+    ],
+    "scene": "门上的 silent“请安静”牌翻过来，大家都闭口沉默；同一份安静从 silent 连到 silence，末尾 t 改 ce。"
+  },
+  {
+    "word": "silk",
+    "parts": [
+      {
+        "text": "silk",
+        "cue": "借 milk（牛奶），开头 m 换成 s"
+      }
+    ],
+    "scene": "牛奶 milk 泼到一条光滑丝巾上，流成弯弯的 s；丝绸 silk 的开头是 s，后面的 ilk 沿用 milk。"
+  },
+  {
+    "word": "silver",
+    "parts": [
+      {
+        "text": "sil",
+        "cue": "借 silk（丝绸），删末尾 k"
+      },
+      {
+        "text": "ver",
+        "cue": "借 very（非常），删末尾 y"
+      }
+    ],
+    "scene": "这匹丝绸 silk 非常 very 闪亮，像银子一样呈银色；silk 去 k，very 去 y，得到 sil＋ver。"
+  },
+  {
+    "word": "simple",
+    "parts": [
+      {
+        "text": "sim",
+        "cue": "SIM，手机里的 SIM 卡"
+      },
+      {
+        "text": "ple",
+        "cue": "借 apple（苹果），删开头 ap，留下 ple"
+      }
+    ],
+    "scene": "苹果 apple 手机插上 SIM 卡就能用，操作很简单；拼写按 SIM＋apple 去 ap 的 ple 连接。"
+  },
+  {
+    "word": "sing",
+    "parts": [
+      {
+        "text": "sing",
+        "cue": "借 ring（铃；戒指），开头 r 换成 s"
+      }
+    ],
+    "scene": "铃 ring 响起，一条 s 形小蛇跟着唱歌；用 s 替换 ring 的 r，唱歌就是 sing。"
+  },
+  {
+    "word": "size",
+    "parts": [
+      {
+        "text": "size",
+        "cue": "借 prize（奖品），把开头 pr 换成 s"
+      }
+    ],
+    "scene": "奖品 prize 是一件印着 S 的衣服，领奖先看大小 size 是否合适；prize 的 pr 换成 s，后面 ize 保留。"
+  },
+  {
+    "word": "skills",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "kill",
+        "cue": "kill，杀死"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "捕蛇人学了几项技能 skills，能制服蛇 s，却不必杀死 kill 它；开头蛇 s，最后复数 s，中间 kill。"
+  },
+  {
+    "word": "skin",
+    "parts": [
+      {
+        "text": "sk",
+        "cue": "借 ski（滑雪），去掉末尾 i"
+      },
+      {
+        "text": "in",
+        "cue": "英语 in，在……里面"
+      }
+    ],
+    "scene": "滑雪 ski 服里面 in 贴着保暖层，保护你的皮肤；ski 去 i 留 sk，再接 in，拼成 skin。"
+  },
+  {
+    "word": "slaves",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "save（救）的开头 s"
+      },
+      {
+        "text": "l",
+        "cue": "l 想成垂下的一段锁链"
+      },
+      {
+        "text": "ave",
+        "cue": "save（救）去开头 s，留下 ave"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "救 save 出一群被锁链 l 困住的奴隶；把锁链 l 插进 save 的 s 后得到 slave，再加复数 s。"
+  },
+  {
+    "word": "sleep",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "leep",
+        "cue": "借 sheep（绵羊），删开头 sh，补 l，得到 leep"
+      }
+    ],
+    "scene": "蛇 s 数着绵羊 sheep 入睡；羊的 sh 换成枕头形的 l，前面接蛇 s，得到睡觉 sleep。"
+  },
+  {
+    "word": "slide",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成弯滑梯"
+      },
+      {
+        "text": "lide",
+        "cue": "借 ride（乘坐），开头 r 换 l"
+      }
+    ],
+    "scene": "乘坐 ride 一座 s 形滑梯，一路滑下；把 ride 的 r 改成直梯 l，再在前面加 s，记 slide。"
+  },
+  {
+    "word": "slow",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "low",
+        "cue": "low，低的"
+      }
+    ],
+    "scene": "蛇 s 低低 low 地趴在地上，慢慢移动；s＋low＝slow，记慢。"
+  },
+  {
+    "word": "smaller",
+    "parts": [
+      {
+        "text": "small",
+        "cue": "small，小的"
+      },
+      {
+        "text": "er",
+        "cue": "比较级结尾 -er，表示更……"
+      }
+    ],
+    "scene": "两只小杯子 small 并排，贴着 er 的那只更小；small 加 er，变成更小的 smaller。"
+  },
+  {
+    "word": "smell",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "mell",
+        "cue": "借 bell（铃），把 b 改 m"
+      }
+    ],
+    "scene": "蛇 s 没听铃 bell，却闻到了铃里藏的香味；铃的 b 改成鼻子旁的 m，再加 s，记 smell“闻、气味”。"
+  },
+  {
+    "word": "smoke",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成烟的弯曲形状"
+      },
+      {
+        "text": "moke",
+        "cue": "借 joke（笑话），开头 j 改 m"
+      }
+    ],
+    "scene": "讲笑话 joke 的玩偶嘴里冒出 s 形的烟；joke 把 j 换 m，前面添 s，得到 smoke。"
+  },
+  {
+    "word": "soccer",
+    "parts": [
+      {
+        "text": "so",
+        "cue": "so，如此；这么"
+      },
+      {
+        "text": "cc",
+        "cue": "两个 c 想成两只弯腿"
+      },
+      {
+        "text": "er",
+        "cue": "“儿”的拼音 er"
+      }
+    ],
+    "scene": "小孩儿 er 伸出两只 c 形弯腿踢足球，动作如此 so 灵巧；顺序 so＋双 c＋er。"
+  },
+  {
+    "word": "socks",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "ocks",
+        "cue": "借 rocks（石块），删开头 r"
+      }
+    ],
+    "scene": "蛇 s 把石块 rocks 塞进袜子里当脚；rocks 去 r 换 s，就成袜子 socks。"
+  },
+  {
+    "word": "soft",
+    "parts": [
+      {
+        "text": "so",
+        "cue": "so，如此"
+      },
+      {
+        "text": "ft",
+        "cue": "“饭团”的拼音首字母 ft"
+      }
+    ],
+    "scene": "饭团 ft 蒸得如此 so 柔软，一捏就扁；so＋ft 记 soft。"
+  },
+  {
+    "word": "soil",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "oil",
+        "cue": "oil，油"
+      }
+    ],
+    "scene": "蛇 s 钻进被油 oil 沾湿的土壤；先蛇后油，s＋oil＝soil。"
+  },
+  {
+    "word": "solar",
+    "parts": [
+      {
+        "text": "so",
+        "cue": "so，如此"
+      },
+      {
+        "text": "lar",
+        "cue": "借 car（汽车），c 改 l"
+      }
+    ],
+    "scene": "这辆车 car 如此 so 特别，车顶全是太阳能板；把 car 的 c 换成长板 l，再接在 so 后，记 solar。"
+  },
+  {
+    "word": "soldiers",
+    "parts": [
+      {
+        "text": "sold",
+        "cue": "sold，sell 的过去式，卖了"
+      },
+      {
+        "text": "ier",
+        "cue": "借 tier（层、排），删开头 t"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "旧军装卖了 sold，士兵们仍分排 tier 站得整齐；sold 后接 tier 去 t 的 ier，再加复数 s。"
+  },
+  {
+    "word": "solution",
+    "parts": [
+      {
+        "text": "solu",
+        "cue": "借 solo（独奏；独自），把末尾 o 换 u"
+      },
+      {
+        "text": "tion",
+        "cue": "常见名词词尾 tion；单独记这四个字母"
+      }
+    ],
+    "scene": "独自 solo 卡住的问题，换一种办法终于得到解决方案；solo 的末尾 o 换 u，后接 tion，记 solution。"
+  },
+  {
+    "word": "song",
+    "parts": [
+      {
+        "text": "song",
+        "cue": "借 long（长的），开头 l 换 s"
+      }
+    ],
+    "scene": "长长 long 的旋律绕成 s 形，组成一首歌；long 的 l 改 s，歌就是 song。"
+  },
+  {
+    "word": "sound",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "ound",
+        "cue": "借 round（圆的），删开头 r"
+      }
+    ],
+    "scene": "蛇 s 对着圆圆 round 的鼓敲一下，声音传出来；round 去 r，添 s，记 sound。"
+  },
+  {
+    "word": "soup",
+    "parts": [
+      {
+        "text": "so",
+        "cue": "so，如此"
+      },
+      {
+        "text": "up",
+        "cue": "up，向上"
+      }
+    ],
+    "scene": "汤如此 so 烫，热气直往上 up 冒；so＋up＝soup。"
+  },
+  {
+    "word": "sour",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "our",
+        "cue": "our，我们的"
+      }
+    ],
+    "scene": "蛇 s 偷喝了我们的 our 柠檬汁，酸得缩起头；s＋our＝sour。"
+  },
+  {
+    "word": "source",
+    "parts": [
+      {
+        "text": "sour",
+        "cue": "sour，酸的"
+      },
+      {
+        "text": "ce",
+        "cue": "“测”的拼音 ce"
+      }
+    ],
+    "scene": "沿着酸 sour 味一路检测 ce，终于找到酸水的来源；sour＋ce＝source。"
+  },
+  {
+    "word": "south",
+    "parts": [
+      {
+        "text": "sou",
+        "cue": "“搜”的拼音 sou"
+      },
+      {
+        "text": "th",
+        "cue": "“天河”的拼音首字母 th"
+      }
+    ],
+    "scene": "拿地图搜索 sou 位于南方的天河 th，箭头指向南；sou＋th 记 south，拼音只提示字母。"
+  },
+  {
+    "word": "Southwest",
+    "parts": [
+      {
+        "text": "South",
+        "cue": "south，南方；原词首字母大写"
+      },
+      {
+        "text": "west",
+        "cue": "west，西方"
+      }
+    ],
+    "scene": "指南针先向南 South，再向西 west，斜着指向西南；South＋west 原样连写。"
+  },
+  {
+    "word": "space",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "pace",
+        "cue": "pace，步伐；一步"
+      }
+    ],
+    "scene": "蛇 s 想迈一步 pace，却发现舱内没有空间，只好游向太空；s＋pace＝space。"
+  },
+  {
+    "word": "Spain",
+    "parts": [
+      {
+        "text": "S",
+        "cue": "字母 S 想成弯曲斗牛角；专名大写"
+      },
+      {
+        "text": "pain",
+        "cue": "pain，疼痛"
+      }
+    ],
+    "scene": "在西班牙看斗牛，弯弯 S 形牛角让斗牛士疼 pain；S＋pain 记 Spain，只是地域场景助记。"
+  },
+  {
+    "word": "species",
+    "parts": [
+      {
+        "text": "species",
+        "cue": "借 special（特别的），末尾 al 换成 es"
+      }
+    ],
+    "scene": "每个物种 species 都有特别的 special 特征；把 special 结尾 al 改 es，得到 species。这个词单复数同形。"
+  },
+  {
+    "word": "speech",
+    "parts": [
+      {
+        "text": "speech",
+        "cue": "借 speed（速度），末尾 d 换成 ch"
+      }
+    ],
+    "scene": "演讲 speech 时语速 speed 太快，主持人举起写着 ch 的提示牌；speed 的末尾 d 换 ch，连起语速与演讲。"
+  },
+  {
+    "word": "speed",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "seed（种子）的开头 s"
+      },
+      {
+        "text": "p",
+        "cue": "“跑”的拼音首字母 p"
+      },
+      {
+        "text": "eed",
+        "cue": "seed（种子）去开头 s，留下 eed"
+      }
+    ],
+    "scene": "一粒种子 seed 长出腿飞跑 p，速度惊人；把“跑”p 插在 seed 的 s 后，得到 speed。"
+  },
+  {
+    "word": "spelling",
+    "parts": [
+      {
+        "text": "spell",
+        "cue": "英语 spell，拼写／咒语；可借 smell（闻），把第2位 m 换成 p"
+      },
+      {
+        "text": "ing",
+        "cue": "ing 结尾，按 i、n、g 记"
+      }
+    ],
+    "scene": "小巫师闻 smell 药水，照着咒语拼字母施法；smell 的 m 换 p 得 spell，再接 ing，记 spelling。"
+  },
+  {
+    "word": "spices",
+    "parts": [
+      {
+        "text": "spice",
+        "cue": "spice，香料；可借 space（空间）把 a 改 i"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "橱柜空间 space 被各种香料挤满；space 的 a 改 i，变 spice，再加 s 表示多种香料。"
+  },
+  {
+    "word": "Spoons",
+    "parts": [
+      {
+        "text": "S",
+        "cue": "首字母 S 想成弯勺柄；依原词大写"
+      },
+      {
+        "text": "poon",
+        "cue": "借 moon（月亮），开头 m 改 p"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "弯弯 S 形勺柄托着月亮 moon，当成一排汤匙；moon 的 m 改 p，前接 S、后加 s，记 Spoons。"
+  },
+  {
+    "word": "sports",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "port",
+        "cue": "port，港口"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "港口 port 举办多项体育运动，两条 s 形蛇在两端当啦啦队；s＋port＋s＝sports。"
+  },
+  {
+    "word": "square",
+    "parts": [
+      {
+        "text": "squ",
+        "cue": "借 squid（鱿鱼），删末尾 id"
+      },
+      {
+        "text": "are",
+        "cue": "are，是（be 的一种形式）"
+      }
+    ],
+    "scene": "鱿鱼 squid 们说“我们是 are 正方形”，在广场排成方阵；squid 去 id，接 are，记 square。"
+  },
+  {
+    "word": "stand",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "t",
+        "cue": "t 想成一根拐杖"
+      },
+      {
+        "text": "and",
+        "cue": "and，和"
+      }
+    ],
+    "scene": "蛇 s 和 and 拐杖 t 互相支撑，终于站立起来；拼写把拐杖放中间，s＋t＋and。"
+  },
+  {
+    "word": "starch",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "t",
+        "cue": "“桶”的拼音首字母 t"
+      },
+      {
+        "text": "arch",
+        "cue": "arch，拱门"
+      }
+    ],
+    "scene": "蛇 s 把一桶 t 淀粉倒在拱门 arch 上，门被糊白了；s＋t＋arch＝starch。"
+  },
+  {
+    "word": "stars",
+    "parts": [
+      {
+        "text": "star",
+        "cue": "英语 star，星星／明星；也可借 start（开始），去掉末尾 t"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "演出一开始 start，明星登台，背后亮起许多星星；start 去 t 得 star，再加复数 s，记 stars。"
+  },
+  {
+    "word": "starvation",
+    "parts": [
+      {
+        "text": "starv",
+        "cue": "借 starve（挨饿），删末尾 e"
+      },
+      {
+        "text": "ation",
+        "cue": "名词词尾 ation"
+      }
+    ],
+    "scene": "一直挨饿 starve，空碗旁只剩“饥饿”这个名词 starvation；starve 去 e 再接 ation，不保留 e。"
+  },
+  {
+    "word": "state",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "tate",
+        "cue": "借 gate（大门），开头 g 改 t"
+      }
+    ],
+    "scene": "蛇 s 守在州政府的大门 gate，登记全州的状态；gate 的 g 改 t，前加 s，记 state 的州、状态。"
+  },
+  {
+    "word": "status",
+    "parts": [
+      {
+        "text": "stat",
+        "cue": "借 state（状态），去末尾 e"
+      },
+      {
+        "text": "us",
+        "cue": "us，我们"
+      }
+    ],
+    "scene": "我们 us 到登记处确认自己的状态 state 和地位；state 去 e，再接 us，得到 status。"
+  },
+  {
+    "word": "steam",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "s 想成弯曲的蒸汽"
+      },
+      {
+        "text": "team",
+        "cue": "team，团队"
+      }
+    ],
+    "scene": "团队 team 一起烧水，头顶冒出弯弯 s 形蒸汽；s＋team＝steam。"
+  },
+  {
+    "word": "steel",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "teel",
+        "cue": "借 feel（感觉），开头 f 改 t"
+      }
+    ],
+    "scene": "蛇 s 摸到钢板，感觉 feel 又硬又冷；feel 的 f 改成钢钉 t，前面加 s，记 steel。"
+  },
+  {
+    "word": "steep",
+    "parts": [
+      {
+        "text": "steep",
+        "cue": "借 sleep（睡觉），第二个字母 l 换 t"
+      }
+    ],
+    "scene": "在陡峭 steep 的坡上睡觉 sleep，人直往下滑；把 sleep 的 l 改成坡顶路牌 t，得到 steep。"
+  },
+  {
+    "word": "stick",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "tick",
+        "cue": "tick，打勾；勾号"
+      }
+    ],
+    "scene": "蛇 s 用一根棍子在泥地上打勾 tick，棍上还粘着泥；s＋tick＝stick。"
+  },
+  {
+    "word": "still",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "till",
+        "cue": "till，直到"
+      }
+    ],
+    "scene": "蛇 s 一直静止，直到 till 日落仍然不动；s＋till＝still，连起静止和仍然。"
+  },
+  {
+    "word": "stone",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "tone",
+        "cue": "tone，音调"
+      }
+    ],
+    "scene": "蛇 s 敲打石头，发出不同音调 tone；s＋tone＝stone，石头能奏乐。"
+  },
+  {
+    "word": "storm",
+    "parts": [
+      {
+        "text": "st",
+        "cue": "“石头”的拼音首字母 st"
+      },
+      {
+        "text": "orm",
+        "cue": "借 worm（虫），删开头 w"
+      }
+    ],
+    "scene": "暴风雨把石头 st 掀起，石下的虫 worm 四处躲藏；st 后接 worm 去 w 的 orm。"
+  },
+  {
+    "word": "story",
+    "parts": [
+      {
+        "text": "story",
+        "cue": "借 storm（暴风雨），末尾 m 换 y"
+      }
+    ],
+    "scene": "爷爷把昨夜的暴风雨 storm 讲成一段故事；storm 收尾从 m 改为 y，记故事 story。"
+  },
+  {
+    "word": "straight",
+    "parts": [
+      {
+        "text": "str",
+        "cue": "借 street（街道），取开头 str"
+      },
+      {
+        "text": "a",
+        "cue": "a，一个"
+      },
+      {
+        "text": "ight",
+        "cue": "借 light（灯光），删开头 l"
+      }
+    ],
+    "scene": "一条街 street 上，一束 a 灯光 light 笔直照向远方；str＋a＋light 去 l 的 ight，记 straight。"
+  },
+  {
+    "word": "straw",
+    "parts": [
+      {
+        "text": "st",
+        "cue": "“石头”的拼音首字母 st"
+      },
+      {
+        "text": "raw",
+        "cue": "raw，生的；未经加工的"
+      }
+    ],
+    "scene": "石头 st 旁堆着未经加工 raw 的稻草，抽出一根当吸管；st＋raw＝straw。"
+  },
+  {
+    "word": "strawberries",
+    "parts": [
+      {
+        "text": "straw",
+        "cue": "straw，稻草；吸管"
+      },
+      {
+        "text": "berr",
+        "cue": "berry（浆果）去末尾 y"
+      },
+      {
+        "text": "ies",
+        "cue": "berry 变复数时，把 y 改为 ies"
+      }
+    ],
+    "scene": "稻草 straw 上摆满浆果 berry，红红的一堆是草莓；straw 保留，berry 的 y 改 ies，写 strawberries。"
+  },
+  {
+    "word": "street",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "tree",
+        "cue": "tree，树"
+      },
+      {
+        "text": "t",
+        "cue": "t 想成街尾路牌"
+      }
+    ],
+    "scene": "蛇 s 沿街道爬过一棵树 tree，停在路牌 t 下；s＋tree＋t＝street。"
+  },
+  {
+    "word": "strength",
+    "parts": [
+      {
+        "text": "strength",
+        "cue": "借 strong（强壮的），中间 o 改 e，末尾再加 th"
+      }
+    ],
+    "scene": "强壮 strong 的举重者举起杠铃，展示力量 strength；把 strong 的 o 改 e，得到 streng，再补 th。"
+  },
+  {
+    "word": "stressful",
+    "parts": [
+      {
+        "text": "stress",
+        "cue": "stress，压力"
+      },
+      {
+        "text": "ful",
+        "cue": "后缀 -ful；只有一个 l，可借 full（满的）去一个 l"
+      }
+    ],
+    "scene": "日程表被压力 stress 填满 full，让人紧张；stress 后接 ful，像 full 少一条 l，记 stressful。"
+  },
+  {
+    "word": "stressors",
+    "parts": [
+      {
+        "text": "stress",
+        "cue": "stress，压力"
+      },
+      {
+        "text": "or",
+        "cue": "-or 在此连到造成压力的人或事物"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "闹钟、考试、噪音排成一队，都是带来压力 stress 的压力源；stress＋or＋s，记多个 stressors。"
+  },
+  {
+    "word": "strong",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "trong",
+        "cue": "借 wrong（错的），把开头 w 换成 t"
+      }
+    ],
+    "scene": "蛇 s 想推倒一堵墙，发现自己估计错了 wrong：墙太坚固；wrong 的 w 改 t，前加 s，记 strong。"
+  },
+  {
+    "word": "structure",
+    "parts": [
+      {
+        "text": "struc",
+        "cue": "借 truck（卡车），开头前加 s，再删末尾 k，得到 struc"
+      },
+      {
+        "text": "ture",
+        "cue": "借 picture（图片），删开头 pic"
+      }
+    ],
+    "scene": "卡车 truck 运来一张图片 picture，上面画着楼房骨架结构；先记 struc 的改字步骤，再接 picture 去 pic 的 ture。"
+  },
+  {
+    "word": "students",
+    "parts": [
+      {
+        "text": "student",
+        "cue": "student，学生；可从 study（学习）去 y，再接 ent 记词形"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "爱学习 study 的一个学生 student 走进教室，变成一群学生 students；study 去 y 接 ent，再加复数 s。"
+  },
+  {
+    "word": "studio",
+    "parts": [
+      {
+        "text": "stud",
+        "cue": "借 study（学习），删末尾 y"
+      },
+      {
+        "text": "io",
+        "cue": "I/O，电脑输入输出的常见缩写；此处仅借 i、o 两个字母"
+      }
+    ],
+    "scene": "把学习 study 的房间改成录音工作室，桌上摆着 I/O 输入输出设备；study 去 y，接 io，记 studio。"
+  },
+  {
+    "word": "success",
+    "parts": [
+      {
+        "text": "suc",
+        "cue": "借 suck（吸），删末尾 k"
+      },
+      {
+        "text": "cess",
+        "cue": "借 chess（国际象棋），删中间 h"
+      }
+    ],
+    "scene": "棋手把棋局 chess 的经验吸收 suck 进去，终于成功；suck 去 k 得 suc，chess 去 h 得 cess，合成 success。"
+  },
+  {
+    "word": "sugar",
+    "parts": [
+      {
+        "text": "su",
+        "cue": "“酥”的拼音 su"
+      },
+      {
+        "text": "gar",
+        "cue": "借 car（汽车），c 改 g"
+      }
+    ],
+    "scene": "一辆车 car 装满酥 su 糖；car 的 c 改 g，接在 su 后，记糖 sugar。拼音不提示标准发音。"
+  },
+  {
+    "word": "summer",
+    "parts": [
+      {
+        "text": "sum",
+        "cue": "sum，总和"
+      },
+      {
+        "text": "mer",
+        "cue": "借 mother（母亲），删中间 oth，留下 mer"
+      }
+    ],
+    "scene": "母亲 mother 把暑假花费算总和 sum，扇着扇子说夏天真热；sum 后接 mother 去 oth 的 mer。"
+  },
+  {
+    "word": "sun",
+    "parts": [
+      {
+        "text": "sun",
+        "cue": "借 run（跑），开头 r 换 s"
+      }
+    ],
+    "scene": "跑步 run 的人追着天上的 s 形阳光；把 run 的 r 换 s，太阳就是 sun。"
+  },
+  {
+    "word": "support",
+    "parts": [
+      {
+        "text": "sup",
+        "cue": "借 soup（汤），删中间 o"
+      },
+      {
+        "text": "port",
+        "cue": "port，港口"
+      }
+    ],
+    "scene": "汤 soup 熬好后运到港口 port，支援码头工人；soup 去 o 得 sup，再加 port，记支持 support。"
+  },
+  {
+    "word": "surfing",
+    "parts": [
+      {
+        "text": "surf",
+        "cue": "surf，冲浪；可借 sure（确定的），末尾 e 改 f"
+      },
+      {
+        "text": "ing",
+        "cue": "ing 结尾，保留 i、n、g"
+      }
+    ],
+    "scene": "确认 sure 安全后才去冲浪，冲浪板尾翘成 f；sure 的 e 改 f 成 surf，再接 ing，记 surfing。"
+  },
+  {
+    "word": "survey",
+    "parts": [
+      {
+        "text": "sur",
+        "cue": "借 sure（确定的），删末尾 e"
+      },
+      {
+        "text": "vey",
+        "cue": "借 very（非常），删中间 r"
+      }
+    ],
+    "scene": "想非常 very 确定 sure 大家的意见，就挨家调查；sure 去 e、very 去 r，得到 sur＋vey。"
+  },
+  {
+    "word": "swan",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成弯曲的天鹅脖子"
+      },
+      {
+        "text": "wan",
+        "cue": "“弯”的拼音 wan"
+      }
+    ],
+    "scene": "天鹅脖子像 s，又长又弯 wan；s＋wan＝swan，直接把字母形状与天鹅联系起来。"
+  },
+  {
+    "word": "Sweden",
+    "parts": [
+      {
+        "text": "Swe",
+        "cue": "借 sweet（甜的），取开头 swe；专名大写"
+      },
+      {
+        "text": "den",
+        "cue": "den，动物的窝"
+      }
+    ],
+    "scene": "在瑞典的童话森林里，动物窝 den 用甜 sweet 饼干搭成；sweet 取 Swe，接 den，记 Sweden。"
+  },
+  {
+    "word": "sweet",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成蛇"
+      },
+      {
+        "text": "weet",
+        "cue": "借 feet（脚，复数），开头 f 改 w"
+      }
+    ],
+    "scene": "蛇 s 舔到脚 feet 旁掉落的糖，觉得甜；feet 的 f 改成糖纸 w，前面接 s，记 sweet。"
+  },
+  {
+    "word": "sweetener",
+    "parts": [
+      {
+        "text": "sweet",
+        "cue": "sweet，甜的"
+      },
+      {
+        "text": "en",
+        "cue": "-en 在 sweeten 中连到“使变甜”"
+      },
+      {
+        "text": "er",
+        "cue": "-er 在此连到使食物变甜的东西"
+      }
+    ],
+    "scene": "给苦咖啡加一勺甜味剂，使它变甜 sweeten；sweet＋en＋er，记 sweetener。"
+  },
+  {
+    "word": "swim",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s 想成弯曲泳道"
+      },
+      {
+        "text": "wi",
+        "cue": "Wi-Fi 的前两个字母 wi"
+      },
+      {
+        "text": "m",
+        "cue": "m 想成两道小波浪"
+      }
+    ],
+    "scene": "泳池把 Wi-Fi 标志放在 s 形泳道边，小波浪 m 一起晃；s＋wi＋m，记游泳 swim。"
+  },
+  {
+    "word": "table",
+    "parts": [
+      {
+        "text": "t",
+        "cue": "t 想成桌面和桌腿"
+      },
+      {
+        "text": "able",
+        "cue": "able，能……的"
+      }
+    ],
+    "scene": "一张 t 形桌子能 able 承受很多书，桌面上还画着表格；t＋able＝table。"
+  },
+  {
+    "word": "tail",
+    "parts": [
+      {
+        "text": "tail",
+        "cue": "借 mail（邮件），开头 m 改 t"
+      }
+    ],
+    "scene": "邮递猫把邮件 mail 绑在尾巴上，尾巴竖成 t；mail 的 m 换 t，得到尾巴 tail。"
+  },
+  {
+    "word": "taking",
+    "parts": [
+      {
+        "text": "tak",
+        "cue": "借 take（拿），删末尾 e"
+      },
+      {
+        "text": "ing",
+        "cue": "take 接 ing 时先去 e"
+      }
+    ],
+    "scene": "手正拿起 take 杯子，动作还在进行 taking；take 去 e，再接 ing，不能写成 takeing。"
+  },
+  {
+    "word": "talk",
+    "parts": [
+      {
+        "text": "talk",
+        "cue": "借 walk（走路），开头 w 换 t"
+      }
+    ],
+    "scene": "两个人一边走路 walk 一边谈话，聊到路口 t 才停；walk 的 w 改 t，记 talk。"
+  },
+  {
+    "word": "tank",
+    "parts": [
+      {
+        "text": "tank",
+        "cue": "借 bank（银行），开头 b 改 t"
+      }
+    ],
+    "scene": "银行 bank 门前停着一辆坦克，炮管伸成 t；把 bank 开头 b 换 t，记 tank。也可把储罐想成坦克的巨大油箱。"
+  },
+  {
+    "word": "taste",
+    "parts": [
+      {
+        "text": "taste",
+        "cue": "借 waste（浪费），开头 w 换 t"
+      }
+    ],
+    "scene": "大厨怕浪费 waste，每道菜都先用 t 形小勺品尝味道；waste 开头 w 换 t，得到 taste。"
+  },
+  {
+    "word": "tax",
+    "parts": [
+      {
+        "text": "tax",
+        "cue": "借 taxi（出租车），删末尾 i"
+      }
+    ],
+    "scene": "出租车 taxi 收入扣掉一份税，词尾 i 也被扣掉；taxi 去 i 得到 tax。"
+  },
+  {
+    "word": "tea",
+    "parts": [
+      {
+        "text": "tea",
+        "cue": "借 team（团队），删末尾 m"
+      }
+    ],
+    "scene": "团队 team 开会，最后一个成员 m 去泡茶，剩下 tea；记 tea 是茶，team 多 m 才是团队。"
+  },
+  {
+    "word": "teachers",
+    "parts": [
+      {
+        "text": "teach",
+        "cue": "英语 teach，教；可借 tea（茶）＋ch（“吃喝”的拼音首字母）"
+      },
+      {
+        "text": "er",
+        "cue": "-er 在 teacher 中指教书的人"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "老师喝着茶 tea，在黑板上教“吃喝”ch 怎么写；tea＋ch 先记 teach 教，再接 er、s，成为多位老师 teachers。拼音仅作编码。"
+  },
+  {
+    "word": "teaching",
+    "parts": [
+      {
+        "text": "teach",
+        "cue": "英语 teach，教；可借 tea（茶）＋ch（“吃喝”的拼音首字母）"
+      },
+      {
+        "text": "ing",
+        "cue": "ing 结尾"
+      }
+    ],
+    "scene": "茶 tea 杯放在讲台上，老师正在教“吃喝”ch 怎么写；tea＋ch 组成 teach，再接 ing，记正在教学。拼音仅作编码。"
+  },
+  {
+    "word": "team",
+    "parts": [
+      {
+        "text": "tea",
+        "cue": "tea，茶"
+      },
+      {
+        "text": "m",
+        "cue": "m 想成并肩站立的几个人"
+      }
+    ],
+    "scene": "几个人 m 围在茶 tea 桌边组建团队；tea 后面站上 m，得到 team。"
+  },
+  {
+    "word": "tears",
+    "parts": [
+      {
+        "text": "tear",
+        "cue": "tear，眼泪；可借 bear（熊）把 b 改 t"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "小熊 bear 哭了，眼泪流成一串 t 形水滴；bear 的 b 换 t，再加复数 s，记 tears。"
+  },
+  {
+    "word": "technology",
+    "parts": [
+      {
+        "text": "tech",
+        "cue": "借 teach（教），删中间 a 得 tech"
+      },
+      {
+        "text": "no",
+        "cue": "no，不"
+      },
+      {
+        "text": "logy",
+        "cue": "借 biology（生物学），删开头 bio，留下 logy"
+      }
+    ],
+    "scene": "老师教 teach 生物学 biology，学生说 no：今天想学的是技术；teach 去 a 得 tech，后接 no、biology 去 bio 的 logy。"
+  },
+  {
+    "word": "teenagers",
+    "parts": [
+      {
+        "text": "teen",
+        "cue": "teen，对应 thirteen 到 nineteen 这些年龄数词末尾的 teen"
+      },
+      {
+        "text": "age",
+        "cue": "age，年龄"
+      },
+      {
+        "text": "r",
+        "cue": "-r 与前面的 age 连成 ager"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "年龄 age 标成十三至十九 teen 的一群人排队领青少年证；teen＋age＋r＋s，保留 age 的 e。"
+  },
+  {
+    "word": "teeth",
+    "parts": [
+      {
+        "text": "teeth",
+        "cue": "借 tooth（牙齿），把中间 oo 改为 ee，得到不规则复数 teeth"
+      }
+    ],
+    "scene": "一颗牙 tooth 对着镜子，变成一排牙齿 teeth；圆圆 oo 被两排露齿笑的 ee 替换，记复数不用加 s。"
+  },
+  {
+    "word": "television",
+    "parts": [
+      {
+        "text": "tele",
+        "cue": "借 telephone（电话），取开头 tele"
+      },
+      {
+        "text": "vision",
+        "cue": "vision，视觉；视力"
+      }
+    ],
+    "scene": "电话 telephone 只能听，给它加上视觉 vision 就能看远处的画面，像电视；tele＋vision＝television。"
+  },
+  {
+    "word": "temperature",
+    "parts": [
+      {
+        "text": "temp",
+        "cue": "temp，可见于温度显示器的英文缩写 TEMP"
+      },
+      {
+        "text": "er",
+        "cue": "“儿”的拼音 er"
+      },
+      {
+        "text": "ature",
+        "cue": "借 nature（自然），删开头 n"
+      }
+    ],
+    "scene": "小孩儿 er 拿着 TEMP 温度计测自然 nature 环境；temp＋er＋nature 去 n 的 ature，记 temperature。"
+  },
+  {
+    "word": "tennis",
+    "parts": [
+      {
+        "text": "ten",
+        "cue": "ten，十"
+      },
+      {
+        "text": "nis",
+        "cue": "借 nice（好的），末尾 ce 换 s"
+      }
+    ],
+    "scene": "网球手连打十 ten 个好 nice 球；ten 后接 nice 把 ce 改 s 的 nis，记 tennis，注意双 n。"
+  },
+  {
+    "word": "tent",
+    "parts": [
+      {
+        "text": "ten",
+        "cue": "ten，十"
+      },
+      {
+        "text": "t",
+        "cue": "t 想成帐篷支杆"
+      }
+    ],
+    "scene": "十 ten 个人围着一根支杆 t 搭帐篷；ten＋t＝tent。"
+  },
+  {
+    "word": "terminal",
+    "parts": [
+      {
+        "text": "term",
+        "cue": "term，学期；期限"
+      },
+      {
+        "text": "in",
+        "cue": "in，在……里面"
+      },
+      {
+        "text": "al",
+        "cue": "“阿兰”的拼音首字母 al"
+      }
+    ],
+    "scene": "学期 term 结束，阿兰 al 在 in 航站楼等回家的飞机；term＋in＋al 记 terminal，本场景练航站楼义。"
+  },
+  {
+    "word": "terminology",
+    "parts": [
+      {
+        "text": "term",
+        "cue": "term，术语"
+      },
+      {
+        "text": "in",
+        "cue": "in，在……里面"
+      },
+      {
+        "text": "ology",
+        "cue": "借 biology（生物学），删开头 bi，留下 ology"
+      }
+    ],
+    "scene": "生物学 biology 课本里面 in 满页都是专业词 term；term＋in＋biology 去 bi 的 ology，记一套术语 terminology。"
+  },
+  {
+    "word": "testing",
+    "parts": [
+      {
+        "text": "test",
+        "cue": "英语 test，测试；可借 best（最好的），把开头 b 换成 t"
+      },
+      {
+        "text": "ing",
+        "cue": "ing 结尾"
+      }
+    ],
+    "scene": "想拿最好的 best 成绩，学生正在做测试；best 的 b 换成答题笔 t 得 test，再接 ing，记 testing。"
+  },
+  {
+    "word": "textile",
+    "parts": [
+      {
+        "text": "text",
+        "cue": "text，文字；文本"
+      },
+      {
+        "text": "ile",
+        "cue": "借 tile（瓷砖），删开头 t"
+      }
+    ],
+    "scene": "文字 text 印在纺织布上，布铺在瓷砖 tile 上晾干；text 后接 tile 去 t 的 ile，得到纺织品 textile。"
+  },
+  {
+    "word": "theater",
+    "parts": [
+      {
+        "text": "the",
+        "cue": "the，定冠词"
+      },
+      {
+        "text": "ater",
+        "cue": "借 water（水），删开头 w"
+      }
+    ],
+    "scene": "这座 the 剧院的舞台灌满水 water，演出水上戏；the＋water 去 w 的 ater，记 theater，词尾是 ter。"
+  },
+  {
+    "word": "therapy",
+    "parts": [
+      {
+        "text": "the",
+        "cue": "the，定冠词"
+      },
+      {
+        "text": "rap",
+        "cue": "rap，说唱"
+      },
+      {
+        "text": "y",
+        "cue": "y 想成举起双臂的人"
+      }
+    ],
+    "scene": "这位 the 病人举起双臂 y，跟着说唱 rap 做康复治疗；字母顺序 the＋rap＋y，记 therapy。"
+  },
+  {
+    "word": "thunder",
+    "parts": [
+      {
+        "text": "th",
+        "cue": "“天河”的拼音首字母 th"
+      },
+      {
+        "text": "under",
+        "cue": "under，在……下面"
+      }
+    ],
+    "scene": "站在天河 th 下方 under，忽然听见一声雷响；th＋under＝thunder。"
+  },
+  {
+    "word": "thunderstorm",
+    "parts": [
+      {
+        "text": "thunder",
+        "cue": "thunder，雷声"
+      },
+      {
+        "text": "storm",
+        "cue": "storm，暴风雨"
+      }
+    ],
+    "scene": "雷声 thunder 和暴风雨 storm 一起到来，就是雷雨；thunder＋storm 原样连写。"
+  },
+  {
+    "word": "ticket",
+    "parts": [
+      {
+        "text": "tick",
+        "cue": "tick，打勾；勾号"
+      },
+      {
+        "text": "et",
+        "cue": "ET，科幻中的外星人简称"
+      }
+    ],
+    "scene": "外星人 ET 买到一张票，检票员在票上打勾 tick；tick 后接 et，记 ticket。"
+  },
+  {
+    "word": "timber",
+    "parts": [
+      {
+        "text": "tim",
+        "cue": "Tim，常见英文人名蒂姆"
+      },
+      {
+        "text": "ber",
+        "cue": "借 bear（熊），删中间 a"
+      }
+    ],
+    "scene": "蒂姆 Tim 和熊 bear 一起搬木材；Tim＋bear 去 a 的 ber，得到 timber。"
+  },
+  {
+    "word": "time",
+    "parts": [
+      {
+        "text": "time",
+        "cue": "借 tie（领带），在 i 后插入 m"
+      }
+    ],
+    "scene": "领带 tie 上夹着一块 m 形电子表，提醒你时间；t、i 后插 m，再写 e，记 time。"
+  },
+  {
+    "word": "tired",
+    "parts": [
+      {
+        "text": "tire",
+        "cue": "tire，使疲倦；也可指轮胎"
+      },
+      {
+        "text": "d",
+        "cue": "tire 末尾已有 e，接 d 得 tired"
+      }
+    ],
+    "scene": "推着轮胎 tire 走了一天，人已经疲倦；tire 后只补 d，记 tired，不能再添一个 e。"
+  },
+  {
+    "word": "tires",
+    "parts": [
+      {
+        "text": "tire",
+        "cue": "tire，轮胎（美式拼写）；可借 fire（火）把 f 改 t"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "几只轮胎被火 fire 烤热，路旁立起 t 形警示架；fire 的 f 改 t，再加 s，记 tires。"
+  },
+  {
+    "word": "toe",
+    "parts": [
+      {
+        "text": "toe",
+        "cue": "借 toy（玩具），末尾 y 换 e"
+      }
+    ],
+    "scene": "玩具 toy 掉下来压到脚趾，痛得嘴张成 e；toy 的 y 改 e，得到脚趾 toe。"
+  },
+  {
+    "word": "tone",
+    "parts": [
+      {
+        "text": "t",
+        "cue": "t 想成指挥棒"
+      },
+      {
+        "text": "one",
+        "cue": "one，一"
+      }
+    ],
+    "scene": "指挥棒 t 指向同一个 one 音，让乐队统一音色；t＋one＝tone。"
+  },
+  {
+    "word": "tool",
+    "parts": [
+      {
+        "text": "tool",
+        "cue": "借 pool（泳池），开头 p 换 t"
+      }
+    ],
+    "scene": "泳池 pool 漏水，工人拿来 t 形工具修理；pool 的 p 改 t，记 tool。"
+  },
+  {
+    "word": "top",
+    "parts": [
+      {
+        "text": "top",
+        "cue": "借 stop（停止），删开头 s"
+      }
+    ],
+    "scene": "爬到山顶 top 才停止 stop；停字 stop 去掉开头 s，剩下顶部 top。"
+  },
+  {
+    "word": "town",
+    "parts": [
+      {
+        "text": "town",
+        "cue": "借 down（向下），开头 d 改 t"
+      }
+    ],
+    "scene": "从山上向下 down 望，看到镇口 t 形路牌；down 的 d 换 t，得到城镇 town。"
+  },
+  {
+    "word": "toxic",
+    "parts": [
+      {
+        "text": "to",
+        "cue": "to，向；到"
+      },
+      {
+        "text": "xi",
+        "cue": "“西”的拼音 xi"
+      },
+      {
+        "text": "c",
+        "cue": "“草”的拼音首字母 c"
+      }
+    ],
+    "scene": "路标指向 to 西 xi 边的一片草 c，旁边竖着“有毒”的警告牌；to＋xi＋c，记 toxic。拼音只帮助还原字母。"
+  },
+  {
+    "word": "toy",
+    "parts": [
+      {
+        "text": "toy",
+        "cue": "借 boy（男孩），开头 b 换 t"
+      }
+    ],
+    "scene": "男孩 boy 抱着 t 形玩具车道不肯放；boy 开头 b 改 t，记玩具 toy。"
+  },
+  {
+    "word": "trace",
+    "parts": [
+      {
+        "text": "t",
+        "cue": "t 想成路口指示牌"
+      },
+      {
+        "text": "race",
+        "cue": "race，比赛；赛跑"
+      }
+    ],
+    "scene": "赛跑 race 经过 t 形路口，地上留下脚印痕迹，侦探沿脚印追踪；t＋race＝trace。"
+  },
+  {
+    "word": "trade",
+    "parts": [
+      {
+        "text": "trade",
+        "cue": "借 grade（等级；成绩），开头 g 改 t"
+      }
+    ],
+    "scene": "市场按等级 grade 给商品定价，然后在 t 形摊位交易；grade 的 g 改 t，得到 trade。"
+  },
+  {
+    "word": "train",
+    "parts": [
+      {
+        "text": "t",
+        "cue": "t 想成铁轨交叉口"
+      },
+      {
+        "text": "rain",
+        "cue": "rain，雨"
+      }
+    ],
+    "scene": "大雨 rain 中，火车从 t 形铁轨交叉口驶过；t＋rain＝train。"
+  },
+  {
+    "word": "trash",
+    "parts": [
+      {
+        "text": "tr",
+        "cue": "借 tree（树），取前两个字母 tr"
+      },
+      {
+        "text": "ash",
+        "cue": "ash，灰烬"
+      }
+    ],
+    "scene": "树 tree 被烧剩灰 ash，清扫工把它装进垃圾袋；tree 取 tr，接 ash，记 trash。"
+  },
+  {
+    "word": "travel",
+    "parts": [
+      {
+        "text": "tra",
+        "cue": "借 train（火车），删末尾 in"
+      },
+      {
+        "text": "vel",
+        "cue": "借 level（水平仪、水平尺），去掉开头 le"
+      }
+    ],
+    "scene": "坐火车 train 去旅行，桌上的水平仪 level 随弯道倾斜；train 去 in 得 tra，level 去 le 得 vel，合成 travel。"
+  },
+  {
+    "word": "travelling",
+    "parts": [
+      {
+        "text": "travel",
+        "cue": "travel，旅行"
+      },
+      {
+        "text": "l",
+        "cue": "英式 travelling 在接 ing 前再写一个 l"
+      },
+      {
+        "text": "ing",
+        "cue": "ing 结尾"
+      }
+    ],
+    "scene": "旅行 travel 路上两条 l 形铁轨并排延伸；travel 后再补 l，再接 ing，记原表英式双 l 的 travelling。"
+  },
+  {
+    "word": "trays",
+    "parts": [
+      {
+        "text": "t",
+        "cue": "t 想成托盘的支架"
+      },
+      {
+        "text": "ray",
+        "cue": "ray，光线"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "阳光 ray 照在 t 形支架上，一摞托盘闪闪发亮；t＋ray＋s＝trays。"
+  },
+  {
+    "word": "tree",
+    "parts": [
+      {
+        "text": "t",
+        "cue": "t 想成树干和横枝"
+      },
+      {
+        "text": "ree",
+        "cue": "借 green（绿色的），删开头 g 和末尾 n，留下 ree"
+      }
+    ],
+    "scene": "绿色 green 的树冠长在 t 形树干上；green 两端 g、n 去掉，中间 ree 接在 t 后，就是 tree。"
+  },
+  {
+    "word": "trial",
+    "parts": [
+      {
+        "text": "tri",
+        "cue": "借 trip（旅行），删末尾 p"
+      },
+      {
+        "text": "al",
+        "cue": "“阿兰”的拼音首字母 al"
+      }
+    ],
+    "scene": "阿兰 al 在一次旅行 trip 中接受登山试验；trip 去 p，接 al，记 trial。本画面练试验义。"
+  },
+  {
+    "word": "trousers",
+    "parts": [
+      {
+        "text": "tr",
+        "cue": "借 tree（树），取前两个字母 tr"
+      },
+      {
+        "text": "ouse",
+        "cue": "借 house（房屋），删开头 h"
+      },
+      {
+        "text": "rs",
+        "cue": "“染色”的拼音首字母 rs"
+      }
+    ],
+    "scene": "房屋 house 外的树 tree 上，晾着刚染色 rs 的裤子；tr＋house 去 h 的 ouse＋rs，记 trousers。"
+  },
+  {
+    "word": "trucks",
+    "parts": [
+      {
+        "text": "t",
+        "cue": "t 想成路口"
+      },
+      {
+        "text": "ruck",
+        "cue": "借 duck（鸭），把 d 改 r"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "一队卡车在 t 形路口运鸭 duck；duck 的 d 改 r，前加 t、后加 s，记 trucks。"
+  },
+  {
+    "word": "trust",
+    "parts": [
+      {
+        "text": "t",
+        "cue": "t 想成拐杖"
+      },
+      {
+        "text": "rust",
+        "cue": "rust，锈"
+      }
+    ],
+    "scene": "拐杖 t 虽生了锈 rust，老人仍信任它能撑住自己；t＋rust＝trust。"
+  },
+  {
+    "word": "tube",
+    "parts": [
+      {
+        "text": "tu",
+        "cue": "“吐”的拼音 tu"
+      },
+      {
+        "text": "be",
+        "cue": "be，是；想成印在管上的英文标签"
+      }
+    ],
+    "scene": "一根管子吐 tu 出水，管身写着 be；tu＋be＝tube。把地铁想成穿行城市的大管子，可另连伦敦地铁义。"
+  },
+  {
+    "word": "tuna",
+    "parts": [
+      {
+        "text": "tu",
+        "cue": "“吐”的拼音 tu"
+      },
+      {
+        "text": "na",
+        "cue": "“拿”的拼音 na"
+      }
+    ],
+    "scene": "金枪鱼张嘴吐 tu 出一枚金币，渔夫赶紧拿 na 走；tu＋na＝tuna。"
+  },
+  {
+    "word": "tunnel",
+    "parts": [
+      {
+        "text": "tun",
+        "cue": "“吞”的拼音 tun"
+      },
+      {
+        "text": "nel",
+        "cue": "借 net（网），末尾 t 改 l"
+      }
+    ],
+    "scene": "隧道口像怪兽吞 tun 下了一张网 net；net 的 t 改成长长洞壁 l，接在 tun 后，记 tunnel。"
+  },
+  {
+    "word": "twin",
+    "parts": [
+      {
+        "text": "t",
+        "cue": "t 想成双胞胎站在一起的路牌"
+      },
+      {
+        "text": "win",
+        "cue": "win，获胜"
+      }
+    ],
+    "scene": "一对双胞胎在 t 形路牌下同时举手庆祝获胜 win；t＋win＝twin。"
+  },
+  {
+    "word": "18th",
+    "parts": [
+      {
+        "text": "18",
+        "cue": "数字十八"
+      },
+      {
+        "text": "th",
+        "cue": "eighteenth 的序数词标记 th"
+      }
+    ],
+    "scene": "电梯到十八层，按钮 18 右上角贴着 th，表示第十八；数字 18 后接 th，原表按数字写 18th。"
+  },
+  {
+    "word": "uncle",
+    "parts": [
+      {
+        "text": "un",
+        "cue": "借 under（下面），取开头 un"
+      },
+      {
+        "text": "cle",
+        "cue": "借 circle（圆圈），取末尾 cle"
+      }
+    ],
+    "scene": "叔叔坐在圆圈 circle 下面 under，抬头陪你玩套圈；under 取 un，circle 取 cle，得到 uncle。"
+  },
+  {
+    "word": "uncomfortable",
+    "parts": [
+      {
+        "text": "un",
+        "cue": "un-，否定前缀"
+      },
+      {
+        "text": "comfortable",
+        "cue": "comfortable，舒服的"
+      }
+    ],
+    "scene": "原本舒服 comfortable 的椅子突然长出硬刺，贴上 un“否定”标签就不舒服；un＋comfortable。"
+  },
+  {
+    "word": "unexplained",
+    "parts": [
+      {
+        "text": "un",
+        "cue": "un-，否定前缀"
+      },
+      {
+        "text": "explain",
+        "cue": "explain，解释"
+      },
+      {
+        "text": "ed",
+        "cue": "explain 直接接 ed；不双写 n"
+      }
+    ],
+    "scene": "侦探本来要解释 explain 谜案，卷宗却被盖上 un“还没有”的印章；un＋explain＋ed，记未解释的 unexplained。"
+  },
+  {
+    "word": "unfurnished",
+    "parts": [
+      {
+        "text": "un",
+        "cue": "un-，否定前缀"
+      },
+      {
+        "text": "furnish",
+        "cue": "英语 furnish，给房间配家具；可借 furniture（家具），把末尾 ture 换成 sh"
+      },
+      {
+        "text": "ed",
+        "cue": "过去分词结尾 ed"
+      }
+    ],
+    "scene": "本该添置 furniture 家具的房间却贴着 un 否定标签，空无家具；furniture 的 ture 换 sh 得 furnish，再按 un＋furnish＋ed 拼。"
+  },
+  {
+    "word": "uniform",
+    "parts": [
+      {
+        "text": "uni",
+        "cue": "借 university（大学），取前缀字母 uni；这里只借字母"
+      },
+      {
+        "text": "form",
+        "cue": "form，形式；形状"
+      }
+    ],
+    "scene": "大学 university 的学生排成同样形式 form 的队列，穿着统一制服；uni＋form＝uniform。"
+  },
+  {
+    "word": "university",
+    "parts": [
+      {
+        "text": "uni",
+        "cue": "借 unicorn（独角兽），只取前3字母 uni"
+      },
+      {
+        "text": "versity",
+        "cue": "借 diversity（多样性），删开头 di"
+      }
+    ],
+    "scene": "想象一所大学里，独角兽 unicorn 和各种各样 diversity 的学生一起上课；uni 后接 diversity 去 di 的 versity，拼成 university。独角兽只是人为故事。"
+  },
+  {
+    "word": "unnatural",
+    "parts": [
+      {
+        "text": "un",
+        "cue": "un-，否定前缀"
+      },
+      {
+        "text": "natural",
+        "cue": "natural，自然的"
+      }
+    ],
+    "scene": "自然 natural 的草地上长出塑料树，un 标签表示“不”，画面很不自然；un＋natural，交界处两个 n 都要写。"
+  },
+  {
+    "word": "use",
+    "parts": [
+      {
+        "text": "use",
+        "cue": "借 house（房屋），删开头 ho"
+      }
+    ],
+    "scene": "房屋 house 里的工具拿出来使用，房屋字样先去 ho；house 去 ho，剩 use。"
+  },
+  {
+    "word": "useless",
+    "parts": [
+      {
+        "text": "use",
+        "cue": "use，用处；使用"
+      },
+      {
+        "text": "less",
+        "cue": "-less，表示没有……"
+      }
+    ],
+    "scene": "工具断了柄，原来的用处 use 被 less 拿走，变得无用；use＋less，保留 use 的 e。"
+  },
+  {
+    "word": "variable",
+    "parts": [
+      {
+        "text": "vari",
+        "cue": "借 vary（变化），把末尾 y 改 i"
+      },
+      {
+        "text": "able",
+        "cue": "able，能……的；字形也作结尾提示"
+      }
+    ],
+    "scene": "屏幕上的数字能 able 不断变化 vary，是可变的变量；vary 去 y 改 i，再接 able。"
+  },
+  {
+    "word": "variation",
+    "parts": [
+      {
+        "text": "vari",
+        "cue": "借 vary（变化），末尾 y 改 i"
+      },
+      {
+        "text": "ation",
+        "cue": "名词结尾 ation"
+      }
+    ],
+    "scene": "同一株花 vary 出深浅不同的颜色，把这些变化写进 variation 记录表；vary 的 y 改 i，再加 ation。"
+  },
+  {
+    "word": "vegetables",
+    "parts": [
+      {
+        "text": "ve",
+        "cue": "借 very（非常），只取前2字母 ve"
+      },
+      {
+        "text": "get",
+        "cue": "英语 get，得到"
+      },
+      {
+        "text": "able",
+        "cue": "英语 able，能够"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "非常 very 想吃新鲜菜，能 able 动手就到菜园得到 get 一篮蔬菜；字母按 ve＋get＋able＋s 排列。get 的 t 后接 able，不再另加一个 t。"
+  },
+  {
+    "word": "vegetarian",
+    "parts": [
+      {
+        "text": "veget",
+        "cue": "借 vegetable（蔬菜），删末尾 able，留下 veget"
+      },
+      {
+        "text": "arian",
+        "cue": "借 librarian（图书管理员），删开头 libr，留下 arian"
+      }
+    ],
+    "scene": "图书管理员 librarian 午餐只吃蔬菜 vegetable，是一位素食者；vegetable 去 able，librarian 去 libr，接成 vegetarian。"
+  },
+  {
+    "word": "vertical",
+    "parts": [
+      {
+        "text": "vert",
+        "cue": "借 very（非常），末尾 y 改 t"
+      },
+      {
+        "text": "ical",
+        "cue": "借 medical（医学的），删开头 med"
+      }
+    ],
+    "scene": "医用 medical 身高尺竖得非常 very 直；very 的 y 改 t 得 vert，medical 去 med 得 ical，记垂直的 vertical。"
+  },
+  {
+    "word": "view",
+    "parts": [
+      {
+        "text": "v",
+        "cue": "v 想成山谷"
+      },
+      {
+        "text": "i",
+        "cue": "i 想成站着看景的人"
+      },
+      {
+        "text": "ew",
+        "cue": "借 new（新的），删开头 n"
+      }
+    ],
+    "scene": "一个 i 形人站在 v 形山谷边，观看全新的 new 景色；v＋i＋new 去 n 的 ew，记 view。"
+  },
+  {
+    "word": "village",
+    "parts": [
+      {
+        "text": "vill",
+        "cue": "借 villa（别墅），删末尾 a"
+      },
+      {
+        "text": "age",
+        "cue": "age，年龄；时代"
+      }
+    ],
+    "scene": "一片老龄 age 的小别墅 villa 聚成村庄；villa 去 a，接 age，记 village，双 l 保留。"
+  },
+  {
+    "word": "vision",
+    "parts": [
+      {
+        "text": "vis",
+        "cue": "借 visit（参观），删末尾 it"
+      },
+      {
+        "text": "ion",
+        "cue": "常见名词词尾 ion"
+      }
+    ],
+    "scene": "参观 visit 时用视力看清展品，回家又构想未来愿景；visit 去 it 接 ion，记 vision。"
+  },
+  {
+    "word": "visitors",
+    "parts": [
+      {
+        "text": "visit",
+        "cue": "visit，参观；拜访"
+      },
+      {
+        "text": "or",
+        "cue": "-or 在 visitor 中指进行拜访的人"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "门铃接连响，来拜访 visit 的人排成一队访客；visit＋or＋s，记 visitors，结尾是 ors。"
+  },
+  {
+    "word": "voices",
+    "parts": [
+      {
+        "text": "v",
+        "cue": "v 想成张开的嘴形"
+      },
+      {
+        "text": "oice",
+        "cue": "借 choice（选择），删开头 ch，留下 oice"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "合唱团张着 v 形嘴，选择 choice 不同嗓音一起唱；v＋choice 去 ch 的 oice＋s，记 voices。"
+  },
+  {
+    "word": "volcano",
+    "parts": [
+      {
+        "text": "vol",
+        "cue": "VOL，音量按钮的常见缩写"
+      },
+      {
+        "text": "can",
+        "cue": "can，罐头；能"
+      },
+      {
+        "text": "o",
+        "cue": "o 想成圆形火山口"
+      }
+    ],
+    "scene": "火山口 o 像被打开的罐头 can，喷发声大得要调低音量 VOL；字母顺序 vol＋can＋o。"
+  },
+  {
+    "word": "waiter",
+    "parts": [
+      {
+        "text": "wait",
+        "cue": "wait，等候；wait tables 可指侍应餐桌"
+      },
+      {
+        "text": "er",
+        "cue": "-er 在此提示做这项工作的人"
+      }
+    ],
+    "scene": "餐桌旁的服务员 wait 等候你点餐；wait 后接 er，记 waiter。"
+  },
+  {
+    "word": "waitress",
+    "parts": [
+      {
+        "text": "wait",
+        "cue": "wait，等候"
+      },
+      {
+        "text": "ress",
+        "cue": "借 dress（连衣裙），删开头 d"
+      }
+    ],
+    "scene": "穿连衣裙 dress 的女服务员在桌边等候 wait 点餐；wait＋dress 去 d 的 ress，记 waitress，双 s。"
+  },
+  {
+    "word": "walk",
+    "parts": [
+      {
+        "text": "walk",
+        "cue": "借 wall（墙），把末尾 l 换 k"
+      }
+    ],
+    "scene": "沿着墙 wall 步行到拐角，脚印形成 k；wall 的最后一个 l 换 k，得到 walk。"
+  },
+  {
+    "word": "walls",
+    "parts": [
+      {
+        "text": "wall",
+        "cue": "wall，墙；w 像墙顶，后面 all 联想到整面墙"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "整排 w 形墙顶连着全部 all 墙面，四周不止一面墙；w＋all＋s，记 walls。"
+  },
+  {
+    "word": "warm",
+    "parts": [
+      {
+        "text": "w",
+        "cue": "w 想成波浪形热气"
+      },
+      {
+        "text": "arm",
+        "cue": "arm，手臂"
+      }
+    ],
+    "scene": "把手臂 arm 伸向暖炉，波浪 w 形热气让它变温暖；w＋arm＝warm。"
+  },
+  {
+    "word": "wave",
+    "parts": [
+      {
+        "text": "wave",
+        "cue": "借 have（有），开头 h 换 w"
+      }
+    ],
+    "scene": "海面有 have 一道 w 形波浪，小孩挥手回应；have 的 h 改 w，记 wave 的波浪和挥手。"
+  },
+  {
+    "word": "wax",
+    "parts": [
+      {
+        "text": "wax",
+        "cue": "借 tax（税），开头 t 换 w"
+      }
+    ],
+    "scene": "蜡烛店用 w 形蜡章盖在税 tax 单上；tax 的 t 改 w，记 wax 是蜡。"
+  },
+  {
+    "word": "wealth",
+    "parts": [
+      {
+        "text": "wealth",
+        "cue": "借 health（健康），开头 h 换 w"
+      }
+    ],
+    "scene": "健康 health 是财富，医生把体检单 h 印章换成金色 w；health 的 h 改 w，得到 wealth。"
+  },
+  {
+    "word": "wedding",
+    "parts": [
+      {
+        "text": "wed",
+        "cue": "wed，结婚；可借 red（红色）把 r 改 w"
+      },
+      {
+        "text": "d",
+        "cue": "接 ing 前双写末尾 d"
+      },
+      {
+        "text": "ing",
+        "cue": "ing 结尾"
+      }
+    ],
+    "scene": "红 red 色婚礼上，两位新人牵手像 w；red 的 r 改 w 成 wed，再写一个 d 接 ing，得到 wedding。"
+  },
+  {
+    "word": "weekly",
+    "parts": [
+      {
+        "text": "week",
+        "cue": "week，星期"
+      },
+      {
+        "text": "ly",
+        "cue": "-ly 在此连到每周的／每周"
+      }
+    ],
+    "scene": "一张星期 week 日历每翻一页就寄一次周报；week＋ly，记 weekly。"
+  },
+  {
+    "word": "weight",
+    "parts": [
+      {
+        "text": "w",
+        "cue": "w 想成举起杠铃的人"
+      },
+      {
+        "text": "eight",
+        "cue": "eight，八"
+      }
+    ],
+    "scene": "w 形举重者举起标着八 eight 公斤的杠铃，显示重量；w＋eight＝weight，记住中间的 eigh。"
+  },
+  {
+    "word": "west",
+    "parts": [
+      {
+        "text": "west",
+        "cue": "借 best（最好的），开头 b 换 w"
+      }
+    ],
+    "scene": "旅行者说最好的 best 日落在西方，夕阳下的山像 w；best 开头 b 改 w，记 west。"
+  },
+  {
+    "word": "wetsuit",
+    "parts": [
+      {
+        "text": "wet",
+        "cue": "wet，湿的"
+      },
+      {
+        "text": "suit",
+        "cue": "suit，套装；服装"
+      }
+    ],
+    "scene": "穿着一套 suit 会被水打湿 wet 的潜水服下海；wet＋suit＝wetsuit。"
+  },
+  {
+    "word": "whistle",
+    "parts": [
+      {
+        "text": "wh",
+        "cue": "“武汉”的拼音首字母 wh"
+      },
+      {
+        "text": "ist",
+        "cue": "借 list（列表），删开头 l"
+      },
+      {
+        "text": "le",
+        "cue": "“乐”的拼音 le"
+      }
+    ],
+    "scene": "武汉 wh 的演奏者按节目列表 list 快乐 le 地吹口哨；wh＋list 去 l 的 ist＋le＝whistle。"
+  },
+  {
+    "word": "white",
+    "parts": [
+      {
+        "text": "wh",
+        "cue": "“武汉”的拼音首字母 wh"
+      },
+      {
+        "text": "ite",
+        "cue": "借 kite（风筝），删开头 k"
+      }
+    ],
+    "scene": "武汉 wh 天空飞着纯白色风筝 kite；wh 后接 kite 去 k 的 ite，记 white。"
+  },
+  {
+    "word": "wild",
+    "parts": [
+      {
+        "text": "wild",
+        "cue": "借 mild（温和的），开头 m 换 w"
+      }
+    ],
+    "scene": "原本温和 mild 的小兽一到野外就张牙舞爪，头顶变成 w；mild 的 m 改 w，记 wild。"
+  },
+  {
+    "word": "wind",
+    "parts": [
+      {
+        "text": "wind",
+        "cue": "借 window（窗户），删末尾 ow"
+      }
+    ],
+    "scene": "窗户 window 被风吹开，尾巴 ow 也被吹走；window 去 ow，剩 wind。"
+  },
+  {
+    "word": "wolf",
+    "parts": [
+      {
+        "text": "wolf",
+        "cue": "借 golf（高尔夫），开头 g 换 w"
+      }
+    ],
+    "scene": "一只狼在草地上打高尔夫 golf，球杆交叉像 w；golf 的 g 改 w，记狼 wolf。"
+  },
+  {
+    "word": "wonder",
+    "parts": [
+      {
+        "text": "won",
+        "cue": "won，win 的过去式，赢了"
+      },
+      {
+        "text": "der",
+        "cue": "借 deer（鹿），删掉两个 e 中的一个"
+      }
+    ],
+    "scene": "一只鹿 deer 竟赢了 won 跑步赛，大家惊奇，想知道怎么做到；won＋deer 少一个 e 的 der，记 wonder。"
+  },
+  {
+    "word": "wood",
+    "parts": [
+      {
+        "text": "wood",
+        "cue": "借 good（好的），开头 g 换 w"
+      }
+    ],
+    "scene": "好 good 木材上刻着 w 形年轮；good 的 g 换 w，记 wood，两个 o 都保留。"
+  },
+  {
+    "word": "young",
+    "parts": [
+      {
+        "text": "you",
+        "cue": "you，你"
+      },
+      {
+        "text": "ng",
+        "cue": "“年糕”的拼音首字母 ng"
+      }
+    ],
+    "scene": "年轻的你 you 捧着年糕 ng 蹦跳过新年；you＋ng＝young，目标是年轻，不把年糕当词义。"
+  },
+  {
+    "word": "zoo",
+    "parts": [
+      {
+        "text": "z",
+        "cue": "z 想成弯折的围栏"
+      },
+      {
+        "text": "oo",
+        "cue": "两个 o 想成两只瞪大的眼睛"
+      }
+    ],
+    "scene": "小孩隔着 z 形围栏，睁着 oo 两只眼睛看动物园；z＋oo＝zoo。"
+  },
+  {
+    "word": "zoom",
+    "parts": [
+      {
+        "text": "zoo",
+        "cue": "zoo，动物园"
+      },
+      {
+        "text": "m",
+        "cue": "m 想成相机连着的两座山峰"
+      }
+    ],
+    "scene": "在动物园 zoo 用相机把远处山峰 m 拉近放大，镜头变焦 zoom；zoo 后接 m。"
+  }
+]

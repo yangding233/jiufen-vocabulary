@@ -1,0 +1,379 @@
+[
+  {
+    "word": "breathe",
+    "parts": [
+      {
+        "text": "breath",
+        "cue": "英语 breath，一口气、呼吸（名词）"
+      },
+      {
+        "text": "e",
+        "cue": "借 echo（回声）的首字母 e，作字母提示"
+      }
+    ],
+    "scene": "深吸一口气 breath，再朝山谷呼气，听见回声 echo；breath 后接 e 是动词 breathe 呼吸，别把名词和动词拼写混同。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "dry",
+    "parts": [
+      {
+        "text": "dry",
+        "cue": "借 cry（哭），把开头 c 换成 d"
+      }
+    ],
+    "scene": "哭 cry 后用 d 形纸巾擦干泪水；cry 的 c 换 d 得 dry，目标是擦干后的状态。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "economy",
+    "parts": [
+      {
+        "text": "eco",
+        "cue": "借 ecology（生态学），取前三字母 eco"
+      },
+      {
+        "text": "no",
+        "cue": "英语 no，不"
+      },
+      {
+        "text": "my",
+        "cue": "英语 my，我的"
+      }
+    ],
+    "scene": "讨论生态 ecology 项目的经济预算，大家举牌说 no“不能只顾我的 my 小利”；按 eco＋no＋my 写 economy，焦点是整笔经济预算。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "electric",
+    "parts": [
+      {
+        "text": "elec",
+        "cue": "借 election（选举），去掉末尾 tion"
+      },
+      {
+        "text": "tric",
+        "cue": "借 trick（戏法），去掉末尾 k"
+      }
+    ],
+    "scene": "选举 election 上，一台电动投票机像变戏法 trick 一样自动计票；截成 elec＋tric，重点看它靠电运转。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "electronic",
+    "parts": [
+      {
+        "text": "electr",
+        "cue": "借 electric（电的），去掉末尾 ic"
+      },
+      {
+        "text": "on",
+        "cue": "英语 on，开着；借开关 ON 的字母"
+      },
+      {
+        "text": "ic",
+        "cue": "借 ice（冰），去掉末尾 e"
+      }
+    ],
+    "scene": "电动 electric 模型按下 ON 开关，里面的电子电路亮起来，照亮一块冰 ice；取 electr＋on＋ic，记电子的，不把开关故事当物理词源。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "Flexible",
+    "parts": [
+      {
+        "text": "flex",
+        "cue": "英语 flex，弯曲、屈伸"
+      },
+      {
+        "text": "ible",
+        "cue": "借 possible（可能的），去掉开头 poss"
+      }
+    ],
+    "scene": "柔软铁丝能弯曲 flex 成各种形状，许多造型都有可能 possible；flex＋ible，记柔韧的、灵活的，首字母依词表大写。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "frequent",
+    "parts": [
+      {
+        "text": "fre",
+        "cue": "借 free（免费的），去掉末尾一个 e"
+      },
+      {
+        "text": "quent",
+        "cue": "借 queen（女王），把末尾 en 换成 nt"
+      }
+    ],
+    "scene": "女王 queen 经常来免费 free 的茶摊，每小时出现一次；free 截成 fre，queen 换末尾 en 为 nt 得 quent，记 fre＋quent，反复出现就是频繁。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "hand",
+    "parts": [
+      {
+        "text": "h",
+        "cue": "字母 h，想成张开的手指"
+      },
+      {
+        "text": "and",
+        "cue": "英语 and，和"
+      }
+    ],
+    "scene": "张开的 h 形手把刀和 and 叉一起递过来；h＋and 是 hand，既记手，也记递交的动作。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "migrate",
+    "parts": [
+      {
+        "text": "mi",
+        "cue": "“米”的拼音 mi"
+      },
+      {
+        "text": "gr",
+        "cue": "“果仁”的拼音首字母 g-r，仅作编码"
+      },
+      {
+        "text": "ate",
+        "cue": "英语 ate，吃了"
+      }
+    ],
+    "scene": "候鸟迁徙出发前，吃了 ate 米 mi 和果仁 gr；按食物在前、吃过的 ate 在后，拼 mi＋gr＋ate，目标动作是迁徙。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "industrial",
+    "parts": [
+      {
+        "text": "in",
+        "cue": "英语 in，在里面"
+      },
+      {
+        "text": "dust",
+        "cue": "英语 dust，灰尘"
+      },
+      {
+        "text": "ri",
+        "cue": "“日”的拼音 ri"
+      },
+      {
+        "text": "al",
+        "cue": "借 all（全部），去掉末尾一个 l"
+      }
+    ],
+    "scene": "在 in 工厂里面，灰尘 dust 日 ri 日落到全部 all 工业机器上；in＋dust＋ri＋al，地点明确是工业工厂。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "location",
+    "parts": [
+      {
+        "text": "lo",
+        "cue": "借 look（看），去掉末尾 ok"
+      },
+      {
+        "text": "cat",
+        "cue": "英语 cat，猫"
+      },
+      {
+        "text": "ion",
+        "cue": "借 lion（狮子），去掉开头 l"
+      }
+    ],
+    "scene": "看 look 猫 cat 和狮子 lion 躲在哪里，在地图上各标一个位置；lo＋cat＋ion，地图标点提醒位置、地点。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "mature",
+    "parts": [
+      {
+        "text": "mat",
+        "cue": "英语 mat，垫子"
+      },
+      {
+        "text": "ure",
+        "cue": "借 pure（纯净的），去掉开头 p"
+      }
+    ],
+    "scene": "垫子 mat 上的果子熟透，散发纯净 pure 果香；mat＋ure，果子成熟，再联想到人变得成熟。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "navigate",
+    "parts": [
+      {
+        "text": "nav",
+        "cue": "借 navy（海军），去掉末尾 y"
+      },
+      {
+        "text": "i",
+        "cue": "字母 i，想成一位站立的领航员"
+      },
+      {
+        "text": "gate",
+        "cue": "英语 gate，大门"
+      }
+    ],
+    "scene": "海军 navy 的 i 形领航员指挥船穿过 gate 形港口大门；nav＋i＋gate，正在做的事是导航、航行。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "photograph",
+    "parts": [
+      {
+        "text": "pho",
+        "cue": "借 phone（电话），去掉末尾 ne"
+      },
+      {
+        "text": "to",
+        "cue": "英语 to，到"
+      },
+      {
+        "text": "graph",
+        "cue": "英语 graph，图表"
+      }
+    ],
+    "scene": "用电话 phone 的相机拍张照片，送到 to 图表 graph 旁作记录；pho＋to＋graph，照片是记录结果。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "safe",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "字母 s，想成一条蛇"
+      },
+      {
+        "text": "afe",
+        "cue": "借 cafe（咖啡馆），去掉开头 c"
+      }
+    ],
+    "scene": "咖啡馆 cafe 跑进一条 s 形蛇，店员把它关进保险箱，大家才安全；s＋afe，兼顾安全与保险箱。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "service",
+    "parts": [
+      {
+        "text": "ser",
+        "cue": "借 serve（服务），去掉末尾 ve"
+      },
+      {
+        "text": "vice",
+        "cue": "英语 vice，恶习、不良习惯"
+      }
+    ],
+    "scene": "服务员 serve 帮客人改掉乱扔垃圾的恶习 vice，这项服务获得好评；ser＋vice，重点记提供服务。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "smooth",
+    "parts": [
+      {
+        "text": "sm",
+        "cue": "“水面”的拼音首字母 s-m，仅作编码"
+      },
+      {
+        "text": "ooth",
+        "cue": "借 tooth（牙齿），去掉开头 t"
+      }
+    ],
+    "scene": "水面 sm 映出一颗打磨光滑的牙齿 tooth，镜面和牙面都平滑；sm＋ooth，牙齿先去首 t，不漏两个 o。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "social",
+    "parts": [
+      {
+        "text": "soc",
+        "cue": "借 soccer（足球），取前三字母 soc"
+      },
+      {
+        "text": "ial",
+        "cue": "借 trial（试验），去掉开头 tr"
+      }
+    ],
+    "scene": "足球 soccer 队做一次试验 trial：每个人都与陌生队员聊天，练习社交；soc＋ial，场景是社会交往。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "store",
+    "parts": [
+      {
+        "text": "st",
+        "cue": "借 star（星星），取前两个字母 st"
+      },
+      {
+        "text": "ore",
+        "cue": "借 more（更多），去掉开头 m"
+      }
+    ],
+    "scene": "星星 star 招牌的商店买进更多 more 商品，把货储存在仓库；st＋ore，同场景记商店和储存。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "suncream",
+    "parts": [
+      {
+        "text": "sun",
+        "cue": "英语 sun，太阳"
+      },
+      {
+        "text": "cream",
+        "cue": "英语 cream，霜、乳霜；此处用护肤霜义"
+      }
+    ],
+    "scene": "太阳 sun 下出门，先抹一层防晒 cream 乳霜；sun＋cream，涂在皮肤上防晒的就是防晒霜。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "tradition",
+    "parts": [
+      {
+        "text": "trad",
+        "cue": "借 trade（贸易），去掉末尾 e"
+      },
+      {
+        "text": "ition",
+        "cue": "借 position（位置），取末尾 ition"
+      }
+    ],
+    "scene": "村民世代在同一位置 position 做贸易 trade，赶集成为传统；trad＋ition，世代重复的习惯提醒传统。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "translation",
+    "parts": [
+      {
+        "text": "trans",
+        "cue": "借 transport（运输），取前五字母 trans"
+      },
+      {
+        "text": "la",
+        "cue": "“拉”的拼音 la"
+      },
+      {
+        "text": "tion",
+        "cue": "借 station（车站），取末尾 tion"
+      }
+    ],
+    "scene": "运输 transport 车拉 la 来各国语句，车站 station 工作人员把它们换成中文译文；trans＋la＋tion，换语言是翻译。",
+    "method": "独立熟词搭桥"
+  },
+  {
+    "word": "varied",
+    "parts": [
+      {
+        "text": "var",
+        "cue": "借 very（很、非常），去掉末尾 y，再把第2位 e 换成 a"
+      },
+      {
+        "text": "ied",
+        "cue": "借 tied（绑住），去掉开头 t"
+      }
+    ],
+    "scene": "把非常 very 多花样的彩带绑 tied 成一束，每条颜色都不同；very 改成 var，tied 去 t 得 ied，var＋ied 是各种各样的。",
+    "method": "独立熟词搭桥"
+  }
+]

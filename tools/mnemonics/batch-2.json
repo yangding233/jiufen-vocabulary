@@ -1,0 +1,2523 @@
+[
+  {
+    "word": "horse",
+    "parts": [
+      {
+        "text": "horse",
+        "cue": "借 house（房子），把第3位 u 换成 r"
+      }
+    ],
+    "scene": "把 house 的 u 形门洞换成 r 形马头，房子成了马厩，里面站着一匹马。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "hour",
+    "parts": [
+      {
+        "text": "h",
+        "cue": "把 h 想成挂钟的挂钩"
+      },
+      {
+        "text": "our",
+        "cue": "英语 our，我们的"
+      }
+    ],
+    "scene": "h 挂钩挂着我们的 our 钟，时针每走过一个数字格就是一小时；先写 h，再写 our。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "humour",
+    "parts": [
+      {
+        "text": "hum",
+        "cue": "英语 hum，哼唱"
+      },
+      {
+        "text": "our",
+        "cue": "英语 our，我们的"
+      }
+    ],
+    "scene": "把我们的 our 名字哼唱 hum 成一段逗人的小调，大家都笑了：这是幽默；拼写按 hum、our 排列。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "hunger",
+    "parts": [
+      {
+        "text": "hung",
+        "cue": "借 hang（悬挂）的过去式 hung"
+      },
+      {
+        "text": "er",
+        "cue": "“儿”的拼音 er，联系喊饿的小孩儿；仅作字母编码"
+      }
+    ],
+    "scene": "把空饭碗悬挂 hung 起来，一个小孩儿 er 盯着它喊饿；hung＋er，空碗与喊饿的孩子提醒饥饿。儿的拼音不作英语注音。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "hungry",
+    "parts": [
+      {
+        "text": "hungr",
+        "cue": "借 hunger（饥饿），删除第5位 e，留下 hungr"
+      },
+      {
+        "text": "y",
+        "cue": "结尾 y，借 yes（是）的首字母"
+      }
+    ],
+    "scene": "肚子发出 hunger 的饥饿声，问“饿了吗”，回答 yes：是饥饿的。把 hunger 第5位 e 删掉，再加 y，得到 hungry。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "hunt",
+    "parts": [
+      {
+        "text": "hunt",
+        "cue": "借 hurt（受伤），把第3位 r 换成 n"
+      }
+    ],
+    "scene": "受伤 hurt 的猎人架起 n 形捕兽网去打猎；只换第3位，hunt 是狩猎／搜寻。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "ice",
+    "parts": [
+      {
+        "text": "ice",
+        "cue": "英语 nice（好的）去掉开头 n"
+      }
+    ],
+    "scene": "nice 的冰饮杯上，n 标签冻掉了，只剩 ice：记住冰。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "identification",
+    "parts": [
+      {
+        "text": "identi",
+        "cue": "借 identity（身份），去掉结尾 ty"
+      },
+      {
+        "text": "fication",
+        "cue": "借 notification（通知），去掉开头 noti"
+      }
+    ],
+    "scene": "把 identity 身份资料送去办通知 notification，最后拿到身份证明；先留 identi，再接 fication。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "increase",
+    "parts": [
+      {
+        "text": "in",
+        "cue": "英语 in，进入"
+      },
+      {
+        "text": "crease",
+        "cue": "英语 crease，褶皱"
+      }
+    ],
+    "scene": "更多布料挤进 in 箱子，褶皱 crease 越来越多：数量增加。两个块直接连成 increase。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "India",
+    "parts": [
+      {
+        "text": "In",
+        "cue": "英语 in，在里面"
+      },
+      {
+        "text": "dia",
+        "cue": "汉字“嗲”的拼音 dia，仅作字母提示"
+      }
+    ],
+    "scene": "在 in 一部印度电影里，主角用嗲 dia 声唱歌跳舞；记住地点印度，I 大写。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "influence",
+    "parts": [
+      {
+        "text": "in",
+        "cue": "英语 in，进入"
+      },
+      {
+        "text": "flu",
+        "cue": "英语 flu，流感"
+      },
+      {
+        "text": "ence",
+        "cue": "借 fence（栅栏），去掉开头 f"
+      }
+    ],
+    "scene": "流感 flu 进入 in 围栏 fence 圈起的学校，影响了全班上课；按 in、flu、ence 写。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "ink",
+    "parts": [
+      {
+        "text": "ink",
+        "cue": "借 pink（粉红色），去掉开头 p"
+      }
+    ],
+    "scene": "粉红色 pink 墨水瓶把 p 标签染没了，只剩 ink：墨水。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "inscriptions",
+    "parts": [
+      {
+        "text": "in",
+        "cue": "英语 in，在里面"
+      },
+      {
+        "text": "script",
+        "cue": "英语 script，文字稿"
+      },
+      {
+        "text": "ions",
+        "cue": "英语 ion（离子）的复数，作字形提示"
+      }
+    ],
+    "scene": "把文字稿 script 刻进 in 石碑，想象一粒粒离子 ions 发光组成多行铭文；这是自编画面，铭文并非真的由离子雕刻。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "instinctive",
+    "parts": [
+      {
+        "text": "instinct",
+        "cue": "英语 instinct，本能"
+      },
+      {
+        "text": "ive",
+        "cue": "借 five（五），去掉开头 f"
+      }
+    ],
+    "scene": "五 five 岁孩子碰到烫杯就缩手，是 instinct 本能，不用先想；留 instinct，接 five 去 f 的 ive。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "insulation",
+    "parts": [
+      {
+        "text": "insul",
+        "cue": "借 insult（辱骂），去掉末尾 t"
+      },
+      {
+        "text": "ation",
+        "cue": "借 nation（国家），去掉开头 n"
+      }
+    ],
+    "scene": "想象全国 nation 都给辱骂 insult 套上厚罩子，声音被隔绝；借“隔开”的动作记隔热／绝缘。取 insul＋ation。这里只借画面，绝缘材料的作用是阻隔电流，隔热材料减少热量传递。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "insurance",
+    "parts": [
+      {
+        "text": "in",
+        "cue": "英语 in，进入"
+      },
+      {
+        "text": "surance",
+        "cue": "借 assurance（保证），去掉开头 as"
+      }
+    ],
+    "scene": "把钱投进 in 一份提供保证 assurance 的合同，意外时获得保障：保险；in 后接 assurance 去 as 的 surance。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "intelligent",
+    "parts": [
+      {
+        "text": "in",
+        "cue": "英语 in，在里面"
+      },
+      {
+        "text": "tell",
+        "cue": "英语 tell，告诉"
+      },
+      {
+        "text": "igent",
+        "cue": "借 agent（代理人），把第1位 a 换成 i，得到 igent"
+      }
+    ],
+    "scene": "脑袋里面 in 有个会告诉 tell 你答案的聪明代理人 agent；agent 的 a 换 i 得 igent，按 in＋tell＋igent 拼成 intelligent。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "intermediate",
+    "parts": [
+      {
+        "text": "inter",
+        "cue": "借 internet（互联网），去掉结尾 net"
+      },
+      {
+        "text": "mediate",
+        "cue": "英语 mediate，居中调解"
+      }
+    ],
+    "scene": "互联网 internet 上有争论，一位调解者 mediate 坐在两边中间；用“处在中间”记中间的／中级的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "iron",
+    "parts": [
+      {
+        "text": "ir",
+        "cue": "借 sir（先生），去掉开头 s"
+      },
+      {
+        "text": "on",
+        "cue": "英语 on，在……上"
+      }
+    ],
+    "scene": "先生 sir 去掉帽子 s，把铁熨斗放在 on 衣服上熨平；ir＋on 记铁、熨斗、熨烫。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "irrigation",
+    "parts": [
+      {
+        "text": "irri",
+        "cue": "借 irritate（使恼怒），去掉结尾 tate"
+      },
+      {
+        "text": "gation",
+        "cue": "借 navigation（航行），去掉开头 navi"
+      }
+    ],
+    "scene": "田地干裂让人恼怒 irritate，开来航行 navigation 的水船给农田灌溉；保留 irri，再接 gation。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "Italian",
+    "parts": [
+      {
+        "text": "It",
+        "cue": "英语 it，它"
+      },
+      {
+        "text": "a",
+        "cue": "英语 a，一个"
+      },
+      {
+        "text": "lian",
+        "cue": "“莲”的拼音 lian，仅提示字母"
+      }
+    ],
+    "scene": "它 it 是一朵 a 莲 lian 花，印在意大利语课本封面上；It＋a＋lian，首字母大写。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "Japan",
+    "parts": [
+      {
+        "text": "Ja",
+        "cue": "借 jam（果酱），去掉末尾 m"
+      },
+      {
+        "text": "pan",
+        "cue": "英语 pan，平底锅"
+      }
+    ],
+    "scene": "把果酱 jam 放进平底锅 pan，画出日本国旗的红圆；Ja＋pan，J 大写。国旗画面只作助记。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "jazz",
+    "parts": [
+      {
+        "text": "ja",
+        "cue": "借 jam（果酱），去掉末尾 m"
+      },
+      {
+        "text": "zz",
+        "cue": "两个 z，借漫画中两道锯齿音符的形状"
+      }
+    ],
+    "scene": "果酱 jam 在爵士乐节拍中抖成两道 z 形音符；先写 ja，尾部连续两个 z。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "job",
+    "parts": [
+      {
+        "text": "job",
+        "cue": "借 joy（快乐），把末尾 y 换成 b"
+      }
+    ],
+    "scene": "找到让人快乐 joy 的工作，把 y 换成像公文包提手的 b；job 记工作。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "joint",
+    "parts": [
+      {
+        "text": "join",
+        "cue": "英语 join，加入、连接"
+      },
+      {
+        "text": "t",
+        "cue": "把 t 想成十字连接钉"
+      }
+    ],
+    "scene": "把两段骨头 join 连接起来，用 t 形钉作关节；连接在一起也提示联合的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "joke",
+    "parts": [
+      {
+        "text": "joke",
+        "cue": "借 poke（戳），把开头 p 换成 j"
+      }
+    ],
+    "scene": "有人轻戳 poke 你一下，再讲个笑话逗笑；p 换成像笑弯腰的 j，得到 joke。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "juice",
+    "parts": [
+      {
+        "text": "ju",
+        "cue": "“橘”的拼音 ju，仅提示字母"
+      },
+      {
+        "text": "ice",
+        "cue": "英语 ice，冰"
+      }
+    ],
+    "scene": "把橘 ju 子榨汁，加入冰 ice：一杯果汁。直接拼 ju＋ice。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "King",
+    "parts": [
+      {
+        "text": "King",
+        "cue": "借 ring（戒指），把开头 r 换成大写 K"
+      }
+    ],
+    "scene": "国王把权力戒指 ring 戴在手上，戒指前站着 K 形伸手的人；r 换 K，记 King 国王。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "knee",
+    "parts": [
+      {
+        "text": "k",
+        "cue": "把 k 看成弯曲的一条腿"
+      },
+      {
+        "text": "nee",
+        "cue": "借 need（需要），去掉末尾 d"
+      }
+    ],
+    "scene": "需要 need 跪下时，弯曲 k 形腿的膝盖；k 后接 need 去 d 的 nee。k 在标准读音中不发音。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "labor",
+    "parts": [
+      {
+        "text": "lab",
+        "cue": "英语 lab，实验室"
+      },
+      {
+        "text": "or",
+        "cue": "英语 or，或者"
+      }
+    ],
+    "scene": "在实验室 lab 里搬器材或者 or 擦桌子，都是劳动；按 lab＋or 写 labor。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "laboratory",
+    "parts": [
+      {
+        "text": "labor",
+        "cue": "英语 labor，劳动"
+      },
+      {
+        "text": "atory",
+        "cue": "借 factory（工厂），删除第1位 f 和第3位 c"
+      }
+    ],
+    "scene": "把工厂 factory 里重复的劳动 labor 搬去做实验；labor 后接 factory 去 f、c 的 atory，成为实验室。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "lake",
+    "parts": [
+      {
+        "text": "lake",
+        "cue": "借 cake（蛋糕），把开头 c 换成 l"
+      }
+    ],
+    "scene": "把圆蛋糕 cake 的中心挖成湖，插一根 l 形码头；c 换 l，记 lake 湖。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "lamb",
+    "parts": [
+      {
+        "text": "lam",
+        "cue": "借 lamp（灯），去掉末尾 p"
+      },
+      {
+        "text": "b",
+        "cue": "把 b 想成两团卷曲羊毛"
+      }
+    ],
+    "scene": "小羊在灯 lamp 下睡觉，身上两团羊毛像 b；lam＋b 是羔羊，也可指羊肉。末尾 b 不发音。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "land",
+    "parts": [
+      {
+        "text": "land",
+        "cue": "借 hand（手），把开头 h 换成 l"
+      }
+    ],
+    "scene": "手 hand 把飞机托住，再沿 l 形跑道放到土地上着陆；h 换 l，记 land。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "laundry",
+    "parts": [
+      {
+        "text": "laun",
+        "cue": "借 launch（启动），去掉末尾 ch"
+      },
+      {
+        "text": "dry",
+        "cue": "英语 dry，干燥、晾干"
+      }
+    ],
+    "scene": "启动 launch 洗衣机，再把衣物晾干 dry；留 laun＋dry，记洗衣房／待洗衣物。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "leak",
+    "parts": [
+      {
+        "text": "leak",
+        "cue": "借 leaf（叶子），把末尾 f 换成 k"
+      }
+    ],
+    "scene": "用叶子 leaf 接漏水，叶片裂出 k 形缺口，水泄漏；f 换 k，得到 leak。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "leather",
+    "parts": [
+      {
+        "text": "leat",
+        "cue": "借 meat（肉），把开头 m 换成 l"
+      },
+      {
+        "text": "her",
+        "cue": "英语 her，她的"
+      }
+    ],
+    "scene": "肉 meat 外面包着她的 her 皮革围裙；meat 的 m 换 l 得 leat，再接 her。只借字形，不把肉与皮革当同物。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "leg",
+    "parts": [
+      {
+        "text": "leg",
+        "cue": "借 Lego（乐高积木）的拼写，去掉末尾 o；借用品牌名只作字母提示"
+      }
+    ],
+    "scene": "用 Lego 乐高积木拼一条腿，把末尾 o 形积木拆掉，只留 leg；记腿。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "length",
+    "parts": [
+      {
+        "text": "leng",
+        "cue": "借 long（长的），把第2位 o 换成 e"
+      },
+      {
+        "text": "th",
+        "cue": "“铁盒”的拼音首字母 t-h，仅作字母编码"
+      }
+    ],
+    "scene": "量一只长 long 铁盒 th 的长度，尺子把圆 o 拉成横伸的 e；long 先变 leng，再接 th，得到 length。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "letter",
+    "parts": [
+      {
+        "text": "let",
+        "cue": "英语 let，让"
+      },
+      {
+        "text": "ter",
+        "cue": "借 term（学期），去掉末尾 m"
+      }
+    ],
+    "scene": "让 let 新学期 term 的第一封信写满字母；let 后接 term 去 m 的 ter，两个 t 在中间相遇。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "light",
+    "parts": [
+      {
+        "text": "light",
+        "cue": "借 night（夜晚），把开头 n 换成 l"
+      }
+    ],
+    "scene": "夜晚 night 亮起 l 形路灯；n 换 l 得 light，先记光和灯，再联想到明亮的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "link",
+    "parts": [
+      {
+        "text": "link",
+        "cue": "借 pink（粉红色），把开头 p 换成 l"
+      }
+    ],
+    "scene": "一条粉红色 pink 的 l 形链条把两页连起来；p 换 l，记链接／联系。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "lock",
+    "parts": [
+      {
+        "text": "lock",
+        "cue": "借 clock（钟），去掉开头 c"
+      }
+    ],
+    "scene": "给钟 clock 上锁，锁住开头 c 后只看见 lock；记锁、锁上。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "logo",
+    "parts": [
+      {
+        "text": "lo",
+        "cue": "借 look（看），去掉末尾 ok"
+      },
+      {
+        "text": "go",
+        "cue": "英语 go，走"
+      }
+    ],
+    "scene": "看 look 见品牌标志就跟着它走 go；保留 lo＋go，记 logo 标志。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "lounge",
+    "parts": [
+      {
+        "text": "lounge",
+        "cue": "借 lung（肺），在 l 后加 o，再在末尾加 e"
+      }
+    ],
+    "scene": "在休息室深呼吸放松肺 lung：让 o 形沙发挤到 l 后面，末尾放 e 形靠垫，拼成 lounge。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "love",
+    "parts": [
+      {
+        "text": "love",
+        "cue": "借 glove（手套），去掉开头 g"
+      }
+    ],
+    "scene": "爱的人把手套 glove 送给你，礼物上的 g 标签取掉只剩 love；手套搭桥到爱。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "lower",
+    "parts": [
+      {
+        "text": "low",
+        "cue": "英语 low，低的"
+      },
+      {
+        "text": "er",
+        "cue": "比较时常见的结尾 er"
+      }
+    ],
+    "scene": "把 low 低矮的凳子再降低一级；low＋er，记较低的，也记降低这个动作。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "luxury",
+    "parts": [
+      {
+        "text": "lux",
+        "cue": "借 deluxe（豪华的），去掉开头 de 和末尾 e"
+      },
+      {
+        "text": "ury",
+        "cue": "借 jury（陪审团），去掉开头 j"
+      }
+    ],
+    "scene": "豪华 deluxe 酒店为陪审团 jury 铺上昂贵地毯；lux＋ury，抓住豪华、奢侈的花费。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "magic",
+    "parts": [
+      {
+        "text": "mag",
+        "cue": "借 magazine（杂志），只取前3字母"
+      },
+      {
+        "text": "ic",
+        "cue": "借 ice（冰），去掉末尾 e"
+      }
+    ],
+    "scene": "魔术师从杂志 magazine 中变出冰 ice；mag＋ic，记魔术／魔法。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "main",
+    "parts": [
+      {
+        "text": "main",
+        "cue": "借 rain（雨），把开头 r 换成 m"
+      }
+    ],
+    "scene": "地图上雨 rain 打湿了主干道，只剩 m 形主路最醒目；r 换 m，main 是主要的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "male",
+    "parts": [
+      {
+        "text": "male",
+        "cue": "借 sale（出售），把开头 s 换成 m"
+      }
+    ],
+    "scene": "出售 sale 柜台后站着一位男士，胸前的 m 标签替换 s；sale→male，记男性的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "Market",
+    "parts": [
+      {
+        "text": "Mark",
+        "cue": "英语 mark，标记"
+      },
+      {
+        "text": "et",
+        "cue": "借 pet（宠物），去掉开头 p"
+      }
+    ],
+    "scene": "市场里每件商品都做价格标记 mark，宠物 pet 也有价签；Mark＋et，按原表保留大写 M。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "material",
+    "parts": [
+      {
+        "text": "mate",
+        "cue": "英语 mate，伙伴"
+      },
+      {
+        "text": "rial",
+        "cue": "借 trial（试验），去掉开头 t"
+      }
+    ],
+    "scene": "伙伴 mate 带来做试验 trial 的一堆材料；mate＋rial，记材料、素材。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "maths",
+    "parts": [
+      {
+        "text": "mat",
+        "cue": "英语 mat，垫子"
+      },
+      {
+        "text": "hs",
+        "cue": "“函数”的拼音首字母 h-s，仅作编码"
+      }
+    ],
+    "scene": "在垫子 mat 上画函数 hs 图做数学题；mat＋hs，记 maths 数学，s 不遗漏。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "meat",
+    "parts": [
+      {
+        "text": "m",
+        "cue": "把 m 看成两排门牙"
+      },
+      {
+        "text": "eat",
+        "cue": "英语 eat，吃"
+      }
+    ],
+    "scene": "两排 m 形牙齿吃 eat 肉；m＋eat，记肉。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "mechanism",
+    "parts": [
+      {
+        "text": "me",
+        "cue": "英语 me，我"
+      },
+      {
+        "text": "chan",
+        "cue": "“铲”的拼音 chan，仅提示字母"
+      },
+      {
+        "text": "ism",
+        "cue": "借 prism（棱镜），去掉开头 pr"
+      }
+    ],
+    "scene": "我 me 用铲 chan 子启动一台装棱镜 prism 的机械装置；me＋chan＋ism，抓住机械怎样运转的机制。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "media",
+    "parts": [
+      {
+        "text": "me",
+        "cue": "英语 me，我"
+      },
+      {
+        "text": "dia",
+        "cue": "“嗲”的拼音 dia，仅提示字母"
+      }
+    ],
+    "scene": "我 me 用嗲 dia 声给电台做节目，广播、电视都属媒体；me＋dia，不把拼音当英语发音。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "medical",
+    "parts": [
+      {
+        "text": "medic",
+        "cue": "英语 medic，医护人员"
+      },
+      {
+        "text": "al",
+        "cue": "借 all（全部），去掉最后一个 l"
+      }
+    ],
+    "scene": "所有 all 医护人员 medic 穿上医疗制服；medic＋al，记医疗的／医学的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "metal",
+    "parts": [
+      {
+        "text": "met",
+        "cue": "借 meet（见面）的过去式 met"
+      },
+      {
+        "text": "al",
+        "cue": "借 all（全部），去掉最后一个 l"
+      }
+    ],
+    "scene": "大家 all 见面 met 时各拿一件金属制品，碰出清脆响声；met＋al，记金属。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "methods",
+    "parts": [
+      {
+        "text": "met",
+        "cue": "借 meet（相遇）的过去式 met"
+      },
+      {
+        "text": "hods",
+        "cue": "借 holds（握住），删除第3位 l，得到 hods"
+      }
+    ],
+    "scene": "两人相遇 met 后握手 holds，交换解决问题的方法；met 后接 holds 去 l 的 hods，得到 methods。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "Mexico",
+    "parts": [
+      {
+        "text": "Me",
+        "cue": "英语 me，我"
+      },
+      {
+        "text": "xi",
+        "cue": "“西”的拼音 xi"
+      },
+      {
+        "text": "co",
+        "cue": "借 corn（玉米），去掉末尾 rn"
+      }
+    ],
+    "scene": "我 me 向西 xi 去墨西哥吃玉米 corn；Me＋xi＋co，M 大写。故事是旅行联想。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "milk",
+    "parts": [
+      {
+        "text": "milk",
+        "cue": "借 silk（丝绸），把开头 s 换成 m"
+      }
+    ],
+    "scene": "丝绸 silk 一样顺滑的牛奶流出 m 形奶壶；s 换 m，milk 记牛奶。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "moderate",
+    "parts": [
+      {
+        "text": "mode",
+        "cue": "英语 mode，模式"
+      },
+      {
+        "text": "rate",
+        "cue": "英语 rate，速度、比率"
+      }
+    ],
+    "scene": "把机器模式 mode 的速率 rate 调到中档：适度、不快不慢；mode＋rate。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "mold",
+    "parts": [
+      {
+        "text": "m",
+        "cue": "把 m 想成模具的两个拱槽"
+      },
+      {
+        "text": "old",
+        "cue": "英语 old，旧的"
+      }
+    ],
+    "scene": "m 形模具 old 太旧发霉了；m＋old，同时挂住模具和霉菌两个意思。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "month",
+    "parts": [
+      {
+        "text": "mon",
+        "cue": "借 Monday（星期一），去掉末尾 day"
+      },
+      {
+        "text": "th",
+        "cue": "借 three（三），取前两字母 th"
+      }
+    ],
+    "scene": "翻日历，Monday 星期一开头的一页上，三 three 十天左右组成一个月；mon＋th。月份天数并不都相同。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "mother",
+    "parts": [
+      {
+        "text": "m",
+        "cue": "把 m 看成妈妈伸出的双臂"
+      },
+      {
+        "text": "other",
+        "cue": "英语 other，其他的"
+      }
+    ],
+    "scene": "其他 other 人离开时，妈妈还伸着 m 形双臂等你；m＋other，记母亲。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "mud",
+    "parts": [
+      {
+        "text": "mud",
+        "cue": "借 mug（马克杯），把末尾 g 换成 d"
+      }
+    ],
+    "scene": "马克杯 mug 盛满湿泥，杯把压成 d 形；g 换 d，mud 记泥。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "myth",
+    "parts": [
+      {
+        "text": "my",
+        "cue": "英语 my，我的"
+      },
+      {
+        "text": "th",
+        "cue": "借 thunder（雷声），只取前两字母 th"
+      }
+    ],
+    "scene": "我的 my 故事说雷 thunder 是神敲鼓，讲的是神话；my＋th。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "name",
+    "parts": [
+      {
+        "text": "name",
+        "cue": "借 game（游戏），把开头 g 换成 n"
+      }
+    ],
+    "scene": "游戏 game 开局先填名字，g 换成名牌上的 n，得到 name；也记给角色命名。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "nature",
+    "parts": [
+      {
+        "text": "nat",
+        "cue": "借 native（本地的），只取前3字母"
+      },
+      {
+        "text": "ure",
+        "cue": "借 pure（纯净的），去掉开头 p"
+      }
+    ],
+    "scene": "本地 native 山林保留纯净 pure 的自然景色；nat＋ure，先记大自然。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "neck",
+    "parts": [
+      {
+        "text": "neck",
+        "cue": "借 deck（甲板），把开头 d 换成 n"
+      }
+    ],
+    "scene": "船甲板 deck 上风大，把围巾绕成 n 形护住脖子；deck 的 d 换成 n，neck 是脖子。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "negative",
+    "parts": [
+      {
+        "text": "neg",
+        "cue": "借 neglect（忽视），只取前3字母"
+      },
+      {
+        "text": "ative",
+        "cue": "借 native（本地的），去掉开头 n"
+      }
+    ],
+    "scene": "本地 native 的建议被忽视 neglect，并盖上否定章；neg＋ative，连接否定、负面。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "nest",
+    "parts": [
+      {
+        "text": "nest",
+        "cue": "借 next（下一个），把第3位 x 换成 s"
+      }
+    ],
+    "scene": "下一个 next 树杈上有个鸟巢，x 形树杈换成盘成 s 的巢草；x 换 s，记 nest。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "nitrogen",
+    "parts": [
+      {
+        "text": "nit",
+        "cue": "借 knit（编织），去掉开头 k"
+      },
+      {
+        "text": "ro",
+        "cue": "借 row（划船），去掉末尾 w"
+      },
+      {
+        "text": "gen",
+        "cue": "借 general（将军），只取前3字母"
+      }
+    ],
+    "scene": "将军 general 划着 row 小艇，给标着 N 的氮气罐织 knit 保护套；按 nit＋ro＋gen 拼。N 是氮的元素符号，划艇与编织只是助记故事。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "no",
+    "parts": [
+      {
+        "text": "no",
+        "cue": "借 nose（鼻子），去掉末尾 se"
+      }
+    ],
+    "scene": "捏着鼻子 nose 摇头说“不”；nose 去 se 只留 no，记否定。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "number",
+    "parts": [
+      {
+        "text": "numb",
+        "cue": "英语 numb，麻木的"
+      },
+      {
+        "text": "er",
+        "cue": "借 her（她），去掉开头 h"
+      }
+    ],
+    "scene": "她 her 一直数数字，数到手指都麻木 numb；numb＋er，数字／号码。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "nut",
+    "parts": [
+      {
+        "text": "nut",
+        "cue": "借 not（不），把中间 o 换成 u"
+      }
+    ],
+    "scene": "坚果太硬，嘴说 not“不”，中间 o 形坚果裂成 u 形壳；o 换 u，记 nut。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "ocean",
+    "parts": [
+      {
+        "text": "o",
+        "cue": "把 o 看成海面上的圆圈"
+      },
+      {
+        "text": "ce",
+        "cue": "“测”的拼音 ce"
+      },
+      {
+        "text": "an",
+        "cue": "“岸”的拼音 an"
+      }
+    ],
+    "scene": "在大海画 o 形测 ce 量圈，一直测到岸 an；o＋ce＋an，记海洋。拼音仅作编码。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "oil",
+    "parts": [
+      {
+        "text": "oil",
+        "cue": "借 soil（土壤），去掉开头 s"
+      }
+    ],
+    "scene": "从土壤 soil 下面抽出石油，把表面那层 s 拿掉，只剩 oil；记油。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "orange",
+    "parts": [
+      {
+        "text": "o",
+        "cue": "把 o 看成圆橙子"
+      },
+      {
+        "text": "range",
+        "cue": "英语 range，范围、系列"
+      }
+    ],
+    "scene": "一串 range 橙色颜料围住 o 形橙子；o＋range，同时记橙子和橙色。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "organic",
+    "parts": [
+      {
+        "text": "organ",
+        "cue": "英语 organ，器官"
+      },
+      {
+        "text": "ic",
+        "cue": "借 ice（冰），去掉末尾 e"
+      }
+    ],
+    "scene": "想象器官 organ 模型用有机材料做成，放在冰 ice 上展示；organ＋ic。器官只是字形桥，不是有机一词的完整定义。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "originality",
+    "parts": [
+      {
+        "text": "original",
+        "cue": "英语 original，原创的"
+      },
+      {
+        "text": "ity",
+        "cue": "借 city（城市），去掉开头 c"
+      }
+    ],
+    "scene": "城市 city 的作品展只收 original 原创作品，评的是独创性；original＋ity。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "ozone",
+    "parts": [
+      {
+        "text": "o",
+        "cue": "借 oxygen（氧气）的首字母 o，作为字母提示"
+      },
+      {
+        "text": "zone",
+        "cue": "英语 zone，区域"
+      }
+    ],
+    "scene": "在地球上空画一个 zone 区域，标上 o 和 O₃，代表臭氧层；o＋zone。臭氧是 O₃，与氧气 O₂ 区分。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pain",
+    "parts": [
+      {
+        "text": "pain",
+        "cue": "借 rain（雨），把开头 r 换成 p"
+      }
+    ],
+    "scene": "雨 rain 像小针 p 扎到身上，感觉疼痛；r 换 p，记 pain。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "paint",
+    "parts": [
+      {
+        "text": "pain",
+        "cue": "英语 pain，疼痛"
+      },
+      {
+        "text": "t",
+        "cue": "把 t 想成油漆刷的刷柄"
+      }
+    ],
+    "scene": "刷油漆时疼痛 pain 的手还握着 t 形刷子；pain＋t，记颜料／涂漆。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "Paper",
+    "parts": [
+      {
+        "text": "Paper",
+        "cue": "借 pepper（胡椒），先删去原词第3位 p 得 peper，再把第2位 e 换成 a，最后将首字母大写"
+      }
+    ],
+    "scene": "胡椒 pepper 洒在纸上，盖住原词第3位 p，再把剩下 peper 的第2位 e 涂成 a；写成 Paper 纸，P 按词表大写。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "Park",
+    "parts": [
+      {
+        "text": "Park",
+        "cue": "借 dark（黑暗的），把开头 d 换成大写 P"
+      }
+    ],
+    "scene": "天黑 dark 后，P 形停车牌亮起，车停在公园门口；d 换 P，同时记公园和停车。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pass",
+    "parts": [
+      {
+        "text": "pass",
+        "cue": "借 class（班级），去掉开头 cl，再加 p"
+      }
+    ],
+    "scene": "班级 class 发通行证，每人拿着 p 形证卡通过门口；class 去 cl 留 ass，前面加 p。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "performance",
+    "parts": [
+      {
+        "text": "perform",
+        "cue": "英语 perform，表演、执行"
+      },
+      {
+        "text": "ance",
+        "cue": "借 dance（跳舞），去掉开头 d"
+      }
+    ],
+    "scene": "在台上 perform 表演一支舞 dance，观众评价这次表现；perform＋ance，也可借“执行效果”理解性能。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "permit",
+    "parts": [
+      {
+        "text": "per",
+        "cue": "借 person（人），去掉结尾 son"
+      },
+      {
+        "text": "mit",
+        "cue": "借 admit（准许进入），去掉开头 ad"
+      }
+    ],
+    "scene": "门口的一个人 person 查看许可证，才准许进入 admit；per＋mit，记许可证／允许。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pest",
+    "parts": [
+      {
+        "text": "pest",
+        "cue": "借 pet（宠物），在 e 后插入 s"
+      }
+    ],
+    "scene": "宠物 pet 身上爬着一只 s 形害虫；pet 的 e 后多出 s，就成 pest。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "philosophers",
+    "parts": [
+      {
+        "text": "philo",
+        "cue": "借 philosophy（哲学），只取前5字母"
+      },
+      {
+        "text": "sophers",
+        "cue": "借 philosophy，把末尾 y 换成 ers，再去掉前5字母 philo"
+      }
+    ],
+    "scene": "几位研究 philosophy 哲学的人围桌追问人生意义，他们是哲学家；由 philosophy 去 y，加 ers，得 philosophers。分成 philo＋sophers 方便核对，不逐块编造词义。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "physical",
+    "parts": [
+      {
+        "text": "physic",
+        "cue": "借 physics（物理学），去掉末尾 s"
+      },
+      {
+        "text": "al",
+        "cue": "借 all（全部），去掉最后一个 l"
+      }
+    ],
+    "scene": "物理 physics 课让全体 all 学生用身体搬重物，感受物质的重量；physic＋al，联系身体的、物理的、物质的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "piano",
+    "parts": [
+      {
+        "text": "pi",
+        "cue": "借 pie（馅饼），去掉末尾 e"
+      },
+      {
+        "text": "an",
+        "cue": "英语 an，一个"
+      },
+      {
+        "text": "o",
+        "cue": "把 o 看成圆音符"
+      }
+    ],
+    "scene": "一块馅饼 pie 放在一架 an 钢琴上，琴键弹出圆音符 o；pi＋an＋o。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "picture",
+    "parts": [
+      {
+        "text": "pic",
+        "cue": "借 picnic（野餐），只取前3字母"
+      },
+      {
+        "text": "ture",
+        "cue": "借 nature（自然），去掉开头 na"
+      }
+    ],
+    "scene": "给自然 nature 中的野餐 picnic 拍照片；pic＋ture，记图片／照片。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pilots",
+    "parts": [
+      {
+        "text": "pi",
+        "cue": "借 pie（馅饼），去掉末尾 e"
+      },
+      {
+        "text": "lots",
+        "cue": "英语 lots，许多"
+      }
+    ],
+    "scene": "许多 lots 飞行员轮休时分享馅饼 pie；pi＋lots，记多名飞行员，末尾 s 留住。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pioneer",
+    "parts": [
+      {
+        "text": "pi",
+        "cue": "借 pie（馅饼），去掉末尾 e"
+      },
+      {
+        "text": "one",
+        "cue": "英语 one，一"
+      },
+      {
+        "text": "er",
+        "cue": "借 her（她），去掉开头 h"
+      }
+    ],
+    "scene": "她 her 第一个 one 把馅饼 pie 生意开到荒地，成为开拓者；按 pi＋one＋er 拼，不按故事语序拼。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pipes",
+    "parts": [
+      {
+        "text": "pi",
+        "cue": "借 pie（馅饼），去掉末尾 e"
+      },
+      {
+        "text": "pes",
+        "cue": "借 pets（宠物），删掉第3位 t"
+      }
+    ],
+    "scene": "宠物 pets 把馅饼 pie 堵进几根管道，水流不通；pi＋pes，管道复数 pipes。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pizza",
+    "parts": [
+      {
+        "text": "pi",
+        "cue": "圆周率 π 的拼写 pi"
+      },
+      {
+        "text": "zz",
+        "cue": "连续两个 z，想成切饼的两条锯齿线"
+      },
+      {
+        "text": "a",
+        "cue": "英语 a，一个"
+      }
+    ],
+    "scene": "把一张 a 圆比萨用 π 算面积，再沿两条 zz 锯齿线切开；按 pi＋zz＋a 拼。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "place",
+    "parts": [
+      {
+        "text": "p",
+        "cue": "把 p 想成地图定位图钉"
+      },
+      {
+        "text": "lace",
+        "cue": "英语 lace，蕾丝"
+      }
+    ],
+    "scene": "p 形定位钉插在地图上一家蕾丝 lace 店的位置；p＋lace，记地方、地点。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "plane",
+    "parts": [
+      {
+        "text": "plane",
+        "cue": "借 plan（计划），在末尾加 e"
+      }
+    ],
+    "scene": "旅行计划 plan 末尾贴上 e 形机票，按计划坐飞机；plan＋e，记 plane。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "plastic",
+    "parts": [
+      {
+        "text": "plast",
+        "cue": "借 plaster（石膏），去掉末尾 er"
+      },
+      {
+        "text": "ic",
+        "cue": "借 ice（冰），去掉末尾 e"
+      }
+    ],
+    "scene": "用石膏 plaster 模子压出塑料冰 ice 块；plast＋ic，石膏是模具提示，塑料才是目标材料。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "plate",
+    "parts": [
+      {
+        "text": "plate",
+        "cue": "借 late（迟到的），在开头加 p"
+      }
+    ],
+    "scene": "迟到 late 的客人只拿到一个 p 形托起的空盘子；p＋late，记 plate。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "platforms",
+    "parts": [
+      {
+        "text": "plat",
+        "cue": "借 plate（盘子），去掉末尾 e"
+      },
+      {
+        "text": "forms",
+        "cue": "英语 form（形状、表格）的复数"
+      }
+    ],
+    "scene": "把大盘子 plate 拼成各种形状 forms 的站台，乘客站在上面等车；plat＋forms，末尾 s 表多个。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "poems",
+    "parts": [
+      {
+        "text": "po",
+        "cue": "借 pot（锅），去掉末尾 t"
+      },
+      {
+        "text": "ems",
+        "cue": "借 gems（宝石），去掉开头 g"
+      }
+    ],
+    "scene": "锅 pot 里煮出的宝石 gems 上刻着一首首诗；po＋ems，poems 是诗的复数。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "poet",
+    "parts": [
+      {
+        "text": "po",
+        "cue": "借 pot（锅），去掉末尾 t"
+      },
+      {
+        "text": "et",
+        "cue": "借 pet（宠物），去掉开头 p"
+      }
+    ],
+    "scene": "诗人对着锅 pot 和宠物 pet 都能写诗；取 po＋et，诗人 poet 与诗 poem 末字母不同。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pond",
+    "parts": [
+      {
+        "text": "pond",
+        "cue": "借 pound（英镑），删掉第3位 u"
+      }
+    ],
+    "scene": "一枚英镑 pound 掉进池塘，u 形水花散去；删掉 u，记 pond。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pool",
+    "parts": [
+      {
+        "text": "pool",
+        "cue": "借 cool（凉爽的），把开头 c 换成 p"
+      }
+    ],
+    "scene": "凉爽 cool 的泳池边立着 p 形跳台；c 换 p，pool 两个 o 像两个游泳圈。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "poor",
+    "parts": [
+      {
+        "text": "poor",
+        "cue": "借 door（门），把开头 d 换成 p"
+      }
+    ],
+    "scene": "破门 door 外站着一个贫穷的人，d 换成拄杖的 p；poor 记贫穷、可怜。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "powder",
+    "parts": [
+      {
+        "text": "pow",
+        "cue": "漫画里拳击声 POW，借其字形"
+      },
+      {
+        "text": "der",
+        "cue": "借 deer（鹿），删掉第3位 e"
+      }
+    ],
+    "scene": "漫画一拳 POW 把鹿 deer 角上的粉饼震成粉末；pow＋der。夸张画面只作助记。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "power",
+    "parts": [
+      {
+        "text": "power",
+        "cue": "借 tower（塔），把开头 t 换成 p"
+      }
+    ],
+    "scene": "电塔 tower 顶上装一个 p 形电源开关；t 换 p，记电力、能量，再联系权力。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "prevalent",
+    "parts": [
+      {
+        "text": "pre",
+        "cue": "借 prepare（准备），只取前3字母"
+      },
+      {
+        "text": "valent",
+        "cue": "借 valentine（情人节卡片），去掉末尾 ine"
+      }
+    ],
+    "scene": "准备 prepare 情人节卡 valentine 时，发现街上人人都在送卡，十分普遍；pre＋valent。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "primary",
+    "parts": [
+      {
+        "text": "prim",
+        "cue": "借 prime（首要的），去掉末尾 e"
+      },
+      {
+        "text": "ary",
+        "cue": "借 diary（日记），去掉开头 di"
+      }
+    ],
+    "scene": "小学第一本日记 diary 把首要 prime 的事情写首页；prim＋ary，记小学的／主要的／初级的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "private",
+    "parts": [
+      {
+        "text": "pri",
+        "cue": "借 price（价格），去掉末尾 ce"
+      },
+      {
+        "text": "vat",
+        "cue": "英语 vat，大桶"
+      },
+      {
+        "text": "e",
+        "cue": "字母 e，借 email（邮件）的首字母作标签"
+      }
+    ],
+    "scene": "一只标价 price 的大桶 vat 上贴着私人邮件 e 标签，只有主人能打开；pri＋vat＋e，记私人的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "property",
+    "parts": [
+      {
+        "text": "proper",
+        "cue": "英语 proper，适当的、合乎规矩的"
+      },
+      {
+        "text": "ty",
+        "cue": "借 twenty（二十），只取末尾 ty"
+      }
+    ],
+    "scene": "把财产分成二十 twenty 份，每份都作合规 proper 登记；proper＋ty，记财产，也可指房产。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "protein",
+    "parts": [
+      {
+        "text": "pro",
+        "cue": "英语 pro，专业人士"
+      },
+      {
+        "text": "tein",
+        "cue": "借 vein（静脉），把开头 v 换成 t"
+      }
+    ],
+    "scene": "专业人士 pro 给运动员画营养图，静脉 vein 旁标上 t 形鸡蛋，提醒补蛋白质；pro＋tein，不把示意画面当医学原理。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "pump",
+    "parts": [
+      {
+        "text": "pump",
+        "cue": "借 jump（跳），把开头 j 换成 p"
+      }
+    ],
+    "scene": "压动 p 形水泵，水像 jump 跳起；j 换 p，记泵和用泵抽水。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "purple",
+    "parts": [
+      {
+        "text": "pur",
+        "cue": "借 purse（钱包），去掉末尾 se"
+      },
+      {
+        "text": "ple",
+        "cue": "借 apple（苹果），去掉开头 ap"
+      }
+    ],
+    "scene": "紫色钱包 purse 里滚出一个紫苹果 apple；pur＋ple，抓住紫色。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "qualification",
+    "parts": [
+      {
+        "text": "qualif",
+        "cue": "借 qualify（取得资格），去掉末尾 y"
+      },
+      {
+        "text": "ication",
+        "cue": "借 application（申请），去掉开头 appl"
+      }
+    ],
+    "scene": "申请 application 通过，证明你已 qualify 取得资格，发给资格证；qualif＋ication，保留中间 i。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "rabbit",
+    "parts": [
+      {
+        "text": "rab",
+        "cue": "借 grab（抓），去掉开头 g"
+      },
+      {
+        "text": "bit",
+        "cue": "借 bite（咬），去掉末尾 e"
+      }
+    ],
+    "scene": "伸手抓 grab 兔子，兔子咬 bite 一口就跑；rab＋bit，中间两个 b 连写。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "rack",
+    "parts": [
+      {
+        "text": "rack",
+        "cue": "借 track（轨道），去掉开头 t"
+      }
+    ],
+    "scene": "把铁轨 track 拆下 t 形轨枕，剩下部分立起来做架子；去 t 得 rack。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "radio",
+    "parts": [
+      {
+        "text": "rad",
+        "cue": "借 road（道路），删掉第2位 o"
+      },
+      {
+        "text": "io",
+        "cue": "借 lion（狮子），删除开头 l 和末尾 n"
+      }
+    ],
+    "scene": "沿道路 road 开车，收音机里传来狮子 lion 吼声；rad＋io，记收音机／无线电。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "random",
+    "parts": [
+      {
+        "text": "ran",
+        "cue": "英语 run（跑）的过去式 ran"
+      },
+      {
+        "text": "dom",
+        "cue": "借 dome（圆顶），去掉末尾 e"
+      }
+    ],
+    "scene": "人们在圆顶 dome 场馆里乱跑 ran，抽签随机决定跑道；ran＋dom，记随机的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "rats",
+    "parts": [
+      {
+        "text": "rat",
+        "cue": "借 rate（比率），去掉末尾 e"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "看老鼠繁殖比率 rate 图，一只变成许多只；rate 去 e，再加 s，得到 rats。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "realistic",
+    "parts": [
+      {
+        "text": "real",
+        "cue": "英语 real，真实的"
+      },
+      {
+        "text": "istic",
+        "cue": "借 artistic（艺术的），去掉开头 art"
+      }
+    ],
+    "scene": "艺术的 artistic 假苹果做得像真实 real 苹果；real＋istic，记逼真的，也记切合现实的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "regulation",
+    "parts": [
+      {
+        "text": "regul",
+        "cue": "借 regular（规则的），去掉末尾 ar"
+      },
+      {
+        "text": "ation",
+        "cue": "借 nation（国家），去掉开头 n"
+      }
+    ],
+    "scene": "国家 nation 把 regular 规则行为写进正式规定；regul＋ation，记规定／监管。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "relationship",
+    "parts": [
+      {
+        "text": "relation",
+        "cue": "英语 relation，关系"
+      },
+      {
+        "text": "ship",
+        "cue": "英语 ship，船"
+      }
+    ],
+    "scene": "把两人的 relation 关系想成一条共同乘坐的船 ship；relation＋ship，只作故事，不把 ship 释成真实词缀含义。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "relative",
+    "parts": [
+      {
+        "text": "relat",
+        "cue": "借 relate（有关联），去掉末尾 e"
+      },
+      {
+        "text": "ive",
+        "cue": "借 five（五），去掉开头 f"
+      }
+    ],
+    "scene": "五 five 位有关联 relate 的家人坐在一起，他们是亲属；relat＋ive。另一个义项“相对的”需在语境中区分。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "relatives",
+    "parts": [
+      {
+        "text": "relative",
+        "cue": "英语 relative，亲属"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "一个 relative 亲属变成全家许多亲戚，在末尾加 s；沿用五位家人同桌的画面。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "relevance",
+    "parts": [
+      {
+        "text": "re",
+        "cue": "借 reply（回复），取前两字母 re"
+      },
+      {
+        "text": "lev",
+        "cue": "借 level（水平），去掉末尾 el"
+      },
+      {
+        "text": "ance",
+        "cue": "借 dance（跳舞），去掉开头 d"
+      }
+    ],
+    "scene": "回复 reply 讨论舞蹈 dance 水平 level 的问题时，答案要有相关性；re＋lev＋ance，三个块按拼写顺序连接。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "reliable",
+    "parts": [
+      {
+        "text": "reli",
+        "cue": "借 rely（依赖），把末尾 y 换成 i"
+      },
+      {
+        "text": "able",
+        "cue": "英语 able，能的"
+      }
+    ],
+    "scene": "能够 able 让你依赖 rely 的朋友总按时来接你，是可靠的；rely 变 reli，再接 able。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "religion",
+    "parts": [
+      {
+        "text": "re",
+        "cue": "借 return（返回），取前两字母 re"
+      },
+      {
+        "text": "lig",
+        "cue": "借 light（光），去掉末尾 ht"
+      },
+      {
+        "text": "ion",
+        "cue": "英语 ion，离子，作字形提示"
+      }
+    ],
+    "scene": "想象回到 return 礼拜场所，光 light 中出现 ion 形灯饰，众人举行宗教仪式；re＋lig＋ion。画面不是宗教起源解释。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "reproduction",
+    "parts": [
+      {
+        "text": "re",
+        "cue": "借 repeat（重复），取前两字母 re"
+      },
+      {
+        "text": "production",
+        "cue": "英语 production，生产、制作"
+      }
+    ],
+    "scene": "把生产 production 的一幅画再 repeat 做一遍，得到复制品；re＋production，也用“再次产生后代”联系繁殖。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "responsible",
+    "parts": [
+      {
+        "text": "respons",
+        "cue": "借 response（回应），去掉末尾 e"
+      },
+      {
+        "text": "ible",
+        "cue": "借 possible（可能的），去掉开头 poss"
+      }
+    ],
+    "scene": "事情出错后主动 response 作回应，而非说不 possible，愿意承担责任；respons＋ible，尾部是 ible，不是 able。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "restaurant",
+    "parts": [
+      {
+        "text": "rest",
+        "cue": "英语 rest，休息"
+      },
+      {
+        "text": "au",
+        "cue": "黄金的元素符号 Au，仅作编码"
+      },
+      {
+        "text": "rant",
+        "cue": "英语 rant，大声抱怨"
+      }
+    ],
+    "scene": "在餐厅 rest 休息，拿出 Au 金币结账，嫌贵便 rant 抱怨；rest＋au＋rant，抓住餐厅场景，不按中文近音拼。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "rice",
+    "parts": [
+      {
+        "text": "r",
+        "cue": "把 r 想成弯腰收割的人"
+      },
+      {
+        "text": "ice",
+        "cue": "英语 ice，冰"
+      }
+    ],
+    "scene": "弯腰的 r 在冰 ice 冷的水田里种稻米；r＋ice，记米饭／稻米。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "right",
+    "parts": [
+      {
+        "text": "right",
+        "cue": "借 light（光），把开头 l 换成 r"
+      }
+    ],
+    "scene": "右边 right 的指示灯 light 亮起，把 l 换成右手弯曲形的 r；还可联想到选对方向“正确的”。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "ring",
+    "parts": [
+      {
+        "text": "ring",
+        "cue": "借 sing（唱歌），把开头 s 换成 r"
+      }
+    ],
+    "scene": "电话铃像在 sing 唱歌，铃上挂着一枚 r 形戒指；s 换 r，连接铃响、打电话和戒指。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "risks",
+    "parts": [
+      {
+        "text": "risk",
+        "cue": "英语 risk，风险；借 disk（磁盘）把开头 d 换成 r"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "磁盘 disk 快损坏，屏幕列出多项风险；disk 的 d 换 r 得 risk，再加 s。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "river",
+    "parts": [
+      {
+        "text": "riv",
+        "cue": "借 drive（驾驶），去掉开头 d 和末尾 e"
+      },
+      {
+        "text": "er",
+        "cue": "借 her（她），去掉开头 h"
+      }
+    ],
+    "scene": "她 her 驾驶 drive 小船沿河流走；取 riv＋er，不是 road 公路。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "road",
+    "parts": [
+      {
+        "text": "road",
+        "cue": "借 toad（蟾蜍），把开头 t 换成 r"
+      }
+    ],
+    "scene": "一只蟾蜍 toad 沿 r 形弯道跳行；t 换 r，road 是道路。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "rock",
+    "parts": [
+      {
+        "text": "rock",
+        "cue": "借 lock（锁），把开头 l 换成 r"
+      }
+    ],
+    "scene": "锁 lock 被一块岩石砸开，l 形锁舌弯成 r；l 换 r，先记岩石，再联系摇滚乐的强烈节奏。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "root",
+    "parts": [
+      {
+        "text": "root",
+        "cue": "借 foot（脚），把开头 f 换成 r"
+      }
+    ],
+    "scene": "脚 foot 像树一样扎根，f 伸出 r 形根须；f 换 r，root 中间两个 o 保留。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "rope",
+    "parts": [
+      {
+        "text": "rope",
+        "cue": "借 hope（希望），把开头 h 换成 r"
+      }
+    ],
+    "scene": "悬崖边的人把希望 hope 寄托在一根 r 形弯绳上；h 换 r，rope 记绳子。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "round",
+    "parts": [
+      {
+        "text": "round",
+        "cue": "借 ground（地面），去掉开头 g"
+      }
+    ],
+    "scene": "地面 ground 上画一个圆，g 被圆外擦掉；ground 去 g 留 round，记圆的、一轮。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "royalty",
+    "parts": [
+      {
+        "text": "royal",
+        "cue": "英语 royal，皇家的"
+      },
+      {
+        "text": "ty",
+        "cue": "借 twenty（二十），只取末尾 ty"
+      }
+    ],
+    "scene": "皇家的 royal 作家收到二十 twenty 笔版税；royal＋ty，一幅画面串起皇室成员与版税。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "rubber",
+    "parts": [
+      {
+        "text": "rub",
+        "cue": "英语 rub，擦"
+      },
+      {
+        "text": "ber",
+        "cue": "借 bear（熊），删掉第3位 a"
+      }
+    ],
+    "scene": "熊 bear 用橡皮 rub 擦错字；rub＋ber，两个 b 连写，记橡皮／橡胶。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "rush",
+    "parts": [
+      {
+        "text": "rush",
+        "cue": "借 brush（刷子），去掉开头 b"
+      }
+    ],
+    "scene": "出门太匆忙 rush，刷子 brush 的 b 形刷柄掉了；去 b 得 rush，记冲、赶。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "Russia",
+    "parts": [
+      {
+        "text": "R",
+        "cue": "借 red（红色）的首字母 R 作标签"
+      },
+      {
+        "text": "us",
+        "cue": "英语 us，我们"
+      },
+      {
+        "text": "sia",
+        "cue": "借 Asia（亚洲），去掉开头 A，留下 sia"
+      }
+    ],
+    "scene": "地图上 R 红旗标出俄罗斯，我们 us 从亚洲 Asia 一侧去旅行；R＋us＋sia，sia 为 Asia 去 A。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sad",
+    "parts": [
+      {
+        "text": "sad",
+        "cue": "借 sand（沙），删掉第3位 n"
+      }
+    ],
+    "scene": "沙 sand 漏走，沙堡塌了让人难过；sand 去 n，sad 记悲伤的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sail",
+    "parts": [
+      {
+        "text": "sail",
+        "cue": "借 mail（邮件），把开头 m 换成 s"
+      }
+    ],
+    "scene": "送邮件 mail 的船升起 s 形帆航行；m 换 s，记帆、航行。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "saliva",
+    "parts": [
+      {
+        "text": "sa",
+        "cue": "“洒”的拼音 sa，仅作字母提示"
+      },
+      {
+        "text": "liv",
+        "cue": "借 live（活的），去掉末尾 e"
+      },
+      {
+        "text": "a",
+        "cue": "英语 a，一个"
+      }
+    ],
+    "scene": "一个 a 活着 live 的小狗看到食物，口水洒 sa 下来；拼写按 sa＋liv＋a，目标是唾液。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "salt",
+    "parts": [
+      {
+        "text": "salt",
+        "cue": "借 sale（出售），把末尾 e 换成 t"
+      }
+    ],
+    "scene": "商店 sale 出售盐，盐袋上插一把 t 形盐勺；e 换 t，salt 是盐。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sample",
+    "parts": [
+      {
+        "text": "sam",
+        "cue": "借 same（相同的），去掉末尾 e"
+      },
+      {
+        "text": "ple",
+        "cue": "借 apple（苹果），去掉开头 ap"
+      }
+    ],
+    "scene": "从相同 same 一批苹果 apple 中取一个当样本；sam＋ple，记样本／抽样。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "school",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "把 s 想成弯曲滑梯"
+      },
+      {
+        "text": "chool",
+        "cue": "借 cool（凉爽的），在 c 后加 h"
+      }
+    ],
+    "scene": "凉爽 cool 的学校操场有一架 s 形滑梯和 h 形单杠；s＋chool，h 在 c 后，末尾两个 o。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "Scotland",
+    "parts": [
+      {
+        "text": "Scot",
+        "cue": "英语 Scot，苏格兰人"
+      },
+      {
+        "text": "land",
+        "cue": "英语 land，土地"
+      }
+    ],
+    "scene": "苏格兰人 Scot 站在自己的 land 土地上吹风笛；Scot＋land，记苏格兰，首字母大写。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "screen",
+    "parts": [
+      {
+        "text": "s",
+        "cue": "把 s 想成屏幕前弯曲的电线"
+      },
+      {
+        "text": "creen",
+        "cue": "借 green（绿色），把开头 g 换成 c"
+      }
+    ],
+    "scene": "s 形电线连着一块 green 绿色屏幕；green 的 g 换 c 得 creen，前面加 s。筛查义可想象屏幕显示检查结果。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "script",
+    "parts": [
+      {
+        "text": "scri",
+        "cue": "借 describe（描述），去掉开头 de 和末尾 be"
+      },
+      {
+        "text": "pt",
+        "cue": "“配图”的拼音首字母 p-t，仅作编码"
+      }
+    ],
+    "scene": "把描述 describe 写进剧本，再给它配图 pt；scri＋pt，记脚本／剧本。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sculpture",
+    "parts": [
+      {
+        "text": "sculpt",
+        "cue": "英语 sculpt，雕刻"
+      },
+      {
+        "text": "ure",
+        "cue": "借 pure（纯净的），去掉开头 p"
+      }
+    ],
+    "scene": "用纯净 pure 的白石 sculpt 雕刻出一件雕塑；sculpt＋ure，结尾按 ure 写。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sea",
+    "parts": [
+      {
+        "text": "sea",
+        "cue": "借 seat（座位），去掉末尾 t"
+      }
+    ],
+    "scene": "海边座位 seat 的 t 形椅背被海浪卷走，剩下 sea；记海、海洋。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "second",
+    "parts": [
+      {
+        "text": "sec",
+        "cue": "借 secret（秘密），只取前3字母"
+      },
+      {
+        "text": "ond",
+        "cue": "借 pond（池塘），去掉开头 p"
+      }
+    ],
+    "scene": "寻宝的秘密 secret 提示说去第二个池塘 pond；sec＋ond，记第二的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "security",
+    "parts": [
+      {
+        "text": "secur",
+        "cue": "借 secure（安全的），去掉末尾 e"
+      },
+      {
+        "text": "ity",
+        "cue": "借 city（城市），去掉开头 c"
+      }
+    ],
+    "scene": "城市 city 的保安把门锁好，让人 secure 安心；secur＋ity，记安全／保安。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "seeds",
+    "parts": [
+      {
+        "text": "see",
+        "cue": "英语 see，看见"
+      },
+      {
+        "text": "ds",
+        "cue": "“稻穗”的拼音首字母 d-s，仅作编码"
+      }
+    ],
+    "scene": "看见 see 稻穗 ds，剥下籽粒作种子；see＋ds，记多粒种子 seeds。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "selective",
+    "parts": [
+      {
+        "text": "select",
+        "cue": "英语 select，选择"
+      },
+      {
+        "text": "ive",
+        "cue": "借 five（五），去掉开头 f"
+      }
+    ],
+    "scene": "五 five 个方案只 select 选择两个，做事有选择性；select＋ive。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sell",
+    "parts": [
+      {
+        "text": "sell",
+        "cue": "借 bell（铃），把开头 b 换成 s"
+      }
+    ],
+    "scene": "小贩摇铃 bell 叫卖，铃的 b 换成弯弯的 s；sell 记卖，末尾双 l。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sensitive",
+    "parts": [
+      {
+        "text": "sensi",
+        "cue": "借 sense（感觉），把末尾 e 换成 i"
+      },
+      {
+        "text": "tive",
+        "cue": "借 active（活跃的），去掉开头 ac"
+      }
+    ],
+    "scene": "一点声音就激起活跃 active 的感觉 sense，说明人很敏感；sensi＋tive，别写成 sensative。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sequence",
+    "parts": [
+      {
+        "text": "se",
+        "cue": "“色”的拼音 se，仅作编码"
+      },
+      {
+        "text": "quence",
+        "cue": "借 consequence（后果），去掉开头 conse"
+      }
+    ],
+    "scene": "把彩色 se 卡按因果 consequence 排成一列，有固定顺序；se＋quence，记顺序、序列。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "servants",
+    "parts": [
+      {
+        "text": "serv",
+        "cue": "借 serve（服务），去掉末尾 e"
+      },
+      {
+        "text": "ants",
+        "cue": "英语 ants，蚂蚁"
+      }
+    ],
+    "scene": "一队蚂蚁 ants 像仆人一样 serve 端盘子服务；serv＋ants，记仆人们。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sexes",
+    "parts": [
+      {
+        "text": "sex",
+        "cue": "英语 sex，性别；借 six（六），把中间 i 换成 e"
+      },
+      {
+        "text": "es",
+        "cue": "复数结尾 es"
+      }
+    ],
+    "scene": "把调查表第六 six 栏的标题改成 sex 性别；six 的 i 换 e，再加 es，sexes 指不同性别。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "shape",
+    "parts": [
+      {
+        "text": "shape",
+        "cue": "借 shake（摇动），把第4位 k 换成 p"
+      }
+    ],
+    "scene": "摇动 shake 橡皮泥，把它捏成 p 形；k 换 p，记 shape 形状。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "share",
+    "parts": [
+      {
+        "text": "share",
+        "cue": "借 shark（鲨鱼），把末尾 k 换成 e"
+      }
+    ],
+    "scene": "鲨鱼 shark 把食物分给伙伴，末尾鱼尾 k 换成盘子样的 e；share 是分享，也有份额义。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sharks",
+    "parts": [
+      {
+        "text": "shark",
+        "cue": "英语 shark，鲨鱼；借 sharp（尖的），把末尾 p 换成 k"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "一群鲨鱼露出 sharp 尖牙，p 形牙改成 k 形鱼尾，末尾加 s；记 sharks 多条鲨鱼。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "sheep",
+    "parts": [
+      {
+        "text": "she",
+        "cue": "英语 she，她"
+      },
+      {
+        "text": "ep",
+        "cue": "借 step（一步），去掉开头 st"
+      }
+    ],
+    "scene": "她 she 每走一步 step，后面都跟着一只绵羊；she＋ep，中间两个 e。sheep 可表单数或复数。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "shiny",
+    "parts": [
+      {
+        "text": "shin",
+        "cue": "英语 shin，小腿胫部"
+      },
+      {
+        "text": "y",
+        "cue": "借 yellow（黄色）的首字母 y"
+      }
+    ],
+    "scene": "小腿 shin 上戴着黄色 yellow 的反光护具，闪闪发亮；shin＋y，记闪亮的。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "ship",
+    "parts": [
+      {
+        "text": "ship",
+        "cue": "借 shop（商店），把中间 o 换成 i"
+      }
+    ],
+    "scene": "把商店 shop 搬到船上，o 形招牌换成 i 形桅杆；o 换 i，ship 是船。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "shirt",
+    "parts": [
+      {
+        "text": "shirt",
+        "cue": "借 skirt（裙子），把第2位 k 换成 h"
+      }
+    ],
+    "scene": "裙子 skirt 上方挂着一件衬衫，k 形裙架换成 h 形衣架；k 换 h，记 shirt。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "shore",
+    "parts": [
+      {
+        "text": "shore",
+        "cue": "借 store（商店），把第2位 t 换成 h"
+      }
+    ],
+    "scene": "海岸边的商店 store 立着 h 形防浪墙；t 换 h，shore 记岸边。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "show",
+    "parts": [
+      {
+        "text": "show",
+        "cue": "借 snow（雪），把第2位 n 换成 h"
+      }
+    ],
+    "scene": "把雪 snow 雕摆上 h 形展示架办展览；n 换 h，show 是展示、演出。",
+    "method": "熟词搭桥与拼写联想"
+  },
+  {
+    "word": "shower",
+    "parts": [
+      {
+        "text": "show",
+        "cue": "英语 show，展示"
+      },
+      {
+        "text": "er",
+        "cue": "借 her（她），去掉开头 h"
+      }
+    ],
+    "scene": "她 her 展示 show 新淋浴头，水像阵雨落下；show＋er，记淋浴／阵雨。",
+    "method": "熟词搭桥与拼写联想"
+  }
+]
