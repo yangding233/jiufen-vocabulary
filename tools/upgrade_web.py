@@ -17,7 +17,6 @@ if '// Learning features 0.2:' not in app:
     change("MODES = ['mnemonic','context','cloze','meaning']", "MODES = ['mnemonic','context','cloze','meaning','listening']")
     change("m=memoryIndex.get(normalize(w.word))||{kind:", "m=chosenMemoryFor(w)||{kind:")
     change("builtin=memoryIndex.get(normalize(w.word))||m", "builtin=chosenMemoryFor(w)||m")
-    change(' <details><summary>方法与来源</summary>', ' ${cueControls(w)}\n <details><summary>方法与来源</summary>')
     change("const mode=s.mode==='cloze'&&!w.sentence.trim()?'meaning':s.mode;", "const sentenceText=usageFor(w).sentence||w.sentence;\n  const mode=s.mode==='cloze'&&!sentenceText.trim()?'meaning':s.mode;")
     change("w.meaning:'先回忆目标词';", "w.meaning:mode==='listening'?'听音，回忆意思':'先回忆目标词';")
     change("(mode==='meaning'||mode==='mnemonic')&&!s.shown", "(mode==='meaning'||mode==='mnemonic'||mode==='listening')&&!s.shown")
@@ -47,6 +46,9 @@ if '// Learning features 0.2:' not in app:
     app_path.write_text(app,encoding='utf-8')
 
 # Refresh the integration sources on each build without changing the application body.
+start=app.index('function memorySchemeHTML(') if 'function memorySchemeHTML(' in app else app.index('function memoryHTML(')
+end=app.index('function renderNetwork()',start)
+app=app[:start]+(ROOT/'tools/memory-render.js').read_text(encoding='utf-8')+'\n\n'+app[end:]
 app=app.replace("session.hintShown=false;session.cueSeen=false;}","session.hintShown=false;session.cueSeen=false;session.recallStatus='';}")
 app=app.replace("session.cueSeen=false;session.updatedAt=now();","session.cueSeen=false;session.recallStatus='';session.updatedAt=now();")
 app=app.replace("session.wordCovered=false;}","session.wordCovered=false;session.recallStatus='';}")
@@ -72,7 +74,7 @@ if 'id="learning-quality"' not in html:
     html=html.replace('<div id="usb-conflicts"></div></section>','<div id="usb-conflicts"></div></details></section>',1)
     html=html.replace('<option value="meaning">看中文，回忆拼写</option>','<option value="meaning">看中文，回忆拼写</option><option value="listening">听音，回忆意思</option>')
     html=html.replace('<div class="sentence" id="sentence"></div>','''<div class="sentence" id="sentence"></div><div class="audio-tools row"><button id="play-audio">▶ 播放读音</button><label class="small">口音 <select id="audio-voice"><option value="en-GB">英式</option><option value="en-US">美式</option></select></label><label class="small">速度 <select id="audio-rate"><option value="1">正常</option><option value="0.75">慢速</option></select></label><span id="audio-status" class="small muted">随包离线合成音</span></div>''',1)
-    html=html.replace('<div id="memory-card" class="memory-card" hidden></div>','''<div id="study-usage" hidden></div><label class="field small">本次回忆方式（可选）<select id="recall-status"><option value="">不另外标记</option><option value="independent">先独立想起，再核对</option><option value="assisted">依靠提示才想起</option></select></label><div id="memory-card" class="memory-card" hidden></div>''',1)
+    html=html.replace('<div id="memory-card" class="memory-card" hidden></div>','''<div id="study-usage" hidden></div><div id="memory-card" class="memory-card" hidden></div>''',1)
     html=html.replace('<div id="plan-note" class="muted"></div>','''<div id="plan-note" class="muted"></div><p id="load-advice" class="small notice"></p><details class="workload"><summary>未来7天的学习负担估算</summary><div id="workload-week" class="plan-week"></div><p id="workload-note" class="small muted"></p></details>''',1)
     html=html.replace('<h2>学习记录</h2>','''<h2>学习记录</h2><div id="learning-quality"></div><details><summary>最近的拼写错题</summary><div id="spelling-mistakes"></div></details><details><summary>需要换巧记的词</summary><div id="cue-problems" class="row"></div></details>''',1)
     html=html.replace('<h2>备份与设置</h2>','''<h2>备份与设置</h2><section class="panel"><h3>显示与复习</h3><label class="field">文字大小<select id="font-size"><option value="normal">标准</option><option value="large">大字</option></select></label><label class="checks"><input id="adaptive-review" type="checkbox">根据本次回忆情况调整后续间隔</label><p class="small muted">从今后的反馈生效，保留已有历史和已安排日期；随时可以关闭。</p></section><section class="panel"><h3>离线内容更新</h3><p id="content-version"></p><p class="small">在电脑或手机导入完整内容包。连接数据线同步时，也会传递较新的内容；你的个人联想与进度保留。</p><button id="content-export">导出当前内容包</button><label class="field">导入新版内容包<input id="content-import" type="file" accept=".json,application/json"></label></section><section class="panel"><h3>内部备份中心</h3><p class="small">内部快照和已保存到“文件”或电脑目录的外部档案是两份保护。预览不会改变当前档案。</p><button id="load-backups">查看内部快照</button><div id="backup-list"></div><p id="backup-preview" class="small"></p><button id="export-snapshot" hidden>导出这份恢复副本</button><button id="restore-snapshot" hidden>建立独立恢复档案</button></section>''',1)
@@ -83,6 +85,7 @@ if 'id="learning-quality"' not in html:
     html=html.replace('这是简化间隔规则，不估算精确记忆率','负担和用时是估算值，不表示精确记忆率',1)
     html=html.replace('<script src="sync-core.js"></script>','<script src="learning-tools.js"></script><script src="sync-core.js"></script><script src="content-pack.js"></script>',1)
     html=html.replace('<script id="portable-state"','<script id="learning-content" type="application/json">null</script><script id="audio-data" type="application/json">{"entries":{}}</script><script id="portable-state"',1)
+html=re.sub(r'<label[^>]*>本次回忆方式（可选）<select id="recall-status">[\s\S]*?</select></label>','',html,count=1)
 help_file=ROOT/'tools/help-content.html'
 if help_file.exists():
     help_body='<dialog id="help-dialog" aria-labelledby="help-title"><div class="row spread"><h2 id="help-title">简单使用说明</h2><button id="close-help">关闭</button></div>'+help_file.read_text(encoding='utf-8')+'</dialog>'

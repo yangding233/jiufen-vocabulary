@@ -20,12 +20,27 @@ const {chromium}=require('./playwright.cjs'),assert=require('node:assert/strict'
  const p=await context.newPage(),errors=[],remote=[];p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(/^https?:/.test(r.url()))remote.push(r.url());});p.on('dialog',d=>d.accept());
  await p.goto(pathToFileURL(path.resolve(__dirname,'../web/index.html')).href);await p.waitForSelector('#start-new:not([disabled])');
  const state=()=>p.evaluate(()=>OfflineSync.materialize(JSON.parse(localStorage.getItem('feature-doc'))));
- await p.locator('#tab-library').click();await p.locator('#search').fill('accident');await p.locator('[data-open="jf-0006"]').click();await p.locator('[data-cue-choice="jf-0006"]').selectOption('alt-1');assert.match(await p.locator('#detail-memory .method-pill').textContent(),/替代巧记/);await p.locator('#detail-note').fill('我的笔记保留');await p.locator('#save-detail').click();await p.reload();let selection=await state();assert.equal(selection.cards['jf-0006'].cueChoice,'alt-1');assert.equal(selection.cards['jf-0006'].note,'我的笔记保留');
+ // Old selector metadata is preserved, but no longer hides or reorders schemes.
+ await p.evaluate(()=>{const doc=JSON.parse(localStorage.getItem('feature-doc')),before=OfflineSync.materialize(doc),after=structuredClone(before);after.cards['jf-0006'].cueChoice='alt-1';after.cards['jf-0006'].cueFeedback='unknown';localStorage.setItem('feature-doc',JSON.stringify(OfflineSync.record(doc,before,after)));});
+ await p.reload();await p.locator('#tab-library').click();await p.locator('#search').fill('accident');await p.locator('[data-open="jf-0006"]').click();
+ assert.deepEqual(await p.locator('#detail-memory .memory-scheme-title').allTextContents(),['① 巧记 1','② 巧记 2']);
+ const alternative=await p.evaluate(()=>JSON.parse(localStorage.getItem('feature-content')).entries.find(x=>x.id==='jf-0006').alternatives[0]);
+ assert((await p.locator('#detail-memory [data-memory-scheme="2"]').textContent()).includes(alternative.scene));
+ assert(await p.locator('#detail-memory [data-memory-scheme="1"] .cue-part').count()>0);assert(await p.locator('#detail-memory [data-memory-scheme="2"] .cue-part').count()>0);
+ assert.equal(await p.locator('[data-cue-choice],[data-cue-reason]').count(),0);assert.equal(await p.locator('#recall-status').count(),0);
+ await p.locator('#detail-note').fill('我的笔记保留');await p.locator('#detail-anchor').fill('我的事故线索');await p.locator('#detail-scene').fill('我的事故画面');await p.locator('#save-detail').click();await p.reload();let selection=await state();assert.equal(selection.cards['jf-0006'].cueChoice,'alt-1');assert.equal(selection.cards['jf-0006'].cueFeedback,'unknown');assert.equal(selection.cards['jf-0006'].note,'我的笔记保留');
+ await p.locator('#tab-library').click();await p.locator('#search').fill('accident');await p.locator('[data-open="jf-0006"]').click();
+ assert.match(await p.locator('#detail-memory').textContent(),/我的事故线索/);assert.equal(await p.locator('#detail-memory [data-memory-scheme="1"]').isVisible(),false);
+ await p.locator('#detail-memory summary').filter({hasText:'查看内置方案'}).click();assert.equal(await p.locator('#detail-memory [data-memory-scheme="2"]').isVisible(),true);
+ await p.locator('#detail-memory [data-reject-cue]').click();assert.equal(await p.locator('#detail-memory [data-memory-scheme]').count(),0);assert.match(await p.locator('#detail-memory').textContent(),/我的事故线索/);
+ await p.locator('#detail-memory [data-reject-cue]').click();await p.locator('#close-detail').click();await p.locator('#tab-today').click();
  assert.match(await p.locator('#content-version').textContent(),/2026-11-03\.2/);assert.match(await p.locator('#sync-brief').textContent(),/上次同步/);
  await p.locator('#start-new').click();await p.locator('#play-audio').click();await p.waitForFunction(()=>document.getElementById('audio-status').textContent.includes('正常速度'));
  await p.locator('#reveal').click();assert.match(await p.locator('#study-usage').textContent(),/newspaper/);
- await p.locator('[data-cue-reason="unknown"]').first().click();let s=await state();assert.equal(s.cards[s.words[0].id].cueFeedback,'unknown');
- await p.locator('#recall-status').selectOption('independent');await p.locator('[data-grade="good"]').click();s=await state();assert.equal(s.history.at(-1).recall,'independent');assert.equal(s.history.at(-1).scheduler,'adaptive-v1');
+ assert.equal(await p.locator('#memory-card .memory-scheme-title').count(),0);assert.equal(await p.locator('#memory-card [data-memory-scheme]').count(),1);
+ // A stale optional mark from 1.1.0 must not override actual answer/hint state.
+ await p.evaluate(()=>{const doc=JSON.parse(localStorage.getItem('feature-doc')),before=OfflineSync.materialize(doc),after=structuredClone(before);after.session.recallStatus='independent';localStorage.setItem('feature-doc',JSON.stringify(OfflineSync.record(doc,before,after)));});await p.reload();await p.locator('#continue-session').click();
+ await p.locator('[data-grade="good"]').click();let s=await state();assert.equal(s.history.at(-1).recall,'unverified');assert.equal(s.history.at(-1).scheduler,'adaptive-v1');
  await p.locator('#study-mode').selectOption('meaning');await p.locator('#spelling').fill('a radio progrm');await p.locator('#reveal').click();assert.match(await p.locator('#spelling-result').textContent(),/漏写|字母/);await p.locator('[data-grade="hard"]').click();s=await state();assert.equal(s.history.at(-1).spelling.correct,false);
  await p.locator('#tab-history').click();assert.match(await p.locator('#learning-quality').textContent(),/可选拼写正确率/);await p.getByText('最近的拼写错题',{exact:true}).click();assert.match(await p.locator('#spelling-mistakes').textContent(),/progrm/);
  await p.locator('#tab-settings').click();const oldTime=(await state()).meta.lastBackupAt;await p.locator('#export').click();assert.equal((await state()).meta.lastBackupAt,oldTime);assert.match(await p.locator('#toast').textContent(),/取消保存/);
@@ -39,5 +54,5 @@ const {chromium}=require('./playwright.cjs'),assert=require('node:assert/strict'
  assert.equal(await p.locator('.ratings').evaluate(x=>getComputedStyle(x).position),'fixed');assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  fs.mkdirSync(path.resolve(__dirname,'../test-results'),{recursive:true});await p.screenshot({path:path.resolve(__dirname,'../test-results/features-mobile.png'),fullPage:true});
  await p.locator('#pause-session').click();await p.locator('#tab-settings').click();await p.locator('#load-backups').click();await p.locator('[data-backup-preview]').first().click();const previousProfile=await p.evaluate(()=>JSON.parse(localStorage.getItem('feature-doc')).profileId);await p.locator('#restore-snapshot').click();await p.waitForFunction(previous=>JSON.parse(localStorage.getItem('feature-doc')).profileId!==previous,previousProfile);assert.equal(await p.evaluate(()=>JSON.parse(localStorage.getItem('feature-recovery-previous')).profileId),previousProfile);
- assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);await browser.close();console.log('PASS offline audio, cue feedback, recall metadata, spelling mistakes, accurate backup cancellation, content rejection, saved font and mobile focus layout.');
+ assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);await browser.close();console.log('PASS offline audio, numbered schemes, preserved personal cues/legacy metadata, automatic recall, spelling mistakes, accurate backup cancellation, content rejection, saved font and mobile focus layout.');
 })().catch(e=>{console.error(e);process.exit(1);});

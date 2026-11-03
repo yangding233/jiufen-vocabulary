@@ -4,15 +4,11 @@ const originalBuiltinMemories=new Map(memoryIndex);
 const builtinContentPack=JSON.parse(el('learning-content')?.textContent||'null');
 const offlineAudio=JSON.parse(el('audio-data')?.textContent||'{"entries":{}}');
 function chosenMemoryFor(w){
- const original=memoryIndex.get(normalize(w.word));
- const entry=contentEntries.get(w.id),choice=state?.cards[w.id]?.cueChoice;
- const alternative=entry?.alternatives?.find(x=>x.id===choice);
- if(!alternative)return original;
- return {...original,kind:'替代巧记',anchor:alternative.parts.map(p=>p.text+'（'+p.cue+'）').join(' + '),parts:alternative.parts,baseParts:[],spellingSteps:[],scene:alternative.scene,focus:alternative.focus||alternative.parts.map(p=>p.text).join(' + ')+' = '+w.word,reference:alternative.reference||'另一条原创助记，不作为英语词源或标准读音。',status:alternative.label};
+ return memoryIndex.get(normalize(w.word));
 }
-function cueControls(w){
- const entry=contentEntries.get(w.id),c=state.cards[w.id],alternatives=entry?.alternatives||[];
- return `<div class="cue-feedback"><label class="field">换一条内置线索<select data-cue-choice="${escape(w.id)}"><option value="">默认方案</option>${alternatives.map(a=>`<option value="${escape(a.id)}" ${c.cueChoice===a.id?'selected':''}>${escape(a.label)}</option>`).join('')}</select></label>${alternatives.length?'':'<p class="small muted">本词暂有一条内置方案，也可以写自己的熟词和画面。</p>'}<div class="row" aria-label="线索问题反馈">${[['unknown','提示词不认识'],['complex','步骤太绕'],['irrelevant','画面没帮助']].map(([value,label])=>`<button class="small" data-cue-reason="${value}" data-cue-word="${escape(w.id)}" aria-pressed="${c.cueFeedback===value}">${label}</button>`).join('')}</div>${c.cueFeedback&&c.cueFeedback!=='none'?'<p class="small muted">已记下这个问题。可以换另一条方案，或改写自己的线索。</p>':''}</div>`;
+function builtinMemoriesFor(w){
+ const original=chosenMemoryFor(w),alternatives=contentEntries.get(w.id)?.alternatives||[];
+ return [...(original?[original]:[]),...alternatives.map(alternative=>({...original,kind:'替代巧记',anchor:alternative.parts.map(p=>p.text+'（'+p.cue+'）').join(' + '),parts:alternative.parts,baseParts:[],spellingSteps:[],scene:alternative.scene,focus:alternative.focus||alternative.parts.map(p=>p.text).join(' + ')+' = '+w.word,reference:alternative.reference||'另一条原创助记，不作为英语词源或标准读音。',status:alternative.label}))];
 }
 function usageFor(w){return contentEntries.get(w.id)?.usage||{sentence:w.sentence||'',translation:'',collocations:[]};}
 function usageHTML(w){const usage=usageFor(w);return `<div class="usage-card"><div class="row spread"><h3>常用例句与搭配</h3><button class="small" data-play-word="${escape(w.id)}">▶ 听单词</button></div>${usage.sentence?`<p lang="en">${escape(usage.sentence)}</p><p class="muted">${escape(usage.translation||'')}</p>`:'<p class="muted">自加词可在笔记中补充例句。</p>'}<div class="row">${(usage.collocations||[]).map(x=>`<span class="usage-chip">${escape(x)}</span>`).join('')}</div></div>`;}
@@ -48,8 +44,7 @@ function stopOfflineAudio(){if(activeAudio){activeAudio.pause();activeAudio=null
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopOfflineAudio();});
 window.addEventListener('pagehide',stopOfflineAudio);
 function eventLearningExtras(session,w,value){
- const selected=session.recallStatus;
- const recall=selected==='independent'||selected==='assisted'?selected:session.cueSeen||session.hintShown?'assisted':!session.shown&&value==='good'?'independent':'unverified';
+ const recall=session.cueSeen||session.hintShown?'assisted':!session.shown&&value==='good'?'independent':'unverified';
  const extras={mode:session.mode,recall};
  if(session.typed?.trim())extras.spelling=LearningTools.diffSpelling(w.word,session.typed);
  if(state.settings.adaptiveReview!==false)extras.scheduler='adaptive-v1';
@@ -60,7 +55,6 @@ function renderLearningEnhancements(){
  document.body.dataset.fontSize=state.settings.fontSize||'normal';
  document.body.classList.toggle('learning-active',Boolean(expanded&&unfinished(state.session)&&tab==='today'));
  const s=state.session,w=currentWord();
- if(el('recall-status'))el('recall-status').value=s?.recallStatus||'';
  if(el('audio-rate'))el('audio-rate').value=String(state.settings.audioRate||1);
  if(el('font-size'))el('font-size').value=state.settings.fontSize||'normal';
  if(el('adaptive-review'))el('adaptive-review').checked=state.settings.adaptiveReview!==false;
@@ -70,11 +64,11 @@ function renderLearningEnhancements(){
  }
  if(tab==='history'){
   const quality=LearningTools.qualityStats(state),number=x=>x===null?'暂无记录':Math.round(x*100)+'%';
-  el('learning-quality').innerHTML=`<div class="stats"><div class="metric"><strong>${quality.independent}</strong><span>标记独立回忆</span></div><div class="metric"><strong>${quality.assisted}</strong><span>使用提示的回忆</span></div><div class="metric"><strong>${number(quality.spellingAccuracy)}</strong><span>可选拼写正确率</span></div><div class="metric"><strong>${quality.unverified}</strong><span>未细分的反馈</span></div></div><p class="small muted">回忆方式来自你的标记和提示使用记录。打开答案核对但未说明回忆方式的反馈归为未细分；不会自动当作独立记住。</p>`;
+  el('learning-quality').innerHTML=`<div class="stats"><div class="metric"><strong>${quality.independent}</strong><span>独立回忆记录</span></div><div class="metric"><strong>${quality.assisted}</strong><span>使用提示的反馈</span></div><div class="metric"><strong>${number(quality.spellingAccuracy)}</strong><span>可选拼写正确率</span></div><div class="metric"><strong>${quality.unverified}</strong><span>未细分的反馈</span></div></div><p class="small muted">新反馈按提示使用和答案展开状态自动记录，无需另选回忆标记；看过答案后评分归为未细分，不自动当作独立记住。旧版已保存的回忆标记保留。</p>`;
   const spelling=state.history.filter(e=>e.spelling&&!e.spelling.correct).slice(-20).reverse();
   el('spelling-mistakes').innerHTML=spelling.length?spelling.map(e=>`<button data-memory-open="${escape(e.wordId)}" class="mistake-row"><strong>${escape(wordById(e.wordId)?.word||'')}</strong><span>${escape(e.spelling.typed)} → ${escape(e.spelling.expected)}</span><small>${escape((e.spelling.issues||[]).map(x=>x.label).join('；'))}</small></button>`).join(''):'<p class="small muted">使用可选拼写模式后，这里会记录需要巩固的字母和词尾。</p>';
   const cueWords=state.words.filter(x=>['unknown','complex','irrelevant'].includes(state.cards[x.id].cueFeedback));
-  el('cue-problems').innerHTML=cueWords.length?cueWords.map(x=>`<button data-memory-open="${escape(x.id)}">${escape(x.word)}</button>`).join(''):'<p class="small muted">标记过“提示词不认识”“步骤太绕”的词会集中在这里。</p>';
+  el('cue-problems').innerHTML=cueWords.length?cueWords.map(x=>`<button data-memory-open="${escape(x.id)}">${escape(x.word)}</button>`).join(''):'<p class="small muted">这里保留旧版的巧记反馈记录。需要调整时可直接打开单词，写自己的巧记。</p>';
  }
  if(tab==='today'||tab==='history'){
   const forecast=LearningTools.workloadForecast(state,{days:7});
@@ -98,16 +92,8 @@ async function loadBackupList(){
  if(!nativeEnabled){target.textContent='备份中心在 Windows 或 iPhone App 中使用。';return;}
  try{const items=VocabNative.call('listBackups');target.innerHTML=items.length?items.map(x=>`<button class="backup-row" data-backup-preview="${escape(x.id)}"><strong>${escape(new Date(x.at).toLocaleString('zh-CN'))}</strong><span>${x.words} 词 · 已接触 ${x.seen} · ${x.history} 条反馈</span></button>`).join(''):'<p class="muted small">尚无内部快照。继续学习或完成同步后会自动保留。</p>';}catch(e){target.textContent='读取备份列表失败：'+e.message;}
 }
-document.addEventListener('change',event=>{
- const select=event.target.closest('[data-cue-choice]');if(!select)return;
- if(commit(s=>{s.cards[select.dataset.cueChoice].cueChoice=select.value;s.cards[select.dataset.cueChoice].rejectBuiltinCue=false;})){
-  if(el('word-dialog').open){el('detail-memory').innerHTML=memoryHTML(wordById(detailId),'detail');el('detail-memory details')?.setAttribute('open','');}message('已保存方案选择，个人联想和笔记保留。');
- }
-});
 document.addEventListener('click',event=>{
  const play=event.target.closest('[data-play-word]');if(play)playOffline(wordById(play.dataset.playWord));
- const reason=event.target.closest('[data-cue-reason]');
- if(reason){const id=reason.dataset.cueWord,value=reason.dataset.cueReason;commit(s=>{s.cards[id].cueFeedback=s.cards[id].cueFeedback===value?'none':value;});if(el('word-dialog').open)el('detail-memory').innerHTML=memoryHTML(wordById(detailId),'detail');}
  const backup=event.target.closest('[data-backup-preview]');
  if(backup){try{previewBackup=VocabNative.call('backupPreview',{id:backup.dataset.backupPreview});const summary=OfflineSync.summary(previewBackup);el('backup-preview').textContent=`预览：${summary.wordCount} 词，已接触 ${summary.seen}，${summary.historyCount} 条反馈。当前档案没有被改变。`;el('export-snapshot').hidden=false;el('restore-snapshot').hidden=false;}catch(e){message(e.message,true);}}
 });
@@ -117,7 +103,6 @@ el('font-size').addEventListener('change',()=>commit(s=>{s.settings.fontSize=el(
 el('adaptive-review').addEventListener('change',()=>commit(s=>{s.settings.adaptiveReview=el('adaptive-review').checked;}));
 el('open-help')?.addEventListener('click',()=>el('help-dialog').showModal());
 el('close-help')?.addEventListener('click',()=>el('help-dialog').close());
-el('recall-status').addEventListener('change',()=>{if(state.session)commit(s=>{s.session.recallStatus=el('recall-status').value;});});
 el('load-backups').addEventListener('click',loadBackupList);
 el('export-snapshot').addEventListener('click',()=>{if(previewBackup)exportResult(download(OfflineSync.encodePacket(previewBackup,'snapshot-'+uid()),'九分恢复副本_'+day()+'.json','application/json'),'恢复副本已保存，当前学习档案保留。');});
 el('restore-snapshot').addEventListener('click',()=>{
