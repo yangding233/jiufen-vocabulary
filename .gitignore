@@ -1,6 +1,8 @@
 node_modules/
 .venv/
 .venv-usb/
+.venv-audio/
+/NEXT_STEPS.md
 tools/dist/
 dist/
 build/

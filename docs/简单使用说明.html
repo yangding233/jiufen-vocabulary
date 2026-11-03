@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
-<title>九分词汇 1.1.0 · 简单使用说明</title>
+<title>九分词汇 1.1.1 · 简单使用说明</title>
 <style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f4f5ef;color:#243027;font:18px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}main{max-width:900px;margin:36px auto;padding:34px 44px;background:#fff;border:1px solid #d9e0d4;border-radius:18px}header{border-bottom:2px solid #c1d3b3;padding-bottom:18px;margin-bottom:24px}h1{font-size:30px;line-height:1.4;margin:0 0 12px}h2{font-size:22px}h3{font-size:22px;line-height:1.5;margin:34px 0 12px;padding-top:10px;border-top:1px solid #e1e7dc}p{margin:12px 0}li{margin:7px 0}strong{color:#315329}nav{padding:16px 20px;background:#eef3e9;border-radius:12px}nav p{margin:0 0 8px}nav ol{margin:0;padding-left:24px;columns:2;column-gap:28px}nav a{color:#315329;text-decoration:none}nav a:hover{text-decoration:underline}table{width:100%;border-collapse:collapse;margin:18px 0;font-size:16px}th,td{padding:12px;border:1px solid #d9e0d4;text-align:left;vertical-align:top}th{background:#eef3e9}footer{margin-top:30px;padding-top:16px;border-top:1px solid #d9e0d4;font-size:15px;color:#5a695b}.lead{font-size:17px;color:#53644e}@media(max-width:640px){body{font-size:17px}main{margin:0;padding:24px 18px;border:0;border-radius:0}h1{font-size:25px}nav ol{columns:1}table{font-size:14px}th,td{padding:8px}}@media print{body{background:#fff;font-size:12pt}main{max-width:none;margin:0;padding:0;border:0}nav{display:none}h3{break-after:avoid}table{font-size:10pt}tr{break-inside:avoid}}</style>
 </head>
 <body><main>
-<header><h1>九分词汇 1.1.0 · 简单使用说明</h1><p class="lead">离线学习 · 按自己的词量 · 数据线同步</p><p>先点“调整计划” → “应用计划” → “开始新学”。已有未完成任务，就点“继续上次任务”。</p></header>
+<header><h1>九分词汇 1.1.1 · 简单使用说明</h1><p class="lead">离线学习 · 按自己的词量 · 数据线同步</p><p>先点“调整计划” → “应用计划” → “开始新学”。已有未完成任务，就点“继续上次任务”。</p></header>
 <nav aria-label="说明目录"><p><strong>按需要查看</strong></p><ol><li><a href="#jiufen-help-section-1">打开和安排每天词量</a></li><li><a href="#jiufen-help-section-2">开始背：四个按钮怎么选</a></li><li><a href="#jiufen-help-section-3">听读音、慢速和听音回忆</a></li><li><a href="#jiufen-help-section-4">巧记不顺手，就换自己的线索</a></li><li><a href="#jiufen-help-section-5">例句、搭配和学习记录</a></li><li><a href="#jiufen-help-section-6">手机和电脑用数据线同步：先手机，后电脑</a></li><li><a href="#jiufen-help-section-7">内容更新和进度备份：是两种不同文件</a></li><li><a href="#jiufen-help-section-8">找回内部快照：先预览，再决定</a></li><li><a href="#jiufen-help-section-9">升级和续签时怎么保留记录</a></li><li><a href="#jiufen-help-section-10">常见问题</a></li></ol></nav>
 <h2>使用步骤与常见问题</h2>
 <p>电脑和 iPhone 都可以断网背单词。平时各自在本机保存；想把两边的学习记录合到一起时，再用数据线同步。</p>
@@ -37,7 +37,8 @@
 <ul>
 <li>在词卡点 <strong>“▶ 播放读音”</strong>，口音可以选 <strong>“英式”</strong> 或 <strong>“美式”</strong>，速度可以选 <strong>“正常”</strong> 或 <strong>“慢速”</strong>。</li>
 <li>在“回忆方式”选 <strong>“听音，回忆意思”</strong>，点播放先听，再按需要查看答案、选择反馈。</li>
-<li>软件自带的读音是 <strong>eSpeak 合成参考音</strong>，可以离线播放。它不是录制的真人朗读，听感会比较机械；中文谐音、拼音和字母编码只用来助记，不是英语发音。</li>
+<li>软件自带 <strong>Kokoro 神经合成参考音</strong>，英式和美式各有正常、慢速音频。它们已提前生成，断网即可播放，手机不需要下载语音模型。慢速文件保持音调，不必另外设置。</li>
+<li>少数词有不同词性或意思对应的读法，播放提示会注明顺序；听到两种读法时，请结合词义核对。中文谐音、拼音和字母编码只用来助记，不是英语发音。</li>
 </ul>
 <p>如果想练拼写，已有 <strong>“看中文，回忆拼写”</strong> 模式。愿意时输入答案，再核对；平时不需要强制输入，也没有“移开视线再拼写”的必做步骤。</p>
 <h3 id="jiufen-help-section-4">4. 巧记不顺手，就换自己的线索</h3>
@@ -50,9 +51,9 @@
 <p>直接使用四个反馈按钮，无需另外选择“本次回忆方式”。软件按是否打开提示、展开答案自动记录：未用提示且未看答案就点认识，记作独立回忆；用过提示，记作提示后反馈；看过答案再反馈，记作未细分。旧版已经保存的回忆标记保留。</p>
 <p>到 <strong>“学习记录”</strong> 查看：</p>
 <ul>
-<li>独立回忆、使用提示等已记录情况；未另外标记的记录不会自动当作独立想起。</li>
+<li>独立回忆、使用提示等已记录情况；看过答案后的未细分反馈不会自动当作独立想起。</li>
 <li><strong>“最近的拼写错题”</strong>：练过拼写并提交反馈后，可以回看拼错的位置，点词再练。</li>
-<li><strong>“需要换巧记的词”</strong>：回看之前标记线索问题的词，修改或换方案。</li>
+<li><strong>“需要换巧记的词”</strong>：回看之前标记线索问题的词，查看其他编号巧记或写自己的线索。</li>
 </ul>
 <h3 id="jiufen-help-section-6">6. 手机和电脑用数据线同步：先手机，后电脑</h3>
 <p><strong>先把两端都更新到 1.1.0 或更新版本。</strong> 连接可传数据的 USB-C 数据线，手机解锁，按手机提示信任电脑，并让“九分词汇”留在前台。</p>
@@ -90,12 +91,12 @@
 <li>手机继续使用原来的签名身份与安装设置，覆盖更新或续签。<strong>不要先卸载旧 App。</strong></li>
 <li>新版本打开后，核对进度、笔记和熟知标记，再继续同步。</li>
 </ol>
-<p>安装包用于安装软件，完整同步档案用于保存你的进度。续签需要用到安装工具；平时的离线学习和数据线同步不需要网络。</p>
+<p>本轮的新音色与界面需要在电脑和手机分别安装 1.1.1；只同步进度或导入内容包不会替换音频。安装包用于安装软件，完整同步档案用于保存你的进度。续签需要用到安装工具；平时的离线学习和数据线同步不需要网络。</p>
 <h3 id="jiufen-help-section-10">常见问题</h3>
 <p><strong>两端巧记内容不同怎么办？</strong> 先核对“备份与设置 → 离线内容更新”里的内容版本，再正常同步，较新内容会带到另一端。如果提示相同版本的内容不一致，保留两边的内容包和学习档案，换用同一份完整内容包，不要手动改文件里的版本号。</p>
 <p><strong>提示旧版本被拒绝？</strong> 先把手机和电脑都升级到 1.1.0 或更新版本，再重新“准备与电脑同步”。不要只更新一端。</p>
 <p><strong>电脑显示手机尚未确认，是完成了吗？</strong> 还没有。保留两端程序和记录，手机保持解锁、App 在前台，重新连接后再试。只有电脑显示“双向同步完成”才算这一轮完成。</p>
 <p><strong>点了导出但又取消，算备份了吗？</strong> 不算。电脑需完成保存；手机需完成“存储到文件”并确认文件确实存在。取消保存或分享不会记为已保存的外部备份。</p>
 <p><strong>我只想直接背，不想额外选一堆标记。</strong> 可以。已去掉额外的回忆标记选项，拼写练习仍为可选模式；按自己的习惯使用忘记、模糊、认识、标记熟知即可。</p>
-<footer>这份说明可以断网打开，也可以用浏览器的打印功能留一份。适用于九分词汇 1.1.0。</footer>
+<footer>这份说明可以断网打开，也可以用浏览器的打印功能留一份。适用于九分词汇 1.1.1。</footer>
 </main></body></html>

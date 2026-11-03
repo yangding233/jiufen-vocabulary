@@ -33,11 +33,14 @@ async function playOffline(w,locale){
  if(!w)return;
  const voice=locale||el('audio-voice').value||'en-GB',item=offlineAudio.entries[w.id]?.[voice];
  if(!item){message('这个自加词暂无随包离线音频。');return;}
+ const rate=Number(state.settings.audioRate)||1,slow=rate===0.75&&item.slow;
+ const label=(voice==='en-GB'?'英式':'美式')+(offlineAudio.displayName||(/kokoro/i.test(offlineAudio.engine||'')?'Kokoro 神经合成音':'离线合成音'))+' · '+(rate<1?'慢速':'正常速度')+(item.note?' · '+item.note:'');
  try{
-  if(VocabNative.platform==='ios'){VocabNative.call('playAudio',{id:w.id,voice,rate:Number(state.settings.audioRate)||1});nativeAudioActive=true;el('audio-status').textContent=(voice==='en-GB'?'英式':'美式')+'离线合成音 · '+((Number(state.settings.audioRate)||1)<1?'慢速':'正常速度');return;}
+  if(VocabNative.platform==='ios'){VocabNative.call('playAudio',{id:w.id,voice,rate});nativeAudioActive=true;el('audio-status').textContent=label;return;}
   if(activeAudio){activeAudio.pause();activeAudio.currentTime=0;}
-  activeAudio=new Audio(item.file);activeAudio.playbackRate=Number(state.settings.audioRate)||1;
-  await activeAudio.play();el('audio-status').textContent=(voice==='en-GB'?'英式':'美式')+'离线合成音 · '+(activeAudio.playbackRate<1?'慢速':'正常速度');
+  activeAudio=new Audio(slow?slow.file:item.file);activeAudio.playbackRate=slow?1:rate;
+  activeAudio.preservesPitch=true;
+  await activeAudio.play();el('audio-status').textContent=label;
  }catch(e){el('audio-status').textContent='播放失败：'+(e.message||'请检查媒体音量和完整程序目录后重试。');}
 }
 function stopOfflineAudio(){if(activeAudio){activeAudio.pause();activeAudio=null;}if(nativeAudioActive){try{VocabNative.call('stopAudio');}catch(e){}nativeAudioActive=false;}}

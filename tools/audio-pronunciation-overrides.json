@@ -1,0 +1,493 @@
+{
+  "schema": 1,
+  "version": "2026-11-03.1",
+  "reviewedAt": "2026-11-03",
+  "description": "按原常规词表词性筛选的标准IPA发音覆写建议；不改写词库，不附带或下载词典录音。variants遵循原释义顺序，同一读音不重复；多种读法需逐个生成并在音频中留停顿。标准IPA尚需转换为Kokoro/Misaki音素。",
+  "entries": [
+    {
+      "id": "jf-0003",
+      "word": "abstract",
+      "meaning": "adj. 抽象的；n. 摘要",
+      "originalPhonetic": "['æbstrækt]",
+      "variants": [
+        {
+          "label": "形容词／名词",
+          "enGB": "ˈæbstrækt",
+          "enUS": "ˈæbstrækt"
+        }
+      ],
+      "note": "词表只列形容词和名词，均重读第一音节；不加入未列出的动词读法。",
+      "sources": [
+        "https://dictionary.cambridge.org/us/dictionary/english/abstract"
+      ]
+    },
+    {
+      "id": "jf-0054",
+      "word": "audience",
+      "meaning": "n. 观众；读者",
+      "originalPhonetic": "['ɔːdiəns]",
+      "variants": [
+        {
+          "label": "名词",
+          "enGB": "ˈɔːdiəns",
+          "enUS": "ˈɔːdiəns"
+        }
+      ],
+      "note": "单数以/ns/结尾；美式首元音存在/ɑː/合流变体，本包采用词典支持的/ɔː/。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/audience"
+      ]
+    },
+    {
+      "id": "jf-0055",
+      "word": "audiences",
+      "meaning": "n. 观众；听众",
+      "originalPhonetic": "/ˈɔːdɪənsɪz/",
+      "variants": [
+        {
+          "label": "名词复数",
+          "enGB": "ˈɔːdiənsɪz",
+          "enUS": "ˈɔːdiənsɪz"
+        }
+      ],
+      "note": "依据audience基本词及复数规则推导；必须保留额外的/ɪz/音节，不能读回单数，也不能只添加/z/。美式首元音存在合流变体。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/audience"
+      ]
+    },
+    {
+      "id": "jf-0252",
+      "word": "contrast",
+      "meaning": "n. 对比；反差；v. 对比",
+      "originalPhonetic": "[kənˈtrɑːst]",
+      "variants": [
+        {
+          "label": "名词",
+          "enGB": "ˈkɒntrɑːst",
+          "enUS": "ˈkɑːntræst"
+        },
+        {
+          "label": "动词",
+          "enGB": "kənˈtrɑːst",
+          "enUS": "kənˈtræst"
+        }
+      ],
+      "note": "按词表释义顺序先名词后动词；英式第二音节/ɑː/也存在/æ/变体，本包选前者。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/contrast"
+      ]
+    },
+    {
+      "id": "jf-0312",
+      "word": "desert",
+      "meaning": "n. 沙漠",
+      "originalPhonetic": "/ˈdezət/",
+      "variants": [
+        {
+          "label": "名词：沙漠",
+          "enGB": "ˈdezət",
+          "enUS": "ˈdezɚt"
+        }
+      ],
+      "note": "只读沙漠名词；不要读为重音在后的抛弃动词，也不要读成dessert。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/desert"
+      ]
+    },
+    {
+      "id": "jf-0322",
+      "word": "digest",
+      "meaning": "v. 消化；n. 摘要",
+      "originalPhonetic": "v.[daɪˈdʒest]/n.[ˈdaɪdʒest]",
+      "variants": [
+        {
+          "label": "动词",
+          "enGB": "daɪˈdʒest",
+          "enUS": "daɪˈdʒest"
+        },
+        {
+          "label": "名词",
+          "enGB": "ˈdaɪdʒest",
+          "enUS": "ˈdaɪdʒest"
+        }
+      ],
+      "note": "按词表释义顺序先动词后名词；动词首音节也有/dɪ/变体，本包选词表既有/daɪ/。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/digest"
+      ]
+    },
+    {
+      "id": "jf-0407",
+      "word": "estimate",
+      "meaning": "v. 估计；n. 估算",
+      "originalPhonetic": "[ˈɛstɪˌmeɪt]",
+      "variants": [
+        {
+          "label": "动词",
+          "enGB": "ˈestɪmeɪt",
+          "enUS": "ˈestəmeɪt"
+        },
+        {
+          "label": "名词",
+          "enGB": "ˈestɪmət",
+          "enUS": "ˈestəmət"
+        }
+      ],
+      "note": "按词表释义顺序先动词后名词；关键是词尾/meɪt/与/mət/。",
+      "sources": [
+        "https://dictionary.cambridge.org/pronunciation/english/estimate"
+      ]
+    },
+    {
+      "id": "jf-0639",
+      "word": "increase",
+      "meaning": "n. 增加；v. 增加",
+      "originalPhonetic": "n. /ˈɪŋkriːs/；v. /ɪnˈkriːs/",
+      "variants": [
+        {
+          "label": "名词",
+          "enGB": "ˈɪnkriːs",
+          "enUS": "ˈɪnkriːs"
+        },
+        {
+          "label": "动词",
+          "enGB": "ɪnˈkriːs",
+          "enUS": "ɪnˈkriːs"
+        }
+      ],
+      "note": "按词表释义顺序先名词后动词，名词第一音节重读。",
+      "sources": [
+        "https://dictionary.cambridge.org/pronunciation/english/increase"
+      ]
+    },
+    {
+      "id": "jf-0739",
+      "word": "Live nearby",
+      "meaning": "v. 住在附近",
+      "originalPhonetic": "/lɪv ˈnɪəˌbaɪ/",
+      "variants": [
+        {
+          "label": "动词短语：住在附近",
+          "enGB": "lɪv ˌnɪəˈbaɪ",
+          "enUS": "lɪv ˌnɪrˈbaɪ"
+        }
+      ],
+      "note": "首词大小写不能把住/lɪv/误当现场的/laɪv/；nearby按副词读。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/live"
+      ]
+    },
+    {
+      "id": "jf-0813",
+      "word": "moderate",
+      "meaning": "adj. 中等的；适度的",
+      "originalPhonetic": "[ˈmɒdərɪt]",
+      "variants": [
+        {
+          "label": "形容词",
+          "enGB": "ˈmɒdərət",
+          "enUS": "ˈmɑːdɚət"
+        }
+      ],
+      "note": "词表只列形容词，词尾弱读/ət/，不读动词/eɪt/。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/moderate"
+      ]
+    },
+    {
+      "id": "jf-0865",
+      "word": "objects",
+      "meaning": "n. 物体；物品",
+      "originalPhonetic": "/ˈɒbdʒekts/",
+      "variants": [
+        {
+          "label": "名词复数：物体",
+          "enGB": "ˈɒbdʒekts",
+          "enUS": "ˈɑːbdʒekts"
+        }
+      ],
+      "note": "由名词object加清辅音后的复数/s/推导；第一音节重读，不用动词反对的重音。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/object"
+      ]
+    },
+    {
+      "id": "jf-0916",
+      "word": "perfume",
+      "meaning": "n. 香水",
+      "originalPhonetic": "['pɜːʳfjuːm]",
+      "variants": [
+        {
+          "label": "名词：香水",
+          "enGB": "ˈpɜːfjuːm",
+          "enUS": "ˈpɝːfjuːm"
+        }
+      ],
+      "note": "词表只列香水名词；选第一音节重读，美式也接受后重音变体。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/perfume"
+      ]
+    },
+    {
+      "id": "jf-0917",
+      "word": "permit",
+      "meaning": "n. 许可证；v. 允许",
+      "originalPhonetic": "[pəˈmɪt]",
+      "variants": [
+        {
+          "label": "名词",
+          "enGB": "ˈpɜːmɪt",
+          "enUS": "ˈpɝːmɪt"
+        },
+        {
+          "label": "动词",
+          "enGB": "pəˈmɪt",
+          "enUS": "pɚˈmɪt"
+        }
+      ],
+      "note": "按词表释义顺序先名词许可证后动词允许；原词表只标出动词，音频需覆盖二者。",
+      "sources": [
+        "https://dictionary.cambridge.org/pronunciation/english/permit"
+      ]
+    },
+    {
+      "id": "jf-0984",
+      "word": "presents",
+      "meaning": "n. 礼物",
+      "originalPhonetic": "/ˈprezənts/",
+      "variants": [
+        {
+          "label": "名词复数：礼物",
+          "enGB": "ˈprezənts",
+          "enUS": "ˈprezənts"
+        }
+      ],
+      "note": "由礼物名词present加复数/s/推导；不读展示动词/prɪˈzents/。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/present"
+      ]
+    },
+    {
+      "id": "jf-1060",
+      "word": "research",
+      "meaning": "n. 研究；v. 研究",
+      "originalPhonetic": "[rɪ'sɜːʳtʃ]",
+      "variants": [
+        {
+          "label": "名词／动词",
+          "enGB": "rɪˈsɜːtʃ",
+          "enUS": "ˈriːsɝːtʃ"
+        }
+      ],
+      "note": "两词性各地均有重音变体，不能简单宣称名词必前动词必后；本包每种口音选一个词典支持的常见读法。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/research"
+      ]
+    },
+    {
+      "id": "jf-1295",
+      "word": "survey",
+      "meaning": "n. 调查；测量",
+      "originalPhonetic": "[sɜːˈveɪ]",
+      "variants": [
+        {
+          "label": "名词",
+          "enGB": "ˈsɜːveɪ",
+          "enUS": "ˈsɝːveɪ"
+        }
+      ],
+      "note": "词表只列名词调查／测量；第一音节重读。原词表音标误选了动词重音，音频按名词生成，不改原始词库字段。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/survey"
+      ]
+    },
+    {
+      "id": "jf-1327",
+      "word": "tears",
+      "meaning": "n. 眼泪",
+      "originalPhonetic": "/tɪəz/",
+      "variants": [
+        {
+          "label": "名词复数：眼泪",
+          "enGB": "tɪəz",
+          "enUS": "tɪrz"
+        }
+      ],
+      "note": "按眼泪/tɪə/加浊音后的复数/z/推导；不要用撕裂/teə/。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/tear"
+      ]
+    },
+    {
+      "id": "jf-1389",
+      "word": "transport",
+      "meaning": "n. 交通；运输；v. 运输",
+      "originalPhonetic": "[trænsˈpɔːt]",
+      "variants": [
+        {
+          "label": "名词",
+          "enGB": "ˈtrænspɔːt",
+          "enUS": "ˈtrænspɔːrt"
+        },
+        {
+          "label": "动词",
+          "enGB": "trænˈspɔːt",
+          "enUS": "trænˈspɔːrt"
+        }
+      ],
+      "note": "按词表释义顺序先名词后动词；既有音标只标动词，音频覆盖名词首重音。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/transport"
+      ]
+    },
+    {
+      "id": "jf-1422",
+      "word": "use",
+      "meaning": "v. 使用；n. 用途",
+      "originalPhonetic": "v. /juːz/；n. /juːs/",
+      "variants": [
+        {
+          "label": "动词",
+          "enGB": "juːz",
+          "enUS": "juːz"
+        },
+        {
+          "label": "名词",
+          "enGB": "juːs",
+          "enUS": "juːs"
+        }
+      ],
+      "note": "按词表释义顺序先动词后名词；词尾/z/和/s/要分开。",
+      "sources": [
+        "https://dictionary.cambridge.org/pronunciation/english/use"
+      ]
+    },
+    {
+      "id": "jf-1471",
+      "word": "wind",
+      "meaning": "n. 风",
+      "originalPhonetic": "/wɪnd/",
+      "variants": [
+        {
+          "label": "名词：风",
+          "enGB": "wɪnd",
+          "enUS": "wɪnd"
+        }
+      ],
+      "note": "词表只列风，使用短元音/ɪ/，不加入转动/waɪnd/。",
+      "sources": [
+        "https://www.collinsdictionary.com/dictionary/english/wind"
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "id": "jf-0054",
+      "word": "audience"
+    },
+    {
+      "id": "jf-0055",
+      "word": "audiences"
+    },
+    {
+      "id": "jf-0003",
+      "word": "abstract"
+    },
+    {
+      "id": "jf-0006",
+      "word": "accident"
+    },
+    {
+      "id": "jf-0002",
+      "word": "a radio program"
+    },
+    {
+      "id": "jf-0252",
+      "word": "contrast"
+    },
+    {
+      "id": "jf-0312",
+      "word": "desert"
+    },
+    {
+      "id": "jf-0322",
+      "word": "digest"
+    },
+    {
+      "id": "jf-0407",
+      "word": "estimate"
+    },
+    {
+      "id": "jf-0639",
+      "word": "increase"
+    },
+    {
+      "id": "jf-0739",
+      "word": "Live nearby"
+    },
+    {
+      "id": "jf-0865",
+      "word": "objects"
+    },
+    {
+      "id": "jf-0917",
+      "word": "permit"
+    },
+    {
+      "id": "jf-0984",
+      "word": "presents"
+    },
+    {
+      "id": "jf-1023",
+      "word": "reading"
+    },
+    {
+      "id": "jf-1030",
+      "word": "recordings"
+    },
+    {
+      "id": "jf-1295",
+      "word": "survey"
+    },
+    {
+      "id": "jf-1327",
+      "word": "tears"
+    },
+    {
+      "id": "jf-1422",
+      "word": "use"
+    },
+    {
+      "id": "jf-1471",
+      "word": "wind"
+    }
+  ],
+  "extraSamples": [
+    {
+      "word": "transparent",
+      "note": "不在1493条常规词库，仅作额外试听，不计入覆盖率。"
+    }
+  ],
+  "absentBaseTargets": [
+    "record",
+    "present",
+    "object",
+    "project",
+    "conduct",
+    "produce",
+    "refuse",
+    "close",
+    "read",
+    "live",
+    "lead",
+    "tear",
+    "transparent"
+  ],
+  "reviewNotes": [
+    "原词表若只列一个词性，不把其它词性或其它词义的读法塞进音频。",
+    "字典有合法口音／个体变体时，所列是本包采用的一个参考读法，并非宣称其它变体错误。",
+    "发音覆写仅控制合成目标，不能证明实际音频发音准确；仍需听检。",
+    "objects、presents、tears的复数尾由已核对的词典基本词和英语屈折规则人工推导，资料链接指向基本词，不冒称词典逐字提供这些屈折IPA。",
+    "Live nearby中nearby的副词重音为短语人工组合，来源链接核对live词性，不能据此宣称整句经过词典逐字收录。"
+  ]
+}

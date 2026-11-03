@@ -360,12 +360,15 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
                   let rate = body["rate"] as? Double, [0.75, 1.0].contains(rate), let root = webRoot else {
                 throw NativeError.invalid("离线发音参数不正确。")
             }
-            let file = root.appendingPathComponent("audio", isDirectory: true).appendingPathComponent(voice, isDirectory: true).appendingPathComponent(identifier + ".m4a")
+            let directory = root.appendingPathComponent("audio", isDirectory: true).appendingPathComponent(voice, isDirectory: true)
+            let slowFile = directory.appendingPathComponent(identifier + "-slow.m4a")
+            let usesSlowFile = rate == 0.75 && FileManager.default.fileExists(atPath: slowFile.path)
+            let file = usesSlowFile ? slowFile : directory.appendingPathComponent(identifier + ".m4a")
             guard FileManager.default.fileExists(atPath: file.path) else { throw NativeError.invalid("找不到这条离线发音，请保留完整安装包。") }
             let session = AVAudioSession.sharedInstance()
             audioPlayer?.stop()
             let player = try AVAudioPlayer(contentsOf: file)
-            player.delegate = self; player.enableRate = true; player.rate = Float(rate); player.prepareToPlay()
+            player.delegate = self; player.enableRate = true; player.rate = usesSlowFile ? 1 : Float(rate); player.prepareToPlay()
             audioPlayer = player
             do {
                 try session.setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers])

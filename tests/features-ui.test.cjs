@@ -3,6 +3,7 @@ const {chromium}=require('./playwright.cjs'),assert=require('node:assert/strict'
 (async()=>{
  const browser=await chromium.launch({channel:'msedge',headless:true}),context=await browser.newContext({viewport:{width:1280,height:1000},timezoneId:'Asia/Shanghai',colorScheme:'dark'});
  await context.addInitScript(()=>{
+  const OriginalAudio=window.Audio;window.Audio=function(file){const audio=new OriginalAudio(file);window.featureAudio=audio;return audio;};
   window.exportResult=false;window.exports=[];window.vocabHost={call(method,payload){try{let value;
    if(method==='load')value=JSON.parse(localStorage.getItem('feature-doc')||'null');
    else if(method==='save'){localStorage.setItem('feature-doc',JSON.stringify(payload));value=true;}
@@ -36,6 +37,11 @@ const {chromium}=require('./playwright.cjs'),assert=require('node:assert/strict'
  await p.locator('#detail-memory [data-reject-cue]').click();await p.locator('#close-detail').click();await p.locator('#tab-today').click();
  assert.match(await p.locator('#content-version').textContent(),/2026-11-03\.2/);assert.match(await p.locator('#sync-brief').textContent(),/上次同步/);
  await p.locator('#start-new').click();await p.locator('#play-audio').click();await p.waitForFunction(()=>document.getElementById('audio-status').textContent.includes('正常速度'));
+ assert.equal(await p.evaluate(()=>featureAudio.playbackRate),1);assert.equal(await p.evaluate(()=>featureAudio.preservesPitch),true);
+ await p.locator('#audio-rate').selectOption('0.75');await p.locator('#play-audio').click();await p.waitForFunction(()=>document.getElementById('audio-status').textContent.includes('慢速'));
+ const playing=await p.evaluate(()=>{const manifest=JSON.parse(document.getElementById('audio-data').textContent),card=manifest.entries['jf-0001']['en-GB'];return {src:featureAudio.src,rate:featureAudio.playbackRate,card,displayName:manifest.displayName,status:document.getElementById('audio-status').textContent};});
+ assert(playing.src.endsWith(playing.card.slow?.file||playing.card.file));assert.equal(playing.rate,playing.card.slow?1:0.75);if(playing.displayName)assert(playing.status.includes(playing.displayName));if(playing.card.note)assert(playing.status.includes(playing.card.note));
+ await p.locator('#audio-rate').selectOption('1');
  await p.locator('#reveal').click();assert.match(await p.locator('#study-usage').textContent(),/newspaper/);
  assert.equal(await p.locator('#memory-card .memory-scheme-title').count(),0);assert.equal(await p.locator('#memory-card [data-memory-scheme]').count(),1);
  // A stale optional mark from 1.1.0 must not override actual answer/hint state.

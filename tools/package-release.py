@@ -14,7 +14,7 @@ OUTPUT = ROOT / "dist" / "releases" / VERSION
 WINDOWS = ROOT / "dist" / "windows" / f"九分词汇离线学习-{VERSION}"
 SOURCE_DIRS = (".github", "apps", "docs", "shared", "tests", "tools", "web")
 SOURCE_FILES = (".gitignore", ".gitattributes", "package.json", "package-lock.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.txt", "CONTRACT.md")
-SKIP_DIRS = {"node_modules", "__pycache__", ".git", ".venv", ".venv-usb", "dist", "build", "test-results", "private-fixtures", "data"}
+SKIP_DIRS = {"node_modules", "__pycache__", ".git", ".venv", ".venv-usb", ".venv-audio", "dist", "build", "test-results", "private-fixtures", "data"}
 PRIVATE_FILES = ("*.sqlite*", "*.db*", "*.ipa", "*.p12", "*.mobileprovision", "*.cer", "*.key", "*.log", ".env*", "source.html", "source-app.js")
 
 
@@ -69,7 +69,7 @@ for archive in (source_archive, windows_archive):
     "源码：解压 source ZIP，或在 GitHub 仓库下载与克隆对应版本。\n"
     "源码不含学习进度、测试数据库、Apple 签名资料或已安装依赖。\n"
     "iOS：从当前版本 Release 下载配套的未签名 IPA，在 Windows 签名后覆盖安装。\n"
-    "从旧版升级时，两端都需更新到 1.1.0。覆盖安装前分别导出完整同步档案，保留原 Apple 账号和 App 标识，不要先卸载。\n"
+    f"本版音色与界面随安装包更新，请在电脑和手机分别安装 {VERSION}。覆盖安装前分别导出完整同步档案，保留原 Apple 账号和 App 标识，不要先卸载。\n"
     "此版可单独导入完整巧记内容包，并通过 USB 同步；音频和程序功能仍随安装包更新。\n"
     "简单使用说明：打开 docs/简单使用说明.html，或点击软件顶部的使用说明。\n"
     "自动化和 Xcode 验证、真机待验收项目详见 docs/验收清单.md。\n",

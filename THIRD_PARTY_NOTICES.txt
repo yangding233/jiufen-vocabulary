@@ -1,6 +1,53 @@
-eSpeak NG offline pronunciation
-Source: https://github.com/espeak-ng/espeak-ng/releases/tag/1.52.0
-Development synthesizer license: GPL-3.0-or-later. The runtime includes only pre-generated AAC-LC/M4A speech (encoded from the synthesized PCM), not the synthesizer executable or DLL. British and American synthetic reference pronunciation is generated from the bundled word list; it is not human-recorded dictionary audio. Regeneration: tools/build_audio.py with an official eSpeak NG executable and FFmpeg encoder.
+Kokoro neural offline pronunciation (1.1.1)
+
+Only pre-generated AAC-LC/M4A audio ships with the runtime. Development models,
+voice embeddings, Python packages and encoder executables are not bundled.
+The audio is synthetic reference pronunciation, not a human-recorded dictionary.
+British voice: bf_emma; American voice: af_heart. Normal speech is generated
+locally; slow files are derived with FFmpeg atempo=0.75 without lowering pitch.
+No user learning records or personal notes are inputs to speech generation.
+
+Model: Kokoro-82M v1.0, Apache-2.0
+Official model card: https://huggingface.co/hexgrad/Kokoro-82M
+Official inference library: https://github.com/hexgrad/kokoro
+Voice inventory: https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md
+Model card credits architecture to Li et al / StyleTTS2, trained by @rzvzn.
+The model card describes permissive/public-domain and synthetic training audio.
+It also credits Koniwa tnc (<1 hour, CC BY 3.0) and SIWIS (<11 hours, CC BY 4.0):
+  https://github.com/koniwa/koniwa
+  https://creativecommons.org/licenses/by/3.0/deed.ja
+  https://datashare.ed.ac.uk/handle/10283/2353
+  https://datashare.ed.ac.uk/bitstream/handle/10283/2353/license_text
+These are the upstream model's training-data acknowledgements. No source
+training recordings are redistributed in this application.
+
+Development inference: kokoro-onnx 0.6.1, MIT
+Copyright (c) 2025 github.com/thewh1teagle
+https://github.com/thewh1teagle/kokoro-onnx
+https://github.com/thewh1teagle/kokoro-onnx/blob/main/LICENSE
+ONNX export and voice assets: model-files-v1.1 release
+https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.1
+kokoro-v1.0.onnx SHA256:
+beb0d1848dee9a49da392cc3df26958d46cfa35d321edf434f52949153f0df3a
+voices-v1.0.bin SHA256:
+bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d
+
+Development English G2P: Misaki 0.9.4, Apache-2.0
+https://github.com/hexgrad/misaki
+https://github.com/hexgrad/misaki/blob/main/LICENSE
+Development inference dependency: ONNX Runtime, MIT
+https://github.com/microsoft/onnxruntime
+Development conversion/tempo tool: FFmpeg (license depends on the configured build)
+https://ffmpeg.org/legal.html
+No FFmpeg executable or library is included as a speech-generation tool.
+Electron's separately bundled ffmpeg.dll belongs to the Electron distribution
+and is covered by its own accompanying Chromium/Electron license notices.
+
+Historical audio: eSpeak NG 1.52.0 (versions through 1.1.0)
+https://github.com/espeak-ng/espeak-ng/releases/tag/1.52.0
+Development synthesizer license: GPL-3.0-or-later. Earlier application versions
+used pre-generated eSpeak speech. Version 1.1.1 replaces that audio with Kokoro
+neural speech; old eSpeak PCM and development binaries are not release assets.
 
 第三方组件说明
 

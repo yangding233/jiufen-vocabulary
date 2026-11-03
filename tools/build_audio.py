@@ -63,8 +63,10 @@ def load_words():
     return words
 
 
-def expected_files(words):
-    return {f'audio/{locale}/{word["id"]}.m4a' for word in words for locale in VOICES}
+def expected_files(words, slow=False):
+    return {f'audio/{locale}/{word["id"]}{suffix}.m4a'
+            for word in words for locale in VOICES
+            for suffix in (('', '-slow') if slow else ('',))}
 
 
 def check_manifest(manifest, words):
@@ -73,21 +75,31 @@ def check_manifest(manifest, words):
             or set(manifest.get('entries', {})) != {word['id'] for word in words}):
         raise ValueError('Audio manifest identity, coverage or encoding is incorrect')
     total = 0
+    slow = any('slow' in card for variants in manifest['entries'].values()
+               for card in variants.values())
     for word in words:
         variants = manifest['entries'][word['id']]
         if set(variants) != set(VOICES):
             raise ValueError(f'Missing accent variant: {word["id"]}')
         for locale, card in variants.items():
-            expected = f'audio/{locale}/{word["id"]}.m4a'
-            if (card.get('file') != expected or not isinstance(card.get('seconds'), (int, float))
-                    or not .1 < card['seconds'] < 15):
-                raise ValueError(f'Invalid manifest record: {word["id"]}/{locale}')
-            path = inside_project(ROOT / 'web' / expected)
-            if not valid_m4a(path) or digest(path) != card.get('sha256'):
-                raise ValueError(f'Invalid M4A header or SHA256: {path}')
-            total += path.stat().st_size
+            if 'note' in card and (not isinstance(card['note'], str) or len(card['note']) > 200):
+                raise ValueError(f'Invalid pronunciation note: {word["id"]}/{locale}')
+            records = [(card, '')]
+            if slow:
+                if not isinstance(card.get('slow'), dict):
+                    raise ValueError(f'Missing slow pronunciation: {word["id"]}/{locale}')
+                records.append((card['slow'], '-slow'))
+            for record, suffix in records:
+                expected = f'audio/{locale}/{word["id"]}{suffix}.m4a'
+                if (record.get('file') != expected or not isinstance(record.get('seconds'), (int, float))
+                        or isinstance(record.get('seconds'), bool) or not .1 < record['seconds'] < 20):
+                    raise ValueError(f'Invalid manifest record: {word["id"]}/{locale}{suffix}')
+                path = inside_project(ROOT / 'web' / expected)
+                if path.is_symlink() or not valid_m4a(path) or digest(path) != record.get('sha256'):
+                    raise ValueError(f'Invalid M4A header or SHA256: {path}')
+                total += path.stat().st_size
     actual = {path.relative_to(ROOT / 'web').as_posix() for path in AUDIO.rglob('*') if path.is_file()}
-    if actual != expected_files(words):
+    if actual != expected_files(words, slow):
         raise ValueError('Unexpected or missing files in web/audio; PCM must stay in build/audio-pcm')
     return total
 
@@ -155,9 +167,12 @@ def main():
     previous = json.loads(TARGET.read_text(encoding='utf-8')) if TARGET.exists() else {}
     if args.check:
         total = check_manifest(previous, words)
-        print(json.dumps({'words': len(words), 'voices': list(VOICES), 'files': len(words)*2,
+        slow = any('slow' in card for variants in previous['entries'].values() for card in variants.values())
+        print(json.dumps({'words': len(words), 'voices': list(VOICES), 'files': len(words)*(4 if slow else 2),
                           'bytes': total, 'encoding': ENCODING, 'checked': True}))
         return
+    if previous and previous.get('engine') != 'eSpeak NG 1.52.0':
+        raise ValueError('Refusing to replace non-eSpeak audio with the legacy eSpeak builder. Use the neural audio builder for this manifest.')
     migrated = preserve_pcm(words)
     encoder = None
     engine = None
