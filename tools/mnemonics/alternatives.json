@@ -1,0 +1,1990 @@
+[
+  {
+    "word": "accident",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "accident",
+        "cue": "借 incident（事件），把开头 in 换成 ac"
+      }
+    ],
+    "scene": "一次普通事件 incident 突然出了意外，记录员把开头 in 改成 ac，写成事故 accident；不是每个 incident 都是事故。",
+    "focus": "按上方借词步骤还原，核对完整拼写：accident",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "accountable",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "account",
+        "cue": "account，账目；交代"
+      },
+      {
+        "text": "able",
+        "cue": "able，能够"
+      }
+    ],
+    "scene": "负责人拿着账本 account，能够 able 解释每笔支出，说明他负有责任；account＋able。",
+    "focus": "按上方借词步骤还原，核对完整拼写：accountable",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "activated",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "activate",
+        "cue": "activate，激活"
+      },
+      {
+        "text": "d",
+        "cue": "activate 末尾已有 e，只补 d"
+      }
+    ],
+    "scene": "给机器按下 activate 激活按钮，屏幕显示已经启动 activated；activate 不删 e，末尾只加 d。",
+    "focus": "按上方借词步骤还原，核对完整拼写：activated",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "adventure",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "ad",
+        "cue": "ad，广告"
+      },
+      {
+        "text": "venture",
+        "cue": "venture，冒险；冒险行动"
+      }
+    ],
+    "scene": "一则 ad 广告邀请大家参加冒险 venture，广告中走进雨林的旅程就是 adventure；ad＋venture。",
+    "focus": "按上方借词步骤还原，核对完整拼写：adventure",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "advertise",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "advert",
+        "cue": "advert，广告，是 advertisement 的常见简称"
+      },
+      {
+        "text": "ise",
+        "cue": "wise（明智的）去开头 w"
+      }
+    ],
+    "scene": "一则广告 advert 说“明智 wise 选择”，引得商店争着做广告；advert 后接 wise 去 w 的 ise。",
+    "focus": "按上方借词步骤还原，核对完整拼写：advertise",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "agriculture",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "agri",
+        "cue": "借 angry（生气的），删第2位 n，再把末尾 y 改 i"
+      },
+      {
+        "text": "culture",
+        "cue": "culture，文化"
+      }
+    ],
+    "scene": "农民为农田被毁而 angry 生气，举起牌子说农业也是本地 culture 文化；angry 删 n、y 改 i，接 culture。",
+    "focus": "按上方借词步骤还原，核对完整拼写：agriculture",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "apartment",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "apart",
+        "cue": "apart，分开的"
+      },
+      {
+        "text": "ment",
+        "cue": "常见名词结尾 ment，作为字母块"
+      }
+    ],
+    "scene": "一栋楼分开 apart 成独立单元，每个单元门牌都标 ment；apart＋ment 记公寓。这是场景助记。",
+    "focus": "按上方借词步骤还原，核对完整拼写：apartment",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "applications",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "appli",
+        "cue": "借 apply（申请；应用），末尾 y 改 i"
+      },
+      {
+        "text": "cations",
+        "cue": "vacations（假期，复数）去开头 va"
+      }
+    ],
+    "scene": "大家申请 apply 假期 vacations，把申请书放成一叠；apply 的 y 改 i，vacations 去 va，合成 applications。",
+    "focus": "按上方借词步骤还原，核对完整拼写：applications",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "audience",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "audi",
+        "cue": "audio（音频；声音的）去末尾 o"
+      },
+      {
+        "text": "ence",
+        "cue": "fence（栅栏）去开头 f"
+      }
+    ],
+    "scene": "观众围在栅栏 fence 旁听音频 audio 直播；audio 去 o，fence 去 f，得到 audi＋ence。",
+    "focus": "按上方借词步骤还原，核对完整拼写：audience",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "automatic",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "auto",
+        "cue": "auto，汽车；也见于汽车标牌"
+      },
+      {
+        "text": "matic",
+        "cue": "magic（魔法）把中间 g 改 t"
+      }
+    ],
+    "scene": "汽车 auto 像中了魔法 magic，不用人操作就自动开门；magic 的 g 改 t，auto＋matic。",
+    "focus": "按上方借词步骤还原，核对完整拼写：automatic",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "behaviour",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "behav",
+        "cue": "behave（表现；举止）去末尾 e"
+      },
+      {
+        "text": "iour",
+        "cue": "your（你的）把开头 y 改 i"
+      }
+    ],
+    "scene": "老师提醒“注意你的 your 举止 behave”，把行为记录贴在墙上；behave 去 e，your 的 y 改 i，拼 behaviour。",
+    "focus": "按上方借词步骤还原，核对完整拼写：behaviour",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "business",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "bus",
+        "cue": "bus，公交车"
+      },
+      {
+        "text": "iness",
+        "cue": "happiness（幸福）去开头 happ"
+      }
+    ],
+    "scene": "经营公交车 bus 的生意兴隆，乘客幸福 happiness 地上下车；bus 后接 happiness 去 happ 的 iness。",
+    "focus": "按上方借词步骤还原，核对完整拼写：business",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "categories",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "categor",
+        "cue": "category（类别）去末尾 y"
+      },
+      {
+        "text": "ies",
+        "cue": "category 复数把 y 改 ies"
+      }
+    ],
+    "scene": "把同一个 category 类别牌复制成许多类别牌 categories；保留 categor，y 改 ies，记分类时一类变多类。",
+    "focus": "按上方借词步骤还原，核对完整拼写：categories",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "certificate",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "certificate",
+        "cue": "借 certify（证明），把末尾 y 换成 icate"
+      }
+    ],
+    "scene": "机构核实 certify 你的技能后，发给你一张证书；certify 的 y 改为 icate，得到 certificate。",
+    "focus": "按上方借词步骤还原，核对完整拼写：certificate",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "chemical",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "chem",
+        "cue": "chemist（化学家）去末尾 ist"
+      },
+      {
+        "text": "ical",
+        "cue": "medical（医学的）去开头 med"
+      }
+    ],
+    "scene": "化学家 chemist 帮医学 medical 实验配制化学试剂；chemist 去 ist，medical 去 med，接成 chemical。",
+    "focus": "按上方借词步骤还原，核对完整拼写：chemical",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "classification",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "classification",
+        "cue": "借 classify（分类），把末尾 y 换成 ication"
+      }
+    ],
+    "scene": "管理员先 classify 分类书籍，再把结果写在分类表 classification 上；classify 的 y 换成 ication。",
+    "focus": "按上方借词步骤还原，核对完整拼写：classification",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "collection",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "collect",
+        "cue": "collect，收集"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "小离子 ion 替你 collect 收集散落的邮票，最后装满一本收藏册；collect＋ion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：collection",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "commercial",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "commerc",
+        "cue": "commerce（商业）去末尾 e"
+      },
+      {
+        "text": "ial",
+        "cue": "trial（试验）去开头 tr"
+      }
+    ],
+    "scene": "商店为一项商业 commerce 项目试做 trial 广告；commerce 去 e，trial 去 tr，写 commerc＋ial。",
+    "focus": "按上方借词步骤还原，核对完整拼写：commercial",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "communication",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "communicat",
+        "cue": "communicate（交流）去末尾 e"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "离子 ion 小人点亮信号灯，帮助两边 communicate 交流；communicate 去 e，再接 ion，记通信 communication。",
+    "focus": "按上方借词步骤还原，核对完整拼写：communication",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "confidence",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "confidence",
+        "cue": "借 confident（自信的），把末尾 t 换成 ce"
+      }
+    ],
+    "scene": "自信的 confident 学生抬头发言，桌上摆着“信心”名牌 confidence；同一份自信，词尾 t 改 ce。",
+    "focus": "按上方借词步骤还原，核对完整拼写：confidence",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "confusion",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "confus",
+        "cue": "confuse（使困惑）去末尾 e"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "一团乱跑的离子 ion 把图纸搅乱，confuse 了工程师；confuse 去 e 接 ion，记混乱、困惑。",
+    "focus": "按上方借词步骤还原，核对完整拼写：confusion",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "cooperation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "cooperat",
+        "cue": "cooperate（合作）去末尾 e"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "一群离子 ion 合作 cooperate 搬动大箱子，合作成果写进报告；cooperate 去 e 接 ion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：cooperation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "corporate",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "corporate",
+        "cue": "借 corporation（公司），把末尾 ation 换成 ate"
+      }
+    ],
+    "scene": "一家公司 corporation 把“企业的”印章盖在文件上；corporation 去 ation 改 ate，记 corporate。",
+    "focus": "按上方借词步骤还原，核对完整拼写：corporate",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "creativity",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "creativ",
+        "cue": "creative（有创造力的）去末尾 e"
+      },
+      {
+        "text": "ity",
+        "cue": "city（城市）去开头 c"
+      }
+    ],
+    "scene": "有创造力 creative 的孩子设计一座 city 城市；creative 去 e，city 去 c，接成 creativity。",
+    "focus": "按上方借词步骤还原，核对完整拼写：creativity",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "critical",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "critic",
+        "cue": "critic，评论家；批评者"
+      },
+      {
+        "text": "al",
+        "cue": "all（全部）去末尾一个 l"
+      }
+    ],
+    "scene": "评论家 critic 对全部 all 方案提出批评，指出一个关键问题；critic 后接 all 少一个 l 的 al。",
+    "focus": "按上方借词步骤还原，核对完整拼写：critical",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "cultural",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "cultural",
+        "cue": "借 culture（文化），把末尾 e 换成 al"
+      }
+    ],
+    "scene": "文化 culture 展厅把每件展品都贴上“文化的”标签 cultural；culture 的 e 改成 al。",
+    "focus": "按上方借词步骤还原，核对完整拼写：cultural",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "democratic",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "democratic",
+        "cue": "借 democracy（民主），把末尾 cy 换成 tic"
+      }
+    ],
+    "scene": "大家为了民主 democracy 投票选举，会议采用民主的 democratic 方式；democracy 末尾 cy 改 tic。",
+    "focus": "按上方借词步骤还原，核对完整拼写：democratic",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "depression",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "depress",
+        "cue": "depressed（情绪低落的）去末尾 ed"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "一个小离子 ion 垂头丧气，脸旁挂着 depressed 情绪牌；去 ed 接 ion，把低落状态连到 depression。",
+    "focus": "按上方借词步骤还原，核对完整拼写：depression",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "digestive",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "digest",
+        "cue": "digest，消化"
+      },
+      {
+        "text": "ive",
+        "cue": "five（五）去开头 f"
+      }
+    ],
+    "scene": "五个 five 小工在胃里帮助 digest 消化，给机器挂上“消化的”牌；digest＋five 去 f 的 ive。",
+    "focus": "按上方借词步骤还原，核对完整拼写：digestive",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "directions",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "direct",
+        "cue": "direct，指导；指引"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      },
+      {
+        "text": "s",
+        "cue": "复数结尾 s"
+      }
+    ],
+    "scene": "小离子 ion 按指示 direct 大家往出口走，多张指示牌末尾加 s；direct＋ion＋s。",
+    "focus": "按上方借词步骤还原，核对完整拼写：directions",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "discussion",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "discuss",
+        "cue": "discuss，讨论"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "大家围桌 discuss 讨论一个离子 ion 模型，桌上留下讨论记录；discuss＋ion，两个 s 都保留。",
+    "focus": "按上方借词步骤还原，核对完整拼写：discussion",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "distribution",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "distribut",
+        "cue": "distribute（分发）去末尾 e"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "离子 ion 快递员 distribute 分发物资，记录每份去向；distribute 去 e 加 ion，记分配、分发。",
+    "focus": "按上方借词步骤还原，核对完整拼写：distribution",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "electricity",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "electr",
+        "cue": "electron（电子）去末尾 on"
+      },
+      {
+        "text": "icity",
+        "cue": "city（城市）前加字母 i"
+      }
+    ],
+    "scene": "一个 i 形小人走进城市 city，看到电子 electron 流动把灯点亮；electron 去 on，接 i＋city，记电 electricity。",
+    "focus": "按上方借词步骤还原，核对完整拼写：electricity",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "emergency",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "emerge",
+        "cue": "emerge，出现"
+      },
+      {
+        "text": "ncy",
+        "cue": "Nancy（人名）去中间 an"
+      }
+    ],
+    "scene": "南希 Nancy 突然从人群出现 emerge，喊出紧急情况；Nancy 去 an 剩 ncy，接在 emerge 后。",
+    "focus": "按上方借词步骤还原，核对完整拼写：emergency",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "engineering",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "engineer",
+        "cue": "engineer，工程师"
+      },
+      {
+        "text": "ing",
+        "cue": "常见结尾 ing"
+      }
+    ],
+    "scene": "工程师 engineer 一直在设计桥梁，工作台上挂着工程学 engineering 课程表；engineer 后接 ing。",
+    "focus": "按上方借词步骤还原，核对完整拼写：engineering",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "exclusive",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "exclusive",
+        "cue": "借 exclude（排除），把末尾 de 换成 sive"
+      }
+    ],
+    "scene": "俱乐部把无会员卡的人 exclude 排除在外，形成独享空间；exclude 的 de 改 sive，写 exclusive。",
+    "focus": "按上方借词步骤还原，核对完整拼写：exclusive",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "exhibition",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "exhibit",
+        "cue": "exhibit，展品；展示"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "博物馆把小离子 ion 模型作为 exhibit 展品摆满大厅，形成展览；exhibit＋ion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：exhibition",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "expensive",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "expensive",
+        "cue": "借 expense（费用），把末尾 e 换成 ive"
+      }
+    ],
+    "scene": "账单 expense 太高，店员贴上“昂贵的”价格牌；expense 的末尾 e 改 ive，得到 expensive。",
+    "focus": "按上方借词步骤还原，核对完整拼写：expensive",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "experience",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "experience",
+        "cue": "借 experiment（实验），把末尾 ment 换成 ence"
+      }
+    ],
+    "scene": "反复做实验 experiment，积累丰富经验 experience；保留 experi，末尾 ment 换 ence。",
+    "focus": "按上方借词步骤还原，核对完整拼写：experience",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "furniture",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "furniture",
+        "cue": "借 furnish（给房间配家具），把末尾 sh 换成 ture"
+      }
+    ],
+    "scene": "搬家公司 furnish 配好房间后，把家具清单贴到门上；furnish 的 sh 改 ture，记 furniture。",
+    "focus": "按上方借词步骤还原，核对完整拼写：furniture",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "generator",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "generator",
+        "cue": "借 generate（产生），把末尾 e 换成 or"
+      }
+    ],
+    "scene": "机器 generate 产生电力，工程师给它挂上“发电机”铭牌；generate 的 e 改 or，得到 generator。",
+    "focus": "按上方借词步骤还原，核对完整拼写：generator",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "government",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "govern",
+        "cue": "govern，治理；管理"
+      },
+      {
+        "text": "ment",
+        "cue": "常见名词结尾 ment"
+      }
+    ],
+    "scene": "负责 govern 治理城市的人走进政府大楼，门口写着 ment；govern＋ment，记政府。",
+    "focus": "按上方借词步骤还原，核对完整拼写：government",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "identification",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "identification",
+        "cue": "借 identify（识别），把末尾 y 换成 ication"
+      }
+    ],
+    "scene": "门卫先 identify 识别身份，再查你的身份证明；identify 的 y 改为 ication，得到 identification。",
+    "focus": "按上方借词步骤还原，核对完整拼写：identification",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "information",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "inform",
+        "cue": "inform，通知"
+      },
+      {
+        "text": "ation",
+        "cue": "station（车站）去开头 st"
+      }
+    ],
+    "scene": "车站 station 用广播 inform 通知乘客，屏幕同步显示信息；inform＋station 去 st 的 ation。",
+    "focus": "按上方借词步骤还原，核对完整拼写：information",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "irrigation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "irrigation",
+        "cue": "借 irrigate（灌溉），把末尾 e 换成 ion"
+      }
+    ],
+    "scene": "水渠 irrigate 灌溉农田，把整个过程画到灌溉图上；irrigate 去 e 接 ion，写 irrigation。",
+    "focus": "按上方借词步骤还原，核对完整拼写：irrigation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "mechanism",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "mechanism",
+        "cue": "借 mechanic（机修工），把末尾 ic 换成 ism"
+      }
+    ],
+    "scene": "机修工 mechanic 拆开钟表，观察里面的机械装置；mechanic 末尾 ic 改 ism，记 mechanism。",
+    "focus": "按上方借词步骤还原，核对完整拼写：mechanism",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "medication",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "medication",
+        "cue": "借 medicine（药），把末尾 ine 换成 ation"
+      }
+    ],
+    "scene": "药箱外写 medicine，里面的药物按治疗方案分格摆放；medicine 的 ine 改 ation，得到 medication。",
+    "focus": "按上方借词步骤还原，核对完整拼写：medication",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "microscope",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "microscope",
+        "cue": "借 telescope（望远镜），把开头 tele 换成 micro"
+      }
+    ],
+    "scene": "望远镜 telescope 对准远方，换上 micro 小物件托盘后改看细小样本；tele 换 micro，记显微镜 microscope。",
+    "focus": "按上方借词步骤还原，核对完整拼写：microscope",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "nutrition",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "nut",
+        "cue": "nut，坚果"
+      },
+      {
+        "text": "rit",
+        "cue": "write（写）去开头 w 和末尾 e"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "小离子 ion 拿坚果 nut 做实验，把营养成分写 write 到记录本；nut＋write 去 w、e 的 rit＋ion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：nutrition",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "participation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "participation",
+        "cue": "借 participate（参与），把末尾 e 换成 ion"
+      }
+    ],
+    "scene": "每个人都 participate 参与活动，签到表记录参与情况；participate 去 e 接 ion，得到 participation。",
+    "focus": "按上方借词步骤还原，核对完整拼写：participation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "photography",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "photo",
+        "cue": "photo，照片"
+      },
+      {
+        "text": "graph",
+        "cue": "graph，图表"
+      },
+      {
+        "text": "y",
+        "cue": "字母 y，想成相机支架"
+      }
+    ],
+    "scene": "相机支架 y 稳住镜头，把图表 graph 拍成照片 photo，记录摄影过程；photo＋graph＋y。",
+    "focus": "按上方借词步骤还原，核对完整拼写：photography",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "population",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "population",
+        "cue": "借 popular（受欢迎的），把末尾 ar 换成 ation"
+      }
+    ],
+    "scene": "一座受欢迎的 popular 城镇吸引很多人，人口统计表越写越长；popular 的 ar 改 ation，记 population。",
+    "focus": "按上方借词步骤还原，核对完整拼写：population",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "prejudice",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "pre",
+        "cue": "pre-，预先"
+      },
+      {
+        "text": "judice",
+        "cue": "judge（判断）把末尾 ge 换成 ice"
+      }
+    ],
+    "scene": "还没了解就预先 pre 判断 judge，结论冻成一块 ice 冰，形成偏见；judge 的 ge 换 ice，再加 pre。",
+    "focus": "按上方借词步骤还原，核对完整拼写：prejudice",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "processing",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "process",
+        "cue": "process，处理；加工"
+      },
+      {
+        "text": "ing",
+        "cue": "常见结尾 ing"
+      }
+    ],
+    "scene": "材料按流程 process 在传送带上被连续加工，屏幕显示 processing；process 直接接 ing。",
+    "focus": "按上方借词步骤还原，核对完整拼写：processing",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "promotion",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "promotion",
+        "cue": "借 promote（晋升；推广），把末尾 e 换成 ion"
+      }
+    ],
+    "scene": "公司 promote 晋升员工，也推广新产品，两张公告一起贴在 promotion 栏；promote 去 e 接 ion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：promotion",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "questionnaire",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "question",
+        "cue": "question，问题"
+      },
+      {
+        "text": "naire",
+        "cue": "millionaire（百万富翁）的最后5字母 naire"
+      }
+    ],
+    "scene": "百万富翁 millionaire 拿着一串 question 问题挨家调查，纸上就是问卷；question＋millionaire 的末尾 naire。",
+    "focus": "按上方借词步骤还原，核对完整拼写：questionnaire",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "reception",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "reception",
+        "cue": "借 receive（接收），把末尾 ive 换成 ption"
+      }
+    ],
+    "scene": "前台 receive 接收来访信息，并指引客人报到；receive 的 ive 改 ption，记 reception 接待处、接收。",
+    "focus": "按上方借词步骤还原，核对完整拼写：reception",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "registration",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "regist",
+        "cue": "register（登记）去末尾 er"
+      },
+      {
+        "text": "ration",
+        "cue": "ration，定量配给"
+      }
+    ],
+    "scene": "领取配给 ration 前，先在本上 register 登记；register 去 er，接 ration，得到 registration。",
+    "focus": "按上方借词步骤还原，核对完整拼写：registration",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "reinforcement",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "re",
+        "cue": "re-，再"
+      },
+      {
+        "text": "inforce",
+        "cue": "in（在里面）与 force（力量）按字母相接"
+      },
+      {
+        "text": "ment",
+        "cue": "常见名词结尾 ment"
+      }
+    ],
+    "scene": "工人在柱子里面 in 再次 re 加上力量 force，让结构更牢；re＋in＋force＋ment，记加固、强化。",
+    "focus": "按上方借词步骤还原，核对完整拼写：reinforcement",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "relevance",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "relevance",
+        "cue": "借 relevant（相关的），把末尾 t 换成 ce"
+      }
+    ],
+    "scene": "老师把 relevant 相关资料连到题目上，并写明它们的相关性；relevant 的 t 改 ce，记 relevance。",
+    "focus": "按上方借词步骤还原，核对完整拼写：relevance",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "relocation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "re",
+        "cue": "re-，重新"
+      },
+      {
+        "text": "location",
+        "cue": "location，位置"
+      }
+    ],
+    "scene": "把办公室的位置 location 标记从旧地图搬到新地图，重新 re 定位就是搬迁；re＋location。",
+    "focus": "按上方借词步骤还原，核对完整拼写：relocation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "repetition",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "re",
+        "cue": "re-，再"
+      },
+      {
+        "text": "pet",
+        "cue": "pet，宠物"
+      },
+      {
+        "text": "ition",
+        "cue": "position（位置）的最后5字母 ition"
+      }
+    ],
+    "scene": "宠物 pet 一次又一次 re 回到同一个位置 position，动作不断重复；re＋pet＋position 的末尾 ition。",
+    "focus": "按上方借词步骤还原，核对完整拼写：repetition",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "reproduction",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "reproduction",
+        "cue": "借 reproduce（繁殖；复制），把末尾 e 换成 tion"
+      }
+    ],
+    "scene": "复印机 reproduce 复制了一份文件，旁边的生物课本记录动物繁殖；reproduce 的 e 换 tion，连起 reproduction 的两义。",
+    "focus": "按上方借词步骤还原，核对完整拼写：reproduction",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "resistant",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "resist",
+        "cue": "resist，抵抗"
+      },
+      {
+        "text": "ant",
+        "cue": "ant，蚂蚁"
+      }
+    ],
+    "scene": "一块防护板 resist 挡住蚂蚁 ant 的啃咬，表示它有抵抗力；resist＋ant。",
+    "focus": "按上方借词步骤还原，核对完整拼写：resistant",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "responsible",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "respons",
+        "cue": "response（回应）去末尾 e"
+      },
+      {
+        "text": "ible",
+        "cue": "Bible（圣经）去开头 B"
+      }
+    ],
+    "scene": "保管员必须回应 response 借书要求，并对一本 Bible 的去向负责；response 去 e，Bible 去首字母，接成 responsible。",
+    "focus": "按上方借词步骤还原，核对完整拼写：responsible",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "sensitive",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "sensitive",
+        "cue": "借 sense（感觉），把末尾 e 换成 itive"
+      }
+    ],
+    "scene": "感觉 sense 很敏锐的人，一点声音就能察觉，显得敏感；sense 的 e 改 itive，记 sensitive。",
+    "focus": "按上方借词步骤还原，核对完整拼写：sensitive",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "starvation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "star",
+        "cue": "star，明星"
+      },
+      {
+        "text": "vation",
+        "cue": "vacation（假期）去掉第3、4字母 ca"
+      }
+    ],
+    "scene": "明星 star 假期 vacation 忘带食物，饿得眼冒金星；vacation 去 ca 得 vation，接 star，记饥饿 starvation。",
+    "focus": "按上方借词步骤还原，核对完整拼写：starvation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "structure",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "struct",
+        "cue": "instruct（指导）去开头 in"
+      },
+      {
+        "text": "ure",
+        "cue": "pure（纯净的）去开头 p"
+      }
+    ],
+    "scene": "老师指导 instruct 大家用纯净 pure 的冰块搭骨架，观察结构；instruct 去 in，pure 去 p，拼 struct＋ure。",
+    "focus": "按上方借词步骤还原，核对完整拼写：structure",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "subtopics",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "sub",
+        "cue": "submarine（潜水艇）的前3字母 sub"
+      },
+      {
+        "text": "topics",
+        "cue": "topics，话题"
+      }
+    ],
+    "scene": "一艘潜水艇 submarine 钻到大话题下面，找出几个子话题 topics；sub＋topics，记从属的小话题。",
+    "focus": "按上方借词步骤还原，核对完整拼写：subtopics",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "supervisor",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "supervisor",
+        "cue": "借 supervise（监督），把末尾 e 换成 or"
+      }
+    ],
+    "scene": "负责 supervise 监督工作的人坐在主管席上；supervise 的 e 改 or，得到 supervisor。",
+    "focus": "按上方借词步骤还原，核对完整拼写：supervisor",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "symbolism",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "symbolism",
+        "cue": "借 symbolic（象征的），把末尾 ic 换成 ism"
+      }
+    ],
+    "scene": "展览把 symbolic 象征图案汇成一种艺术手法，标题写 symbolism；symbolic 的 ic 改 ism。",
+    "focus": "按上方借词步骤还原，核对完整拼写：symbolism",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "technology",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "technology",
+        "cue": "借 technical（技术的），把末尾 ical 换成 ology"
+      }
+    ],
+    "scene": "技术员把 technical 技术资料放到科技展台，标题改为 technology；technical 的 ical 改 ology。",
+    "focus": "按上方借词步骤还原，核对完整拼写：technology",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "temperature",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "temper",
+        "cue": "temper，脾气"
+      },
+      {
+        "text": "ature",
+        "cue": "nature（自然）去开头 n"
+      }
+    ],
+    "scene": "脾气 temper 暴躁的人走进大自然 nature，拿温度计量自己头上的热气；temper＋nature 去 n 的 ature，记 temperature。",
+    "focus": "按上方借词步骤还原，核对完整拼写：temperature",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "terminology",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "terminology",
+        "cue": "借 terminal（航站楼；终端），把末尾 al 换成 ology"
+      }
+    ],
+    "scene": "航站楼 terminal 新员工学习广播里的专业术语；terminal 的 al 改 ology，写 terminology。",
+    "focus": "按上方借词步骤还原，核对完整拼写：terminology",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "translation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "translation",
+        "cue": "借 translate（翻译），把末尾 e 换成 ion"
+      }
+    ],
+    "scene": "先 translate 翻译一段话，再把译文装订成 translation 文稿；translate 去 e 接 ion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：translation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "travelling",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "travel",
+        "cue": "travel，旅行"
+      },
+      {
+        "text": "ling",
+        "cue": "“玲”的拼音 ling，只提示字母"
+      }
+    ],
+    "scene": "玲 ling 陪你一起 travel 旅行，旅行手册写 travelling；travel 的 l 与 ling 的 l 相邻，记英式双 l。",
+    "focus": "按上方借词步骤还原，核对完整拼写：travelling",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "university",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "university",
+        "cue": "借 universe（宇宙），把末尾 e 换成 ity"
+      }
+    ],
+    "scene": "大学里研究整个宇宙 universe，校门牌把 universe 的 e 换成 ity；从宇宙课想到 university。",
+    "focus": "按上方借词步骤还原，核对完整拼写：university",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "unfurnished",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "un",
+        "cue": "un-，否定"
+      },
+      {
+        "text": "furnished",
+        "cue": "furniture（家具）把末尾 ture 换成 shed"
+      }
+    ],
+    "scene": "房子里没有 un 家具 furniture，东西全搬到小棚 shed；furniture 的 ture 改 shed，前加 un，记无家具的。",
+    "focus": "按上方借词步骤还原，核对完整拼写：unfurnished",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "vegetarian",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "vegetarian",
+        "cue": "借 vegetable（蔬菜），把末尾 ble 换成 rian"
+      }
+    ],
+    "scene": "只吃蔬菜 vegetable 的食客在菜单上勾选素食；vegetable 的 ble 换成 rian，得到 vegetarian。",
+    "focus": "按上方借词步骤还原，核对完整拼写：vegetarian",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "abstract",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "abstract",
+        "cue": "借 extract（提取），把开头 ex 换成 abs"
+      }
+    ],
+    "scene": "从一堆具体材料中 extract 提取共同特点，只留下抽象概念；extract 的 ex 改 abs，写 abstract，摘要也提取要点。",
+    "focus": "按上方借词步骤还原，核对完整拼写：abstract",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "accent",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "accent",
+        "cue": "借 accept（接受），把第5个字母 p 换成 n"
+      }
+    ],
+    "scene": "老师说“我 accept 接受你的各种口音”，举起 n 形话筒；accept 的 p 改 n，记 accent。",
+    "focus": "按上方借词步骤还原，核对完整拼写：accent",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "accept",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "accept",
+        "cue": "借 except（除了），把开头 ex 换成 ac"
+      }
+    ],
+    "scene": "礼物堆里只有一个被标 except“除外”，换上 ac 标签后也被接受；except 的 ex 改 ac，记 accept。",
+    "focus": "按上方借词步骤还原，核对完整拼写：accept",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "accurate",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "accurate",
+        "cue": "借 accuracy（准确性），把末尾 cy 换成 te"
+      }
+    ],
+    "scene": "测量员先检查 accuracy 准确性，再给准确的刻度贴上 accurate 标签；accuracy 的 cy 改 te。",
+    "focus": "按上方借词步骤还原，核对完整拼写：accurate",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "analysis",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "analysis",
+        "cue": "借 analyse（分析，英式拼写），把末尾 se 换成 sis"
+      }
+    ],
+    "scene": "先 analyse 分析实验结果，再把分析报告订好；analyse 的 se 改 sis，得到 analysis。",
+    "focus": "按上方借词步骤还原，核对完整拼写：analysis",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "attitude",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "attitude",
+        "cue": "借 altitude（海拔），把第2个字母 l 换成 t"
+      }
+    ],
+    "scene": "登山者在高海拔 altitude 仍保持积极态度，路标 l 换成 t；altitude 的 l 改 t，记 attitude。",
+    "focus": "按上方借词步骤还原，核对完整拼写：attitude",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "balance",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "bal",
+        "cue": "balcony（阳台）的前3字母"
+      },
+      {
+        "text": "ance",
+        "cue": "dance（跳舞）去开头 d"
+      }
+    ],
+    "scene": "在阳台 balcony 跳舞 dance 时必须保持平衡；bal＋dance 去 d 的 ance，拼 balance。",
+    "focus": "按上方借词步骤还原，核对完整拼写：balance",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "biography",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "bio",
+        "cue": "biology（生物学）的前3字母 bio"
+      },
+      {
+        "text": "graphy",
+        "cue": "geography（地理学）去开头 geo"
+      }
+    ],
+    "scene": "一位生物学 biology 家周游各地研究地理 geography，把一生经历写成传记；bio＋geography 去 geo 的 graphy。",
+    "focus": "按上方借词步骤还原，核对完整拼写：biography",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "celebration",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "celebrat",
+        "cue": "celebrate（庆祝）去末尾 e"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "离子 ion 小人跟着人群 celebrate 庆祝，庆典现场挂满彩带；celebrate 去 e，再加 ion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：celebration",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "circulation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "circulat",
+        "cue": "circulate（循环；流通）去末尾 e"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "离子 ion 沿着圆管 circulate 一圈圈循环，记录成循环路线图；circulate 去 e 再接 ion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：circulation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "competition",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "competition",
+        "cue": "借 compete（竞争），把末尾 e 换成 ition"
+      }
+    ],
+    "scene": "大家争着 compete 竞争第一名，把比赛结果写进 competition 榜单；compete 的 e 改 ition。",
+    "focus": "按上方借词步骤还原，核对完整拼写：competition",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "concentration",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "concentrat",
+        "cue": "concentrate（集中）去末尾 e"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "让散开的离子 ion concentrate 集中到一点，得到高浓度；concentrate 去 e，再接 ion，也用集中这一点记注意力。",
+    "focus": "按上方借词步骤还原，核对完整拼写：concentration",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "convenient",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "conven",
+        "cue": "convene（召集；开会）去末尾 e"
+      },
+      {
+        "text": "ient",
+        "cue": "patient（病人）的末尾4字母 ient"
+      }
+    ],
+    "scene": "召集 convene 病人 patient 开会，把地点设在医院旁，大家都说方便；convene 去 e，patient 取 ient，接成 convenient。",
+    "focus": "按上方借词步骤还原，核对完整拼写：convenient",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "current",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "curr",
+        "cue": "currency（货币）去末尾 ency"
+      },
+      {
+        "text": "ent",
+        "cue": "rent（租金）去开头 r"
+      }
+    ],
+    "scene": "当前的租金 rent 要用本地货币 currency 支付，账单贴在电流图旁；currency 去 ency 得 curr，rent 去 r 得 ent，记 current 的当前义。",
+    "focus": "按上方借词步骤还原，核对完整拼写：current",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "decline",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "de",
+        "cue": "de-，此处作向下的字母提示"
+      },
+      {
+        "text": "cline",
+        "cue": "incline（斜坡；倾斜）去开头 in"
+      }
+    ],
+    "scene": "价格沿着斜坡 incline 往下 de 滑，销量曲线明显下降；de＋incline 去 in 的 cline，记 decline。",
+    "focus": "按上方借词步骤还原，核对完整拼写：decline",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "density",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "dens",
+        "cue": "dense（密集的）去末尾 e"
+      },
+      {
+        "text": "ity",
+        "cue": "city（城市）去开头 c"
+      }
+    ],
+    "scene": "密集 dense 的城市 city 用地图显示人口密度；dense 去 e，city 去 c，拼 density。",
+    "focus": "按上方借词步骤还原，核对完整拼写：density",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "efficient",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "efficient",
+        "cue": "借 efficiency（效率），把末尾 cy 换成 t"
+      }
+    ],
+    "scene": "机器的 efficiency 效率提高，工人给它贴上“高效的”efficient 标签；efficiency 的 cy 改 t。",
+    "focus": "按上方借词步骤还原，核对完整拼写：efficient",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "emperor",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "emperor",
+        "cue": "借 empire（帝国），把末尾 ire 换成 eror"
+      }
+    ],
+    "scene": "帝国 empire 的王座上坐着皇帝；empire 的 ire 改 eror，拼 emperor。",
+    "focus": "按上方借词步骤还原，核对完整拼写：emperor",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "environment",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "env",
+        "cue": "envy（嫉妒；羡慕）去末尾 y"
+      },
+      {
+        "text": "iron",
+        "cue": "iron，铁"
+      },
+      {
+        "text": "ment",
+        "cue": "moment（时刻）的最后4字母 ment"
+      }
+    ],
+    "scene": "在这个时刻 moment，我羡慕 envy 朋友家绿树环绕的环境，自己窗外却是铁 iron 工厂；env＋iron＋ment，记环境。",
+    "focus": "按上方借词步骤还原，核对完整拼写：environment",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "erosion",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "erosion",
+        "cue": "借 erode（侵蚀），把末尾 de 换成 sion"
+      }
+    ],
+    "scene": "海浪不断 erode 侵蚀岩石，记录板上写出侵蚀 erosion；erode 的 de 改 sion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：erosion",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "estimate",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "estimate",
+        "cue": "借 estimation（估算），把末尾 ion 换成 e"
+      }
+    ],
+    "scene": "伙伴拿着 estimation 估算表，请你再估计一次；estimation 的 ion 改 e，写 estimate。",
+    "focus": "按上方借词步骤还原，核对完整拼写：estimate",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "evaporation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "evaporat",
+        "cue": "evaporate（蒸发）去末尾 e"
+      },
+      {
+        "text": "ion",
+        "cue": "ion，离子，只作字母提示"
+      }
+    ],
+    "scene": "水在离子 ion 实验装置里逐渐 evaporate 蒸发，研究员记录蒸发量；evaporate 去 e 再加 ion。",
+    "focus": "按上方借词步骤还原，核对完整拼写：evaporation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "external",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "external",
+        "cue": "借 internal（内部的），把开头 in 换成 ex"
+      }
+    ],
+    "scene": "从内部 internal 检查完设备，再走到外部检查，门牌 in 换 ex；internal 的 in 改 ex，记 external。",
+    "focus": "按上方借词步骤还原，核对完整拼写：external",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "fabric",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "fa",
+        "cue": "“发”的拼音 fa"
+      },
+      {
+        "text": "bric",
+        "cue": "brick（砖）去末尾 k"
+      }
+    ],
+    "scene": "工头把一块布料发 fa 给工人，让他包住砖 brick 防刮；fa＋brick 去 k 的 bric，记 fabric。",
+    "focus": "按上方借词步骤还原，核对完整拼写：fabric",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "failure",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "fail",
+        "cue": "fail，失败"
+      },
+      {
+        "text": "ure",
+        "cue": "pure（纯净的）去开头 p"
+      }
+    ],
+    "scene": "想配出纯净 pure 的液体，实验却 fail 失败，报告上写 failure；fail＋pure 去 p 的 ure。",
+    "focus": "按上方借词步骤还原，核对完整拼写：failure",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "fertilizer",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "fertilize",
+        "cue": "fertilize，施肥"
+      },
+      {
+        "text": "r",
+        "cue": "fertilize 末尾已有 e，只补 r"
+      }
+    ],
+    "scene": "农夫用一袋肥料 fertilize 给土地施肥，袋子印着 fertilizer；fertilize 后只补 r，得到肥料。",
+    "focus": "按上方借词步骤还原，核对完整拼写：fertilizer",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "flexibility",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "flex",
+        "cue": "flex，弯曲"
+      },
+      {
+        "text": "ibility",
+        "cue": "possibility（可能性）去开头 poss"
+      }
+    ],
+    "scene": "可弯曲 flex 的竹条能搭出各种可能 possibility 的形状，展示灵活性；flex＋possibility 去 poss 的 ibility。",
+    "focus": "按上方借词步骤还原，核对完整拼写：flexibility",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "fragile",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "fr",
+        "cue": "friend（朋友）的前2字母 fr"
+      },
+      {
+        "text": "agile",
+        "cue": "agile，敏捷的"
+      }
+    ],
+    "scene": "敏捷 agile 的朋友 friend 轻巧地接住易碎玻璃杯；friend 取 fr，接 agile，拼 fragile。",
+    "focus": "按上方借词步骤还原，核对完整拼写：fragile",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "general",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "general",
+        "cue": "借 generous（慷慨的），把末尾 ous 换成 al"
+      }
+    ],
+    "scene": "慷慨 generous 的将军把物资分给大家；generous 的 ous 改 al，记 general 的将军义。",
+    "focus": "按上方借词步骤还原，核对完整拼写：general",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "international",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "inter",
+        "cue": "interact（互动）去末尾 act"
+      },
+      {
+        "text": "national",
+        "cue": "national，国家的"
+      }
+    ],
+    "scene": "各国 national 代表一起 interact 互动，展开国际交流；interact 去 act，接 national。",
+    "focus": "按上方借词步骤还原，核对完整拼写：international",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "language",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "lang",
+        "cue": "slang（俚语）去开头 s"
+      },
+      {
+        "text": "u",
+        "cue": "短信中 u 代指 you，只作字母提示"
+      },
+      {
+        "text": "age",
+        "cue": "age，年龄"
+      }
+    ],
+    "scene": "你 u 用俚语 slang 告诉新朋友自己的年龄 age，大家用语言交流；slang 去 s，再接 u＋age。",
+    "focus": "按上方借词步骤还原，核对完整拼写：language",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "performance",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "performance",
+        "cue": "借 performer（表演者），把末尾 er 换成 ance"
+      }
+    ],
+    "scene": "表演者 performer 走上舞台，完成一场精彩演出；performer 的 er 改 ance，记 performance。",
+    "focus": "按上方借词步骤还原，核对完整拼写：performance",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "pollution",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "poll",
+        "cue": "poll，投票"
+      },
+      {
+        "text": "ution",
+        "cue": "solution（解决方案）去开头 sol"
+      }
+    ],
+    "scene": "居民发起投票 poll，选择治理污染的方案 solution；poll＋solution 去 sol 的 ution，写 pollution。",
+    "focus": "按上方借词步骤还原，核对完整拼写：pollution",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "privacy",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "privacy",
+        "cue": "借 private（私人的），把末尾 te 换成 cy"
+      }
+    ],
+    "scene": "私人 private 房间挂上请勿打扰的牌子，保护隐私；private 的 te 改 cy，写 privacy。",
+    "focus": "按上方借词步骤还原，核对完整拼写：privacy",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "realistic",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "realistic",
+        "cue": "借 realize（意识到），把末尾 ze 换成 stic"
+      }
+    ],
+    "scene": "意识到 realize 预算有限后，大家制订更现实的目标；realize 的 ze 改 stic，得到 realistic。",
+    "focus": "按上方借词步骤还原，核对完整拼写：realistic",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "regulation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "regulation",
+        "cue": "借 regular（有规律的），把末尾 ar 换成 ation"
+      }
+    ],
+    "scene": "为了让交通 regular 有规律，路口立起规定牌；regular 的 ar 改 ation，记 regulation。",
+    "focus": "按上方借词步骤还原，核对完整拼写：regulation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "relaxation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "relax",
+        "cue": "relax，放松"
+      },
+      {
+        "text": "ation",
+        "cue": "station（车站）去开头 st"
+      }
+    ],
+    "scene": "旅客在车站 station 的躺椅上 relax 放松，等车也成了休息；relax＋station 去 st 的 ation。",
+    "focus": "按上方借词步骤还原，核对完整拼写：relaxation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "solution",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "solution",
+        "cue": "借 solve（解决），把末尾 ve 换成 ution"
+      }
+    ],
+    "scene": "大家终于 solve 解决问题，把解决方案贴在白板上；solve 的 ve 改 ution，写 solution。",
+    "focus": "按上方借词步骤还原，核对完整拼写：solution",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "tropical",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "trop",
+        "cue": "drop（落下）把开头 d 换成 t"
+      },
+      {
+        "text": "ical",
+        "cue": "medical（医学的）去开头 med"
+      }
+    ],
+    "scene": "热带雨林里雨点不断 drop 落下，医护 medical 小屋周围全是棕榈树；drop 的 d 改 t，medical 去 med，拼 tropical。",
+    "focus": "按上方借词步骤还原，核对完整拼写：tropical",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "variation",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "variation",
+        "cue": "借 variable（可变的；变量），把末尾 able 换成 ation"
+      }
+    ],
+    "scene": "屏幕上的变量 variable 不断变动，把这些变化画成曲线；variable 的 able 改 ation，得到 variation。",
+    "focus": "按上方借词步骤还原，核对完整拼写：variation",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  },
+  {
+    "word": "vertical",
+    "id": "alt-1",
+    "label": "另一条熟词线索",
+    "parts": [
+      {
+        "text": "vert",
+        "cue": "convert（转换）去开头 con"
+      },
+      {
+        "text": "ical",
+        "cue": "medical（医学的）去开头 med"
+      }
+    ],
+    "scene": "把医用 medical 标尺 convert 转换方向，竖起来测身高；convert 去 con，medical 去 med，拼 vertical。",
+    "focus": "按上方借词步骤还原，核对完整拼写：vertical",
+    "reference": "原创的另一种助记方案。借词删改与场景仅作记忆线索，不作为历史词源或标准发音；提示词不熟悉时可切换或编辑。"
+  }
+]

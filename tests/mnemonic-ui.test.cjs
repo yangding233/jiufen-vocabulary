@@ -8,6 +8,8 @@ const {pathToFileURL}=require('node:url'),path=require('node:path'),fs=require('
  await context.addInitScript(()=>{window.vocabHost={call(method,payload){
   if(method==='load')return {ok:true,value:JSON.parse(localStorage.getItem('mnemonic-test-document')||'null')};
   if(method==='save'){localStorage.setItem('mnemonic-test-document',JSON.stringify(payload));return {ok:true,value:true};}
+  if(method==='contentLoad')return {ok:true,value:JSON.parse(localStorage.getItem('mnemonic-test-content')||'null')};
+  if(method==='contentSave'){localStorage.setItem('mnemonic-test-content',JSON.stringify(payload));return {ok:true,value:true};}
   if(method==='syncStatus')return {ok:true,value:{deviceId:'mnemonic-content-test',platform:'windows'}};
   return {ok:false,error:'Unexpected test method '+method};
  }};});

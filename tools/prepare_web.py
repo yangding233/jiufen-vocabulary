@@ -41,6 +41,9 @@ html=html.replace('<main>','''<main><section class="panel usb-panel" aria-label=
 html=html.replace('</main>','</div></main>',1)
 (R/'web/index.html').write_text(html,encoding='utf-8')
 subprocess.run([sys.executable,str(R/'tools/update_mnemonics.py')],check=True)
+subprocess.run([sys.executable,str(R/'tools/upgrade_web.py')],check=True)
+subprocess.run([sys.executable,str(R/'tools/build_usage.py')],check=True)
+subprocess.run(['node',str(R/'tools/build_content.cjs')],check=True)
 core=R/'shared/sync-core.js'
 if core.exists():(R/'web/sync-core.js').write_bytes(core.read_bytes())
 print('Prepared offline shared web UI; source SHA256:',hashlib.sha256((R/'tools/source.html').read_bytes()).hexdigest())

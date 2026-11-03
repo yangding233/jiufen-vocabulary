@@ -1,7 +1,7 @@
 (() => {
 'use strict';
 const KEY = 'jiufen-regular-mnemonic-v1', PREVIOUS = KEY + '-previous', OLD = 'jiufen-unused-legacy';
-const APP = 'jiufen-mnemonic-learning', GRADES = ['again','hard','good'], MODES = ['mnemonic','context','cloze','meaning'];
+const APP = 'jiufen-mnemonic-learning', GRADES = ['again','hard','good'], MODES = ['mnemonic','context','cloze','meaning','listening'];
 const LABEL = {again:'忘记',hard:'模糊',good:'认识',mastered:'标记熟知',restore:'恢复复习'}, LEGACY = {known:'good',hesitant:'hard',unknown:'again'};
 const el = id => document.getElementById(id), copy = x => JSON.parse(JSON.stringify(x));
 const initialWords = JSON.parse(el('vocabulary-data').textContent);
@@ -28,11 +28,11 @@ const builtinNames = new Set(initialWords.map(w => normalize(w.word)));
 let networkFamily = '', spellingTimer = null;
 function withoutMemory(w) { const {memory,...plain}=w; return plain; }
 function memoryFor(w) {
-  const c=state?.cards[w.id]||{},m=memoryIndex.get(normalize(w.word))||{kind:'我的联想',family:'我的补充词',anchor:'从一个你熟悉的词或生活经历搭桥。',scene:'写下一个能让你想到这个词的具体画面。',related:[],focus:'先回忆，再核对完整拼写。',reference:'自己编写的助记，不作为词源说明。'};
+  const c=state?.cards[w.id]||{},m=chosenMemoryFor(w)||{kind:'我的联想',family:'我的补充词',anchor:'从一个你熟悉的词或生活经历搭桥。',scene:'写下一个能让你想到这个词的具体画面。',related:[],focus:'先回忆，再核对完整拼写。',reference:'自己编写的助记，不作为词源说明。'};
   return {...m,anchor:c.memoryAnchor||m.anchor,scene:c.memoryScene||m.scene,personal:Boolean(c.memoryAnchor||c.memoryScene),rejected:Boolean(c.rejectBuiltinCue)};
 }
 function memoryHTML(w,where='study') {
- const m=memoryFor(w),builtin=memoryIndex.get(normalize(w.word))||m,c=state.cards[w.id];
+ const m=memoryFor(w),builtin=chosenMemoryFor(w)||m,c=state.cards[w.id];
  const links=m.related.map(name=>state.words.find(x=>normalize(x.word)===normalize(name))).filter(Boolean);
  const inherited=!m.parts?.length&&Boolean(m.baseParts?.length);
  const parts=(m.parts?.length?m.parts:m.baseParts||[]).filter(p=>p.text.trim()&&p.text!=='-');
@@ -46,6 +46,7 @@ function memoryHTML(w,where='study') {
  <h3>③ ${inherited?'从基础词还原本词':'核对拼写还原'}</h3>
  ${steps.length?`<div class="spelling-steps">${steps.map(step=>`<p class="rebuild"><strong>${escape(step.from)} → ${escape(step.to)}</strong><br>${escape(step.change)}<br><span class="small muted">${escape(step.to)}：${escape(step.meaning)}</span></p>`).join('')}</div>`:`<p class="rebuild">${escape(m.focus)}</p>`}`}
  ${m.personal?'</details>':''}
+ ${cueControls(w)}
  <details><summary>方法与来源</summary><p class="small muted">${escape(m.reference)} 字母结构通过校验不代表这条线索对每个人都有效；不认识提示词时可停用或修改。</p></details>
  ${links.length?`<div class="row">${links.map(x=>`<button data-memory-open="${escape(x.id)}">${escape(x.word)}</button>`).join('')}</div>`:''}
  <div class="row"><button data-reject-cue="${escape(w.id)}">${m.rejected?'恢复内置线索':'这条线索不适合我'}</button>${where==='study'?`<button data-memory-open="${escape(w.id)}">写自己的巧记</button>`:''}</div>`;
@@ -249,7 +250,7 @@ function fitSessionToPlan(s) {
   const tail=session.queue.slice(session.cursor).filter(q=>s.cards[q.id].seen||permitted.has(q.id));
   session.queue=[...session.queue.slice(0,session.cursor),...tail];
   session.initialCount=new Set(session.queue.filter(q=>q.kind==='new').map(q=>q.id)).size;
-  if(!tail[0]||tail[0].id!==old.id||tail[0].kind!==old.kind){session.shown=false;session.typed='';session.hintShown=false;session.cueSeen=false;session.wordCovered=false;}
+  if(!tail[0]||tail[0].id!==old.id||tail[0].kind!==old.kind){session.shown=false;session.typed='';session.hintShown=false;session.cueSeen=false;session.wordCovered=false;session.recallStatus='';}
   session.updatedAt=now();
 }
 function weekdayText(settings) {return settings.studyDays.length===7?'每天':settings.studyDays.length===5&&[1,2,3,4,5].every(d=>settings.studyDays.includes(d))?'周一至周五':WEEKDAYS.filter(d=>settings.studyDays.includes(d)).map(d=>'周'+WEEK_NAMES[d]).join('、');}
@@ -418,7 +419,7 @@ function render() {
   if(tab==='library')renderLibrary();if(tab==='network')renderNetwork();if(tab==='history')renderHistory();
   if(tab==='settings' && !['daily-target','default-mode'].some(id=>document.activeElement===el(id))) {el('daily-target').value=state.settings.dailyTarget;el('default-mode').value=state.settings.mode;}
   ['save-settings','add-words','enroll-selected','save-detail','merge-import','replace-import','open-plan-home','open-plan-settings'].forEach(id=>{el(id).disabled=blocked;});
-  storageStatus();
+  storageStatus();renderLearningEnhancements();
 }
 function renderStudy() {
   const s=state.session,running=unfinished(s),done=s&&!running;
@@ -426,18 +427,19 @@ function renderStudy() {
   if(done){const st=stats();el('finish-note').textContent=`本组反馈已记录。${st.newCount?`今日还可新学 ${st.newCount} 词。`:'今天暂无剩余新词任务。'}${st.due.length?` 还有 ${st.due.length} 个到期词，可分次继续。`:' 现有到期词已处理。'}`;el('finish-undo').disabled=!state.undo;}
   if(!running)return;
   const q=s.queue[s.cursor],w=wordById(q.id),c=state.cards[q.id],m=memoryFor(w);
-  const mode=s.mode==='cloze'&&!w.sentence.trim()?'meaning':s.mode;
+  const sentenceText=usageFor(w).sentence||w.sentence;
+  const mode=s.mode==='cloze'&&!sentenceText.trim()?'meaning':s.mode;
   el('session-label').textContent=s.kind==='schedule'?(s.source==='new'?'顺序新学 · 熟词搭桥 → 联想 → 回忆':'到期复习 · 先自己回忆，再看线索'):'自主回顾 · 保留反馈，不改长期日期';
   el('shuffle').hidden=s.kind!=='free';el('shuffle').disabled=blocked||s.queue.length-s.cursor<2;
   el('session-progress').max=s.queue.length;el('session-progress').value=s.cursor;
   el('position').textContent=`${w.group} · 第 ${s.cursor+1} / ${s.queue.length} 次呈现${q.kind==='repeat'?' · 当轮重现':''}`;
   el('current-rating').textContent=c.lastGrade?`最近反馈：${LABEL[c.lastGrade]}`:c.legacyGrade?`旧版最后标记：${LABEL[c.legacyGrade]}`:'尚无逐词反馈';
   el('study-mode').value=s.mode;el('favorite').textContent=c.favorite?'★ 已收藏':'☆ 收藏';el('favorite').setAttribute('aria-pressed',String(c.favorite));
-  el('word').textContent=['context','mnemonic'].includes(mode)||s.shown?w.word:mode==='meaning'?w.meaning:'先回忆目标词';
-  el('sentence').hidden=(mode==='meaning'||mode==='mnemonic')&&!s.shown;
-  el('sentence').innerHTML=escape(w.sentence).replace(new RegExp(regex(w.word),'i'),x=>mode==='cloze'&&!s.shown?'<span class="blank">______</span>':`<mark>${x}</mark>`);
-  el('spelling-box').hidden=mode!=='meaning'||s.shown;el('spelling').value=s.typed;
-  el('spelling-label').textContent='看中文回忆拼写（独立模式）';
+  el('word').textContent=['context','mnemonic'].includes(mode)||s.shown?w.word:mode==='meaning'?w.meaning:mode==='listening'?'听音，回忆意思':'先回忆目标词';
+  el('sentence').hidden=(mode==='meaning'||mode==='mnemonic'||mode==='listening')&&!s.shown;
+  el('sentence').innerHTML=escape(sentenceText).replace(new RegExp(regex(w.word),'i'),x=>mode==='cloze'&&!s.shown?'<span class="blank">______</span>':`<mark>${x}</mark>`);
+  el('spelling-box').hidden=!['meaning','listening'].includes(mode)||s.shown;el('spelling').value=s.typed;
+  el('spelling-label').textContent=mode==='listening'?'听音后尝试拼写（可选）':'看中文回忆拼写（独立模式）';
   el('word').classList.remove('can-hide');
   
   if(mode==='mnemonic')el('word').textContent=w.word;
@@ -454,7 +456,7 @@ function renderStudy() {
   el('undo').disabled=!state.undo||blocked;
   el('feedback-hint').textContent=s.shown?`认识：独立想起；模糊：依靠提示；忘记：仍想不起来。${c.due?` 下次日期：${c.due}`:''}`:'可以直接选择忘记、模糊或认识；需要帮助时再展开巧记。';
 }
-function newSession(items,kind,source='review') { return {id:uid(),kind,source,day:day(),mode:state.settings.mode,queue:items,cursor:0,shown:false,typed:'',hintShown:false,wordCovered:false,initialCount:items.length,updatedAt:now()}; }
+function newSession(items,kind,source='review') { return {id:uid(),kind,source,day:day(),mode:state.settings.mode,queue:items,cursor:0,shown:false,typed:'',hintShown:false,wordCovered:false,recallStatus:'',initialCount:items.length,updatedAt:now()}; }
 function startNew() {
   if(state.session&&state.session.day!==day()){commit(s=>{s.session=null;s.undo=null;});expanded=false;}
   if(unfinished(state.session)){message('当前这一组尚未完成，请先继续；断点不会被覆盖。');return;}
@@ -482,7 +484,7 @@ function removeMasteredFromSession(s) {
   if(!unfinished(session)||session.kind!=='schedule')return;
   const old=session.queue[session.cursor];
   session.queue=[...session.queue.slice(0,session.cursor),...session.queue.slice(session.cursor).filter(q=>!s.cards[q.id].mastered)];
-  if(session.queue[session.cursor]?.id!==old.id){session.shown=false;session.typed='';session.hintShown=false;session.cueSeen=false;}
+  if(session.queue[session.cursor]?.id!==old.id){session.shown=false;session.typed='';session.hintShown=false;session.cueSeen=false;session.recallStatus='';}
 }
 function masteryEvent(s,id,grade,session=null) {
   const c=s.cards[id],e={id:uid(),wordId:id,at:now(),day:day(),grade,kind:'mastery',nextDue:c.due,interval:c.interval,answerViewed:Boolean(session?.shown),hintUsed:Boolean(session?.cueSeen||session?.hintShown)};
@@ -501,7 +503,7 @@ function markMastered() {
     const e=masteryEvent(s,id,'mastered',session);
     session.cursor++;
     session.queue=[...session.queue.slice(0,session.cursor),...session.queue.slice(session.cursor).filter(q=>q.id!==id)];
-    session.shown=false;session.typed='';session.hintShown=false;session.cueSeen=false;session.updatedAt=now();
+    session.shown=false;session.typed='';session.hintShown=false;session.cueSeen=false;session.recallStatus='';session.updatedAt=now();
     s.undo={wordId:id,card:before,session:sessionBefore,eventId:e.id};
   }))message(`已将 ${word} 标记熟知，不再自动安排复习。误点可撤销；也可在词库“熟知词”中恢复复习。`);
 }
@@ -521,17 +523,16 @@ function grade(value) {
     const before=copy(c),sessionBefore=copy(s),first=s.kind==='schedule'&&c.lastScheduledDay!==date;
     const eventKind=s.kind==='free'?'free':first?(c.seen?'review':'new'):'repeat';
     if(first) {
-      if(value==='good') {c.streak=Math.min(c.streak+1,7);c.interval=[1,3,7,14,30,60,120][c.streak-1];}
-      else {c.streak=value==='again'?0:Math.max(0,c.streak-1);c.interval=1;if(value==='again')c.lapses++;}
+      Object.assign(c,LearningTools.nextSchedule(c,{grade:value,...eventLearningExtras(s,wordById(id),value)}));
       c.due=addDays(date,c.interval);c.lastScheduledDay=date;c.seen=true;if(!c.learnedOn)c.learnedOn=date;
     }
     c.lastGrade=value;c.lastSeen=now();c.updatedAt=now();c.reviewCount++;
-    const e={id:uid(),wordId:id,at:now(),day:date,grade:value,kind:eventKind,nextDue:c.due,interval:c.interval,answerViewed:Boolean(s.shown),hintUsed:Boolean(s.cueSeen||s.hintShown)};d.history.push(e);
+    const e={id:uid(),wordId:id,at:now(),day:date,grade:value,kind:eventKind,nextDue:c.due,interval:c.interval,answerViewed:Boolean(s.shown),hintUsed:Boolean(s.cueSeen||s.hintShown),...eventLearningExtras(s,wordById(id),value)};d.history.push(e);
     if(value!=='good' && !s.queue.slice(s.cursor+1).some(x=>x.id===id)) {
       const offset=value==='again'?3:5,at=Math.min(s.cursor+1+offset,s.queue.length);
       s.queue.splice(at,0,{id,kind:s.kind==='free'?'free':'repeat'});
     }
-    s.cursor++;s.shown=false;s.typed='';s.hintShown=false;s.cueSeen=false;s.wordCovered=false;s.updatedAt=now();
+    s.cursor++;s.shown=false;s.typed='';s.hintShown=false;s.cueSeen=false;s.wordCovered=false;s.recallStatus='';s.updatedAt=now();
     d.undo={wordId:id,card:before,session:sessionBefore,eventId:e.id};
   });
 }
@@ -555,7 +556,7 @@ function renderLibrary() {
 }
 function openDetail(id) {
   const w=wordById(id);if(!w)return;detailId=id;const c=state.cards[id];
-  el('detail-word').textContent=w.word;el('detail-meaning').textContent=w.meaning+' '+w.phonetic+(w.phoneticNote?' · '+w.phoneticNote:'');el('detail-sentence').textContent=w.sentence;
+  el('detail-word').textContent=w.word;el('detail-meaning').textContent=w.meaning+' '+w.phonetic+(w.phoneticNote?' · '+w.phoneticNote:'');el('detail-sentence').innerHTML=usageHTML(w);
   el('detail-status').textContent=`${w.group} · ${c.mastered?'已熟知':c.seen?'已接触':'尚未学'} · ${c.mastered?'不再自动安排复习':c.due?'下次 '+c.due:'暂无复习日期'} · 已记录反馈 ${c.reviewCount} 次${c.legacyGrade?' · 旧版最后标记 '+LABEL[c.legacyGrade]:''}`;
   el('detail-memory').innerHTML=memoryHTML(w,'detail');el('detail-source').textContent=w.sourceRow?`原表第 ${w.sourceRow} 行 · ${w.part} · 考察 ${w.frequency} 篇`:'';el('detail-anchor').value=c.memoryAnchor||'';el('detail-scene').value=c.memoryScene||'';el('detail-note').value=c.note;el('detail-favorite').checked=c.favorite;el('detail-suspended').checked=c.suspended;el('restore-mastered').hidden=!c.mastered;el('restore-mastered').disabled=blocked||Boolean(damaged&&!recovered);el('detail-events').textContent='';el('word-dialog').showModal();
 }
@@ -570,17 +571,14 @@ function renderHistory() {
   el('history-page').textContent=`第 ${historyPage+1} / ${pages} 页`;el('history-prev').disabled=historyPage===0;el('history-next').disabled=historyPage===pages-1;
 }
 function eventHTML(e) { const w=wordById(e.wordId);return `<div class="history-row"><span>${escape(e.day)}<br><span class="muted">${new Date(e.at).toLocaleTimeString('zh-CN',{hour12:false})}</span></span><strong>${escape(w.word)} · ${LABEL[e.grade]}</strong><span class="muted">${{new:'首次新学',review:'到期复习',repeat:'当轮重现',free:'自主回顾',mastery:'熟知状态操作'}[e.kind]}${e.nextDue?` · 下次 ${e.nextDue}`:''}</span></div>`; }
-function download(content,name,type) { if(nativeEnabled){VocabNative.call('export',{content,name,type});return;} const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000); }
-function backup(portable=false,mark=true) { if(portable&&nativeEnabled){message('桌面／手机版本请导出完整 JSON；安装包与学习记录分别备份。');return;}
-  flushSpelling();
-  if(mark)commit(s=>{s.meta.lastBackupAt=now();},false);
-  const raw=envelope(state),stamp=day()+'_'+new Date().toTimeString().slice(0,8).replaceAll(':','-');
-  if(portable) {
-    const root=document.documentElement.cloneNode(true);root.querySelector('#portable-state').textContent=raw.replace(/</g,'\\u003c');
-    root.querySelectorAll('dialog').forEach(d=>d.removeAttribute('open'));
-    download('<!doctype html>\n'+root.outerHTML,`九分常规联想_含进度_${stamp}.html`,'text/html;charset=utf-8');
-  } else download(raw,`九分常规联想_完整备份_${stamp}.json`,'application/json;charset=utf-8');
-  render();message('已发起备份下载，请确认文件已保存到下载目录。');
+function download(content,name,type) { if(nativeEnabled)return VocabNative.call('export',{content,name,type}); const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);return {status:'requested'}; }
+function backup(portable=false,mark=true) {
+ if(portable&&nativeEnabled){message('请导出完整同步档案，方便两端恢复配对身份。');return;}
+ flushSpelling();
+ const stamp=day()+'_'+new Date().toTimeString().slice(0,8).replaceAll(':','-');
+ let content=envelope(state),name=`九分常规联想_完整备份_${stamp}.json`,type='application/json;charset=utf-8';
+ if(portable){const root=document.documentElement.cloneNode(true);root.querySelector('#portable-state').textContent=content.replace(/</g,'\\u003c');root.querySelectorAll('dialog').forEach(d=>d.removeAttribute('open'));content='<!doctype html>\n'+root.outerHTML;name=`九分常规联想_含进度_${stamp}.html`;type='text/html;charset=utf-8';}
+ try{const result=download(content,name,type);if(exportResult(result,'备份文件已保存。')&&mark)commit(s=>{s.meta.lastBackupAt=now();});}catch(e){message('备份未保存：'+e.message,true);}
 }
 function legacyFile(obj) {
   assert(object(obj)&&obj.source==='预备级List1-4'&&Array.isArray(obj.records)&&obj.records.length<=200,'无法识别旧版复习记录。');
@@ -646,11 +644,11 @@ el('mark-mastered').addEventListener('click',markMastered);
 el('restore-mastered').addEventListener('click',()=>{if(!state.cards[detailId]?.mastered)return;if(commit(s=>restoreMastered(s,detailId))){el('word-dialog').close();message('已取消熟知，恢复为今日待复习；笔记和历史保留。');}});
 el('free-review').addEventListener('click',()=>startFree());
 el('pause-session').addEventListener('click',()=>{expanded=false;render();message('已保留当前任务，随时可以继续。');});
-el('shuffle').addEventListener('click',()=>commit(s=>{if(!unfinished(s.session)||s.session.kind!=='free')return;const a=s.session.queue;for(let i=a.length-1;i>s.session.cursor;i--){const j=s.session.cursor+Math.floor(Math.random()*(i-s.session.cursor+1));[a[i],a[j]]=[a[j],a[i]];}s.session.shown=false;s.session.typed='';s.session.updatedAt=now();s.undo=null;}));
+el('shuffle').addEventListener('click',()=>commit(s=>{if(!unfinished(s.session)||s.session.kind!=='free')return;const a=s.session.queue;for(let i=a.length-1;i>s.session.cursor;i--){const j=s.session.cursor+Math.floor(Math.random()*(i-s.session.cursor+1));[a[i],a[j]]=[a[j],a[i]];}s.session.shown=false;s.session.typed='';s.session.hintShown=false;s.session.cueSeen=false;s.session.wordCovered=false;s.session.recallStatus='';s.session.updatedAt=now();s.undo=null;}));
 el('reveal').addEventListener('click',()=>commit(s=>{if(unfinished(s.session)){s.session.shown=true;s.session.updatedAt=now();}}));
 document.querySelectorAll('[data-grade]').forEach(b=>b.addEventListener('click',()=>grade(b.dataset.grade)));
 el('undo').addEventListener('click',undo);el('finish-undo').addEventListener('click',undo);
-el('study-mode').addEventListener('change',()=>commit(s=>{s.session.mode=el('study-mode').value;s.session.shown=false;s.session.typed='';s.session.hintShown=false;s.session.cueSeen=false;s.session.wordCovered=false;s.session.updatedAt=now();}));
+el('study-mode').addEventListener('change',()=>commit(s=>{s.session.mode=el('study-mode').value;s.session.shown=false;s.session.typed='';s.session.hintShown=false;s.session.cueSeen=false;s.session.wordCovered=false;s.session.recallStatus='';s.session.updatedAt=now();}));
 el('spelling').addEventListener('input',()=>{if(!unfinished(state.session)||blocked||damaged&&!recovered)return;state.session.typed=el('spelling').value.slice(0,150);state.session.updatedAt=now();state.updatedAt=now();state.revision++;state.writer=tabId;changedInMemory=true;clearTimeout(spellingTimer);spellingTimer=setTimeout(()=>{spellingTimer=null;persist();},250);});
 el('favorite').addEventListener('click',()=>commit(s=>{const c=s.cards[s.session.queue[s.session.cursor].id];c.favorite=!c.favorite;c.updatedAt=now();s.undo=null;}));
 el('finish-next').addEventListener('click',()=>{const wasNew=state.session?.source==='new';expanded=false;render();if(wasNew&&stats().newCount)startNew();else if(wasNew)message('今日新词额度已完成，可以进行到期复习或调整计划。');else startPlan();});el('finish-backup').addEventListener('click',()=>backup());
@@ -712,6 +710,147 @@ el('calculate-deadline').addEventListener('click',calculateDeadline);
 let lastPlanDay=day();
 setInterval(()=>{if(state&&!document.hidden&&day()!==lastPlanDay){lastPlanDay=day();commit(s=>{s.session=null;s.undo=null;});expanded=false;render();if(el('learning-plan-dialog').open)renderPlanPreview();message('已进入新的一天，新词额度重新计算，未完成词保留。');}},30000);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-reject-cue]');if(b){commit(s=>{const c=s.cards[b.dataset.rejectCue];c.rejectBuiltinCue=!c.rejectBuiltinCue;c.updatedAt=now();});if(el('word-dialog').open)el('detail-memory').innerHTML=memoryHTML(wordById(detailId),'detail');}});
+// Learning features 0.2: content data is independent of the learning document.
+let currentContentPack=null,contentEntries=new Map(),activeAudio=null,previewBackup=null;
+const originalBuiltinMemories=new Map(memoryIndex);
+const builtinContentPack=JSON.parse(el('learning-content')?.textContent||'null');
+const offlineAudio=JSON.parse(el('audio-data')?.textContent||'{"entries":{}}');
+function chosenMemoryFor(w){
+ const original=memoryIndex.get(normalize(w.word));
+ const entry=contentEntries.get(w.id),choice=state?.cards[w.id]?.cueChoice;
+ const alternative=entry?.alternatives?.find(x=>x.id===choice);
+ if(!alternative)return original;
+ return {...original,kind:'替代巧记',anchor:alternative.parts.map(p=>p.text+'（'+p.cue+'）').join(' + '),parts:alternative.parts,baseParts:[],spellingSteps:[],scene:alternative.scene,focus:alternative.focus||alternative.parts.map(p=>p.text).join(' + ')+' = '+w.word,reference:alternative.reference||'另一条原创助记，不作为英语词源或标准读音。',status:alternative.label};
+}
+function cueControls(w){
+ const entry=contentEntries.get(w.id),c=state.cards[w.id],alternatives=entry?.alternatives||[];
+ return `<div class="cue-feedback"><label class="field">换一条内置线索<select data-cue-choice="${escape(w.id)}"><option value="">默认方案</option>${alternatives.map(a=>`<option value="${escape(a.id)}" ${c.cueChoice===a.id?'selected':''}>${escape(a.label)}</option>`).join('')}</select></label>${alternatives.length?'':'<p class="small muted">本词暂有一条内置方案，也可以写自己的熟词和画面。</p>'}<div class="row" aria-label="线索问题反馈">${[['unknown','提示词不认识'],['complex','步骤太绕'],['irrelevant','画面没帮助']].map(([value,label])=>`<button class="small" data-cue-reason="${value}" data-cue-word="${escape(w.id)}" aria-pressed="${c.cueFeedback===value}">${label}</button>`).join('')}</div>${c.cueFeedback&&c.cueFeedback!=='none'?'<p class="small muted">已记下这个问题。可以换另一条方案，或改写自己的线索。</p>':''}</div>`;
+}
+function usageFor(w){return contentEntries.get(w.id)?.usage||{sentence:w.sentence||'',translation:'',collocations:[]};}
+function usageHTML(w){const usage=usageFor(w);return `<div class="usage-card"><div class="row spread"><h3>常用例句与搭配</h3><button class="small" data-play-word="${escape(w.id)}">▶ 听单词</button></div>${usage.sentence?`<p lang="en">${escape(usage.sentence)}</p><p class="muted">${escape(usage.translation||'')}</p>`:'<p class="muted">自加词可在笔记中补充例句。</p>'}<div class="row">${(usage.collocations||[]).map(x=>`<span class="usage-chip">${escape(x)}</span>`).join('')}</div></div>`;}
+function activateContent(pack){
+ currentContentPack=pack;contentEntries=new Map((pack?.entries||[]).map(x=>[x.id,x]));
+ memoryIndex.clear();for(const [key,value] of originalBuiltinMemories)memoryIndex.set(key,value);
+ for(const w of initialWords){const update=contentEntries.get(w.id)?.memory;if(update)memoryIndex.set(normalize(w.word),copy(update));}
+ if(el('content-version'))el('content-version').textContent='巧记内容 '+(pack?.version||'随软件提供');
+}
+function validateCompleteContent(pack){const valid=ContentPack.validate(pack,initialWords);if(valid.entries.length!==initialWords.length)throw new Error('请使用完整1493词条的内容包');return valid;}
+function initializeLearningContent(){
+ let saved=null;
+ if(nativeEnabled){try{saved=VocabNative.call('contentLoad');}catch(e){/* Older hosts still open safely for export. */}}
+ else {try{saved=JSON.parse(localStorage.getItem(KEY+'-content')||'null');}catch(e){}}
+ try{
+  const selected=validateCompleteContent(ContentPack.choose(builtinContentPack,saved,initialWords));activateContent(selected);
+  if(selected&&selected.checksum!==saved?.checksum){if(nativeEnabled){try{VocabNative.call('contentSave',selected);}catch(e){showUsbStatus('内容更新需要新版程序：'+e.message);}}else localStorage.setItem(KEY+'-content',JSON.stringify(selected));}
+ }catch(e){activateContent(ContentPack.validate(builtinContentPack,initialWords));showUsbStatus('外部内容包未通过检查，使用安装包内的内容：'+e.message);}
+}
+function currentWord(){const s=state?.session;return unfinished(s)?wordById(s.queue[s.cursor].id):null;}
+async function playOffline(w,locale){
+ if(!w)return;
+ const voice=locale||el('audio-voice').value||'en-GB',item=offlineAudio.entries[w.id]?.[voice];
+ if(!item){message('这个自加词暂无随包离线音频。');return;}
+ try{
+  if(activeAudio){activeAudio.pause();activeAudio.currentTime=0;}
+  activeAudio=new Audio(item.file);activeAudio.playbackRate=Number(state.settings.audioRate)||1;
+  await activeAudio.play();el('audio-status').textContent=(voice==='en-GB'?'英式':'美式')+'离线合成音 · '+(activeAudio.playbackRate<1?'慢速':'正常速度');
+ }catch(e){el('audio-status').textContent='音频无法播放，请检查是否保留完整程序目录。';}
+}
+function eventLearningExtras(session,w,value){
+ const selected=session.recallStatus;
+ const recall=selected==='independent'||selected==='assisted'?selected:session.cueSeen||session.hintShown?'assisted':!session.shown&&value==='good'?'independent':'unverified';
+ const extras={mode:session.mode,recall};
+ if(session.typed?.trim())extras.spelling=LearningTools.diffSpelling(w.word,session.typed);
+ if(state.settings.adaptiveReview!==false)extras.scheduler='adaptive-v1';
+ return extras;
+}
+function renderLearningEnhancements(){
+ if(!state)return;
+ document.body.dataset.fontSize=state.settings.fontSize||'normal';
+ document.body.classList.toggle('learning-active',Boolean(expanded&&unfinished(state.session)&&tab==='today'));
+ const s=state.session,w=currentWord();
+ if(el('recall-status'))el('recall-status').value=s?.recallStatus||'';
+ if(el('audio-rate'))el('audio-rate').value=String(state.settings.audioRate||1);
+ if(el('font-size'))el('font-size').value=state.settings.fontSize||'normal';
+ if(el('adaptive-review'))el('adaptive-review').checked=state.settings.adaptiveReview!==false;
+ if(w){
+  el('study-usage').hidden=!s.shown;el('study-usage').innerHTML=s.shown?usageHTML(w):'';
+  if(s.shown&&s.typed){const result=LearningTools.diffSpelling(w.word,s.typed);el('spelling-result').textContent=result.correct?'拼写正确。':'你的拼写：'+s.typed+'。'+result.issues.map(x=>x.label).join('；');}
+ }
+ if(tab==='history'){
+  const quality=LearningTools.qualityStats(state),number=x=>x===null?'暂无记录':Math.round(x*100)+'%';
+  el('learning-quality').innerHTML=`<div class="stats"><div class="metric"><strong>${quality.independent}</strong><span>标记独立回忆</span></div><div class="metric"><strong>${quality.assisted}</strong><span>使用提示的回忆</span></div><div class="metric"><strong>${number(quality.spellingAccuracy)}</strong><span>可选拼写正确率</span></div><div class="metric"><strong>${quality.unverified}</strong><span>未细分的反馈</span></div></div><p class="small muted">回忆方式来自你的标记和提示使用记录。打开答案核对但未说明回忆方式的反馈归为未细分；不会自动当作独立记住。</p>`;
+  const spelling=state.history.filter(e=>e.spelling&&!e.spelling.correct).slice(-20).reverse();
+  el('spelling-mistakes').innerHTML=spelling.length?spelling.map(e=>`<button data-memory-open="${escape(e.wordId)}" class="mistake-row"><strong>${escape(wordById(e.wordId)?.word||'')}</strong><span>${escape(e.spelling.typed)} → ${escape(e.spelling.expected)}</span><small>${escape((e.spelling.issues||[]).map(x=>x.label).join('；'))}</small></button>`).join(''):'<p class="small muted">使用可选拼写模式后，这里会记录需要巩固的字母和词尾。</p>';
+  const cueWords=state.words.filter(x=>['unknown','complex','irrelevant'].includes(state.cards[x.id].cueFeedback));
+  el('cue-problems').innerHTML=cueWords.length?cueWords.map(x=>`<button data-memory-open="${escape(x.id)}">${escape(x.word)}</button>`).join(''):'<p class="small muted">标记过“提示词不认识”“步骤太绕”的词会集中在这里。</p>';
+ }
+ if(tab==='today'||tab==='history'){
+  const forecast=LearningTools.workloadForecast(state,{days:7});
+  el('workload-week').innerHTML=forecast.days.map(x=>`<div class="week-cell"><span>${escape(x.date.slice(5))}</span><strong>${x.total}<small> 词次</small></strong><span>新 ${x.newWords} · 复习 ${x.reviewWords}</span><span>约 ${x.minutes} 分钟</span></div>`).join('');
+  el('workload-note').textContent=forecast.assumption+' 用时按新词35秒、复习12秒粗估，可分多次完成。';
+  const due=stats().due.length,target=learningSettings(state).dailyNew;
+  el('load-advice').textContent=due>Math.max(80,target*3)?`今天已有 ${due} 个到期词。可以在调整计划里暂时减少新词，先巩固旧词；软件不会自行修改你的目标。`:'';
+ }
+}
+function exportResult(result,successText){
+ if(result===false){message('已取消保存，外部备份时间没有更新。');return false;}
+ if(result===true){message(successText||'文件已保存。');return true;}
+ message('已打开分享或下载，请选择“存储到文件”并确认保存。');return false;
+}
+function refreshSyncOverview(){
+ if(!nativeEnabled)return;
+ try{const info=VocabNative.call('syncStatus');el('app-version').textContent='软件 '+(info.appVersion||'1.1.0');el('sync-brief').textContent=info.pendingBatch?'有待确认的同步，请展开查看':info.lastSync?.at?'上次同步 '+new Date(info.lastSync.at).toLocaleString('zh-CN'):'尚无成功同步记录';el('usb-summary').textContent=info.prepared?'手机已准备同步':info.connected===true?'设备已连接':'数据线同步';}catch(e){}
+}
+async function loadBackupList(){
+ const target=el('backup-list');
+ if(!nativeEnabled){target.textContent='备份中心在 Windows 或 iPhone App 中使用。';return;}
+ try{const items=VocabNative.call('listBackups');target.innerHTML=items.length?items.map(x=>`<button class="backup-row" data-backup-preview="${escape(x.id)}"><strong>${escape(new Date(x.at).toLocaleString('zh-CN'))}</strong><span>${x.words} 词 · 已接触 ${x.seen} · ${x.history} 条反馈</span></button>`).join(''):'<p class="muted small">尚无内部快照。继续学习或完成同步后会自动保留。</p>';}catch(e){target.textContent='读取备份列表失败：'+e.message;}
+}
+document.addEventListener('change',event=>{
+ const select=event.target.closest('[data-cue-choice]');if(!select)return;
+ if(commit(s=>{s.cards[select.dataset.cueChoice].cueChoice=select.value;})){
+  if(el('word-dialog').open){el('detail-memory').innerHTML=memoryHTML(wordById(detailId),'detail');el('detail-memory details')?.setAttribute('open','');}message('已保存方案选择，个人联想和笔记保留。');
+ }
+});
+document.addEventListener('click',event=>{
+ const play=event.target.closest('[data-play-word]');if(play)playOffline(wordById(play.dataset.playWord));
+ const reason=event.target.closest('[data-cue-reason]');
+ if(reason){const id=reason.dataset.cueWord,value=reason.dataset.cueReason;commit(s=>{s.cards[id].cueFeedback=s.cards[id].cueFeedback===value?'none':value;});if(el('word-dialog').open)el('detail-memory').innerHTML=memoryHTML(wordById(detailId),'detail');}
+ const backup=event.target.closest('[data-backup-preview]');
+ if(backup){try{previewBackup=VocabNative.call('backupPreview',{id:backup.dataset.backupPreview});const summary=OfflineSync.summary(previewBackup);el('backup-preview').textContent=`预览：${summary.wordCount} 词，已接触 ${summary.seen}，${summary.historyCount} 条反馈。当前档案没有被改变。`;el('export-snapshot').hidden=false;el('restore-snapshot').hidden=false;}catch(e){message(e.message,true);}}
+});
+el('play-audio').addEventListener('click',()=>playOffline(currentWord()));
+el('audio-rate').addEventListener('change',()=>commit(s=>{s.settings.audioRate=Number(el('audio-rate').value);}));
+el('font-size').addEventListener('change',()=>commit(s=>{s.settings.fontSize=el('font-size').value;}));
+el('adaptive-review').addEventListener('change',()=>commit(s=>{s.settings.adaptiveReview=el('adaptive-review').checked;}));
+el('open-help')?.addEventListener('click',()=>el('help-dialog').showModal());
+el('close-help')?.addEventListener('click',()=>el('help-dialog').close());
+el('recall-status').addEventListener('change',()=>{if(state.session)commit(s=>{s.session.recallStatus=el('recall-status').value;});});
+el('load-backups').addEventListener('click',loadBackupList);
+el('export-snapshot').addEventListener('click',()=>{if(previewBackup)exportResult(download(OfflineSync.encodePacket(previewBackup,'snapshot-'+uid()),'九分恢复副本_'+day()+'.json','application/json'),'恢复副本已保存，当前学习档案保留。');});
+el('restore-snapshot').addEventListener('click',()=>{
+ if(!previewBackup||usbLocked)return;
+ if(!confirm('以这份快照建立独立恢复档案？程序会先保留当前档案备份。恢复后请核对记录，其他设备也需明确切换到这份恢复档案。'))return;
+ try{const next=OfflineSync.createDocument(validate(OfflineSync.materialize(previewBackup)),nativeDeviceId());VocabNative.call('recoveryCreate',{document:next});location.reload();}catch(e){message('未建立恢复档案：'+e.message,true);}
+});
+el('content-export').addEventListener('click',()=>{if(currentContentPack)exportResult(download(JSON.stringify(currentContentPack),'九分内容包_'+currentContentPack.version+'.json','application/json'),'离线内容包已保存。');});
+el('content-import').addEventListener('change',async event=>{
+ try{
+  if(usbLocked)throw new Error('请先退出同步准备');const file=event.target.files[0];if(!file)return;if(file.size>30*1024*1024)throw new Error('内容包超过30MB');
+  const incoming=validateCompleteContent(JSON.parse(await file.text()));
+  const selected=ContentPack.choose(currentContentPack,incoming,initialWords);
+  if(nativeEnabled)VocabNative.call('contentSave',selected);else localStorage.setItem(KEY+'-content',JSON.stringify(selected));
+  activateContent(selected);render();message('内容已更新至 '+selected.version+'，个人联想和进度保留。');
+ }catch(e){message('内容未更新：'+e.message,true);}finally{event.target.value='';}
+});
+window.addEventListener('vocab-export-status',event=>{const result=event.detail||{};message(result.status==='cancelled'?'已取消分享，未记录为已保存外部备份。':result.status==='error'?'分享失败：'+(result.message||'请重试'):'分享已完成，请在“文件”中确认备份位置。');});
+window.addEventListener('vocab-ready',()=>{
+ renderLearningEnhancements();refreshSyncOverview();
+ if(innerWidth<=640)el('usb-panel-details').open=false;
+ el('portable-export').hidden=nativeEnabled;
+});
+window.addEventListener('vocab-sync-status',()=>refreshSyncOverview());
+
 // Included inside the existing app closure, before boot().
 let usbDocument=null,usbLocked=false,usbReading=false;
 const nativeEnabled=VocabNative.platform!=='browser';
@@ -767,6 +906,8 @@ function acceptIncoming(){
  try{
   const packetText=VocabNative.call('readIncoming');if(!packetText)return;
   const packet=OfflineSync.decodePacket(packetText);
+  if(packet.clientProtocol!==2)throw new Error('请先把电脑和手机都升级到1.1.0，再同步新功能记录。');
+  const selectedContent=validateCompleteContent(ContentPack.choose(currentContentPack,packet.contentPack||null,initialWords));
   if(packet.batchId===window.lastUsbBatch)return;
   let next;
   if(packet.document.profileId!==usbDocument.profileId){
@@ -776,6 +917,7 @@ function acceptIncoming(){
    next=OfflineSync.adoptDocument(packet.document,usbDocument.deviceId);
   }else next=OfflineSync.mergeDocuments(usbDocument,packet.document);
   const nextState=validate(OfflineSync.materialize(next));
+  if(selectedContent){VocabNative.call('contentSave',selectedContent);activateContent(selectedContent);}
   VocabNative.call('save',next);usbDocument=next;state=nextState;ensureDailyPlan(state);fitSessionToPlan(state);render();
   VocabNative.call('ackIncoming',{batchId:packet.batchId});window.lastUsbBatch=packet.batchId;
   showUsbStatus('手机已保存合并记录并发送确认。请查看电脑同步结果。');renderUsbConflicts();
@@ -786,7 +928,7 @@ el('usb-start').addEventListener('click',()=>{
  try{
   flushSpelling();if(!persist())throw new Error('请先解决本机保存问题');
   if(VocabNative.platform==='ios'){
-   const packet=OfflineSync.encodePacket(usbDocument,uid());
+   const packet=OfflineSync.encodePacket(usbDocument,uid(),{clientProtocol:2,contentPack:currentContentPack});
    VocabNative.call('prepareSync',{document:usbDocument,packet});setUsbLock(true);showUsbStatus('已准备手机操作包，学习已暂时锁定。请在电脑点击“数据线同步”。');
   }else{
    setUsbLock(true);VocabNative.call('syncUsb',{bootstrap:el('usb-bootstrap').checked,bundleId:el('usb-bundle').value.trim()||'com.jiufen.vocabulary'});showUsbStatus('正在连接手机，请保持手机解锁且已打开同步页面。');
@@ -800,20 +942,20 @@ window.addEventListener('vocab-sync-status',e=>{
  if(detail.bundleId)el('usb-bundle').value=detail.bundleId;
  if(['complete','error','timeout','cancelled'].includes(detail.phase)){
   setUsbLock(false);
-  try{const doc=VocabNative.call('load');if(doc){usbDocument=doc;state=validate(OfflineSync.materialize(doc));ensureDailyPlan(state);fitSessionToPlan(state);render();renderUsbConflicts();}}catch(err){showUsbStatus('同步后载入失败：'+err.message);}
+  try{const content=VocabNative.call('contentLoad');if(content)activateContent(validateCompleteContent(ContentPack.choose(currentContentPack,content,initialWords)));const doc=VocabNative.call('load');if(doc){usbDocument=doc;state=validate(OfflineSync.materialize(doc));ensureDailyPlan(state);fitSessionToPlan(state);render();renderUsbConflicts();}}catch(err){showUsbStatus('同步后载入失败：'+err.message);}
  }
 });
 if(VocabNative.platform==='ios'){el('usb-start').textContent='准备与电脑同步';el('usb-desktop-options').hidden=true;el('usb-probe').hidden=true;}
-el('usb-archive-export').addEventListener('click',()=>{try{if(!nativeEnabled||!usbDocument)throw new Error('请先在本机 App 中建立或导入学习档案');if(!persist())return;VocabNative.call('export',{name:'九分同步档案_'+day()+'.json',content:OfflineSync.encodePacket(usbDocument,'backup-'+uid()),type:'application/json'});showUsbStatus('已发起同步档案导出。该文件保留配对身份及操作记录，请确认保存。');}catch(e){showUsbStatus(e.message);}});
+el('usb-archive-export').addEventListener('click',()=>{try{if(!nativeEnabled||!usbDocument)throw new Error('请先在本机 App 中建立或导入学习档案');if(!persist())return;const result=VocabNative.call('export',{name:'九分同步档案_'+day()+'.json',content:OfflineSync.encodePacket(usbDocument,'backup-'+uid()),type:'application/json'});if(exportResult(result,'完整同步档案已保存。'))commit(s=>{s.meta.lastBackupAt=now();});}catch(e){showUsbStatus(e.message);}});
 el('usb-archive-import').addEventListener('change',async event=>{try{
  const file=event.target.files[0];if(!file)return;if(usbLocked)throw new Error('请先退出同步');if(!nativeEnabled)throw new Error('请在本机 App 中恢复档案');if(file.size>55*1024*1024)throw new Error('档案超过大小限制');
  const incoming=OfflineSync.decodePacket(await file.text()).document;
  let next;if(usbDocument?.profileId===incoming.profileId)next=OfflineSync.mergeDocuments(usbDocument,incoming);
- else {const meaningful=usbDocument&&((usbDocument.operations||[]).length||state?.history?.length||state?.words.some(w=>state.cards[w.id].seen));if(meaningful)throw new Error('当前已有不同的学习档案，未覆盖。请先导出并使用新的程序数据目录进行灾难恢复。');if(!confirm('将这份同步档案恢复到当前空白设备？原档案中的配对身份和操作将一并保留。'))return;next=OfflineSync.adoptDocument(incoming,nativeDeviceId());}
+ else {const meaningful=usbDocument&&((usbDocument.operations||[]).length||state?.history?.length||state?.words.some(w=>state.cards[w.id].seen));if(meaningful){if(!confirm('这是不同的学习档案。要建立独立恢复档案并切换吗？当前档案会先保留完整快照，其他设备也需使用同一份恢复档案。'))return;next=OfflineSync.adoptDocument(incoming,nativeDeviceId());validate(OfflineSync.materialize(next));VocabNative.call('recoveryCreate',{document:next});location.reload();return;}if(!confirm('将这份同步档案恢复到当前空白设备？原档案中的配对身份和操作将一并保留。'))return;next=OfflineSync.adoptDocument(incoming,nativeDeviceId());}
  validate(OfflineSync.materialize(next));VocabNative.call('save',next);location.reload();
  }catch(e){showUsbStatus('未恢复档案：'+e.message);}finally{event.target.value='';}});
 setInterval(acceptIncoming,1200);
-try{primeNativeStorage();}catch(e){el('usb-workspace').inert=true;showUsbStatus('本机档案无法载入，已停止学习以保护记录：'+e.message);throw e;}
+try{primeNativeStorage();initializeLearningContent();}catch(e){el('usb-workspace').inert=true;showUsbStatus('本机档案无法载入，已停止学习以保护记录：'+e.message);throw e;}
 
 boot();
 window.dispatchEvent(new Event('vocab-ready'));

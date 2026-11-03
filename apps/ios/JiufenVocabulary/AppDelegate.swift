@@ -2,6 +2,7 @@ import UIKit
 import WebKit
 import SQLite3
 import CryptoKit
+import JavaScriptCore
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,6 +28,7 @@ final class DocumentStore {
     private var db: OpaquePointer?
     private let maximumBytes = 50 * 1024 * 1024
     private let transient = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+    private var summaryContext: JSContext?
     let directory: URL
 
     init() throws {
@@ -85,6 +87,7 @@ final class DocumentStore {
         try execute("BEGIN IMMEDIATE")
         do {
             try execute("INSERT OR REPLACE INTO state(key,value) SELECT 'previous',value FROM state WHERE key='document'")
+            try put("previous-at", data: Data(ISO8601DateFormatter().string(from: Date()).utf8))
             var statement: OpaquePointer?
             guard sqlite3_prepare_v2(db, "INSERT OR REPLACE INTO state(key,value) VALUES ('document',?)", -1, &statement, nil) == SQLITE_OK else { throw databaseError() }
             defer { sqlite3_finalize(statement) }
@@ -93,13 +96,97 @@ final class DocumentStore {
             try execute("COMMIT")
         } catch { try? execute("ROLLBACK"); throw error }
     }
+    private func put(_ key: String, data: Data) throws {
+        var statement: OpaquePointer?
+        guard sqlite3_prepare_v2(db, "INSERT OR REPLACE INTO state(key,value) VALUES (?,?)", -1, &statement, nil) == SQLITE_OK else { throw databaseError() }
+        defer { sqlite3_finalize(statement) }
+        guard sqlite3_bind_text(statement, 1, key, -1, transient) == SQLITE_OK else { throw databaseError() }
+        let status = data.withUnsafeBytes { sqlite3_bind_blob(statement, 2, $0.baseAddress, Int32(data.count), transient) }
+        guard status == SQLITE_OK, sqlite3_step(statement) == SQLITE_DONE else { throw databaseError() }
+    }
+    private func backupFiles() throws -> [URL] {
+        let folder = directory.appendingPathComponent("Backups", isDirectory: true)
+        guard FileManager.default.fileExists(atPath: folder.path) else { return [] }
+        return try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: [.isRegularFileKey, .isSymbolicLinkKey, .contentModificationDateKey]).filter {
+            let values = try $0.resourceValues(forKeys: [.isRegularFileKey, .isSymbolicLinkKey])
+            return $0.pathExtension == "json" && values.isRegularFile == true && values.isSymbolicLink != true
+        }.sorted { $0.lastPathComponent > $1.lastPathComponent }
+    }
+    private func backupID(_ url: URL) -> String {
+        "sync:" + String(SHA256.hash(data: Data(url.lastPathComponent.utf8)).map { String(format: "%02x", $0) }.joined().prefix(24))
+    }
+    func backupPreview(_ id: String) throws -> Any {
+        let data: Data
+        if id == "previous", let previous = try read("previous") { data = previous }
+        else if id.hasPrefix("sync:"), id.count == 29, let file = try backupFiles().first(where: { backupID($0) == id }) {
+            let values = try file.resourceValues(forKeys: [.fileSizeKey])
+            guard let size = values.fileSize, size <= maximumBytes else { throw NativeError.invalid("备份超过 50MB。") }
+            data = try Data(contentsOf: file)
+        } else { throw NativeError.invalid("找不到这份备份，可能已超过保留数量。") }
+        guard data.count <= maximumBytes else { throw NativeError.invalid("备份超过 50MB。") }
+        let document = try JSONSerialization.jsonObject(with: data); try Self.validateDocument(document); return document
+    }
+    private func summary(_ document: Any) throws -> [String: Any] {
+        if summaryContext == nil {
+            guard let context = JSContext(), let root = Bundle.main.resourceURL?.appendingPathComponent("Web", isDirectory: true) else { throw NativeError.invalid("缺少离线备份校验组件。") }
+            context.setObject(context.globalObject, forKeyedSubscript: "globalThis" as NSString)
+            for name in ["learning-tools.js", "sync-core.js"] {
+                context.evaluateScript(try String(contentsOf: root.appendingPathComponent(name), encoding: .utf8))
+                guard context.exception == nil else { throw NativeError.invalid("备份校验组件未能载入。") }
+            }
+            guard context.exception == nil else { throw NativeError.invalid("备份校验组件未能载入。") }
+            summaryContext = context
+        }
+        guard let context = summaryContext else { throw NativeError.invalid("备份校验组件不可用。") }
+        context.exception = nil
+        let value = context.objectForKeyedSubscript("OfflineSync")?.forProperty("summary")?.call(withArguments: [document])
+        guard context.exception == nil, let counts = value?.toDictionary() as? [String: Any] else { throw NativeError.invalid("备份记录未通过完整校验。") }
+        return ["words": counts["wordCount"] ?? 0, "history": counts["historyCount"] ?? 0, "seen": counts["seen"] ?? 0]
+    }
+    func listBackups() throws -> [[String: Any]] {
+        var result = [[String: Any]]()
+        if let document = try? backupPreview("previous"), var item = try? summary(document) {
+            let stamp = (try? read("previous-at")) ?? Data()
+            item["id"] = "previous"; item["at"] = String(data: stamp, encoding: .utf8) ?? ""
+            result.append(item)
+        }
+        for file in try backupFiles().prefix(20) {
+            let id = backupID(file)
+            if let document = try? backupPreview(id), var item = try? summary(document) {
+                let date = try file.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate ?? Date(timeIntervalSince1970: 0)
+                item["id"] = id; item["at"] = ISO8601DateFormatter().string(from: date); result.append(item)
+            }
+        }
+        return result.sorted { ($0["at"] as? String ?? "") > ($1["at"] as? String ?? "") }
+    }
+    static func validateContent(_ value: Any) throws {
+        guard let pack = value as? [String: Any], pack["format"] as? String == "jiufen-content", pack["schema"] as? Int == 1,
+              let version = pack["version"] as? String, !version.isEmpty, version.count < 100,
+              let entries = pack["entries"] as? [Any], !entries.isEmpty, entries.count <= 10000,
+              let checksum = pack["checksum"] as? String, checksum.count == 64 else { throw NativeError.invalid("内容包外壳格式不正确。") }
+    }
+    func loadContent() throws -> Any? {
+        let file = directory.appendingPathComponent("content-pack.json")
+        guard FileManager.default.fileExists(atPath: file.path) else { return nil }
+        let info = try file.resourceValues(forKeys: [.fileSizeKey, .isSymbolicLinkKey])
+        guard info.isSymbolicLink != true, let size = info.fileSize, size <= maximumBytes else { throw NativeError.invalid("内容包文件大小或类型异常。") }
+        let data = try Data(contentsOf: file); guard data.count <= maximumBytes else { throw NativeError.invalid("内容包超过 50MB。") }
+        let value = try JSONSerialization.jsonObject(with: data, options: [.fragmentsAllowed])
+        if value is NSNull { return nil }; try Self.validateContent(value); return value
+    }
+    func saveContent(_ value: Any) throws {
+        if !(value is NSNull) { try Self.validateContent(value) }
+        let data = try JSONSerialization.data(withJSONObject: value, options: [.fragmentsAllowed, .sortedKeys])
+        guard data.count <= maximumBytes else { throw NativeError.invalid("内容包超过 50MB。") }
+        try data.write(to: directory.appendingPathComponent("content-pack.json"), options: [.atomic])
+    }
     func backupForSync() throws {
         guard let data = try read() else { return }
         let fm = FileManager.default, backups = directory.appendingPathComponent("Backups", isDirectory: true)
         try fm.createDirectory(at: backups, withIntermediateDirectories: true)
         let name = "before-sync-\(Int(Date().timeIntervalSince1970 * 1000))-\(UUID().uuidString.prefix(6)).json"
         try data.write(to: backups.appendingPathComponent(name), options: [.atomic])
-        let files = try fm.contentsOfDirectory(at: backups, includingPropertiesForKeys: nil).filter { $0.pathExtension == "json" }.sorted { $0.lastPathComponent > $1.lastPathComponent }
+        let files = try backupFiles()
         for old in files.dropFirst(20) { try fm.removeItem(at: old) }
     }
 }
@@ -115,8 +202,18 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
     private var incomingBatch: String?
     private var saveGeneration: UInt64 = 0
     private var incomingReadGeneration: UInt64 = 0
+    private var contentSaveGeneration: UInt64 = 0
+    private var incomingReadContentGeneration: UInt64 = 0
+    private var incomingContentChecksum: String?
+    private var preparedExistingIncomingDigest: String?
     private var lastAcknowledged: String?
     private let maximumBytes = 50 * 1024 * 1024
+    private var appVersion: String { Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0.2.0" }
+    private func contentVersion() throws -> String? {
+        if let value = try store?.loadContent(), let pack = value as? [String: Any] { return pack["version"] as? String }
+        if let file = Bundle.main.resourceURL?.appendingPathComponent("Web/content-pack.json"), let data = try? Data(contentsOf: file), let value = try? JSONSerialization.jsonObject(with: data), let pack = value as? [String: Any] { return pack["version"] as? String }
+        return nil
+    }
     private var deviceID: String {
         let key = "jiufen.device-id"
         if let value = UserDefaults.standard.string(forKey: key) { return value }
@@ -134,7 +231,7 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
             try FileManager.default.createDirectory(at: exchange, withIntermediateDirectories: true)
             try writeJSON(["format": "jiufen-device-info", "schema": 1, "deviceId": deviceID,
                            "bundleId": Bundle.main.bundleIdentifier ?? "com.jiufen.vocabulary", "platform": "ios",
-                           "version": Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"], to: "device-info.json")
+                           "version": appVersion, "clientProtocol": 2], to: "device-info.json")
         } catch { startupError = error.localizedDescription }
         guard let root = Bundle.main.resourceURL?.appendingPathComponent("Web", isDirectory: true),
               FileManager.default.fileExists(atPath: root.appendingPathComponent("index.html").path) else {
@@ -213,7 +310,7 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
         return data
     }
     private func digest(_ data: Data) -> String { SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined() }
-    private func packetContents(_ data: Data) throws -> (document: [String: Any], batchId: String) {
+    private func packetContents(_ data: Data) throws -> (document: [String: Any], batchId: String, clientProtocol: Int, contentPack: [String: Any]?) {
         guard let object = try JSONSerialization.jsonObject(with: data) as? [String: Any],
               object["format"] as? String == "jiufen-usb-packet", object["schema"] as? Int == 1,
               object["algorithm"] as? String == "sha256", let payload = object["payload"] as? String,
@@ -223,7 +320,11 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
               let batch = content["batchId"] as? String, !batch.isEmpty, batch.count < 200,
               let document = content["document"] as? [String: Any] else { throw NativeError.invalid("同步包格式、校验和或批次编号不正确") }
         try DocumentStore.validateDocument(document)
-        return (document, batch)
+        let protocolVersion = content["clientProtocol"] as? Int ?? 1
+        guard protocolVersion >= 2 else { throw NativeError.invalid("同步程序版本过旧，请将手机和电脑均升级到 0.2.0 或更新版本再同步。") }
+        let contentPack = content["contentPack"] as? [String: Any]
+        if let pack = contentPack { try DocumentStore.validateContent(pack) }
+        return (document, batch, protocolVersion, contentPack)
     }
     private func handle(_ method: String, payload: Any) throws -> Any {
         if let error = startupError { throw NativeError.invalid(error) }
@@ -231,36 +332,65 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
         switch method {
         case "load": return try store.load() ?? NSNull()
         case "save": try store.save(payload); saveGeneration += 1; return true
+        case "contentLoad", "loadContent": return try store.loadContent() ?? NSNull()
+        case "contentSave", "saveContent": try store.saveContent(payload); contentSaveGeneration += 1; return true
+        case "listBackups": return try store.listBackups()
+        case "backupPreview":
+            guard let body = payload as? [String: Any], let id = body["id"] as? String, id.count <= 100 else { throw NativeError.invalid("备份编号无效。") }
+            return try store.backupPreview(id)
+        case "recoveryCreate":
+            guard !syncPrepared else { throw NativeError.invalid("请先退出同步准备，再建立独立恢复档案。") }
+            guard let body = payload as? [String: Any], let document = body["document"] as? [String: Any], let current = try store.load() as? [String: Any],
+                  document["profileId"] as? String != current["profileId"] as? String,
+                  document["deviceId"] as? String == current["deviceId"] as? String else { throw NativeError.invalid("独立恢复档案必须使用新的档案身份，并保留本机设备身份。") }
+            try DocumentStore.validateDocument(document)
+            try store.backupForSync(); try store.save(document); saveGeneration += 1
+            UserDefaults.standard.removeObject(forKey: "jiufen.pending-batch"); UserDefaults.standard.removeObject(forKey: "jiufen.last-sync")
+            incomingDigest = nil; incomingBatch = nil; incomingContentChecksum = nil; lastAcknowledged = nil; preparedExistingIncomingDigest = nil
+            return true
         case "syncStatus":
-            return ["platform": "ios", "deviceId": deviceID, "prepared": syncPrepared, "bundleId": Bundle.main.bundleIdentifier ?? "com.jiufen.vocabulary", "message": syncPrepared ? "等待电脑通过 USB 同步，请保持 App 在前台" : "离线学习可用；同步时连接电脑并准备同步"] as [String: Any]
+            return ["platform": "ios", "appVersion": appVersion, "contentVersion": try contentVersion() as Any? ?? NSNull(), "deviceId": deviceID, "prepared": syncPrepared, "connected": NSNull(), "lastSync": UserDefaults.standard.dictionary(forKey: "jiufen.last-sync") as Any? ?? NSNull(), "pendingBatch": UserDefaults.standard.dictionary(forKey: "jiufen.pending-batch") as Any? ?? NSNull(), "bundleId": Bundle.main.bundleIdentifier ?? "com.jiufen.vocabulary", "message": syncPrepared ? "等待电脑通过 USB 同步，请保持 App 在前台" : "离线学习可用；同步时连接电脑并准备同步"] as [String: Any]
         case "prepareSync":
             guard let object = payload as? [String: Any], let document = object["document"], let text = object["packet"] as? String, let bytes = text.data(using: .utf8), bytes.count <= maximumBytes else { throw NativeError.invalid("准备同步需要 document 和完整 packet") }
             let contents = try packetContents(bytes)
+            let existingIncomingDigest = (try? readBounded(exchange.appendingPathComponent("incoming.json"))).map { digest($0) }
             try DocumentStore.validateDocument(document)
             guard let expectedDocument = document as? [String: Any], NSDictionary(dictionary: expectedDocument).isEqual(to: contents.document) else { throw NativeError.invalid("准备同步的记录与同步包不一致") }
             try store.backupForSync()
             try store.save(document)
             saveGeneration += 1
             try bytes.write(to: exchange.appendingPathComponent("outgoing.json"), options: [.atomic])
-            syncPrepared = true; incomingDigest = nil; incomingBatch = nil
+            UserDefaults.standard.set(["batchId": contents.batchId, "at": ISO8601DateFormatter().string(from: Date())], forKey: "jiufen.pending-batch")
+            syncPrepared = true; incomingDigest = nil; incomingBatch = nil; incomingContentChecksum = nil
+            preparedExistingIncomingDigest = existingIncomingDigest
             return true
         case "readIncoming":
             guard syncPrepared else { return NSNull() }
             let file = exchange.appendingPathComponent("incoming.json")
             guard FileManager.default.fileExists(atPath: file.path) else { return NSNull() }
-            let data = try readBounded(file), batch = try packetContents(data).batchId
+            let data = try readBounded(file)
+            if digest(data) == preparedExistingIncomingDigest { return NSNull() }
+            let contents = try packetContents(data), batch = contents.batchId
             if batch == lastAcknowledged { return NSNull() }
             guard let text = String(data: data, encoding: .utf8) else { throw NativeError.invalid("同步包不是 UTF-8") }
             incomingDigest = digest(data); incomingBatch = batch; incomingReadGeneration = saveGeneration
+            incomingContentChecksum = contents.contentPack?["checksum"] as? String; incomingReadContentGeneration = contentSaveGeneration
+            UserDefaults.standard.set(["batchId": batch, "at": ISO8601DateFormatter().string(from: Date())], forKey: "jiufen.pending-batch")
             return text
         case "ackIncoming":
             guard syncPrepared, let body = payload as? [String: Any], let batch = body["batchId"] as? String,
                   batch == incomingBatch, let expected = incomingDigest, saveGeneration > incomingReadGeneration else { throw NativeError.invalid("本批次尚未确认保存，不能发送同步完成回执") }
             let current = try readBounded(exchange.appendingPathComponent("incoming.json"))
             guard digest(current) == expected, try packetContents(current).batchId == batch else { throw NativeError.invalid("同步包已改变，请重新读取后再确认") }
+            if let expectedContent = incomingContentChecksum {
+                let installed = try store.loadContent() as? [String: Any]
+                guard contentSaveGeneration > incomingReadContentGeneration, installed?["checksum"] as? String == expectedContent else { throw NativeError.invalid("本批次内容包尚未确认保存，不能发送完成回执。") }
+            }
             try writeJSON(["format": "jiufen-sync-ack", "schema": 1, "batchId": batch, "deviceId": deviceID, "at": ISO8601DateFormatter().string(from: Date())], to: "ack.json")
+            UserDefaults.standard.set(["batchId": batch, "at": ISO8601DateFormatter().string(from: Date())], forKey: "jiufen.last-sync")
+            UserDefaults.standard.removeObject(forKey: "jiufen.pending-batch")
             lastAcknowledged = batch; return true
-        case "finishSync": syncPrepared = false; incomingBatch = nil; incomingDigest = nil; return true
+        case "finishSync": syncPrepared = false; incomingBatch = nil; incomingDigest = nil; incomingContentChecksum = nil; preparedExistingIncomingDigest = nil; return true
         case "export":
             guard let body = payload as? [String: Any], let name = body["name"] as? String, let content = body["content"] as? String, content.utf8.count <= maximumBytes,
                   !name.isEmpty, name.count <= 200, URL(fileURLWithPath: name).lastPathComponent == name, !name.contains("\\"), !name.contains("/") else { throw NativeError.invalid("导出文件名或内容不正确") }
@@ -271,11 +401,20 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 let sheet = UIActivityViewController(activityItems: [file], applicationActivities: nil)
+                sheet.completionWithItemsHandler = { [weak self] activity, completed, _, error in
+                    // A successful share action is not proof that Files saved the document.
+                    let detail: [String: Any] = ["status": error == nil ? (completed ? "shared" : "cancelled") : "error", "name": name, "activity": activity?.rawValue ?? "", "message": error?.localizedDescription ?? ""]
+                    self?.dispatchExportStatus(detail)
+                }
                 if let popover = sheet.popoverPresentationController { popover.sourceView = self.view; popover.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 1, height: 1) }
                 self.present(sheet, animated: true)
             }
-            return true
+            return ["status": "shared", "name": name]
         default: throw NativeError.invalid("不支持的原生方法：\(method)")
         }
+    }
+    private func dispatchExportStatus(_ detail: [String: Any]) {
+        guard let data = try? JSONSerialization.data(withJSONObject: detail, options: [.sortedKeys]), let text = String(data: data, encoding: .utf8) else { return }
+        webView.evaluateJavaScript("window.dispatchEvent(new CustomEvent('vocab-export-status',{detail:\(text)}));", completionHandler: nil)
     }
 }

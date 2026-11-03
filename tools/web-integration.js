@@ -53,6 +53,8 @@ function acceptIncoming(){
  try{
   const packetText=VocabNative.call('readIncoming');if(!packetText)return;
   const packet=OfflineSync.decodePacket(packetText);
+  if(packet.clientProtocol!==2)throw new Error('请先把电脑和手机都升级到1.1.0，再同步新功能记录。');
+  const selectedContent=validateCompleteContent(ContentPack.choose(currentContentPack,packet.contentPack||null,initialWords));
   if(packet.batchId===window.lastUsbBatch)return;
   let next;
   if(packet.document.profileId!==usbDocument.profileId){
@@ -62,6 +64,7 @@ function acceptIncoming(){
    next=OfflineSync.adoptDocument(packet.document,usbDocument.deviceId);
   }else next=OfflineSync.mergeDocuments(usbDocument,packet.document);
   const nextState=validate(OfflineSync.materialize(next));
+  if(selectedContent){VocabNative.call('contentSave',selectedContent);activateContent(selectedContent);}
   VocabNative.call('save',next);usbDocument=next;state=nextState;ensureDailyPlan(state);fitSessionToPlan(state);render();
   VocabNative.call('ackIncoming',{batchId:packet.batchId});window.lastUsbBatch=packet.batchId;
   showUsbStatus('手机已保存合并记录并发送确认。请查看电脑同步结果。');renderUsbConflicts();
@@ -72,7 +75,7 @@ el('usb-start').addEventListener('click',()=>{
  try{
   flushSpelling();if(!persist())throw new Error('请先解决本机保存问题');
   if(VocabNative.platform==='ios'){
-   const packet=OfflineSync.encodePacket(usbDocument,uid());
+   const packet=OfflineSync.encodePacket(usbDocument,uid(),{clientProtocol:2,contentPack:currentContentPack});
    VocabNative.call('prepareSync',{document:usbDocument,packet});setUsbLock(true);showUsbStatus('已准备手机操作包，学习已暂时锁定。请在电脑点击“数据线同步”。');
   }else{
    setUsbLock(true);VocabNative.call('syncUsb',{bootstrap:el('usb-bootstrap').checked,bundleId:el('usb-bundle').value.trim()||'com.jiufen.vocabulary'});showUsbStatus('正在连接手机，请保持手机解锁且已打开同步页面。');
@@ -86,17 +89,17 @@ window.addEventListener('vocab-sync-status',e=>{
  if(detail.bundleId)el('usb-bundle').value=detail.bundleId;
  if(['complete','error','timeout','cancelled'].includes(detail.phase)){
   setUsbLock(false);
-  try{const doc=VocabNative.call('load');if(doc){usbDocument=doc;state=validate(OfflineSync.materialize(doc));ensureDailyPlan(state);fitSessionToPlan(state);render();renderUsbConflicts();}}catch(err){showUsbStatus('同步后载入失败：'+err.message);}
+  try{const content=VocabNative.call('contentLoad');if(content)activateContent(validateCompleteContent(ContentPack.choose(currentContentPack,content,initialWords)));const doc=VocabNative.call('load');if(doc){usbDocument=doc;state=validate(OfflineSync.materialize(doc));ensureDailyPlan(state);fitSessionToPlan(state);render();renderUsbConflicts();}}catch(err){showUsbStatus('同步后载入失败：'+err.message);}
  }
 });
 if(VocabNative.platform==='ios'){el('usb-start').textContent='准备与电脑同步';el('usb-desktop-options').hidden=true;el('usb-probe').hidden=true;}
-el('usb-archive-export').addEventListener('click',()=>{try{if(!nativeEnabled||!usbDocument)throw new Error('请先在本机 App 中建立或导入学习档案');if(!persist())return;VocabNative.call('export',{name:'九分同步档案_'+day()+'.json',content:OfflineSync.encodePacket(usbDocument,'backup-'+uid()),type:'application/json'});showUsbStatus('已发起同步档案导出。该文件保留配对身份及操作记录，请确认保存。');}catch(e){showUsbStatus(e.message);}});
+el('usb-archive-export').addEventListener('click',()=>{try{if(!nativeEnabled||!usbDocument)throw new Error('请先在本机 App 中建立或导入学习档案');if(!persist())return;const result=VocabNative.call('export',{name:'九分同步档案_'+day()+'.json',content:OfflineSync.encodePacket(usbDocument,'backup-'+uid()),type:'application/json'});if(exportResult(result,'完整同步档案已保存。'))commit(s=>{s.meta.lastBackupAt=now();});}catch(e){showUsbStatus(e.message);}});
 el('usb-archive-import').addEventListener('change',async event=>{try{
  const file=event.target.files[0];if(!file)return;if(usbLocked)throw new Error('请先退出同步');if(!nativeEnabled)throw new Error('请在本机 App 中恢复档案');if(file.size>55*1024*1024)throw new Error('档案超过大小限制');
  const incoming=OfflineSync.decodePacket(await file.text()).document;
  let next;if(usbDocument?.profileId===incoming.profileId)next=OfflineSync.mergeDocuments(usbDocument,incoming);
- else {const meaningful=usbDocument&&((usbDocument.operations||[]).length||state?.history?.length||state?.words.some(w=>state.cards[w.id].seen));if(meaningful)throw new Error('当前已有不同的学习档案，未覆盖。请先导出并使用新的程序数据目录进行灾难恢复。');if(!confirm('将这份同步档案恢复到当前空白设备？原档案中的配对身份和操作将一并保留。'))return;next=OfflineSync.adoptDocument(incoming,nativeDeviceId());}
+ else {const meaningful=usbDocument&&((usbDocument.operations||[]).length||state?.history?.length||state?.words.some(w=>state.cards[w.id].seen));if(meaningful){if(!confirm('这是不同的学习档案。要建立独立恢复档案并切换吗？当前档案会先保留完整快照，其他设备也需使用同一份恢复档案。'))return;next=OfflineSync.adoptDocument(incoming,nativeDeviceId());validate(OfflineSync.materialize(next));VocabNative.call('recoveryCreate',{document:next});location.reload();return;}if(!confirm('将这份同步档案恢复到当前空白设备？原档案中的配对身份和操作将一并保留。'))return;next=OfflineSync.adoptDocument(incoming,nativeDeviceId());}
  validate(OfflineSync.materialize(next));VocabNative.call('save',next);location.reload();
  }catch(e){showUsbStatus('未恢复档案：'+e.message);}finally{event.target.value='';}});
 setInterval(acceptIncoming,1200);
-try{primeNativeStorage();}catch(e){el('usb-workspace').inert=true;showUsbStatus('本机档案无法载入，已停止学习以保护记录：'+e.message);throw e;}
+try{primeNativeStorage();initializeLearningContent();}catch(e){el('usb-workspace').inert=true;showUsbStatus('本机档案无法载入，已停止学习以保护记录：'+e.message);throw e;}

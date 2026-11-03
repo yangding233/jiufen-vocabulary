@@ -2,29 +2,40 @@
 const {app,BrowserWindow,ipcMain,dialog}=require('electron');
 const path=require('node:path'),fs=require('node:fs'),{fileURLToPath}=require('node:url');
 const {Store}=require('./storage.cjs'),{UsbTransport}=require('./transport.cjs'),{SyncManager}=require('./sync-manager.cjs');
-const projectRoot=path.resolve(__dirname,'../..'),webFile=path.join(projectRoot,'web','index.html'),core=require(path.join(projectRoot,'shared','sync-core.js'));
-let window,store,manager,probing=false;
+const projectRoot=path.resolve(__dirname,'../..'),webFile=path.join(projectRoot,'web','index.html'),core=require(path.join(projectRoot,'shared','sync-core.js')),ContentPack=require(path.join(projectRoot,'shared','content-pack.js'));
+const appVersion=require(path.join(projectRoot,'package.json')).version;
+const contentWords=JSON.parse(fs.readFileSync(path.join(projectRoot,'web','content-pack.json'),'utf8')).entries;
+if(contentWords.length!==1493)throw new Error('安装包的完整内容词库数量不正确。');
+let window,store,manager,probing=false,connection={connected:null,connectionCheckedAt:null};
 const smoke=process.argv.includes('--smoke-test'),fixtureArg=process.argv.find(a=>a.startsWith('--usb-fixture='));
 const fixtureDirectory=fixtureArg?path.resolve(fixtureArg.slice('--usb-fixture='.length)):null;
-const emit=detail=>{if(window&&!window.isDestroyed())window.webContents.send('vocab-sync-status',detail);};
+const emit=detail=>{if(Object.hasOwn(detail,'connected'))connection={connected:detail.connected,connectionCheckedAt:detail.connectionCheckedAt||new Date().toISOString()};if(window&&!window.isDestroyed())window.webContents.send('vocab-sync-status',detail);};
+function contentVersion(){const installed=store.loadContent();if(installed)return installed.version;try{return JSON.parse(fs.readFileSync(path.join(projectRoot,'web','content-pack.json'),'utf8')).version||null;}catch(_){return null;}}
+function connectionStatus(){return {...connection,connected:connection.connectionCheckedAt&&Date.now()-Date.parse(connection.connectionCheckedAt)<15000?connection.connected:null};}
+function validateCompleteContent(pack){const validated=ContentPack.validate(pack,contentWords);if(validated.entries.length!==1493)throw new Error('请选择包含全部 1,493 词的完整内容包。');return validated;}
 function trusted(event){try{return event.sender===window.webContents&&event.senderFrame===window.webContents.mainFrame&&path.resolve(fileURLToPath(event.senderFrame.url))===webFile;}catch(_){return false;}}
 function nativeCall(method,payload){
  switch(method){
   case 'load':return store.load();
   case 'save':if(manager.busy)throw new Error('正在进行 USB 同步，暂时不能修改学习记录。');return store.save(payload);
-  case 'syncStatus':return {platform:'windows',deviceId:store.getMeta('deviceId'),phoneBundleId:store.getMeta('phoneBundleId'),connected:false,busy:manager.busy,lastSync:store.getMeta('lastSync'),pendingBatch:store.getMeta('pendingBatch'),message:fixtureDirectory?'测试目录模式（不是真实手机）':'本机离线保存；数据线连接后点击同步。'};
+  case 'contentLoad':case 'loadContent':return store.loadContent();
+  case 'contentSave':case 'saveContent':if(manager.busy)throw new Error('正在进行 USB 同步，暂时不能更换内容包。');return store.saveContent(validateCompleteContent(payload));
+  case 'listBackups':return store.listBackups();
+  case 'backupPreview':return store.backupPreview(payload?.id);
+  case 'recoveryCreate':if(manager.busy||probing)throw new Error('请先完成或退出同步，再建立独立恢复档案。');return store.createRecovery(payload?.document);
+  case 'syncStatus':return {platform:'windows',appVersion,contentVersion:contentVersion(),deviceId:store.getMeta('deviceId'),phoneBundleId:store.getMeta('phoneBundleId'),...connectionStatus(),busy:manager.busy||probing,lastSync:store.getMeta('lastSync'),pendingBatch:store.getMeta('pendingBatch'),message:fixtureDirectory?'测试目录模式（不是真实手机）':'本机离线保存；数据线连接后点击同步。'};
   case 'probeUsb':
    if(manager.busy||probing)throw new Error('正在连接手机，请稍候。');
-   probing=true;
+   probing=true;emit({phase:'connecting',connected:null,message:'正在检查手机文件共享连接…'});
    (async()=>{
     const devices=await transport.list();
-    if(devices.length!==1){emit({phase:'devices',devices,message:devices.length?'检测到多台手机，请只连接要同步的一台 iPhone。':'没有检测到 USB iPhone。请连接数据线、解锁并信任电脑。'});return;}
+    if(devices.length!==1){emit({phase:'devices',devices,connected:devices.length?null:false,message:devices.length?'检测到多台手机，请只连接要同步的一台 iPhone。':'没有检测到 USB iPhone。请连接数据线、解锁并信任电脑。'});return;}
     const found=await transport.resolveApp({udid:devices[0].udid,bundleId:payload?.bundleId||store.getMeta('phoneBundleId')||'com.jiufen.vocabulary'});
     store.setMeta('phoneBundleId',found.bundleId);emit({phase:'app-found',bundleId:found.bundleId,message:'已识别手机上的九分词汇，正在检查文件共享连接。'});
     const info=JSON.parse(await transport.read({udid:devices[0].udid,bundleId:found.bundleId},'Exchange/device-info.json'));
     if(info.format!=='jiufen-device-info'||info.schema!==1||info.bundleId!==found.bundleId)throw new Error('手机应用信息不匹配，未开始同步。');
     emit({phase:'devices',devices,bundleId:found.bundleId,connected:true,message:'手机和九分词汇已连接，文件共享可用。请在手机点击“准备与电脑同步”，再点击电脑的“数据线同步”。'});
-   })().catch(e=>emit({phase:'error',message:e.message})).finally(()=>{probing=false;});return {started:true};
+   })().catch(e=>emit({phase:'error',connected:null,message:e.message})).finally(()=>{probing=false;});return {started:true};
   case 'syncUsb':if(probing)throw new Error('正在检查手机连接，请稍后再同步。');return manager.start(payload||{});
   case 'finishSync':return manager.cancel();
   case 'export':{
@@ -43,7 +54,7 @@ if(!app.requestSingleInstanceLock()){app.quit();}else{
  app.on('second-instance',()=>{if(window){if(window.isMinimized())window.restore();window.focus();}});
  app.whenReady().then(async()=>{
   const dataRoot=process.env.JIUFEN_DATA_DIR||path.join(app.getPath('userData'),'offline-v1');
-  store=new Store(dataRoot,doc=>core.materialize(doc));manager=new SyncManager({store,transport,core,emit});
+  store=new Store(dataRoot,doc=>core.materialize(doc),{contentValidator:validateCompleteContent});manager=new SyncManager({store,transport,core,ContentPack,expectedWords:contentWords,minProtocol:2,emit});
   window=new BrowserWindow({width:1180,height:900,minWidth:360,minHeight:550,title:'九分词汇 · 离线学习与数据线同步',show:!smoke,backgroundColor:'#202a23',webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true,webSecurity:true}});
   window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
   window.webContents.on('will-navigate',(event,url)=>{try{if(path.resolve(fileURLToPath(url))!==webFile)event.preventDefault();}catch(_){event.preventDefault();}});

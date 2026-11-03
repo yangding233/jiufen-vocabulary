@@ -1,9 +1,9 @@
-(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.OfflineSync=factory();})(typeof globalThis!=='undefined'?globalThis:this,function(){
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./learning-tools.js'),()=>require('./content-pack.js'));else root.OfflineSync=factory(root.LearningTools,()=>root.ContentPack);})(typeof globalThis!=='undefined'?globalThis:this,function(learningTools,contentPack){
  'use strict';
  const MAX_BYTES=50*1024*1024,MAX_OPS=100000,FORMAT='jiufen-usb';
  const LEARNING=['seen','due','interval','streak','lastGrade','lastScheduledDay','learnedOn','lastSeen','reviewCount','lapses','mastered','masteryUpdatedAt'];
- const PERSONAL=['planned','suspended','favorite','note','memoryAnchor','memoryScene','rejectBuiltinCue','legacyGrade'];
- const SETTINGS=['dailyTarget','mode','dailyLists','dailyNew','studyDays','targetDate'];
+ const PERSONAL=['planned','suspended','favorite','note','memoryAnchor','memoryScene','rejectBuiltinCue','legacyGrade','cueChoice','cueFeedback'];
+ const SETTINGS=['dailyTarget','mode','dailyLists','dailyNew','studyDays','targetDate','fontSize','audioRate','adaptiveReview'];
  const BAD=new Set(['__proto__','prototype','constructor']);
  const copy=x=>JSON.parse(JSON.stringify(x));
  const equal=(a,b)=>canonical(a)===canonical(b);
@@ -31,6 +31,8 @@
   assert(Array.isArray(s.words)&&s.words.length>0&&s.words.length<=10000&&object(s.cards)&&object(s.settings),'词库或设置无效。');
   const ids=new Set(),names=new Set();for(const w of s.words){assert(object(w)&&idOK(w.id)&&!ids.has(w.id)&&typeof w.word==='string'&&w.word.length>0&&w.word.length<=120,'词条无效或重复。');const name=w.word.normalize('NFKC').trim().toLowerCase();assert(!names.has(name),'词条拼写重复。');ids.add(w.id);names.add(name);assert(typeof w.meaning==='string'&&w.meaning.length<=4000&&typeof w.phonetic==='string'&&typeof w.sentence==='string'&&typeof w.group==='string','词条字段无效。');const c=s.cards[w.id];assert(object(c)&&['seen','planned','suspended','favorite'].every(k=>typeof c[k]==='boolean'),'逐词状态无效。');assert(c.mastered===undefined||typeof c.mastered==='boolean','熟知状态无效。');assert(c.due===null||dayOK(c.due),'复习日期无效。');assert(!c.seen||c.mastered||dayOK(c.due),'已学词缺少日期。');assert(!c.mastered||(c.seen&&c.due===null),'熟知状态与日期冲突。');for(const k of ['streak','interval','reviewCount','lapses'])assert(Number.isSafeInteger(c[k])&&c[k]>=0&&(k!=='interval'||c[k]<=365),'逐词数值无效。');for(const k of ['note','memoryAnchor','memoryScene'])assert(c[k]===undefined||(typeof c[k]==='string'&&c[k].length<=4000),'笔记内容无效。');}
   assert(Object.keys(s.cards).length===ids.size,'词条与卡片不匹配。');
+  for(const c of Object.values(s.cards)){assert(c.cueChoice===undefined||(typeof c.cueChoice==='string'&&c.cueChoice.length<=180),'巧记选择无效。');assert(c.cueFeedback===undefined||['unknown','complex','irrelevant','none'].includes(c.cueFeedback),'巧记反馈无效。');}
+  assert(s.settings.fontSize===undefined||['normal','large'].includes(s.settings.fontSize),'字体设置无效。');assert(s.settings.audioRate===undefined||[0.75,1].includes(s.settings.audioRate),'语速设置无效。');assert(s.settings.adaptiveReview===undefined||typeof s.settings.adaptiveReview==='boolean','复习算法设置无效。');
   const timeOK=x=>x===null||(typeof x==='string'&&!isNaN(Date.parse(x)));
   assert(Number.isSafeInteger(s.revision)&&s.revision>=0&&s.revision<=1e12&&typeof s.writer==='string'&&s.updatedAt!==null&&timeOK(s.updatedAt),'本机版本或保存时间无效。');
   for(const c of Object.values(s.cards)){
@@ -40,14 +42,23 @@
    for(const k of ['memoryAnchor','memoryScene'])assert(c[k]===undefined||c[k].length<=2000,'个人巧记超过2000字。');
   }
   assert(Array.isArray(s.history)&&s.history.length<=500000,'历史记录过多。');const events=new Set();for(const e of s.history){validateEvent(e);assert(ids.has(e.wordId)&&!events.has(e.id),'反馈词条未知或编号重复。');events.add(e.id);}
-  assert(['mnemonic','context','cloze','meaning'].includes(s.settings.mode),'回忆模式无效。');for(const [k,min,max] of [['dailyTarget',1,500],['dailyNew',0,500],['dailyLists',1,6]])if(s.settings[k]!==undefined)assert(Number.isSafeInteger(s.settings[k])&&s.settings[k]>=min&&s.settings[k]<=max,'学习量无效。');if(s.settings.studyDays!==undefined)assert(Array.isArray(s.settings.studyDays)&&s.settings.studyDays.length>0&&s.settings.studyDays.length<=7&&new Set(s.settings.studyDays).size===s.settings.studyDays.length&&s.settings.studyDays.every(x=>Number.isInteger(x)&&x>=0&&x<=6),'学习日无效。');if(s.settings.targetDate)assert(dayOK(s.settings.targetDate),'目标日期无效。');
+  assert(['mnemonic','context','cloze','meaning','listening'].includes(s.settings.mode),'回忆模式无效。');for(const [k,min,max] of [['dailyTarget',1,500],['dailyNew',0,500],['dailyLists',1,6]])if(s.settings[k]!==undefined)assert(Number.isSafeInteger(s.settings[k])&&s.settings[k]>=min&&s.settings[k]<=max,'学习量无效。');if(s.settings.studyDays!==undefined)assert(Array.isArray(s.settings.studyDays)&&s.settings.studyDays.length>0&&s.settings.studyDays.length<=7&&new Set(s.settings.studyDays).size===s.settings.studyDays.length&&s.settings.studyDays.every(x=>Number.isInteger(x)&&x>=0&&x<=6),'学习日无效。');if(s.settings.targetDate)assert(dayOK(s.settings.targetDate),'目标日期无效。');
   assert(object(s.meta)&&object(s.baseline)&&dayOK(s.baseline.date)&&Array.isArray(s.baseline.ids)&&s.baseline.ids.length<=10000&&new Set(s.baseline.ids).size===s.baseline.ids.length&&s.baseline.ids.every(id=>ids.has(id))&&typeof s.baseline.source==='string','记录元信息无效。');
   assert(Number.isSafeInteger(s.settings.dailyTarget)&&s.settings.dailyTarget>=1&&s.settings.dailyTarget<=500,'复习参考量无效。');
   assert(timeOK(s.meta.lastBackupAt)&&Number.isSafeInteger(s.meta.migrated)&&s.meta.migrated>=0&&s.meta.migrated<=10000,'备份信息无效。');
   if(s.session!==null){const x=s.session;assert(object(x)&&Array.isArray(x.queue)&&x.queue.length<=200000&&Number.isInteger(x.cursor)&&x.cursor>=0&&x.cursor<=x.queue.length&&x.queue.every(q=>ids.has(q.id)&&['new','review','repeat','free'].includes(q.kind)),'任务断点无效。');assert(dayOK(x.day)&&['schedule','free'].includes(x.kind)&&typeof x.shown==='boolean'&&typeof x.typed==='string','任务断点字段无效。');}
   return s;
  }
- function validateEvent(e){assert(object(e)&&idOK(e.id)&&idOK(e.wordId)&&dayOK(e.day)&&typeof e.at==='string'&&!isNaN(Date.parse(e.at)),'反馈记录无效。');assert(['new','review','repeat','free','mastery'].includes(e.kind),'反馈类型无效。');assert(e.kind==='mastery'?['mastered','restore'].includes(e.grade):['again','hard','good'].includes(e.grade),'反馈值无效。');assert((e.nextDue===null||dayOK(e.nextDue))&&Number.isSafeInteger(e.interval)&&e.interval>=0&&e.interval<=365,'反馈日期/间隔无效。');}
+ function validateEvent(e){
+  assert(object(e)&&idOK(e.id)&&idOK(e.wordId)&&dayOK(e.day)&&typeof e.at==='string'&&!isNaN(Date.parse(e.at)),'反馈记录无效。');
+  assert(['new','review','repeat','free','mastery'].includes(e.kind),'反馈类型无效。');assert(e.kind==='mastery'?['mastered','restore'].includes(e.grade):['again','hard','good'].includes(e.grade),'反馈值无效。');
+  assert((e.nextDue===null||dayOK(e.nextDue))&&Number.isSafeInteger(e.interval)&&e.interval>=0&&e.interval<=365,'反馈日期/间隔无效。');
+  assert(e.mode===undefined||['mnemonic','context','cloze','meaning','listening'].includes(e.mode),'反馈题型无效。');
+  assert(e.recall===undefined||['independent','assisted','unverified'].includes(e.recall),'回忆质量无效。');
+  assert(e.scheduler===undefined||e.scheduler===null||e.scheduler==='adaptive-v1','复习算法版本无效。');
+  if(e.spelling!==undefined){const p=e.spelling;assert(object(p)&&Object.keys(p).every(k=>['correct','expected','typed','issues'].includes(k))&&typeof p.correct==='boolean'&&typeof p.expected==='string'&&p.expected.length<=256&&typeof p.typed==='string'&&p.typed.length<=2000,'拼写结果无效。');if(p.issues!==undefined)assert(Array.isArray(p.issues)&&p.issues.length<=512&&p.issues.every(i=>object(i)&&typeof i.type==='string'&&i.type.length<=50&&typeof i.label==='string'&&i.label.length<=1000),'拼写问题列表无效。');assert(learningTools&&learningTools.diffSpelling(p.expected,p.typed).correct===p.correct,'拼写正确性与作答不符。');}
+ }
+
  function validateDocument(d){
   assert(object(d)&&d.format===FORMAT&&d.schema===1&&idOK(d.profileId)&&idOK(d.deviceId),'不是兼容的同步文档。');safeTree(d);validateState(d.baseline);assert(typeof d.baselineHash==='string'&&sha256(canonical(d.baseline))===d.baselineHash,'同步起点校验失败。');assert(Array.isArray(d.operations)&&d.operations.length<=MAX_OPS,'操作数过多。');
   const ids=new Map(),seqs=new Set(),events=new Map(d.baseline.history.map(e=>[e.id,e]));for(const op of d.operations){assert(object(op)&&idOK(op.id)&&idOK(op.deviceId)&&Number.isSafeInteger(op.seq)&&op.seq>0&&Number.isSafeInteger(op.lamport)&&op.lamport>0&&object(op.context),'同步操作编号无效。');assert(typeof op.at==='string'&&!isNaN(Date.parse(op.at)),'操作时间无效。');for(const [k,v] of Object.entries(op.context))assert(idOK(k)&&Number.isSafeInteger(v)&&v>=0,'因果版本无效。');assert((op.context[op.deviceId]||0)===op.seq-1,'设备序号不连续。');assert(!ids.has(op.id),'重复的操作编号。');ids.set(op.id,op);const pair=op.deviceId+':'+op.seq;assert(!seqs.has(pair),'设备操作序号冲突。');seqs.add(pair);
@@ -113,7 +124,7 @@
     // Only the first scheduled feedback for a word/day changes its long-term schedule.
     if(e.kind!=='free')e.kind=c.lastScheduledDay===e.day?'repeat':c.seen?'review':'new';
     const scheduled=e.kind!=='free'&&(!c.lastScheduledDay||e.day>c.lastScheduledDay)&&!c.mastered;
-    if(scheduled){if(e.grade==='good'){c.streak=Math.min(c.streak+1,7);c.interval=[1,3,7,14,30,60,120][c.streak-1];}else {c.streak=e.grade==='again'?0:Math.max(0,c.streak-1);c.interval=1;if(e.grade==='again')c.lapses++;}c.due=addDays(e.day,c.interval);c.lastScheduledDay=e.day;c.seen=true;if(!c.learnedOn)c.learnedOn=e.day;}
+    if(scheduled){assert(learningTools&&typeof learningTools.nextSchedule==='function','请先加载 learning-tools.js。');Object.assign(c,learningTools.nextSchedule(c,e));c.due=addDays(e.day,c.interval);c.lastScheduledDay=e.day;c.seen=true;if(!c.learnedOn)c.learnedOn=e.day;}
     c.lastGrade=e.grade;c.lastSeen=e.at;c.updatedAt=op.at;c.reviewCount++;
    }
    e.nextDue=c.due;e.interval=c.interval;s.history.push(e);
@@ -132,14 +143,22 @@
   if(remoteChanges||adoptingTask){
    const temp=materialize({...d,localState:local.localState});const current=adoptingTask?incomingSession:localSession;
    d.localState={...(d.localState||{}),undo:null,dailyPlan:null};
-   if(current){const mergedEvents=temp.history.filter(e=>e.kind!=='mastery'),done=new Set(mergedEvents.filter(e=>e.day===current.day&&e.kind!=='free').map(e=>e.wordId));const q=current.queue.slice(current.cursor).filter(x=>temp.cards[x.id]&&!temp.cards[x.id].mastered&&(current.kind==='free'||x.kind==='repeat'&&temp.cards[x.id].lastGrade!=='good'||x.kind!=='repeat'&&!done.has(x.id)));d.localState.session={...copy(current),queue:q,cursor:0,initialCount:new Set(q.map(x=>x.id)).size,shown:false,typed:'',hintShown:false,cueSeen:false,updatedAt:now()};}
+   if(current){const mergedEvents=temp.history.filter(e=>e.kind!=='mastery'),done=new Set(mergedEvents.filter(e=>e.day===current.day&&e.kind!=='free').map(e=>e.wordId));const q=current.queue.slice(current.cursor).filter(x=>temp.cards[x.id]&&!temp.cards[x.id].mastered&&(current.kind==='free'||x.kind==='repeat'&&temp.cards[x.id].lastGrade!=='good'||x.kind!=='repeat'&&!done.has(x.id)));d.localState.session={...copy(current),queue:q,cursor:0,initialCount:new Set(q.map(x=>x.id)).size,shown:false,typed:'',hintShown:false,cueSeen:false,recallStatus:'',updatedAt:now()};}
    else d.localState.session=null;
   }
   validateDocument(d);materialize(d);return d;
  }
  function adoptDocument(incoming,deviceId){validateDocument(incoming);assert(idOK(deviceId),'设备编号无效。');const d=copy(incoming);d.deviceId=deviceId;d.localState={...localState(materialize(incoming)),undo:null};return d;}
- function encodePacket(document,batchId=uuid()){validateDocument(document);assert(idOK(batchId),'同步批次编号无效。');const payload=JSON.stringify({document,batchId});assert(payload.length<=MAX_BYTES,'同步包过大。');return JSON.stringify({format:'jiufen-usb-packet',schema:1,algorithm:'sha256',checksum:sha256(payload),payload});}
- function decodePacket(text){assert(typeof text==='string'&&text.length<=MAX_BYTES*1.1,'同步包过大或不是文本。');let e;try{e=JSON.parse(text);}catch(_){throw new Error('同步包不是有效 JSON。');}safeTree(e);assert(object(e)&&e.format==='jiufen-usb-packet'&&e.schema===1&&e.algorithm==='sha256'&&typeof e.payload==='string'&&e.payload.length<=MAX_BYTES,'同步包格式无效。');assert(sha256(e.payload)===e.checksum,'同步包校验失败，原记录未改动。');let p;try{p=JSON.parse(e.payload);}catch(_){throw new Error('同步包内容无效。');}assert(object(p)&&idOK(p.batchId),'同步批次无效。');validateDocument(p.document);materialize(p.document);return p;}
+ function packetExtras(extras){
+  assert(object(extras)&&Object.keys(extras).every(k=>['clientProtocol','contentPack'].includes(k)),'同步扩展字段无效。');safeTree(extras);
+  if(extras.clientProtocol!==undefined)assert(Number.isSafeInteger(extras.clientProtocol)&&[1,2].includes(extras.clientProtocol),'客户端同步协议不兼容。');
+  if(extras.contentPack!==undefined&&extras.contentPack!==null){const api=contentPack();assert(api&&typeof api.validate==='function','请先加载 content-pack.js。');api.validate(extras.contentPack);}
+  return extras;
+ }
+ const byteLength=text=>typeof TextEncoder!=='undefined'?new TextEncoder().encode(text).length:unescape(encodeURIComponent(text)).length;
+ function encodePacket(document,batchId=uuid(),extras={}){validateDocument(document);assert(idOK(batchId),'同步批次编号无效。');packetExtras(extras);const payload=JSON.stringify({document,batchId,...extras});assert(byteLength(payload)<=MAX_BYTES,'同步包过大。');return JSON.stringify({format:'jiufen-usb-packet',schema:1,algorithm:'sha256',checksum:sha256(payload),payload});}
+ function decodePacket(text){assert(typeof text==='string'&&text.length<=MAX_BYTES*2+1024,'同步包过大或不是文本。');let e;try{e=JSON.parse(text);}catch(_){throw new Error('同步包不是有效 JSON。');}safeTree(e);assert(object(e)&&e.format==='jiufen-usb-packet'&&e.schema===1&&e.algorithm==='sha256'&&typeof e.payload==='string'&&byteLength(e.payload)<=MAX_BYTES,'同步包格式无效。');assert(sha256(e.payload)===e.checksum,'同步包校验失败，原记录未改动。');let p;try{p=JSON.parse(e.payload);}catch(_){throw new Error('同步包内容无效。');}safeTree(p);assert(object(p)&&idOK(p.batchId)&&Object.keys(p).every(k=>['document','batchId','clientProtocol','contentPack'].includes(k)),'同步批次或字段无效。');const extras={};for(const k of ['clientProtocol','contentPack'])if(Object.hasOwn(p,k))extras[k]=p[k];packetExtras(extras);validateDocument(p.document);materialize(p.document);return p;}
+
  function summary(document){const s=materialize(document);return {profileId:document.profileId,deviceId:document.deviceId,operationCount:document.operations.length,wordCount:s.words.length,seen:s.words.filter(w=>s.cards[w.id].seen).length,mastered:s.words.filter(w=>s.cards[w.id].mastered).length,conflicts:conflicts(document).length,historyCount:s.history.length};}
- return {createDocument,record,materialize,mergeDocuments,adoptDocument,encodePacket,decodePacket,summary,resolveConflict,validateDocument,validateState,sha256,today,version:1};
+ return {createDocument,record,materialize,mergeDocuments,adoptDocument,encodePacket,decodePacket,summary,resolveConflict,validateDocument,validateState,validateEvent,sha256,today,version:2};
 });

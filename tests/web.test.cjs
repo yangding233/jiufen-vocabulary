@@ -8,6 +8,8 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
  await context.addInitScript(()=>{
   window.vocabHost={call(method,payload){try{let value;switch(method){
    case 'load':value=JSON.parse(localStorage.getItem('test-native-doc')||'null');break;
+   case 'contentLoad':value=JSON.parse(localStorage.getItem('test-native-content')||'null');break;
+   case 'contentSave':localStorage.setItem('test-native-content',JSON.stringify(payload));value=true;break;
    case 'syncStatus':value={deviceId:'windows-test-device',platform:'windows'};break;
    case 'save':if(window.failNextSave){window.failNextSave=false;throw new Error('模拟磁盘写入失败');}localStorage.setItem('test-native-doc',JSON.stringify(payload));value=true;break;
    case 'export':window.lastExport=payload;value=true;break;

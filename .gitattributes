@@ -3,3 +3,5 @@
 *.yml text eol=lf
 *.swift text eol=lf
 *.pbxproj text eol=lf
+*.wav -text
+*.png -text
