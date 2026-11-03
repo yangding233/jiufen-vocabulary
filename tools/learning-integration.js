@@ -45,6 +45,8 @@ async function playOffline(w,locale){
  }catch(e){el('audio-status').textContent='播放失败：'+(e.message||'请检查媒体音量和完整程序目录后重试。');}
 }
 function stopOfflineAudio(){if(activeAudio){activeAudio.pause();activeAudio=null;}if(nativeAudioActive){try{VocabNative.call('stopAudio');}catch(e){}nativeAudioActive=false;}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopOfflineAudio();});
+window.addEventListener('pagehide',stopOfflineAudio);
 function eventLearningExtras(session,w,value){
  const selected=session.recallStatus;
  const recall=selected==='independent'||selected==='assisted'?selected:session.cueSeen||session.hintShown?'assisted':!session.shown&&value==='good'?'independent':'unverified';

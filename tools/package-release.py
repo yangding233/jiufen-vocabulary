@@ -62,15 +62,17 @@ for archive in (source_archive, windows_archive):
     hashes.append(f"{digest}  {archive.name}")
 (OUTPUT / "SHA256SUMS.txt").write_text("\n".join(hashes) + "\n", encoding="utf-8")
 (OUTPUT / "发布说明.txt").write_text(
-    f"九分离线学习 Windows {VERSION} 开发测试版\n\n"
+    f"九分离线学习 {VERSION} 测试版\n\n"
     "Windows：解压 Windows ZIP，保留整个目录，双击九分词汇离线学习.exe。\n"
     "先在原 HTML 的备份与设置导出完整 JSON；新程序还未学习时导入，核对后再使用。\n"
     "日常备份使用新程序顶部的完整同步档案。原 HTML 文件没有被替换。\n\n"
     "源码：解压 source ZIP，或在 GitHub 仓库下载与克隆对应版本。\n"
     "源码不含学习进度、测试数据库、Apple 签名资料或已安装依赖。\n"
     "iOS：从当前版本 Release 下载配套的未签名 IPA，在 Windows 签名后覆盖安装。\n"
-    "内容更新：电脑使用本目录的新程序；手机也要安装新版 IPA。USB 合并学习进度，不会替换安装包中的内置巧记。\n"
-    "USB 设备枚举已实测；端到端真机学习进度同步尚未验收。\n",
+    "从旧版升级时，两端都需更新到 1.1.0。覆盖安装前分别导出完整同步档案，保留原 Apple 账号和 App 标识，不要先卸载。\n"
+    "此版可单独导入完整巧记内容包，并通过 USB 同步；音频和程序功能仍随安装包更新。\n"
+    "简单使用说明：打开 docs/简单使用说明.html，或点击软件顶部的使用说明。\n"
+    "自动化和 Xcode 验证、真机待验收项目详见 docs/验收清单.md。\n",
     encoding="utf-8",
 )
 print(json.dumps({"directory": str(OUTPUT), "archives": [path.name for path in (source_archive, windows_archive)]}, ensure_ascii=False))

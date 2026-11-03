@@ -194,6 +194,7 @@ final class DocumentStore {
 
 final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, AVAudioPlayerDelegate {
     private var audioPlayer: AVAudioPlayer?
+    private var audioObservers: [NSObjectProtocol] = []
     private var webView: WKWebView!
     private var store: DocumentStore?
     private var startupError: String?
@@ -210,7 +211,7 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
     private var preparedExistingIncomingDigest: String?
     private var lastAcknowledged: String?
     private let maximumBytes = 50 * 1024 * 1024
-    private var appVersion: String { Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0.2.0" }
+    private var appVersion: String { Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.1.0" }
     private func contentVersion() throws -> String? {
         if let value = try store?.loadContent(), let pack = value as? [String: Any] { return pack["version"] as? String }
         if let file = Bundle.main.resourceURL?.appendingPathComponent("Web/content-pack.json"), let data = try? Data(contentsOf: file), let value = try? JSONSerialization.jsonObject(with: data), let pack = value as? [String: Any] { return pack["version"] as? String }
@@ -225,6 +226,11 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        for name in [UIApplication.willResignActiveNotification, AVAudioSession.interruptionNotification] {
+            audioObservers.append(NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { [weak self] _ in
+                if self?.audioPlayer != nil { self?.finishAudio() }
+            })
+        }
         view.backgroundColor = .systemBackground
         do {
             store = try DocumentStore()
@@ -254,6 +260,10 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
         view.addSubview(webView)
         NSLayoutConstraint.activate([webView.leadingAnchor.constraint(equalTo: view.leadingAnchor), webView.trailingAnchor.constraint(equalTo: view.trailingAnchor), webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
         webView.loadFileURL(root.appendingPathComponent("index.html"), allowingReadAccessTo: root)
+    }
+    deinit {
+        for observer in audioObservers { NotificationCenter.default.removeObserver(observer) }
+        audioPlayer?.stop()
     }
     private func showFatal(_ message: String) {
         let label = UILabel(); label.text = message; label.numberOfLines = 0; label.textAlignment = .center; label.translatesAutoresizingMaskIntoConstraints = false
@@ -333,7 +343,7 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
               let document = content["document"] as? [String: Any] else { throw NativeError.invalid("同步包格式、校验和或批次编号不正确") }
         try DocumentStore.validateDocument(document)
         let protocolVersion = content["clientProtocol"] as? Int ?? 1
-        guard protocolVersion >= 2 else { throw NativeError.invalid("同步程序版本过旧，请将手机和电脑均升级到 0.2.0 或更新版本再同步。") }
+        guard protocolVersion >= 2 else { throw NativeError.invalid("同步程序版本过旧，请将手机和电脑均升级到 1.1.0 或更新版本再同步。") }
         let contentPack = content["contentPack"] as? [String: Any]
         if let pack = contentPack { try DocumentStore.validateContent(pack) }
         return (document, batch, protocolVersion, contentPack)
@@ -343,6 +353,7 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
         guard let store = store else { throw NativeError.invalid("本机数据库不可用") }
         switch method {
         case "playAudio":
+            guard UIApplication.shared.applicationState == .active else { throw NativeError.invalid("请回到 App 前台后播放单词。") }
             guard let body = payload as? [String: Any], let identifier = body["id"] as? String,
                   identifier.range(of: "^jf-[0-9]{4}$", options: .regularExpression) != nil,
                   let voice = body["voice"] as? String, ["en-GB", "en-US"].contains(voice),
@@ -352,13 +363,15 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
             let file = root.appendingPathComponent("audio", isDirectory: true).appendingPathComponent(voice, isDirectory: true).appendingPathComponent(identifier + ".m4a")
             guard FileManager.default.fileExists(atPath: file.path) else { throw NativeError.invalid("找不到这条离线发音，请保留完整安装包。") }
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers])
-            try session.setActive(true)
             audioPlayer?.stop()
             let player = try AVAudioPlayer(contentsOf: file)
             player.delegate = self; player.enableRate = true; player.rate = Float(rate); player.prepareToPlay()
-            guard player.play() else { finishAudio(); throw NativeError.invalid("暂时无法播放，请检查媒体音量。") }
             audioPlayer = player
+            do {
+                try session.setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers])
+                try session.setActive(true)
+                guard player.play() else { throw NativeError.invalid("暂时无法播放，请检查媒体音量。") }
+            } catch { finishAudio(); throw error }
             return true
         case "stopAudio": finishAudio(); return true
         case "load": return try store.load() ?? NSNull()
