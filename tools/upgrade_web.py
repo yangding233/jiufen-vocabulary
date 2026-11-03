@@ -52,6 +52,11 @@ app=app.replace("session.cueSeen=false;session.updatedAt=now();","session.cueSee
 app=app.replace("session.wordCovered=false;}","session.wordCovered=false;session.recallStatus='';}")
 app=app.replace("s.session.wordCovered=false;s.session.updatedAt=now();","s.session.wordCovered=false;s.session.recallStatus='';s.session.updatedAt=now();")
 app=app.replace("s.session.typed='';s.session.updatedAt=now();s.undo=null;","s.session.typed='';s.session.hintShown=false;s.session.cueSeen=false;s.session.wordCovered=false;s.session.recallStatus='';s.session.updatedAt=now();s.undo=null;")
+app=app.replace('上次下载备份：','上次确认保存：').replace('尚未下载独立备份','请另存一份完整同步档案')
+app=app.replace('上次发起备份下载：','上次确认保存外部档案：').replace('。请确认文件已落在下载目录。','。手机分享后请在“文件”中确认保存位置。')
+app=app.replace('建议每次结束下载一份备份。浏览器自动保存和本机快照不能抵御浏览器数据清理。','建议定期导出完整同步档案到外部位置；手机分享后请到“文件”确认，内部快照不能替代外部档案。')
+app=app.replace('function grade(value) {\n  flushSpelling();','function grade(value) {\n  stopOfflineAudio();flushSpelling();')
+app=app.replace('function markMastered() {\n  flushSpelling();','function markMastered() {\n  stopOfflineAudio();flushSpelling();')
 start=app.index('// Learning features 0.2:')
 native=app.index('// Included inside the existing app closure, before boot().',start)
 app=app[:start]+(ROOT/'tools/learning-integration.js').read_text(encoding='utf-8')+'\n'+app[native:]

@@ -1,5 +1,5 @@
 // Learning features 0.2: content data is independent of the learning document.
-let currentContentPack=null,contentEntries=new Map(),activeAudio=null,previewBackup=null;
+let currentContentPack=null,contentEntries=new Map(),activeAudio=null,previewBackup=null,nativeAudioActive=false;
 const originalBuiltinMemories=new Map(memoryIndex);
 const builtinContentPack=JSON.parse(el('learning-content')?.textContent||'null');
 const offlineAudio=JSON.parse(el('audio-data')?.textContent||'{"entries":{}}');
@@ -38,11 +38,13 @@ async function playOffline(w,locale){
  const voice=locale||el('audio-voice').value||'en-GB',item=offlineAudio.entries[w.id]?.[voice];
  if(!item){message('这个自加词暂无随包离线音频。');return;}
  try{
+  if(VocabNative.platform==='ios'){VocabNative.call('playAudio',{id:w.id,voice,rate:Number(state.settings.audioRate)||1});nativeAudioActive=true;el('audio-status').textContent=(voice==='en-GB'?'英式':'美式')+'离线合成音 · '+((Number(state.settings.audioRate)||1)<1?'慢速':'正常速度');return;}
   if(activeAudio){activeAudio.pause();activeAudio.currentTime=0;}
   activeAudio=new Audio(item.file);activeAudio.playbackRate=Number(state.settings.audioRate)||1;
   await activeAudio.play();el('audio-status').textContent=(voice==='en-GB'?'英式':'美式')+'离线合成音 · '+(activeAudio.playbackRate<1?'慢速':'正常速度');
- }catch(e){el('audio-status').textContent='音频无法播放，请检查是否保留完整程序目录。';}
+ }catch(e){el('audio-status').textContent='播放失败：'+(e.message||'请检查媒体音量和完整程序目录后重试。');}
 }
+function stopOfflineAudio(){if(activeAudio){activeAudio.pause();activeAudio=null;}if(nativeAudioActive){try{VocabNative.call('stopAudio');}catch(e){}nativeAudioActive=false;}}
 function eventLearningExtras(session,w,value){
  const selected=session.recallStatus;
  const recall=selected==='independent'||selected==='assisted'?selected:session.cueSeen||session.hintShown?'assisted':!session.shown&&value==='good'?'independent':'unverified';
@@ -96,7 +98,7 @@ async function loadBackupList(){
 }
 document.addEventListener('change',event=>{
  const select=event.target.closest('[data-cue-choice]');if(!select)return;
- if(commit(s=>{s.cards[select.dataset.cueChoice].cueChoice=select.value;})){
+ if(commit(s=>{s.cards[select.dataset.cueChoice].cueChoice=select.value;s.cards[select.dataset.cueChoice].rejectBuiltinCue=false;})){
   if(el('word-dialog').open){el('detail-memory').innerHTML=memoryHTML(wordById(detailId),'detail');el('detail-memory details')?.setAttribute('open','');}message('已保存方案选择，个人联想和笔记保留。');
  }
 });

@@ -1,3 +1,7 @@
+eSpeak NG offline pronunciation
+Source: https://github.com/espeak-ng/espeak-ng/releases/tag/1.52.0
+Development synthesizer license: GPL-3.0-or-later. The runtime includes only pre-generated AAC-LC/M4A speech (encoded from the synthesized PCM), not the synthesizer executable or DLL. British and American synthetic reference pronunciation is generated from the bundled word list; it is not human-recorded dictionary audio. Regeneration: tools/build_audio.py with an official eSpeak NG executable and FFmpeg encoder.
+
 第三方组件说明
 
 新编写的同步/容器代码使用GPL-3.0，见LICENSE。原有词库及资源保留各自来源。

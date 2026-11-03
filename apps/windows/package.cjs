@@ -12,7 +12,7 @@ fs.copyFileSync(path.join(electronDist,'LICENSE'),path.join(dest,'LICENSE.electr
 fs.renameSync(path.join(dest,'electron.exe'),path.join(dest,'九分词汇离线学习.exe'));
 const appdir=path.join(dest,'resources','app');fs.mkdirSync(path.join(appdir,'apps','windows'),{recursive:true});
 fs.writeFileSync(path.join(appdir,'package.json'),JSON.stringify({name:'jiufen-vocabulary-offline',version,main:'apps/windows/main.cjs'},null,2));
-for(const name of ['main.cjs','preload.cjs','storage.cjs','transport.cjs','sync-manager.cjs'])fs.copyFileSync(path.join(__dirname,name),path.join(appdir,'apps','windows',name));
+for(const name of ['main.cjs','preload.cjs','storage.cjs','transport.cjs','sync-manager.cjs','icon.png'])fs.copyFileSync(path.join(__dirname,name),path.join(appdir,'apps','windows',name));
 for(const name of ['web','shared'])fs.cpSync(path.join(root,name),path.join(appdir,name),{recursive:true});
 fs.cpSync(usbDist,path.join(dest,'resources','usb'),{recursive:true});
 for(const name of ['LICENSE','THIRD_PARTY_NOTICES.txt','README.md'])fs.copyFileSync(path.join(root,name),path.join(dest,name));

@@ -413,8 +413,8 @@ function render() {
   el('continue-session').hidden=!running;el('continue-session').textContent=running?`继续上次任务（剩余 ${state.session.queue.length-state.session.cursor} 次呈现）`:'继续上次任务';
   el('start-plan').disabled=Boolean(damaged&&!recovered)||(!running&&!st.due.length&&!st.newCount)||blocked;
   el('start-plan').textContent=running?'继续当前任务':st.due.length?`开始到期复习（本组 ${Math.min(50,st.due.length)} 词）`:'今日暂未到期';
-  el('last-backup').textContent=state.meta.lastBackupAt?`上次下载备份：${day(new Date(state.meta.lastBackupAt))}`:'尚未下载独立备份';
-  el('backup-note').textContent=state.meta.lastBackupAt?`上次发起备份下载：${new Date(state.meta.lastBackupAt).toLocaleString('zh-CN',{hour12:false})}。请确认文件已落在下载目录。`:'建议每次结束下载一份备份。浏览器自动保存和本机快照不能抵御浏览器数据清理。';
+  el('last-backup').textContent=state.meta.lastBackupAt?`上次确认保存：${day(new Date(state.meta.lastBackupAt))}`:'请另存一份完整同步档案';
+  el('backup-note').textContent=state.meta.lastBackupAt?`上次确认保存外部档案：${new Date(state.meta.lastBackupAt).toLocaleString('zh-CN',{hour12:false})}。手机分享后请在“文件”中确认保存位置。`:'建议定期导出完整同步档案到外部位置；手机分享后请到“文件”确认，内部快照不能替代外部档案。';
   renderLearningPlan();renderStudy();
   if(tab==='library')renderLibrary();if(tab==='network')renderNetwork();if(tab==='history')renderHistory();
   if(tab==='settings' && !['daily-target','default-mode'].some(id=>document.activeElement===el(id))) {el('daily-target').value=state.settings.dailyTarget;el('default-mode').value=state.settings.mode;}
@@ -491,7 +491,7 @@ function masteryEvent(s,id,grade,session=null) {
   s.history.push(e);return e;
 }
 function markMastered() {
-  flushSpelling();
+  stopOfflineAudio();flushSpelling();
   const current=state.session;
   if(!unfinished(current))return;
   if(current.day!==day()){commit(s=>{s.session=null;s.undo=null;});expanded=false;render();message('已跨日，请重新开始今日安排；刚才的卡片没有标记。');return;}
@@ -515,7 +515,7 @@ function restoreMastered(s,id) {
 }
 
 function grade(value) {
-  flushSpelling();
+  stopOfflineAudio();flushSpelling();
   if(state.session && state.session.day!==day()) {commit(s=>{s.session=null;s.undo=null;});expanded=false;render();message('已跨日，请重新开始今日安排；刚才的卡片没有记作反馈。');return;}
   const s=state.session;if(!unfinished(s)||!GRADES.includes(value))return;
   const q=s.queue[s.cursor],id=q.id,c=state.cards[id],date=day();
@@ -711,7 +711,7 @@ let lastPlanDay=day();
 setInterval(()=>{if(state&&!document.hidden&&day()!==lastPlanDay){lastPlanDay=day();commit(s=>{s.session=null;s.undo=null;});expanded=false;render();if(el('learning-plan-dialog').open)renderPlanPreview();message('已进入新的一天，新词额度重新计算，未完成词保留。');}},30000);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-reject-cue]');if(b){commit(s=>{const c=s.cards[b.dataset.rejectCue];c.rejectBuiltinCue=!c.rejectBuiltinCue;c.updatedAt=now();});if(el('word-dialog').open)el('detail-memory').innerHTML=memoryHTML(wordById(detailId),'detail');}});
 // Learning features 0.2: content data is independent of the learning document.
-let currentContentPack=null,contentEntries=new Map(),activeAudio=null,previewBackup=null;
+let currentContentPack=null,contentEntries=new Map(),activeAudio=null,previewBackup=null,nativeAudioActive=false;
 const originalBuiltinMemories=new Map(memoryIndex);
 const builtinContentPack=JSON.parse(el('learning-content')?.textContent||'null');
 const offlineAudio=JSON.parse(el('audio-data')?.textContent||'{"entries":{}}');
@@ -750,11 +750,13 @@ async function playOffline(w,locale){
  const voice=locale||el('audio-voice').value||'en-GB',item=offlineAudio.entries[w.id]?.[voice];
  if(!item){message('这个自加词暂无随包离线音频。');return;}
  try{
+  if(VocabNative.platform==='ios'){VocabNative.call('playAudio',{id:w.id,voice,rate:Number(state.settings.audioRate)||1});nativeAudioActive=true;el('audio-status').textContent=(voice==='en-GB'?'英式':'美式')+'离线合成音 · '+((Number(state.settings.audioRate)||1)<1?'慢速':'正常速度');return;}
   if(activeAudio){activeAudio.pause();activeAudio.currentTime=0;}
   activeAudio=new Audio(item.file);activeAudio.playbackRate=Number(state.settings.audioRate)||1;
   await activeAudio.play();el('audio-status').textContent=(voice==='en-GB'?'英式':'美式')+'离线合成音 · '+(activeAudio.playbackRate<1?'慢速':'正常速度');
- }catch(e){el('audio-status').textContent='音频无法播放，请检查是否保留完整程序目录。';}
+ }catch(e){el('audio-status').textContent='播放失败：'+(e.message||'请检查媒体音量和完整程序目录后重试。');}
 }
+function stopOfflineAudio(){if(activeAudio){activeAudio.pause();activeAudio=null;}if(nativeAudioActive){try{VocabNative.call('stopAudio');}catch(e){}nativeAudioActive=false;}}
 function eventLearningExtras(session,w,value){
  const selected=session.recallStatus;
  const recall=selected==='independent'||selected==='assisted'?selected:session.cueSeen||session.hintShown?'assisted':!session.shown&&value==='good'?'independent':'unverified';
@@ -808,7 +810,7 @@ async function loadBackupList(){
 }
 document.addEventListener('change',event=>{
  const select=event.target.closest('[data-cue-choice]');if(!select)return;
- if(commit(s=>{s.cards[select.dataset.cueChoice].cueChoice=select.value;})){
+ if(commit(s=>{s.cards[select.dataset.cueChoice].cueChoice=select.value;s.cards[select.dataset.cueChoice].rejectBuiltinCue=false;})){
   if(el('word-dialog').open){el('detail-memory').innerHTML=memoryHTML(wordById(detailId),'detail');el('detail-memory details')?.setAttribute('open','');}message('已保存方案选择，个人联想和笔记保留。');
  }
 });

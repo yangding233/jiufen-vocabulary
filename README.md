@@ -4,16 +4,21 @@
 
 **学习记录保存在本机 SQLite 数据库，日常学习和 USB 同步不需要云端账户。**iPhone 安装与续签时需要联网完成 Apple 签名。
 
-[下载 v0.1.3 测试版](https://github.com/yangding233/jiufen-vocabulary/releases/tag/v0.1.3) · [安装、同步与续签](docs/安装与续签.md) · [验收记录](docs/验收清单.md) · [数据来源与许可](docs/数据来源与许可.md)
+[下载 v1.1.0 测试版](https://github.com/yangding233/jiufen-vocabulary/releases/tag/v1.1.0) · [简单使用说明](docs/简单使用说明.md) · [安装、同步与续签](docs/安装与续签.md) · [验收记录](docs/验收清单.md) · [数据来源与许可](docs/数据来源与许可.md)
 
 ## 功能
 
 - 常规词库 1,493 条，30 个 List，保留词形与中文释义，补齐音标。
 - 1,493 条均有熟词搭桥、拼写联想或短语提示；基础词与派生词分步展示，支持写自己的助记和笔记。
+- 120 个难词有第二种方案；支持标记提示词不认识、步骤太绕和画面没帮助。
+- 全部词条配有原创短例句、中文译文与常用搭配；内置英式和美式离线合成音，可慢速播放。
+- 可选听音回忆、拼写差异与错题记录、回忆方式统计和七日负担估算。
+- 手机专注学习布局、大字号与底部反馈按钮；软件内有使用说明。
 - 自定义每日新词数量，显示剩余词数、预计学习天数与完成日期。
 - 认识、模糊、忘记、熟知标记，以及撤销和恢复复习。
 - Windows 与 iPhone 离线保存；支持旧版完整 JSON 首次迁移、同步档案备份与恢复。
-- USB 同步自动识别签名后的 App 标识，合并两端操作；保留文字冲突，等待手机保存回执后确认完成。
+- USB 同步自动识别签名后的 App 标识，合并两端操作和内容包；保留文字冲突，等待手机同时保存进度与内容后确认完成。
+- 完整内容包可单独导入／导出；内部备份可预览、导出或建立独立恢复档案。
 
 ## 下载与使用
 
@@ -29,11 +34,13 @@
 
 ## 当前版本与验证范围
 
-Windows **0.1.3** 为开发测试版。本轮补齐 428 条原待补巧记和 109 条形近候选，重写 156 条短语，改善基础词链与变形卡。词库更新的编写、校验和使用说明见[巧记内容维护](docs/巧记内容维护.md)。
+Windows 和 iPhone 当前功能版本为 **1.1.0**。内置 1,493 条双语用法、2,443 个搭配、120 条备选巧记，以及 2,986 段英美离线合成音。词形、释义、原顺序及音标保留。
 
-早期 iPhone 包已通过 GitHub macOS / Xcode 的 arm64 真机构建及签名安装；已实测 iPhone 17 的 USB 识别、App 文件共享读取和专用测试文件写入读回。核心合并、存储与 USB 自动化测试，以及 Windows 进程退出重开和页面持久化测试已通过。
+两端均需升级到此版，才可使用新的内容同步协议。已有学习档案自动保留；升级前建议分别另存完整同步档案。此后更新巧记和用法可导入完整内容包，再通过 USB 带到另一端，无需每次重装 App。音频和程序功能随软件版本更新。
 
-Windows 0.1.2 修复了便携 USB 组件缺失的加密运行资源，加入冻结程序 SSL 自检、签名 App 自动识别和分阶段错误提示。两端内置巧记随安装包更新；USB 同步保留学习进度与个人联想，不替换安装包内容。手机要使用新巧记，请签名覆盖安装 v0.1.3 发布页配套 IPA。
+复习支持按本次回忆情况调整间隔；未选择可选回忆标记的“认识”继续沿用基础间隔，不增加必做步骤。旧反馈没有新算法标记，按原规则回放。它不是 FSRS，也不把用时估算当成实测记忆概率。
+
+核心、内容、存储、同步和隔离界面检查已通过；新增原生接口的 Xcode 编译与手机安装结果见验收记录，模拟测试不替代完整真机同步验收。
 
 双端完整学习档案合并、飞行模式冷启动、断线重试和覆盖续签等验收项目，以 [验收清单](docs/验收清单.md) 中记录的实际结果为准。
 
@@ -46,9 +53,9 @@ npm ci
 npm --prefix apps/windows ci
 python -m venv .venv-usb
 .\.venv-usb\Scripts\python.exe -m pip install -r tools/usb-requirements-lock.txt
-node --test tests/sync-core.test.cjs
-python tools/update_mnemonics.py --check
-node --test tests/mnemonics.test.cjs
+npm test
+npm run content:check
+python tools/build_audio.py --check
 npm --prefix apps/windows test
 .\.venv-usb\Scripts\python.exe apps/windows/usb_transport.test.py
 .\tools\build-usb.ps1

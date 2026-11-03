@@ -5,3 +5,4 @@
 *.pbxproj text eol=lf
 *.wav -text
 *.png -text
+*.m4a -text

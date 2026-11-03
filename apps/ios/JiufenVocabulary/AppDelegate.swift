@@ -3,6 +3,7 @@ import WebKit
 import SQLite3
 import CryptoKit
 import JavaScriptCore
+import AVFoundation
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -191,7 +192,8 @@ final class DocumentStore {
     }
 }
 
-final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, AVAudioPlayerDelegate {
+    private var audioPlayer: AVAudioPlayer?
     private var webView: WKWebView!
     private var store: DocumentStore?
     private var startupError: String?
@@ -310,6 +312,16 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
         return data
     }
     private func digest(_ data: Data) -> String { SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined() }
+    private func finishAudio() {
+        audioPlayer?.stop(); audioPlayer = nil
+        try? AVAudioSession.sharedInstance().setActive(false, options: [.notifyOthersOnDeactivation])
+    }
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if audioPlayer === player { finishAudio() }
+    }
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        if audioPlayer === player { finishAudio() }
+    }
     private func packetContents(_ data: Data) throws -> (document: [String: Any], batchId: String, clientProtocol: Int, contentPack: [String: Any]?) {
         guard let object = try JSONSerialization.jsonObject(with: data) as? [String: Any],
               object["format"] as? String == "jiufen-usb-packet", object["schema"] as? Int == 1,
@@ -330,6 +342,25 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
         if let error = startupError { throw NativeError.invalid(error) }
         guard let store = store else { throw NativeError.invalid("本机数据库不可用") }
         switch method {
+        case "playAudio":
+            guard let body = payload as? [String: Any], let identifier = body["id"] as? String,
+                  identifier.range(of: "^jf-[0-9]{4}$", options: .regularExpression) != nil,
+                  let voice = body["voice"] as? String, ["en-GB", "en-US"].contains(voice),
+                  let rate = body["rate"] as? Double, [0.75, 1.0].contains(rate), let root = webRoot else {
+                throw NativeError.invalid("离线发音参数不正确。")
+            }
+            let file = root.appendingPathComponent("audio", isDirectory: true).appendingPathComponent(voice, isDirectory: true).appendingPathComponent(identifier + ".m4a")
+            guard FileManager.default.fileExists(atPath: file.path) else { throw NativeError.invalid("找不到这条离线发音，请保留完整安装包。") }
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers])
+            try session.setActive(true)
+            audioPlayer?.stop()
+            let player = try AVAudioPlayer(contentsOf: file)
+            player.delegate = self; player.enableRate = true; player.rate = Float(rate); player.prepareToPlay()
+            guard player.play() else { finishAudio(); throw NativeError.invalid("暂时无法播放，请检查媒体音量。") }
+            audioPlayer = player
+            return true
+        case "stopAudio": finishAudio(); return true
         case "load": return try store.load() ?? NSNull()
         case "save": try store.save(payload); saveGeneration += 1; return true
         case "contentLoad", "loadContent": return try store.loadContent() ?? NSNull()
