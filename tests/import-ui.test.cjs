@@ -46,6 +46,13 @@ const root=path.resolve(__dirname,'..'),url=pathToFileURL(path.join(root,'web/in
   assert.equal(original.history.length,1);assert.equal(first.word,'a newspaper');
   assert(!original.words.some(w=>w.word==='codeximportword'||w.word==='lexiconpending'));
   await p.locator('#tab-library').click();await p.locator('#open-word-import').click();
+  // A curated usage sentence is already visible even when the legacy word's
+  // sentence field is blank. Fill-only must preserve that visible sentence.
+  await readText('英文\t中文释义\t英文例句\n'+first.word+'\t'+first.meaning+'\tA different imported example.');
+  assert.match(await p.locator('#wi-preview-summary').textContent(),/待选择 1/);
+  await p.locator('[data-import-choice="2"]').selectOption('fill');
+  assert.match(await p.locator('#wi-preview-summary').textContent(),/更新 0/);
+  assert.deepEqual(await doc(),identity,'checking visible usage must not change the learning archive');
   await readText('英文,中文释义,音标,英文例句,例句译文,章节\n'+
    'a newspaper,导入者另写的报纸释义,,"She read a newspaper, then left.",她看过报纸后离开了。,阅读\n'+
    'codeximportword,导入测试词,,"This example, with a comma, stays together.",这是测试例句。,阅读\n'+

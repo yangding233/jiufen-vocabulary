@@ -59,7 +59,7 @@ async function readWordImport(){
 function invalidateWordImport(){wiReadToken++;wiPlan=null;wiWorkbook=null;wiDecisions={};el('wi-confirm').disabled=true;el('wi-preview').hidden=true;importError('来源已变更，请点击“读取并预览”重新检查。');}
 function refreshImportPreview(){
  const sheet=selectedImportSheet();if(!sheet)return;
- try{importError();wiPlan=WordImport.preview(state,sheet.rows,{mapping:importMapping(),header:el('wi-header').checked,rowNumbers:sheet.rowNumbers,decisions:wiDecisions});renderImportPreview();}
+ try{importError();const effectiveState={...state,words:state.words.map(w=>{const usage=usageFor(w);return {...w,sentence:usage.sentence||w.sentence||'',translation:usage.translation||w.translation||''};})};wiPlan=WordImport.preview(effectiveState,sheet.rows,{mapping:importMapping(),header:el('wi-header').checked,rowNumbers:sheet.rowNumbers,decisions:wiDecisions});renderImportPreview();}
  catch(e){wiPlan=null;el('wi-confirm').disabled=true;importError(e.message);}
 }
 function renderImportPreview(){
