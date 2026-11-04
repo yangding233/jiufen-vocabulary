@@ -42,6 +42,7 @@ app_path.write_text(app, encoding='utf-8')
 
 html_path=ROOT/'web/index.html'
 html=html_path.read_text(encoding='utf-8')
+html=re.sub(r'(<span id="app-version">)软件 [0-9.]+',r'\g<1>软件 1.2.0',html,count=1)
 panel=(ROOT/'tools/import-panel.html').read_text(encoding='utf-8')
 match=re.search(r'(<section class="panel wordbooks-panel"[\s\S]*?</dialog>)[\r\n]*',html)
 if match: html=html[:match.start()]+panel+html[match.end():]
