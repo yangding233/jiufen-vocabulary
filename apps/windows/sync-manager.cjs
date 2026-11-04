@@ -33,7 +33,7 @@ class SyncManager {
   const options={udid:device.udid,bundleId};
   this.emit({phase:'reading',message:'正在读取手机同步包，请保持手机 App 的同步页面打开。'});
   const packet=this.core.decodePacket(await this.transport.read(options,'Exchange/outgoing.json'));this.checkCancelled();this.connection(true);
-  if((packet.clientProtocol??1)<this.minProtocol)throw new Error('手机应用版本过旧，请先将手机和电脑都升级到 1.1.0 或更新版本，再重新准备同步。原学习记录未合并。');
+  if((packet.clientProtocol??1)<Math.max(this.minProtocol,this.store.load()?.schema===2?3:1))throw new Error('手机应用版本过旧，请先将手机和电脑都升级到支持自建词书的同一新版，再重新准备同步。原学习记录未合并。');
   // Content is validated and selected before any learning record is changed.
   const selectedContent=this.ContentPack?this.ContentPack.choose(this.validateContent(this.store.loadContent()),this.validateContent(packet.contentPack??null),this.expectedWords):null;
   let local=this.store.load(),incoming=packet.document;
@@ -52,7 +52,7 @@ class SyncManager {
   // Every exchange attempt gets a fresh batch. An old ack must never confirm a newer payload.
   // Operation IDs (not batch IDs) provide retry deduplication.
   const batchId=crypto.randomUUID();
-  const encoded=this.core.encodePacket(merged,batchId,{clientProtocol:2,contentPack:selectedContent});
+  const encoded=this.core.encodePacket(merged,batchId,{clientProtocol:Math.max(this.minProtocol,merged.schema===2?3:2),contentPack:selectedContent});
   this.store.setMeta('pendingBatch',{batchId,device:device.udid,profileId:merged.profileId,at:new Date().toISOString()});
   this.checkCancelled();this.emit({phase:'writing',message:'电脑已保存，正在写回手机…'});await this.transport.write(options,'Exchange/incoming.json',encoded);this.checkCancelled();
   this.emit({phase:'waiting',message:'已写入手机，等待手机 App 导入并确认。请保持手机同步页面打开。'});

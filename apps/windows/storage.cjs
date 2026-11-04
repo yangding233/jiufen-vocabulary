@@ -13,7 +13,7 @@ class Store {
  setMeta(key,value){this.db.prepare('INSERT INTO kv VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value').run('meta:'+key,JSON.stringify(value));}
  load(){const row=this.db.prepare("SELECT value FROM kv WHERE key='document'").get();if(!row)return null;const doc=JSON.parse(row.value);this.validate(doc);return doc;}
  validate(doc){
-  if(!doc||typeof doc!=='object'||Array.isArray(doc)||doc.format!=='jiufen-usb'||doc.schema!==1)throw new Error('学习数据格式不正确。');
+  if(!doc||typeof doc!=='object'||Array.isArray(doc)||doc.format!=='jiufen-usb'||![1,2].includes(doc.schema))throw new Error('学习数据格式不正确。');
   const raw=JSON.stringify(doc);if(Buffer.byteLength(raw,'utf8')>MAX_BYTES)throw new Error('学习数据超过 50MB，未保存。');
   if(typeof doc.profileId!=='string'||!doc.profileId||typeof doc.deviceId!=='string'||!doc.deviceId||!Array.isArray(doc.operations))throw new Error('学习数据身份或操作列表不完整。');
   if(this.validator)this.validator(doc);return raw;

@@ -1,5 +1,11 @@
 # Offline USB vocabulary contract (v1)
 
+## Wordbooks extension (1.2.0 / clientProtocol 3)
+
+Legacy documents retain schema 1. The first deliberate wordbook edit promotes the document to schema 2 while retaining profileId, deviceId, the original baseline JSON/hash and all existing operations. Optional materialized `state.library` contains books, memberships, import batches and field overrides. `library-set` writes are recorded per entity/field and use the existing causal conflict mechanism. Membership nulls are tombstones. Imported same-spelling entries may coexist with independent IDs/history; merging those learning histories is not automatic.
+
+New clients exchange protocol 3. Both native hosts accept document schema 1 or 2; production USB checks protocol support before changing learning/content data. Resource/audio transfer is not part of this extension. File parsing is offline and previews are read-only; a confirmed import is persisted in a single SQLite transaction. Draft entries without meanings cannot be enrolled by the import UI. Original built-in lexical fields remain in the baseline; user content overrides are applied to the rendered state after catalogue refresh.
+
 No cloud storage, telemetry or runtime internet. Existing vocabulary ID/schema remain.
 
 ## Shared JS sync engine

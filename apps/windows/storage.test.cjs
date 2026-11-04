@@ -12,6 +12,10 @@ test('validation failure does not destroy saved state; backups bounded; sync bac
 test('metadata roundtrips pending batches without changing the document',()=>{
  const s=new Store(tmp());s.save(doc(1));s.setMeta('pendingBatch',{batchId:'b1'});assert.deepEqual(s.getMeta('pendingBatch'),{batchId:'b1'});assert.deepEqual(s.load(),doc(1));s.setMeta('pendingBatch',null);assert.equal(s.getMeta('pendingBatch'),null);s.close();
 });
+
+test('schema2 wordbook archive commits and reopens without changing profile or baseline',()=>{
+ const dir=tmp(),upgraded={...doc(4),schema:2,operations:[{kind:'library-set',section:'books',key:'book:test',value:{id:'book:test',name:'我的词书'}}]};let s=new Store(dir);s.save(doc(4));s.save(upgraded);s.close();s=new Store(dir);assert.deepEqual(s.load(),upgraded);assert.equal(s.load().profileId,'p');assert.deepEqual(s.load().baseline,{n:4});assert.equal(s.db.prepare('SELECT COUNT(*) n FROM backups').get().n,1);s.close();
+});
 test('content packs are independently validated and stored without changing learning data or backups',()=>{
  const ContentPack=require('../../shared/content-pack.js'),s=new Store(tmp(),null,{contentValidator:pack=>ContentPack.validate(pack)});
  const pack=ContentPack.create([{id:'jf-1',word:'word',usage:{sentence:'Write one word.',translation:'写一个单词。',collocations:['one word']}}],'2026-11-03.2');

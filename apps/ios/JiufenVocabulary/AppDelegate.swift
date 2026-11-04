@@ -76,7 +76,7 @@ final class DocumentStore {
         return value
     }
     static func validateDocument(_ value: Any) throws {
-        guard let doc = value as? [String: Any], doc["format"] as? String == "jiufen-usb", doc["schema"] as? Int == 1,
+        guard let doc = value as? [String: Any], doc["format"] as? String == "jiufen-usb", (doc["schema"] as? Int == 1 || doc["schema"] as? Int == 2),
               let profile = doc["profileId"] as? String, !profile.isEmpty, profile.count < 200,
               let device = doc["deviceId"] as? String, !device.isEmpty, device.count < 200,
               doc["baseline"] is [String: Any], doc["operations"] is [Any] else { throw NativeError.invalid("同步记录格式不正确，原记录未覆盖。") }
@@ -131,7 +131,7 @@ final class DocumentStore {
         if summaryContext == nil {
             guard let context = JSContext(), let root = Bundle.main.resourceURL?.appendingPathComponent("Web", isDirectory: true) else { throw NativeError.invalid("缺少离线备份校验组件。") }
             context.setObject(context.globalObject, forKeyedSubscript: "globalThis" as NSString)
-            for name in ["learning-tools.js", "sync-core.js"] {
+            for name in ["wordbooks.js", "learning-tools.js", "sync-core.js"] {
                 context.evaluateScript(try String(contentsOf: root.appendingPathComponent(name), encoding: .utf8))
                 guard context.exception == nil else { throw NativeError.invalid("备份校验组件未能载入。") }
             }
@@ -239,7 +239,7 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
             try FileManager.default.createDirectory(at: exchange, withIntermediateDirectories: true)
             try writeJSON(["format": "jiufen-device-info", "schema": 1, "deviceId": deviceID,
                            "bundleId": Bundle.main.bundleIdentifier ?? "com.jiufen.vocabulary", "platform": "ios",
-                           "version": appVersion, "clientProtocol": 2], to: "device-info.json")
+                           "version": appVersion, "clientProtocol": 3], to: "device-info.json")
         } catch { startupError = error.localizedDescription }
         guard let root = Bundle.main.resourceURL?.appendingPathComponent("Web", isDirectory: true),
               FileManager.default.fileExists(atPath: root.appendingPathComponent("index.html").path) else {
@@ -343,7 +343,7 @@ final class VocabularyViewController: UIViewController, WKUIDelegate, WKNavigati
               let document = content["document"] as? [String: Any] else { throw NativeError.invalid("同步包格式、校验和或批次编号不正确") }
         try DocumentStore.validateDocument(document)
         let protocolVersion = content["clientProtocol"] as? Int ?? 1
-        guard protocolVersion >= 2 else { throw NativeError.invalid("同步程序版本过旧，请将手机和电脑均升级到 1.1.0 或更新版本再同步。") }
+        guard protocolVersion == 3 else { throw NativeError.invalid("同步程序版本过旧，请将手机和电脑均升级到支持自建词书的新版再同步。") }
         let contentPack = content["contentPack"] as? [String: Any]
         if let pack = contentPack { try DocumentStore.validateContent(pack) }
         return (document, batch, protocolVersion, contentPack)

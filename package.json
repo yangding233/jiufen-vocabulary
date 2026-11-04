@@ -1,12 +1,12 @@
 {
   "name": "jiufen-offline-usb",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "description": "九分常规词汇离线学习与 USB 双向同步",
   "scripts": {
     "prepare:web": "python tools/prepare_web.py",
-    "test": "node --test tests/sync-core.test.cjs tests/mnemonics.test.cjs tests/learning-tools.test.cjs tests/content-pack.test.cjs",
-    "test:ui": "node tests/web.test.cjs && node tests/phone-bridge.test.cjs && node tests/mnemonic-ui.test.cjs && node tests/features-ui.test.cjs",
+    "test": "node --test tests/sync-core.test.cjs tests/wordbooks.test.cjs tests/word-import.test.cjs tests/mnemonics.test.cjs tests/learning-tools.test.cjs tests/content-pack.test.cjs",
+    "test:ui": "node tests/web.test.cjs && node tests/phone-bridge.test.cjs && node tests/mnemonic-ui.test.cjs && node tests/features-ui.test.cjs && node tests/import-ui.test.cjs",
     "content:build": "python tools/update_mnemonics.py && python tools/build_usage.py && node tools/build_content.cjs",
     "content:check": "python tools/update_mnemonics.py --check && python tools/build_usage.py --check && node tools/build_content.cjs --check",
     "desktop": "npm --prefix apps/windows start",

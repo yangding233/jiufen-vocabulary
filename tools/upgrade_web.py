@@ -100,3 +100,5 @@ style_path=ROOT/'web/style.css'
 style=style_path.read_text(encoding='utf-8').split('/* Learning 0.2 styles */')[0].rstrip()
 style_path.write_text(style+'\n/* Learning 0.2 styles */\n'+(ROOT/'tools/learning-style.css').read_text(encoding='utf-8'),encoding='utf-8')
 print('Prepared 0.2 offline learning UI')
+import subprocess, sys
+subprocess.run([sys.executable,str(ROOT/'tools/upgrade_import.py')],check=True)

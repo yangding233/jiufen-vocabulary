@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[2]
 html = (ROOT / "web" / "index.html").read_text(encoding="utf-8")
-for path in [*(ROOT / "web" / name for name in ["native-adapter.js", "pako.min.js", "style.css", "app.js", "learning-tools.js", "content-pack.js"]), ROOT / "shared" / "sync-core.js"]:
+for path in [*(ROOT / "web" / name for name in ["native-adapter.js", "pako.min.js", "style.css", "app.js", "learning-tools.js", "content-pack.js", "wordbooks.js", "word-import.js", "vendor/xlsx.full.min.js"]), ROOT / "shared" / "sync-core.js"]:
     assert path.is_file() and path.stat().st_size > 100, f"Missing runtime: {path}"
 embedded = re.search(r'<script\s+id="portable-state"\s+type="application/json">([\s\S]*?)</script>', html)
 assert embedded and json.loads(embedded.group(1)) is None, "Do not upload an exported HTML containing personal learning state."
@@ -21,11 +21,11 @@ assert all(w["memory"]["kind"] not in {"待补巧记", "形近对照候选"} for
 for source in re.findall(r'<(?:script|iframe)\b[^>]*\bsrc=["\']([^"\']+)', html, re.I):
     assert not re.match(r'^(?:https?:)?//', source), f"Offline app includes remote runtime: {source}"
     if not source.startswith("data:"):
-        assert ".." not in source and source in ["native-adapter.js", "sync-core.js", "pako.min.js", "app.js", "host-hooks.js", "sync-panel.js", "learning-tools.js", "content-pack.js"], f"Unexpected runtime asset: {source}"
+        assert ".." not in source and source in ["native-adapter.js", "sync-core.js", "pako.min.js", "app.js", "host-hooks.js", "sync-panel.js", "learning-tools.js", "content-pack.js", "wordbooks.js", "word-import.js", "vendor/xlsx.full.min.js"], f"Unexpected runtime asset: {source}"
 for path in (ROOT / "web").rglob("*"):
     assert not path.is_symlink(), f"Do not bundle symlinks: {path.name}"
     if path.is_file():
-        assert path.suffix.lower() in {".html", ".js", ".css", ".json", ".wav", ".mp3", ".m4a"}, f"Unexpected offline file: {path.name}"
+        assert path.suffix.lower() in {".html", ".js", ".css", ".json", ".wav", ".mp3", ".m4a"} or path.name == "LICENSE-SheetJS.txt", f"Unexpected offline file: {path.name}"
 content = json.loads((ROOT / "web/content-pack.json").read_text(encoding="utf-8"))
 assert content["format"] == "jiufen-content" and content["schema"] == 1 and len(content["entries"]) == 1493
 assert {entry["id"] for entry in content["entries"]} == {word["id"] for word in words}

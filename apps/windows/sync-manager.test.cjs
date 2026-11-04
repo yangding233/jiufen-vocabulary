@@ -62,3 +62,15 @@ test('production content gate rejects partial packs before changing learning dat
  const manager=new SyncManager({store,transport,core,ContentPack,expectedWords:[{id:'jf-1',word:'word'},{id:'jf-2',word:'other'}],minProtocol:2,emit:()=>{}});
  await assert.rejects(manager.run({}),/完整词库/);assert.deepEqual(store.doc,desktop);assert.equal(store.backups.length,0);assert.equal(transport.writes,0);
 });
+
+test('wordbook protocol refuses an old phone before any backup, commit or phone write',async()=>{
+ const B=require('../../shared/wordbooks.js'),base=core.createDocument(state(),'pc'),before=core.materialize(base),after=clone(before);B.createBook(after,{id:'book:custom',name:'我的词书'});B.addMember(after,'book:custom','jf-1');
+ const desktop=core.record(base,before,after),store=new MemoryStore(desktop),transport=new Phone(core.adoptDocument(base,'phone'));transport.packetExtras={clientProtocol:2};
+ const manager=new SyncManager({store,transport,core,minProtocol:3,emit:()=>{}});await assert.rejects(manager.run({}),/版本过旧/);assert.deepEqual(store.doc,desktop);assert.equal(store.backups.length,0);assert.equal(transport.writes,0);
+});
+
+test('protocol3 wordbook content reaches the phone with the same archive identity and card progress',async()=>{
+ const B=require('../../shared/wordbooks.js'),base=core.createDocument(state(),'pc'),before=core.materialize(base),after=clone(before);B.createBook(after,{id:'book:custom',name:'我的词书'});B.addMember(after,'book:custom','jf-1');B.setContent(after,'jf-1',{meaning:'单词；用语',source:'自建词表'});
+ const desktop=core.record(base,before,after),store=new MemoryStore(desktop),transport=new Phone(core.adoptDocument(base,'phone'));transport.packetExtras={clientProtocol:3};const events=[];
+ const manager=new SyncManager({store,transport,core,minProtocol:3,emit:e=>events.push(e),ackTimeout:100,pollInterval:1});await manager.run({});assert.equal(transport.last.clientProtocol,3);assert.equal(transport.last.document.schema,2);assert.equal(transport.last.document.profileId,base.profileId);assert.equal(transport.last.document.baselineHash,base.baselineHash);assert.equal(core.materialize(transport.doc).words[0].meaning,'单词；用语');assert.deepEqual(core.materialize(transport.doc).cards,before.cards);assert.equal(events.at(-1).phase,'complete');
+});

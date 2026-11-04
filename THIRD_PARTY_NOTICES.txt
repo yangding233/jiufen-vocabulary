@@ -787,3 +787,11 @@ may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <http://www.gnu.org/philosophy/why-not-lgpl.html>.
+
+
+SheetJS Community Edition 0.20.3 (local Excel import)
+Copyright (C) 2012-present SheetJS LLC. Apache License 2.0.
+Official source: https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js
+Bundled file SHA256: cc015130aa8521e7f088f88898eba949ccdcbfb38df0bd129b44b7273c3a6f41
+Full license: web/vendor/LICENSE-SheetJS.txt
+The parser is bundled for offline use; imported spreadsheets are processed locally.

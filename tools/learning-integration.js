@@ -4,13 +4,14 @@ const originalBuiltinMemories=new Map(memoryIndex);
 const builtinContentPack=JSON.parse(el('learning-content')?.textContent||'null');
 const offlineAudio=JSON.parse(el('audio-data')?.textContent||'{"entries":{}}');
 function chosenMemoryFor(w){
+ if(state?.library&&w.id.startsWith('custom:'))return null;
  return memoryIndex.get(normalize(w.word));
 }
 function builtinMemoriesFor(w){
  const original=chosenMemoryFor(w),alternatives=contentEntries.get(w.id)?.alternatives||[];
  return [...(original?[original]:[]),...alternatives.map(alternative=>({...original,kind:'替代巧记',anchor:alternative.parts.map(p=>p.text+'（'+p.cue+'）').join(' + '),parts:alternative.parts,baseParts:[],spellingSteps:[],scene:alternative.scene,focus:alternative.focus||alternative.parts.map(p=>p.text).join(' + ')+' = '+w.word,reference:alternative.reference||'另一条原创助记，不作为英语词源或标准读音。',status:alternative.label}))];
 }
-function usageFor(w){return contentEntries.get(w.id)?.usage||{sentence:w.sentence||'',translation:'',collocations:[]};}
+function usageFor(w){const usage=contentEntries.get(w.id)?.usage||{sentence:w.sentence||'',translation:w.translation||'',collocations:[]},fields=state?.library?.overrides?.[w.id]||{};return {...usage,...(Object.hasOwn(fields,'sentence')?{sentence:fields.sentence}:{}),...(Object.hasOwn(fields,'translation')?{translation:fields.translation}:{})};}
 function usageHTML(w){const usage=usageFor(w);return `<div class="usage-card"><div class="row spread"><h3>常用例句与搭配</h3><button class="small" data-play-word="${escape(w.id)}">▶ 听单词</button></div>${usage.sentence?`<p lang="en">${escape(usage.sentence)}</p><p class="muted">${escape(usage.translation||'')}</p>`:'<p class="muted">自加词可在笔记中补充例句。</p>'}<div class="row">${(usage.collocations||[]).map(x=>`<span class="usage-chip">${escape(x)}</span>`).join('')}</div></div>`;}
 function activateContent(pack){
  currentContentPack=pack;contentEntries=new Map((pack?.entries||[]).map(x=>[x.id,x]));

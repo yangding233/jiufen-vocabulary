@@ -1,0 +1,29 @@
+<section class="panel wordbooks-panel" aria-label="我的词书">
+  <div class="row spread"><h3>我的词书</h3><button id="open-word-import" class="primary">导入词表</button></div>
+  <div class="row"><label class="field">查看词书<select id="wordbook-filter"><option value="all">全部词书</option></select></label><label class="field">章节<select id="wordbook-chapter"><option value="all">全部章节</option></select></label></div>
+  <p id="wordbook-summary" class="small muted" role="status"></p>
+  <div class="row"><input id="wordbook-create-name" aria-label="新词书名称" placeholder="例如：我的听力生词" maxlength="80"><button id="wordbook-create">新建词书</button><button id="wordbook-rename">重命名当前词书</button></div>
+  <details><summary>导入记录</summary><div id="wordbook-batches" class="small muted"></div></details>
+  <details id="wordbook-duplicates-panel" hidden><summary>需要核对的同名词</summary><p class="small muted">不同设备或独立义项可能产生同名词。它们各自的学习记录已保留，可以打开核对；本版不会自动合并历史。</p><div id="wordbook-duplicates"></div></details>
+</section>
+<dialog id="word-import-dialog" aria-labelledby="wi-title">
+  <div class="row spread"><h2 id="wi-title">导入自己的词表</h2><button id="wi-close">关闭</button></div>
+  <p class="small muted">选择文件或直接粘贴，预览确认后才保存。已有词的进度、笔记和熟知状态保留。</p>
+  <div class="import-sources">
+    <label class="field">选择文件（Excel / CSV / TSV / TXT）<input id="wi-file" type="file" accept=".xlsx,.csv,.tsv,.txt,text/plain,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></label>
+    <label class="field">或者粘贴词表<textarea id="wi-text" rows="5" placeholder="单词&#9;释义&#9;音标&#9;例句&#10;example&#9;例子&#9;/ɪɡˈzɑːmpəl/&#9;Could you give me an example?"></textarea></label>
+  </div>
+  <div class="row"><label class="field">文本分隔符<select id="wi-separator"><option value="auto">自动识别</option><option value="tab">制表符（Excel 复制）</option><option value="comma">逗号（CSV）</option><option value="pipe">竖线 |</option><option value="line">每行一个单词</option></select></label><label class="field">文本编码<select id="wi-encoding"><option value="utf-8">UTF-8</option><option value="gb18030">GB18030（旧中文文本）</option></select></label><button id="wi-read">读取并预览</button><button id="wi-template">下载示例模板</button></div>
+  <p id="wi-error" class="error" role="alert" hidden></p>
+  <section id="wi-preview" hidden>
+    <div class="row"><label class="field">工作表<select id="wi-sheet"></select></label><label class="checks"><input id="wi-header" type="checkbox">第一行为表头</label></div>
+    <fieldset><legend>每一列对应什么资料</legend><div id="wi-columns" class="import-column-map"></div></fieldset>
+    <div class="row"><label class="field">导入到词书<select id="wi-book"></select></label><label class="field">新词书名称<input id="wi-book-name" maxlength="80" placeholder="我的补充词"></label></div>
+    <p class="small muted">导入后默认不加入每日计划。缺释义的词保存在“待完善”中，补齐后可选中加入计划。原文件的章节和顺序会保留。</p>
+    <div class="row"><label class="field">批量处理重复项<select id="wi-bulk-choice"><option value="">选择处理方式</option><option value="keep">沿用已有资料</option><option value="fill">只补空缺</option><option value="replace">使用导入资料更新</option><option value="skip">跳过重复项</option></select></label><button id="wi-apply-choice">应用到重复项</button></div>
+    <p id="wi-preview-summary" class="notice" role="status" aria-live="polite"></p>
+    <div class="import-table-wrap"><table class="import-table"><thead><tr><th>原行号</th><th>英文与释义</th><th>检查结果</th><th>处理方式</th></tr></thead><tbody id="wi-rows"></tbody></table></div>
+    <div class="row spread"><button id="wi-prev">上一页</button><span id="wi-page" class="small muted"></span><button id="wi-next">下一页</button></div>
+    <div class="row"><button id="wi-confirm" class="primary" disabled>确认导入</button><button id="wi-export-errors">导出问题行</button></div>
+  </section>
+</dialog>

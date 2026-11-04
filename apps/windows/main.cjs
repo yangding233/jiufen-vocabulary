@@ -54,7 +54,7 @@ if(!app.requestSingleInstanceLock()){app.quit();}else{
  app.on('second-instance',()=>{if(window){if(window.isMinimized())window.restore();window.focus();}});
  app.whenReady().then(async()=>{
   const dataRoot=process.env.JIUFEN_DATA_DIR||path.join(app.getPath('userData'),'offline-v1');
-  store=new Store(dataRoot,doc=>core.materialize(doc),{contentValidator:validateCompleteContent});manager=new SyncManager({store,transport,core,ContentPack,expectedWords:contentWords,minProtocol:2,emit});
+  store=new Store(dataRoot,doc=>core.materialize(doc),{contentValidator:validateCompleteContent});manager=new SyncManager({store,transport,core,ContentPack,expectedWords:contentWords,minProtocol:3,emit});
   window=new BrowserWindow({width:1180,height:900,minWidth:360,minHeight:550,title:'九分词汇 · 离线学习与数据线同步',icon:path.join(__dirname,'icon.png'),show:!smoke,backgroundColor:'#202a23',webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true,webSecurity:true}});
   window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
   window.webContents.on('will-navigate',(event,url)=>{try{if(path.resolve(fileURLToPath(url))!==webFile)event.preventDefault();}catch(_){event.preventDefault();}});

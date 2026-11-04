@@ -17,6 +17,7 @@ function nativePersist(){
   else usbDocument=OfflineSync.record(usbDocument,OfflineSync.materialize(usbDocument),state);
   VocabNative.call('save',usbDocument);
   baseRevision=state.revision;lastRaw=null;saveOK=true;changedInMemory=false;
+  if(el('usb-message').textContent.startsWith('数据库未能保存：'))showUsbStatus('已重新保存到本机数据库，可以继续学习。');
   try{localStorage.setItem(KEY,envelope(state,true));}catch(_){} // disposable UI cache; SQLite is authoritative.
   el('storage-warning').hidden=true;storageStatus();renderUsbConflicts();return true;
  }catch(e){usbDocument=previous;saveOK=false;changedInMemory=true;showUsbStatus('数据库未能保存：'+e.message);storageStatus();return false;}
@@ -53,7 +54,7 @@ function acceptIncoming(){
  try{
   const packetText=VocabNative.call('readIncoming');if(!packetText)return;
   const packet=OfflineSync.decodePacket(packetText);
-  if(packet.clientProtocol!==2)throw new Error('请先把电脑和手机都升级到1.1.0，再同步新功能记录。');
+  if(packet.clientProtocol!==3)throw new Error('请先把电脑和手机都升级到支持自建词书的新版，再同步。');
   const selectedContent=validateCompleteContent(ContentPack.choose(currentContentPack,packet.contentPack||null,initialWords));
   if(packet.batchId===window.lastUsbBatch)return;
   let next;
@@ -75,7 +76,7 @@ el('usb-start').addEventListener('click',()=>{
  try{
   flushSpelling();if(!persist())throw new Error('请先解决本机保存问题');
   if(VocabNative.platform==='ios'){
-   const packet=OfflineSync.encodePacket(usbDocument,uid(),{clientProtocol:2,contentPack:currentContentPack});
+   const packet=OfflineSync.encodePacket(usbDocument,uid(),{clientProtocol:3,contentPack:currentContentPack});
    VocabNative.call('prepareSync',{document:usbDocument,packet});setUsbLock(true);showUsbStatus('已准备手机操作包，学习已暂时锁定。请在电脑点击“数据线同步”。');
   }else{
    setUsbLock(true);VocabNative.call('syncUsb',{bootstrap:el('usb-bootstrap').checked,bundleId:el('usb-bundle').value.trim()||'com.jiufen.vocabulary'});showUsbStatus('正在连接手机，请保持手机解锁且已打开同步页面。');
