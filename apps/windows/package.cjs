@@ -8,9 +8,10 @@ fs.copyFileSync(path.join(electronDist,'LICENSE'),path.join(dest,'LICENSE.electr
 fs.renameSync(path.join(dest,'electron.exe'),path.join(dest,'九分词汇离线学习.exe'));
 const appdir=path.join(dest,'resources','app');fs.mkdirSync(path.join(appdir,'apps','windows'),{recursive:true});
 fs.writeFileSync(path.join(appdir,'package.json'),JSON.stringify({name:'jiufen-vocabulary-offline',version,main:'apps/windows/main.cjs'},null,2));
-for(const name of ['main.cjs','preload.cjs','storage.cjs','icon.png'])fs.copyFileSync(path.join(__dirname,name),path.join(appdir,'apps','windows',name));
+for(const name of ['main.cjs','preload.cjs','storage.cjs','audio-service.cjs','audio-bundle.ps1','icon.png'])fs.copyFileSync(path.join(__dirname,name),path.join(appdir,'apps','windows',name));
+fs.mkdirSync(path.join(appdir,'tools'),{recursive:true});fs.copyFileSync(path.join(root,'tools','generate_text_audio.py'),path.join(appdir,'tools','generate_text_audio.py'));
 for(const name of ['web','shared'])fs.cpSync(path.join(root,name),path.join(appdir,name),{recursive:true});
-for(const name of ['LICENSE','THIRD_PARTY_NOTICES.txt','README.md'])fs.copyFileSync(path.join(root,name),path.join(dest,name));
+for(const name of ['LICENSE','THIRD_PARTY_NOTICES.txt','README.md','AI补全指南.md'])fs.copyFileSync(path.join(root,name),path.join(dest,name));
 fs.cpSync(path.join(root,'docs'),path.join(dest,'docs'),{recursive:true});
 fs.writeFileSync(path.join(dest,'启动说明.txt'),'双击“九分词汇离线学习.exe”。旧版 Windows 学习记录会自动读取并迁移，迁移前原档案永久保留在数据目录的 migration-backups 文件夹。首次从旧网页使用时，请先导出 JSON 再导入本程序。换电脑前请先导出完整学习备份。\r\n本软件不连接互联网，不会上传学习数据。\r\n','utf8');
 console.log(dest);

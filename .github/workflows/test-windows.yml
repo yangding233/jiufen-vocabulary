@@ -30,5 +30,6 @@ jobs:
           git diff --exit-code -- web
       - run: npm test
       - run: npm --prefix apps/windows test
+      - run: npm run test:audio
       - run: npm run content:check
       - run: python tools/verify_resources.py

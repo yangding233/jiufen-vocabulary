@@ -1,6 +1,6 @@
 {
   "name": "jiufen-vocabulary-desktop",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "Offline vocabulary learning for Windows",
   "main": "main.cjs",

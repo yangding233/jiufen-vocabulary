@@ -21,9 +21,12 @@ const integer = (x,min,max) => Number.isInteger(x) && x>=min && x<=max;
 let state, baseRevision = null, lastRaw = null, saveOK = false, blocked = false, damaged = null, changedInMemory = false;
 let tab = 'today', expanded = false, libraryPage = 0, historyPage = 0, detailId = null, pendingImport = null;
 let selected = new Set(), bootMessage = '', recovered = false;
+let exclusiveOperation=false;
 
 const PREVIOUS_APP = 'ielts-context-learning';
 const PREVIOUS_KEY = 'ielts-context-learning-v2';
+const originalById=new Map(initialWords.map(w=>[w.id,w]));
+function phoneticNoteFor(w){const original=originalById.get(w.id);return original&&w.phonetic!==original.phonetic?'':w.phoneticNote||'';}
 const memoryIndex = new Map(initialWords.map(w => [normalize(w.word), w.memory]));
 const builtinNames = new Set(initialWords.map(w => normalize(w.word)));
 let spellingTimer = null;
@@ -134,7 +137,7 @@ function validate(s, previousAllowed=false) {
     const probe=copy(s); probe.cards[s.undo.wordId]=s.undo.card; probe.session=null; probe.undo=null;
     validate(probe,previousAllowed);
   }
-  if(s.library)WordBooks.validate(s);
+  if(s.library)WordBooks.validate(s);if(s.materials)Materials.validate(s);
   return s;
 }
 function decode(raw, previousAllowed=false) {
@@ -184,7 +187,7 @@ function newDoneIds(s,date=day()) {
   for(const w of s.words)if(s.cards[w.id].seen&&s.cards[w.id].learnedOn===date)ids.add(w.id);
   return ids;
 }
-function remainingNew(s) {return s.words.filter(w=>readyWord(w)&&active(s.cards[w.id])&&!s.cards[w.id].seen);}
+function remainingNew(s) {const permitted=window.BookTools?BookTools.studyIds(s):null;const candidates=s.words.filter(w=>readyWord(w)&&(permitted===null||permitted.has(w.id))&&active(s.cards[w.id])&&!s.cards[w.id].seen);if(permitted!==null){const ranks=new Map([...permitted].map((id,i)=>[id,i]));candidates.sort((a,b)=>ranks.get(a.id)-ranks.get(b.id));}return candidates;}
 function isStudyDay(date,settings) {return settings.studyDays.includes(new Date(date+'T04:00:00Z').getUTCDay());}
 function planFor(s,date=day()) {
   const settings=learningSettings(s),done=newDoneIds(s,date),target=isStudyDay(date,settings)?settings.dailyNew:0;
@@ -206,8 +209,10 @@ function nthLearningDate(start,n,settings) {
   throw new Error('无法计算学习日期。');
 }
 function forecastPlan(s,settings=learningSettings(s),date=day()) {
-  const remaining=remainingNew(s).length,done=newDoneIds(s,date).size;
-  const excluded=s.words.filter(w=>!s.cards[w.id].seen&&!active(s.cards[w.id])).length;
+  const effective={...s,settings:{...s.settings,...settings}};
+  const remaining=remainingNew(effective).length,done=newDoneIds(s,date).size;
+  const permitted=window.BookTools?BookTools.studyIds(effective):null;
+  const excluded=s.words.filter(w=>!s.cards[w.id].seen&&(!active(s.cards[w.id])||permitted!==null&&!permitted.has(w.id))).length;
   const target=isStudyDay(date,settings)?settings.dailyNew:0;
   const today=Math.min(remaining,Math.max(0,target-done));
   if(!remaining)return {remaining,excluded,done,target,today,days:0,finish:null,status:'complete'};
@@ -220,7 +225,8 @@ function quotaForDeadline(s,targetDate,settings,date=day()) {
   if(!validDay(targetDate)||targetDate<date||dateGap(date,targetDate)>3650)return {error:'请选择今天起十年内的目标日期。'};
   let slots=0;
   for(let d=date;d<=targetDate;d=addDays(d,1))if(isStudyDay(d,settings))slots++;
-  const remaining=remainingNew(s).length,done=newDoneIds(s,date).size;
+  const effective={...s,settings:{...s.settings,...settings}};
+  const remaining=remainingNew(effective).length,done=newDoneIds(s,date).size;
   if(!remaining)return {quota:0,slots};
   if(!slots)return {error:'目标日期前没有选中的新词学习日，请调整日期或星期。'};
   // Today may already have consumed some of its quota. Find the smallest feasible integer.
@@ -267,7 +273,8 @@ function readPlanDraft() {
   if(!studyDays.length)throw new Error('请至少选择一个新词学习日；暂时只复习可将每日新词设为 0。');
   const targetDate=el('plan-deadline').value||null;
   if(targetDate&&(!validDay(targetDate)||targetDate<day()||dateGap(day(),targetDate)>3650))throw new Error('目标日期请选今天起十年内，或清空日期。');
-  return {dailyNew,studyDays,targetDate};
+  const studyBooks=el('bt-scope-all')?(el('bt-scope-all').checked?null:[...document.querySelectorAll('[data-bt-study]:checked')].map(node=>node.dataset.btStudy)):state.settings.studyBooks;
+  return {dailyNew,studyDays,targetDate,...(studyBooks!==undefined?{studyBooks}:{})};
 }
 function renderPlanPreview() {
   const preview=el('plan-preview');
@@ -332,11 +339,12 @@ function persist(forcePlain=false) {
   } catch(e) { saveOK=false; changedInMemory=true; storageStatus(); return false; }
 }
 async function commit(fn, renderAfter=true) {
+  if(exclusiveOperation){message('正在恢复档案，请等待完成。',true);return false;}
   if(blocked) { message('请先载入另一个标签页保存的最新记录。',true); return false; }
   if(damaged && !recovered) { message('请先导入有效备份恢复记录。',true); return false; }
   if(nativeSaving){message('正在保存上一项操作，请稍候。');return false;}
   const before=copy(state); try{fn(state);}catch(e){state=before;message('操作未完成：'+e.message,true);return false;} ensureDailyPlan(state); fitSessionToPlan(state); state.revision++;state.writer=tabId;state.updatedAt=now();changedInMemory=true;
-  const saving=persist();
+  let saving;try{saving=persist();}catch(e){state=before;saveOK=false;changedInMemory=true;message('操作没有保存：'+e.message,true);if(renderAfter)render();return false;}
   if(renderAfter)render();updateWriteControls();
   const stored=await saving;
   if(blocked||nativeEnabled&&!stored){state=before;changedInMemory=true;if(renderAfter)render();}
@@ -378,6 +386,7 @@ function stats(date=day()) {
   return {events,graded,all,due,newWords,newCount:newWords.length,plan};
 }
 function showTab(name) {
+  stopOfflineAudio();
   tab=name;
   ['today','library','history','settings'].forEach(k=>{el('view-'+k).hidden=k!==name;el('tab-'+k).setAttribute('aria-selected',String(k===name));});
   render();
@@ -412,6 +421,7 @@ function render() {
   if(tab==='settings' && !['daily-target','default-mode'].some(id=>document.activeElement===el(id))) {el('daily-target').value=state.settings.dailyTarget;el('default-mode').value=state.settings.mode;}
   ['save-settings','enroll-selected','save-detail','replace-import','open-plan-home','open-plan-settings'].forEach(id=>{el(id).disabled=blocked;});
   storageStatus();renderLearningEnhancements();
+  window.dispatchEvent(new CustomEvent('vocab-render',{detail:{tab}}));
 }
 function renderStudy() {
   const s=state.session,running=unfinished(s),done=s&&!running;
@@ -438,7 +448,7 @@ function renderStudy() {
   el('clue-box').hidden=s.shown;el('clue-text').hidden=!s.hintShown;el('clue-text').textContent=s.hintShown?(m.rejected&&!m.personal?'这条内置线索已被你停用，请在词条中写自己的线索。':m.anchor):'';
   el('show-clue').textContent=s.hintShown?'收起熟词线索':'想不起来？看熟词线索';
   el('reveal').hidden=s.shown;el('answer').hidden=!s.shown;
-  el('meaning').textContent=`${w.word} · ${w.meaning}`;el('phonetic').textContent=w.phonetic+(w.phoneticNote?' · '+w.phoneticNote:'');
+  el('meaning').textContent=`${w.word} · ${w.meaning}`;el('phonetic').textContent=w.phonetic+(phoneticNoteFor(w)?' · '+phoneticNoteFor(w):'');
   el('current-note').textContent=c.note?`我的笔记：${c.note}`:'';
   el('spelling-result').textContent=s.typed?(normalize(s.typed)===normalize(w.word)?'拼写正确。再检查是否能说出意思和对应画面。':`你的拼写：${s.typed}。目标：${w.word}。核对空格、字母和词尾。`):'';
   el('memory-card').hidden=!s.shown;el('memory-card').innerHTML=s.shown?memoryHTML(w):'';
@@ -534,7 +544,7 @@ async function undo() {
 }
 function filteredWords() {
   const term=normalize(el('search').value),group=el('list').value,scope=el('scope').value;
-  return sortByWordbook(state.words.filter(w=>{const c=state.cards[w.id];return matchesWordbook(w)&&(group==='all'||w.group===group)&&(!term||normalize(w.word+' '+w.meaning+' '+c.note+' '+memoryFor(w).anchor+' '+memoryFor(w).scene).includes(term))&&(scope==='all'||scope==='draft'&&!readyWord(w)||scope==='mastered'&&c.mastered||scope==='due'&&active(c)&&c.seen&&c.due<=day()||scope==='weak'&&!c.mastered&&['again','hard'].includes(c.lastGrade||c.legacyGrade)||scope==='favorite'&&c.favorite||scope==='new'&&!c.seen||scope==='unplanned'&&!c.planned||scope==='paused'&&c.suspended);}));
+  return sortByWordbook(state.words.filter(w=>{const c=state.cards[w.id];return matchesWordbook(w)&&(group==='all'||w.group===group)&&(!term||normalize(w.word+' '+w.meaning+' '+c.note+' '+memoryFor(w).anchor+' '+memoryFor(w).scene).includes(term))&&(scope==='all'||scope.startsWith('missing:')&&window.VocabMaterials?.isMissing(w,scope.slice(8))||scope==='draft'&&!readyWord(w)||scope==='mastered'&&c.mastered||scope==='due'&&active(c)&&c.seen&&c.due<=day()||scope==='weak'&&!c.mastered&&['again','hard'].includes(c.lastGrade||c.legacyGrade)||scope==='favorite'&&c.favorite||scope==='new'&&!c.seen||scope==='unplanned'&&!c.planned||scope==='paused'&&c.suspended);}));
 }
 function renderLibrary() {
   renderWordbooks();
@@ -548,10 +558,11 @@ function renderLibrary() {
   el('selected-count').textContent=`已选 ${selected.size} 词`;el('select-page').checked=items.length>0&&items.every(w=>selected.has(w.id));
 }
 function openDetail(id) {
+  stopOfflineAudio();
   const w=wordById(id);if(!w)return;detailId=id;const c=state.cards[id];
-  el('detail-word').textContent=w.word;el('detail-meaning').textContent=w.meaning+' '+w.phonetic+(w.phoneticNote?' · '+w.phoneticNote:'');el('detail-sentence').innerHTML=usageHTML(w);
+  el('detail-word').textContent=w.word;el('detail-meaning').textContent=w.meaning+' '+w.phonetic+(phoneticNoteFor(w)?' · '+phoneticNoteFor(w):'');el('detail-sentence').innerHTML=usageHTML(w);
   el('detail-status').textContent=`${w.group} · ${c.mastered?'已熟知':c.seen?'已接触':'尚未学'} · ${c.mastered?'不再自动安排复习':c.due?'下次 '+c.due:'暂无复习日期'} · 已记录反馈 ${c.reviewCount} 次${c.legacyGrade?' · 旧版最后标记 '+LABEL[c.legacyGrade]:''}`;
-  el('detail-memory').innerHTML=memoryHTML(w,'detail');el('detail-source').textContent=[w.sourceRow?`原表第 ${w.sourceRow} 行 · ${w.part} · 考察 ${w.frequency} 篇`:'',w.source||''].filter(Boolean).join('\n');el('detail-anchor').value=c.memoryAnchor||'';el('detail-scene').value=c.memoryScene||'';el('detail-note').value=c.note;el('detail-favorite').checked=c.favorite;el('detail-suspended').checked=c.suspended;el('restore-mastered').hidden=!c.mastered;el('restore-mastered').disabled=blocked||Boolean(damaged&&!recovered);el('detail-events').textContent='';el('word-dialog').showModal();
+  el('detail-memory').innerHTML=memoryHTML(w,'detail');el('detail-source').textContent=[w.sourceRow?`原表第 ${w.sourceRow} 行 · ${w.part} · 考察 ${w.frequency} 篇`:'',w.source||''].filter(Boolean).join('\n');el('detail-anchor').value=c.memoryAnchor||'';el('detail-scene').value=c.memoryScene||'';el('detail-note').value=c.note;el('detail-favorite').checked=c.favorite;el('detail-suspended').checked=c.suspended;el('restore-mastered').hidden=!c.mastered;el('restore-mastered').disabled=blocked||Boolean(damaged&&!recovered);el('detail-events').textContent='';el('word-dialog').showModal();window.dispatchEvent(new CustomEvent('vocab-detail',{detail:{id}}));
 }
 function renderHistory() {
   const feedback=state.history.filter(e=>e.kind!=='mastery'),n=feedback.length,unique=new Set(feedback.map(e=>e.wordId)).size;
@@ -670,15 +681,17 @@ const originalBuiltinMemories=new Map(memoryIndex);
 const builtinContentPack=JSON.parse(el('learning-content')?.textContent||'null');
 const offlineAudio=JSON.parse(el('audio-data')?.textContent||'{"entries":{}}');
 function chosenMemoryFor(w){
+ const edited=state?.materials?.entries?.[w.id];if(edited&&Object.hasOwn(edited,'schemes'))return edited.schemes[0]||null;
  if(state?.library&&w.id.startsWith('custom:'))return null;
  return memoryIndex.get(normalize(w.word));
 }
 function builtinMemoriesFor(w){
+ const edited=state?.materials?.entries?.[w.id];if(edited&&Object.hasOwn(edited,'schemes'))return edited.schemes;
  const original=chosenMemoryFor(w),alternatives=contentEntries.get(w.id)?.alternatives||[];
  return [...(original?[original]:[]),...alternatives.map(alternative=>({...original,kind:'替代巧记',anchor:alternative.parts.map(p=>p.text+'（'+p.cue+'）').join(' + '),parts:alternative.parts,baseParts:[],spellingSteps:[],scene:alternative.scene,focus:alternative.focus||alternative.parts.map(p=>p.text).join(' + ')+' = '+w.word,reference:alternative.reference||'另一条原创助记，不作为英语词源或标准读音。',status:alternative.label}))];
 }
-function usageFor(w){const usage=contentEntries.get(w.id)?.usage||{sentence:w.sentence||'',translation:w.translation||'',collocations:[]},fields=state?.library?.overrides?.[w.id]||{};return {...usage,...(Object.hasOwn(fields,'sentence')?{sentence:fields.sentence}:{}),...(Object.hasOwn(fields,'translation')?{translation:fields.translation}:{})};}
-function usageHTML(w){const usage=usageFor(w);return `<div class="usage-card"><div class="row spread"><h3>常用例句与搭配</h3><button class="small" data-play-word="${escape(w.id)}">▶ 听单词</button></div>${usage.sentence?`<p lang="en">${escape(usage.sentence)}</p><p class="muted">${escape(usage.translation||'')}</p>`:'<p class="muted">自加词可在笔记中补充例句。</p>'}<div class="row">${(usage.collocations||[]).map(x=>`<span class="usage-chip">${escape(x)}</span>`).join('')}</div></div>`;}
+function usageFor(w){const usage=contentEntries.get(w.id)?.usage||{sentence:w.sentence||'',translation:w.translation||'',collocations:[]},fields=state?.library?.overrides?.[w.id]||{};return {...usage,...(Object.hasOwn(fields,'sentence')?{sentence:fields.sentence}:{}),...(Object.hasOwn(fields,'translation')?{translation:fields.translation}:{}),...(state?.materials?.entries?.[w.id]?.collocations?{collocations:state.materials.entries[w.id].collocations}:{})};}
+function usageHTML(w){const usage=usageFor(w);return `<div class="usage-card"><div class="row spread"><h3>常用例句与搭配</h3><button class="small" data-play-sentence="${escape(w.id)}" ${usage.sentence?'':'disabled'}>▶ 听整句</button></div>${usage.sentence?`<p lang="en">${escape(usage.sentence)}</p><p class="muted">${escape(usage.translation||'')}</p>`:'<p class="muted">自加词可在笔记中补充例句。</p>'}<div class="row">${(usage.collocations||[]).map(x=>`<span class="usage-chip">${escape(x)}</span>`).join('')}</div></div>`;}
 function activateContent(pack){
  currentContentPack=pack;contentEntries=new Map((pack?.entries||[]).map(x=>[x.id,x]));
  memoryIndex.clear();for(const [key,value] of originalBuiltinMemories)memoryIndex.set(key,value);
@@ -697,9 +710,10 @@ function initializeLearningContent(){
 }
 function currentWord(){const s=state?.session;return unfinished(s)?wordById(s.queue[s.cursor].id):null;}
 async function playOffline(w,locale){
+ window.VocabAudio?.stop();
  if(!w)return;
  const voice=locale||el('audio-voice').value||'en-GB',item=offlineAudio.entries[w.id]?.[voice];
- if(!item){message('这个自加词暂无随包离线音频。');return;}
+ if(!item){if(window.VocabAudio)return window.VocabAudio.playWord(w);message('这个自加词暂无随包离线音频。');return;}
  const rate=Number(state.settings.audioRate)||1,slow=rate===0.75&&item.slow;
  const label=(voice==='en-GB'?'英式':'美式')+(offlineAudio.displayName||(/kokoro/i.test(offlineAudio.engine||'')?'Kokoro 神经合成音':'离线合成音'))+' · '+(rate<1?'慢速':'正常速度')+(item.note?' · '+item.note:'');
  try{
@@ -709,7 +723,7 @@ async function playOffline(w,locale){
   await activeAudio.play();el('audio-status').textContent=label;
  }catch(e){el('audio-status').textContent='播放失败：'+(e.message||'请检查媒体音量和完整程序目录后重试。');}
 }
-function stopOfflineAudio(){if(activeAudio){activeAudio.pause();activeAudio=null;}}
+function stopOfflineAudio(){if(activeAudio){activeAudio.pause();activeAudio=null;}window.VocabAudio?.stop();}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopOfflineAudio();});
 window.addEventListener('pagehide',stopOfflineAudio);
 function eventLearningExtras(session,w,value){
@@ -759,7 +773,7 @@ async function loadBackupList(){
  try{const items=await VocabNative.callAsync('listBackups');target.innerHTML=items.length?items.map(x=>`<button class="backup-row" data-backup-preview="${escape(x.id)}"><strong>${escape(new Date(x.at).toLocaleString('zh-CN'))}</strong><span>${x.words} 词 · 已接触 ${x.seen} · ${x.history} 条反馈</span></button>`).join(''):'<p class="muted small">尚无内部快照。继续学习后会自动保留。</p>';}catch(e){target.textContent='读取备份列表失败：'+e.message;}
 }
 document.addEventListener('click',async event=>{
- const play=event.target.closest('[data-play-word]');if(play)playOffline(wordById(play.dataset.playWord));
+ const play=event.target.closest('[data-play-sentence]');if(play)window.VocabAudio?.playSentence(wordById(play.dataset.playSentence));
  const backup=event.target.closest('[data-backup-preview]');
  if(backup){try{previewBackup=null;el('backup-preview').textContent='正在读取所选快照…';el('export-snapshot').hidden=true;el('restore-snapshot').hidden=true;const id=backup.dataset.backupPreview;selectedBackupId=id;const candidate=await VocabNative.callAsync('backupPreview',{id});if(selectedBackupId!==id)return;previewBackup=candidate;const summary=DesktopState.summary(previewBackup);el('backup-preview').textContent=`预览：${summary.wordCount} 词，已接触 ${summary.seen}，${summary.historyCount} 条反馈。当前档案没有被改变。`;el('export-snapshot').hidden=false;el('restore-snapshot').hidden=false;}catch(e){message(e.message,true);}}
 });
@@ -900,6 +914,7 @@ async function applyWordImport(){
   WordBooks.validate(candidate);validate(candidate);DesktopState.validateState(candidate);
   const oldCards=copy(state.cards),oldHistory=copy(state.history);
   for(const id of Object.keys(oldCards))assert(JSON.stringify(oldCards[id])===JSON.stringify(candidate.cards[id]),'导入不得修改已有学习进度。');assert(JSON.stringify(oldHistory)===JSON.stringify(candidate.history),'导入不得修改反馈历史。');
+  BookTools.recordBatch(state,candidate,{id:batchId,name:'词表导入：'+wiSourceName,kind:'import'});
   if(!await commit(s=>{s.words=candidate.words;s.cards=candidate.cards;s.library=candidate.library;}))throw new Error('保存没有完成，请查看本机保存提示；可以保留预览后重试。');
   el('word-import-dialog').close();wiPlan=null;wiWorkbook=null;wiDecisions={};el('wi-preview').hidden=true;el('wi-file').value='';el('wi-text').value='';
   renderWordbooks();el('wordbook-filter').value=bookId;el('list').value='all';libraryPage=0;renderLibrary();
@@ -997,6 +1012,7 @@ async function applyDictionary(){
   const sources={};for(const row of rows)for(const source of Object.values(row.provenance)){const key=source.id+'@'+source.version;if(!sources[key])sources[key]={id:source.id,name:source.name,version:source.version,url:source.url,phoneticLabel:source.phoneticLabel};}
   const batchId='batch:'+uid();candidate.library.batches[batchId]={id:batchId,kind:'dictionary',bookId:el('wordbook-filter').value,name:'离线词典补全',createdAt:now(),rows:dictIds.length,added:0,linked:0,updated:rows.length,skipped:dictPlan.rows.length-rows.length,sources,items:rows.map(row=>({wordId:row.wordId,fields:Object.keys(row.changes),candidateId:row.selectedCandidateId,sourceKeys:[...new Set(Object.values(row.provenance).map(s=>s.id+'@'+s.version))]}))};
   WordBooks.validate(candidate);validate(candidate);DesktopState.validateState(candidate);assert(JSON.stringify(oldCards)===JSON.stringify(candidate.cards),'补全不得修改学习进度。');assert(JSON.stringify(oldHistory)===JSON.stringify(candidate.history),'补全不得修改反馈历史。');
+  BookTools.recordBatch(state,candidate,{id:batchId,name:'离线词典补全',kind:'dictionary'});
   if(!await commit(s=>{s.words=candidate.words;s.library=candidate.library;}))throw new Error('本机保存没有完成，原资料已保留，可以重试。');
   const count=rows.length;dictRevision=state.revision;dictDecisions={};refreshDictionary();message(`已补全 ${count} 词的选中资料，来源已记录，学习进度和原笔记保留。`);el('dict-summary').textContent=`本次已保存 ${count} 词。`+el('dict-summary').textContent;
  }catch(e){dictionaryError(e.message);}
@@ -1052,6 +1068,8 @@ function nativePersist(){
 window.VocabPersistence=Object.freeze({async flush(){flushSpelling(false);await pendingSave;if(changedInMemory||!saveOK)return await persist();return true;}});
 el('retry-save').addEventListener('click',async()=>{if(nativeSaving)return;await persist();});
 try{primeNativeStorage();initializeLearningContent();}catch(e){el('learning-workspace').inert=true;showLocalStatus('本机档案无法载入，已停止学习以保护记录：'+e.message);throw e;}
+async function withExclusive(action){if(exclusiveOperation)throw Error('已有档案操作正在进行。');if(!await window.VocabPersistence.flush())throw Error('请先解决保存问题。');exclusiveOperation=true;el('learning-workspace').inert=true;stopOfflineAudio();try{return await action();}finally{exclusiveOperation=false;el('learning-workspace').inert=false;}}
+window.VocabApp=Object.freeze({getState:()=>state,commit,withExclusive,render,renderLibrary,openDetail,selected:()=>[...selected],getSelectedIds:()=>[...selected],filteredWords,blankCard,uid,now,day,download,message,usageFor,builtinMemoriesFor,wordById,openLearningPlan,renderPlanPreview,currentWord,stopAudio:stopOfflineAudio});
 boot();
 window.dispatchEvent(new Event('vocab-ready'));
 })();

@@ -1,20 +1,22 @@
 {
   "name": "jiufen-vocabulary",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "九分词汇 Windows 离线学习",
   "scripts": {
     "prepare:web": "python tools/prepare_web.py",
-    "test": "node --test tests/desktop-state.test.cjs tests/legacy-reader.test.cjs tests/wordbooks.test.cjs tests/word-import.test.cjs tests/mnemonics.test.cjs tests/learning-tools.test.cjs tests/content-pack.test.cjs tests/dictionary.test.cjs tests/dictionary-data.test.cjs",
-    "test:ui": "node tests/web.test.cjs && node tests/mnemonic-ui.test.cjs && node tests/features-ui.test.cjs && node tests/import-ui.test.cjs && node tests/dictionary-ui.test.cjs && node tests/performance-ui.test.cjs",
+    "test": "node --test tests/desktop-state.test.cjs tests/legacy-reader.test.cjs tests/wordbooks.test.cjs tests/word-import.test.cjs tests/mnemonics.test.cjs tests/learning-tools.test.cjs tests/content-pack.test.cjs tests/dictionary.test.cjs tests/dictionary-data.test.cjs tests/materials.test.cjs tests/ai-handoff.test.cjs tests/book-tools.test.cjs tests/materials-capacity.test.cjs tests/sentence-audio.test.cjs",
+    "test:ui": "node tests/web.test.cjs && node tests/mnemonic-ui.test.cjs && node tests/features-ui.test.cjs && node tests/import-ui.test.cjs && node tests/dictionary-ui.test.cjs && node tests/performance-ui.test.cjs && node tests/materials-ui.test.cjs && node tests/book-tools-ui.test.cjs && node tests/audio-ui.test.cjs",
     "content:build": "python tools/update_mnemonics.py && python tools/build_usage.py && node tools/build_content.cjs",
     "content:check": "python tools/update_mnemonics.py --check && python tools/build_usage.py --check && node tools/build_content.cjs --check",
     "desktop": "npm --prefix apps/windows start",
     "desktop:package": "npm --prefix apps/windows run package",
     "dictionary:check": "python tools/build_dictionary.py --check",
-    "test:desktop": "node tests/electron.test.cjs && node tests/electron-import.test.cjs && node tests/electron-dictionary.test.cjs && node tests/electron-lifecycle.test.cjs",
+    "test:desktop": "node tests/electron.test.cjs && node tests/electron-import.test.cjs && node tests/electron-dictionary.test.cjs && node tests/electron-lifecycle.test.cjs && node tests/electron-audio.test.cjs && node tests/electron-materials.test.cjs",
     "test:performance": "node tests/electron-performance.test.cjs",
-    "verify:resources": "python tools/verify_resources.py"
+    "verify:resources": "python tools/verify_resources.py",
+    "test:audio": "node --test tests/audio-library.test.cjs tests/audio-service.test.cjs",
+    "test:audio:components": "node tests/audio-components.test.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

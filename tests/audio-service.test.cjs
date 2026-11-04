@@ -1,0 +1,28 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const A=require('../shared/audio-library.js'),D=require('../shared/desktop-state.js'),ContentPack=require('../shared/content-pack.js'),{AudioService}=require('../apps/windows/audio-service.cjs'),{Store}=require('../apps/windows/storage.cjs'),fixtures=require('./fixtures/legacy-documents.json');
+const root=path.resolve(__dirname,'..'),base=path.join(root,'test-results','audio-service');fs.mkdirSync(base,{recursive:true});
+function setup(){const directory=fs.mkdtempSync(path.join(base,'case-')),store=new Store(directory,document=>{D.validateDocument(document);return document.state;},{contentValidator:pack=>ContentPack.validate(pack)});store.save(D.createDocument(fixtures[0].expected,store.getMeta('deviceId'),'test-profile'));const outputs={};const dialog={showSaveDialog:async()=>({canceled:false,filePath:path.join(directory,'full.zip')}),showOpenDialog:async()=>({canceled:false,filePaths:[outputs.input||path.join(directory,'full.zip')]})};const service=new AudioService({projectRoot:root,directory,dialog,getWindow:()=>null,store,DesktopState:D});return {directory,store,service,outputs};}
+function seed(service){const text='Synthetic audio fixture.',locale='en-GB',key=A.key(text,locale),data=Buffer.alloc(400);data.write('ftyp',4);const file=path.join(service.folder,key+'.m4a');fs.writeFileSync(file,data);service.entries[key]={key,text,locale,voice:'bf_emma',seconds:1,bytes:data.length,sha256:crypto.createHash('sha256').update(data).digest('hex')};service.persist();return {key,file};}
+test('local audio resolves exact content only and verifies corruption without changing learning state',()=>{
+ const {service,store}=setup(),before=store.load(),{key,file}=seed(service);const result=service.resolve({text:'Synthetic audio fixture.',locale:'en-GB'});assert(result.available);assert(result.url.startsWith('file:'));assert.equal(service.resolve({text:'Changed fixture.',locale:'en-GB'}).available,false);assert.equal(service.resolve({text:'Synthetic audio fixture.',locale:'en-US'}).available,false);
+ fs.appendFileSync(file,'corrupt');assert.equal(service.resolve({text:'Synthetic audio fixture.',locale:'en-GB'}).available,false);assert.deepEqual(store.load(),before);store.close();
+});
+test('full audio archive roundtrip validates data and keeps current learning in an independent snapshot',async()=>{
+ const {service,store,directory}=setup();seed(service);const before=store.load();assert.equal(await service.exportBundle(),true);assert(fs.statSync(path.join(directory,'full.zip')).size>0);const preview=await service.previewBundle();assert.equal(preview.audio,1);assert.equal(preview.words,before.state.words.length);assert.deepEqual(store.load(),before);
+ service.restoreBundle({id:preview.id});const restored=store.load();assert.notEqual(restored.profileId,before.profileId);assert.deepEqual(restored.state,before.state);assert(store.listBackups().some(b=>b.id.startsWith('file:')));assert.throws(()=>service.restoreBundle({id:preview.id}));store.close();
+});
+test('cancelling audio archive dialogs does not create or replace a learning document',async()=>{
+ const {service,store}=setup(),before=store.load();service.dialog.showSaveDialog=async()=>({canceled:true});service.dialog.showOpenDialog=async()=>({canceled:true});assert.equal(await service.exportBundle(),false);assert.equal(await service.previewBundle(),null);assert.deepEqual(store.load(),before);store.close();
+});
+test('failed database restore rolls audio index and installed content back to their pre-preview values',async()=>{
+ const {service,store}=setup();seed(service);const word=store.load().state.words[0],oldPack=ContentPack.create([{id:word.id,word:word.word,usage:{sentence:'Original fixture sentence.',translation:'原句'}}],'2026-11-04.1');store.saveContent(oldPack);await service.exportBundle();const preview=await service.previewBundle();
+ service.entries={};service.persist();const changedPack=ContentPack.create([{id:word.id,word:word.word,usage:{sentence:'Changed fixture sentence.',translation:'新句'}}],'2026-11-04.2');store.saveContent(changedPack);const before=store.load();store.createRecovery=()=>{throw new Error('模拟磁盘写入失败');};
+ assert.throws(()=>service.restoreBundle({id:preview.id}),/模拟磁盘/);assert.deepEqual(store.load(),before);assert.deepEqual(store.loadContent(),changedPack);assert.deepEqual(service.entries,{});assert.deepEqual(JSON.parse(fs.readFileSync(service.manifestFile,'utf8')).entries,{});store.close();
+});
+test('archive traversal is rejected before extraction and leaves learning data intact',async()=>{
+ const {service,store,directory,outputs}=setup(),before=store.load(),malicious=path.join(directory,'traversal.zip'),script=path.join(directory,'make-invalid.ps1');
+ fs.writeFileSync(script,"param([string]$Target)\n$ErrorActionPreference='Stop'\nAdd-Type -AssemblyName System.IO.Compression\nAdd-Type -AssemblyName System.IO.Compression.FileSystem\n$zip=[IO.Compression.ZipFile]::Open($Target,[IO.Compression.ZipArchiveMode]::Create)\ntry{$entry=$zip.CreateEntry('../escape.m4a');$stream=$entry.Open();try{$stream.WriteByte(1)}finally{$stream.Dispose()}}finally{$zip.Dispose()}\n");
+ require('node:child_process').execFileSync('powershell.exe',['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',script,'-Target',malicious],{windowsHide:true});outputs.input=malicious;
+ await assert.rejects(service.previewBundle(),/Invalid or duplicate/);assert.deepEqual(store.load(),before);assert.equal(fs.existsSync(path.join(directory,'escape.m4a')),false);store.close();
+});

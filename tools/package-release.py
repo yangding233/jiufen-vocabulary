@@ -12,7 +12,7 @@ VERSION = json.loads((ROOT / "package.json").read_text(encoding="utf-8-sig"))["v
 OUTPUT = ROOT / "dist" / "releases" / VERSION
 WINDOWS = ROOT / "dist" / "windows" / f"九分词汇离线学习-{VERSION}"
 SOURCE_DIRS = (".github", "apps", "docs", "shared", "tests", "tools", "web")
-SOURCE_FILES = (".gitignore", ".gitattributes", "package.json", "package-lock.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.txt", "CONTRACT.md")
+SOURCE_FILES = (".gitignore", ".gitattributes", "package.json", "package-lock.json", "README.md", "AI补全指南.md", "LICENSE", "THIRD_PARTY_NOTICES.txt", "CONTRACT.md")
 SKIP_DIRS = {"node_modules", "__pycache__", ".git", ".venv", ".venv-usb", ".venv-audio", "dist", "build", "test-results", "private-fixtures", "data"}
 PRIVATE_FILES = ("*.sqlite*", "*.db*", "*.ipa", "*.p12", "*.mobileprovision", "*.cer", "*.key", "*.log", ".env*", "*.onnx", "*.pt", "*.pcm", "source.html", "source-app.js", "NEXT_STEPS.md")
 
@@ -70,7 +70,7 @@ def main():
         "升级前：旧版导出完整备份并退出。新版沿用本机数据目录，旧档案先独立备份后迁移；新格式不供旧程序读取。\n"
         "日常流程：今日学习 → 回忆与巧记 → 反馈 → 自动保存。外部 JSON 备份和恢复见备份与设置。\n"
         "源码、测试与离线资源随 source ZIP 提供；归档不包含学习进度、测试数据库、凭据、开发模型或已安装依赖。\n"
-        "说明：docs/简单使用说明.html。验证边界：docs/验收清单.md。AI补全与整句朗读仍在后续计划。\n",
+        "说明：docs/简单使用说明.html。本版提供资料编辑、外部AI任务与导回、整句朗读、词书整理及资料包。自加读音生成使用单独准备的可选本地组件，已有音频播放不需要它。\n",
         encoding="utf-8",
     )
     print(json.dumps({"directory": str(OUTPUT), "archives": [source_archive.name, windows_archive.name]}, ensure_ascii=False))

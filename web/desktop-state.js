@@ -1,4 +1,4 @@
-(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./learning-tools.js'),require('./wordbooks.js'));else root.DesktopState=factory(root.LearningTools,root.WordBooks);})(typeof globalThis!=='undefined'?globalThis:this,function(learningTools,wordbooks){
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./learning-tools.js'),require('./wordbooks.js'),require('./materials.js'));else root.DesktopState=factory(root.LearningTools,root.WordBooks,root.Materials);})(typeof globalThis!=='undefined'?globalThis:this,function(learningTools,wordbooks,materials){
  'use strict';
  const MAX_BYTES=50*1024*1024,FORMAT='jiufen-desktop';
  const BAD=new Set(['__proto__','prototype','constructor']);
@@ -45,6 +45,8 @@
   assert(timeOK(s.meta.lastBackupAt)&&Number.isSafeInteger(s.meta.migrated)&&s.meta.migrated>=0&&s.meta.migrated<=10000,'备份信息无效。');
   if(s.session!==null){const x=s.session;assert(object(x)&&Array.isArray(x.queue)&&x.queue.length<=200000&&Number.isInteger(x.cursor)&&x.cursor>=0&&x.cursor<=x.queue.length&&x.queue.every(q=>ids.has(q.id)&&['new','review','repeat','free'].includes(q.kind)),'任务断点无效。');assert(dayOK(x.day)&&['schedule','free'].includes(x.kind)&&typeof x.shown==='boolean'&&typeof x.typed==='string','任务断点字段无效。');}
   if(s.library!==undefined){assert(wordbooks,'请先加载 wordbooks.js。');wordbooks.validate(s);}
+  if(s.materials!==undefined){assert(materials,'请先加载 materials.js。');materials.validate(s);}
+  if(s.settings.studyBooks!==undefined&&s.settings.studyBooks!==null){const books=wordbooks.view(s).books,ids=s.settings.studyBooks;assert(Array.isArray(ids)&&ids.length<=2000&&new Set(ids).size===ids.length&&ids.every(id=>typeof id==='string'&&books[id]),'学习词书范围无效。');}
   return s;
  }
  function validateEvent(e){

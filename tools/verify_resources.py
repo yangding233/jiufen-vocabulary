@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import unicodedata
 
 
 def check(root: Path) -> dict:
@@ -44,6 +45,26 @@ def check(root: Path) -> dict:
                 files.add(name)
     actual = {p.relative_to(web).as_posix() for p in (web / "audio").rglob("*") if p.is_file()}
     assert files == actual and len(files) == 5972, "Audio file set mismatch"
+    sentences = json.loads((web / "sentence-audio-manifest.json").read_text(encoding="utf-8"))
+    assert sentences["schema"] == 1 and sentences["recipe"] == "kokoro-emma-heart-text-v1", "Sentence audio recipe mismatch"
+    sentence_files = set()
+    sentence_keys = set()
+    for entry in pack["entries"]:
+        text = unicodedata.normalize("NFC", entry["usage"]["sentence"]).strip()
+        for locale, voice in (("en-GB", "bf_emma"), ("en-US", "af_heart")):
+            raw_key = json.dumps([sentences["recipe"], locale, text], ensure_ascii=False, separators=(",", ":"))
+            key = hashlib.sha256(raw_key.encode("utf-8")).hexdigest()
+            record = sentences["entries"][key]
+            name = f"sentence-audio/{locale}/{key}.m4a"
+            assert record["key"] == key and record["text"] == text and record["locale"] == locale and record["voice"] == voice, "Sentence identity mismatch"
+            assert record["file"] == name and sentences["words"][entry["id"]][locale] == key, "Sentence resource reference mismatch"
+            data = (web / name).read_bytes()
+            assert len(data) == record["bytes"] and data[4:8] == b"ftyp" and .1 < record["seconds"] < 180, "Invalid sentence audio"
+            assert hashlib.sha256(data).hexdigest() == record["sha256"], "Sentence audio checksum mismatch"
+            sentence_files.add(name)
+            sentence_keys.add(key)
+    actual_sentences = {p.relative_to(web).as_posix() for p in (web / "sentence-audio").rglob("*") if p.is_file()}
+    assert len(sentence_files) == 2986 and sentence_files == actual_sentences and sentence_keys == set(sentences["entries"]), "Sentence audio file set mismatch"
     manifest = json.loads((web / "dictionary-manifest.json").read_text(encoding="utf-8"))
     assert manifest["file"] == "dictionary-data.js", "Unexpected dictionary path"
     data = (web / manifest["file"]).read_bytes()
@@ -63,7 +84,7 @@ def check(root: Path) -> dict:
         assert not re.match(r"[a-z]+:|[/\\]", name, re.I) and ".." not in Path(name).parts, "External/unsafe script: " + name
         assert (web / name).is_file(), "Missing script: " + name
     assert not (root / "apps" / "ios").exists(), "Obsolete iOS source still present"
-    return {"root": str(root), "words": len(words), "audioFiles": len(files), "dictionaryEntries": len(dictionary["entries"])}
+    return {"root": str(root), "words": len(words), "audioFiles": len(files), "sentenceAudioFiles": len(sentence_files), "dictionaryEntries": len(dictionary["entries"])}
 
 
 if __name__ == "__main__":

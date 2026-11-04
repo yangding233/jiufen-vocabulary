@@ -1,14 +1,15 @@
 'use strict';
-const {app,BrowserWindow,ipcMain,dialog}=require('electron');
+const {app,BrowserWindow,ipcMain,dialog,clipboard}=require('electron');
 const path=require('node:path'),fs=require('node:fs'),{fileURLToPath}=require('node:url');
 const {Store}=require('./storage.cjs');
+const {AudioService}=require('./audio-service.cjs');
 const projectRoot=path.resolve(__dirname,'../..'),webFile=path.join(projectRoot,'web','index.html');
 const DesktopState=require(path.join(projectRoot,'shared','desktop-state.js'));
 const ContentPack=require(path.join(projectRoot,'shared','content-pack.js'));
 const appVersion=require(path.join(projectRoot,'package.json')).version;
 const contentWords=JSON.parse(fs.readFileSync(path.join(projectRoot,'web','content-pack.json'),'utf8')).entries;
 if(contentWords.length!==1493)throw new Error('安装包的完整内容词库数量不正确。');
-let window,store,closing=false,reloading=false;
+let window,store,audio,closing=false,reloading=false;
 const smoke=process.argv.includes('--smoke-test');
 function contentVersion(){const installed=store.loadContent();if(installed)return installed.version;return JSON.parse(fs.readFileSync(path.join(projectRoot,'web','content-pack.json'),'utf8')).version||null;}
 function validateCompleteContent(pack){const validated=ContentPack.validate(pack,contentWords);if(validated.entries.length!==1493)throw new Error('请选择包含全部 1,493 词的完整内容包。');return validated;}
@@ -27,6 +28,15 @@ function nativeCall(method,payload){
   case 'listBackups':return store.listBackups();
   case 'backupPreview':return store.backupPreview(payload?.id);
   case 'recoveryCreate':return store.createRecovery(payload?.document);
+  case 'audioStatus':return audio.status();
+  case 'audioConfigure':return audio.configure();
+  case 'audioResolve':return audio.resolve(payload||{});
+  case 'audioGenerate':return audio.generate(payload||{});
+  case 'audioCancel':return audio.cancel();
+  case 'audioBundleExport':return audio.exportBundle();
+  case 'audioBundlePreview':return audio.previewBundle();
+  case 'audioBundleRestore':return audio.restoreBundle(payload||{});
+  case 'copyText':if(typeof payload?.text!=='string'||Buffer.byteLength(payload.text,'utf8')>5*1024*1024)throw new Error('复制内容为空或超过5MB。');clipboard.writeText(payload.text);return true;
   case 'appStatus':return {platform:'windows',appVersion,contentVersion:contentVersion(),deviceId:store.getMeta('deviceId'),message:'Windows 离线学习，进度保存在本机。'};
   case 'export':{
    if(!payload||typeof payload.content!=='string'||Buffer.byteLength(payload.content)>50*1024*1024)throw new Error('导出内容为空或超过 50MB。');
@@ -39,7 +49,11 @@ function nativeCall(method,payload){
 }
 function request(event,request){
  if(!trusted(event))return {ok:false,error:'不受信任的页面请求。'};
- try{if(!request||typeof request.method!=='string')throw new Error('无效的本机请求。');return {ok:true,value:nativeCall(request.method,request.payload)};}catch(e){return {ok:false,error:e.message};}
+ try{if(!request||typeof request.method!=='string')throw new Error('无效的本机请求。');if(['audioConfigure','audioBundleExport','audioBundlePreview'].includes(request.method))throw new Error('请使用异步本机接口。');return {ok:true,value:nativeCall(request.method,request.payload)};}catch(e){return {ok:false,error:e.message};}
+}
+async function asyncRequest(event,request){
+ if(!trusted(event))return {ok:false,error:'不受信任的页面请求。'};
+ try{if(!request||typeof request.method!=='string')throw new Error('无效的本机请求。');return {ok:true,value:await nativeCall(request.method,request.payload)};}catch(e){return {ok:false,error:e.message};}
 }
 app.setName('九分词汇离线学习');
 if(process.env.JIUFEN_DATA_DIR){const isolatedProfile=path.join(path.resolve(process.env.JIUFEN_DATA_DIR),'electron-profile');fs.mkdirSync(isolatedProfile,{recursive:true});app.setPath('userData',isolatedProfile);}
@@ -49,6 +63,8 @@ if(!app.requestSingleInstanceLock()){app.quit();}else{
   const dataRoot=process.env.JIUFEN_DATA_DIR||path.join(app.getPath('userData'),'offline-v1');
   store=new Store(dataRoot,doc=>{DesktopState.validateDocument(doc);return doc.state;},{contentValidator:validateCompleteContent,migrateDocument});
   window=new BrowserWindow({width:1180,height:900,minWidth:650,minHeight:550,title:'九分词汇 · 离线学习',icon:path.join(__dirname,'icon.png'),show:!smoke,backgroundColor:'#202a23',webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true,webSecurity:true}});
+  audio=new AudioService({projectRoot,directory:dataRoot,dialog,getWindow:()=>window,store,DesktopState});
+  window.setMenuBarVisibility(false);
   window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
   window.webContents.on('before-input-event',(event,input)=>{
    if(input.type!=='keyDown'||!(input.key==='F5'||input.control&&input.key.toLowerCase()==='r'))return;
@@ -62,13 +78,13 @@ if(!app.requestSingleInstanceLock()){app.quit();}else{
   window.webContents.session.webRequest.onBeforeRequest((details,callback)=>callback({cancel:!details.url.startsWith('file:')&&!details.url.startsWith('data:')&&!details.url.startsWith('blob:')&&!details.url.startsWith('devtools:')}));
   window.webContents.session.setPermissionRequestHandler((_webContents,_permission,callback)=>callback(false));
   ipcMain.on('vocab-native-call',(event,payload)=>{event.returnValue=request(event,payload);});
-  ipcMain.handle('vocab-native-call-async',(event,payload)=>request(event,payload));
+  ipcMain.handle('vocab-native-call-async',(event,payload)=>asyncRequest(event,payload));
   window.on('close',event=>{
    if(closing||smoke)return;
    event.preventDefault();
    window.webContents.executeJavaScript('Promise.resolve(window.VocabPersistence?.flush?.() ?? true)').then(saved=>{
     if(saved===false)throw new Error('学习进度尚未保存。请处理页面中的保存错误后再关闭。');
-    closing=true;window.close();
+    if(audio)audio.cancel();closing=true;window.close();
    }).catch(error=>{dialog.showMessageBox(window,{type:'error',title:'进度尚未保存',message:error.message,buttons:['返回学习']});});
   });
   if(!fs.existsSync(webFile)){dialog.showErrorBox('页面尚未生成','请先运行项目的网页生成步骤。');app.quit();return;}
@@ -80,5 +96,5 @@ if(!app.requestSingleInstanceLock()){app.quit();}else{
  }).catch(error=>{console.error(error);if(!smoke)dialog.showErrorBox('启动失败',error.message);app.exit(1);});
  app.on('window-all-closed',()=>app.quit());
  app.on('before-quit',()=>{if(closing&&store){store.close();store=null;}});
- app.on('will-quit',()=>{if(store){store.close();store=null;}});
+ app.on('will-quit',()=>{if(audio){audio.cancel();audio.persist();}if(store){store.close();store=null;}});
 }

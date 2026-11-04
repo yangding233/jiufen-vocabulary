@@ -8,7 +8,7 @@ try {
   & python tools/verify_resources.py
   if ($LASTEXITCODE) { throw '离线资源或个人进度校验失败，已停止上传。' }
   Write-Host '仅上传桌面源码与内置资源；数据库、测试结果、依赖、安装包和私人备份排除。'
-  $sourcePaths=@('apps','docs','shared','tests','tools','web','.gitignore','.gitattributes','package.json','package-lock.json','README.md','LICENSE','THIRD_PARTY_NOTICES.txt','CONTRACT.md')
+  $sourcePaths=@('apps','docs','shared','tests','tools','web','.gitignore','.gitattributes','package.json','package-lock.json','README.md','AI补全指南.md','LICENSE','THIRD_PARTY_NOTICES.txt','CONTRACT.md')
   if(Test-Path -LiteralPath '.github'){$sourcePaths+= '.github'}
   git add -A -- @sourcePaths
   if ($LASTEXITCODE) { throw '暂存失败' }

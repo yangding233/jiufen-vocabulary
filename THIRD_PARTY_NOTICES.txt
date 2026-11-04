@@ -1,7 +1,8 @@
 Kokoro neural offline pronunciation (1.1.1)
 
-Only pre-generated AAC-LC/M4A audio ships with the runtime. Development models,
-voice embeddings, Python packages and encoder executables are not bundled.
+The main Windows application bundles pre-generated AAC-LC/M4A audio. Models,
+voice embeddings, Python packages and the encoder are provided only in the
+separate optional local generation components, with their original licenses.
 The audio is synthetic reference pronunciation, not a human-recorded dictionary.
 British voice: bf_emma; American voice: af_heart. Normal speech is generated
 locally; slow files are derived with FFmpeg atempo=0.75 without lowering pitch.
@@ -802,3 +803,5 @@ Copyright (c) 2025 Linwei, MIT License, full text: web/vendor/LICENSE-ECDICT.txt
 50,000 source-backed entries selected from a mixed-source community compilation.
 Original transcription marks are retained; no claim of verified modern IPA or separate GB/US phonetics.
 See docs/离线词典来源.md and web/dictionary-manifest.json for provenance, derivation and checksums.
+
+Optional local speech components (2.1): Python 3.12 runtime, installed Kokoro/ONNX/Misaki/spaCy dependencies, English language model, Kokoro model/voices, eSpeak NG and FFmpeg are assembled separately from the playback app. Their original license files and dependency metadata are retained in runtime/Lib/site-packages, Python LICENSE.txt, and the component notices. The separate FFmpeg build is GPL licensed; see the component encoder-license.txt and LICENSE.
