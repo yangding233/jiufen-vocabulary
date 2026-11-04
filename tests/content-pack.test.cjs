@@ -15,7 +15,7 @@ test('content choices are deterministic; a same-version collision cannot silentl
 test('all shipped 1493 word memories are accepted without changing lexical fields',()=>{
  const html=fs.readFileSync(path.join(__dirname,'../web/index.html'),'utf8'),words=JSON.parse(html.match(/<script id="vocabulary-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);const pack=P.create(words.map(w=>({id:w.id,word:w.word,memory:w.memory})),'2026-11-03.2');assert.equal(pack.entries.length,1493);assert.equal(P.validate(pack,words).entries.length,1493);
 });
-test('browser/iOS UMD builds run without Node imports',()=>{
- const context=vm.createContext({TextEncoder,Uint8Array,Uint16Array,Uint32Array,DataView,Date,console});for(const file of ['learning-tools.js','sync-core.js','content-pack.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../shared',file),'utf8'),context);
+test('browser UMD builds run without Node imports',()=>{
+ const context=vm.createContext({TextEncoder,Uint8Array,Uint16Array,Uint32Array,DataView,Date,console});for(const file of ['learning-tools.js','wordbooks.js','desktop-state.js','content-pack.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../shared',file),'utf8'),context);
  const output=vm.runInContext("ContentPack.create([{id:'w',word:'cat',usage:{sentence:'A cat sleeps.'}}],'2026-11-03.2')",context);assert.equal(output.format,'jiufen-content');assert.equal(context.LearningTools.diffSpelling('cat','CAT').correct,true);
 });

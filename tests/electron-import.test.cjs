@@ -11,10 +11,10 @@ const exe=process.env.JIUFEN_TEST_EXE||path.join(root,'apps/windows/node_modules
   app=await electron.launch({executablePath:exe,args:process.env.JIUFEN_TEST_EXE?[]:[path.join(root,'apps/windows')],env:{...process.env,JIUFEN_DATA_DIR:data}});
   p=await app.firstWindow();p.on('pageerror',e=>errors.push(e.message));p.on('dialog',d=>d.accept());
   await p.waitForLoadState('domcontentloaded');
-  await p.waitForFunction(()=>typeof WordBooks==='object'&&typeof WordImport==='object'&&typeof OfflineSync==='object'&&window.vocabHost?.call('load')?.value?.baseline&&document.getElementById('open-word-import'));
+  await p.waitForFunction(()=>typeof WordBooks==='object'&&typeof WordImport==='object'&&typeof DesktopState==='object'&&window.vocabHost?.call('load')?.value?.state&&document.getElementById('open-word-import'));
  }
- const doc=()=>p.evaluate(()=>{const result=window.vocabHost.call('load');if(!result.ok)throw new Error(result.error);return result.value;});
- const state=()=>p.evaluate(()=>OfflineSync.materialize(window.vocabHost.call('load').value));
+ const doc=()=>p.evaluate(async()=>{await window.VocabPersistence.flush();const result=window.vocabHost.call('load');if(!result.ok)throw new Error(result.error);return result.value;});
+ const state=()=>p.evaluate(async()=>{await window.VocabPersistence.flush();return DesktopState.documentState(window.vocabHost.call('load').value);});
  async function preview(text,bookId=null){
   await p.locator('#tab-library').click();
   if(bookId)await p.locator('#wordbook-filter').selectOption(bookId);
@@ -47,7 +47,7 @@ const exe=process.env.JIUFEN_TEST_EXE||path.join(root,'apps/windows/node_modules
   assert.equal(s.words.find(w=>w.id===first).sentence,'The newspaper is on the desk.');
   assert.deepEqual(s.cards[first],before.cards[first]);assert.deepEqual(s.history,before.history);
   assert.equal(d.profileId,beforeDoc.profileId);assert.equal(d.deviceId,beforeDoc.deviceId);
-  assert.equal(d.baselineHash,beforeDoc.baselineHash);assert.deepEqual(d.baseline,beforeDoc.baseline);
+  assert.equal(d.format,'jiufen-desktop');assert.equal(Object.hasOwn(d,'operations'),false);
   assert.equal(s.cards[added.id].planned,false);assert.equal(s.cards[draft.id].planned,false);
   assert(s.library.members[bookId][first]&&s.library.members[bookId][added.id]&&s.library.members[bookId][draft.id]);
   await p.locator('#search').fill('electrondraftword');await p.locator('[data-select="'+draft.id+'"]').check();
@@ -68,14 +68,14 @@ const exe=process.env.JIUFEN_TEST_EXE||path.join(root,'apps/windows/node_modules
   assert.equal(s.words.find(w=>w.word==='electronimportword').id,added.id);
   assert.deepEqual(s.cards[first],before.cards[first]);assert.deepEqual(s.history,before.history);
   assert.equal(d.profileId,beforeDoc.profileId);assert.equal(d.deviceId,beforeDoc.deviceId);
-  assert.equal(d.baselineHash,beforeDoc.baselineHash);assert.deepEqual(d.baseline,beforeDoc.baseline);
-  assert.deepEqual(d.operations,saved.operations);assert.equal(s.cards[draft.id].planned,false);
+  assert.equal(d.format,'jiufen-desktop');assert.equal(Object.hasOwn(d,'operations'),false);
+  assert.deepEqual(d.state.library,saved.state.library);assert.equal(s.cards[draft.id].planned,false);
   await p.locator('#tab-library').click();await p.locator('#wordbook-filter').selectOption(bookId);
   assert.equal(await p.locator('#word-list [data-open]').count(),3);
   assert.match(await p.locator('#wordbook-summary').textContent(),/待完善释义 1/);
   assert(await p.evaluate(()=>typeof require==='undefined'));assert.deepEqual(errors,[]);
   await p.screenshot({path:path.join(root,'test-results','electron-import-window.png'),fullPage:false});
   await app.close();app=null;
-  console.log('PASS real Electron import, SQLite transaction persistence and cold restart, repeated import without duplicate cards, built-in content override, draft plan protection, schema2 compatibility, original profile/baseline/history/card preservation. Isolated database: '+data);
+  console.log('PASS real Electron import, SQLite transaction persistence and cold restart, repeated import without duplicate cards, built-in content override, draft plan protection, schema2 compatibility, original profile/history/card preservation. Isolated database: '+data);
  }finally{if(app)await app.close();}
 })().catch(e=>{console.error(e);process.exit(1);});

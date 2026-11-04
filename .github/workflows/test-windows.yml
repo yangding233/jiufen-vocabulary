@@ -1,0 +1,30 @@
+name: Test Windows vocabulary
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core-and-resources:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify generated runtime copies are current
+        run: |
+          python tools/prepare_web.py
+          git diff --exit-code -- web
+      - run: npm test
+      - run: npm --prefix apps/windows test
+      - run: npm run content:check
+      - run: python tools/verify_resources.py

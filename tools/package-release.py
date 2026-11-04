@@ -1,25 +1,24 @@
-"""Create reproducible-scope release archives without local learning data."""
+"""Create Windows/source release archives without local learning data."""
 from pathlib import Path
 import fnmatch
 import hashlib
 import json
-import re
 import subprocess
 import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["version"]
+VERSION = json.loads((ROOT / "package.json").read_text(encoding="utf-8-sig"))["version"]
 OUTPUT = ROOT / "dist" / "releases" / VERSION
 WINDOWS = ROOT / "dist" / "windows" / f"九分词汇离线学习-{VERSION}"
 SOURCE_DIRS = (".github", "apps", "docs", "shared", "tests", "tools", "web")
 SOURCE_FILES = (".gitignore", ".gitattributes", "package.json", "package-lock.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.txt", "CONTRACT.md")
 SKIP_DIRS = {"node_modules", "__pycache__", ".git", ".venv", ".venv-usb", ".venv-audio", "dist", "build", "test-results", "private-fixtures", "data"}
-PRIVATE_FILES = ("*.sqlite*", "*.db*", "*.ipa", "*.p12", "*.mobileprovision", "*.cer", "*.key", "*.log", ".env*", "source.html", "source-app.js")
+PRIVATE_FILES = ("*.sqlite*", "*.db*", "*.ipa", "*.p12", "*.mobileprovision", "*.cer", "*.key", "*.log", ".env*", "*.onnx", "*.pt", "*.pcm", "source.html", "source-app.js", "NEXT_STEPS.md")
 
 
 def source_paths():
-    result = [ROOT / name for name in SOURCE_FILES]
+    result = [ROOT / name for name in SOURCE_FILES if (ROOT / name).is_file()]
     for directory in SOURCE_DIRS:
         for path in (ROOT / directory).rglob("*"):
             relative = path.relative_to(ROOT)
@@ -32,47 +31,50 @@ def source_paths():
     return sorted(result)
 
 
-def assert_no_progress(html_path):
-    html = html_path.read_text(encoding="utf-8")
-    match = re.search(r'<script\s+id="portable-state"\s+type="application/json">([\s\S]*?)</script>', html)
-    assert match and json.loads(match.group(1)) is None, "Embedded personal progress found"
-
-
 def write_archive(output, base, files, prefix):
-    if output.exists():
-        raise FileExistsError(f"Keep the previous archive; choose a new version before replacing: {output}")
     with zipfile.ZipFile(output, "x", compression=zipfile.ZIP_DEFLATED, compresslevel=5) as archive:
         for file in files:
             archive.write(file, str(Path(prefix) / file.relative_to(base)))
 
 
-subprocess.run([sys.executable, str(ROOT / "apps" / "ios" / "verify-resources.py")], check=True)
-assert (WINDOWS / "九分词汇离线学习.exe").is_file(), "Package Windows first"
-assert_no_progress(WINDOWS / "resources" / "app" / "web" / "index.html")
-windows_files = sorted(path for path in WINDOWS.rglob("*") if path.is_file() and not fnmatch.fnmatch(path.name, "*.log"))
-assert not any(any(fnmatch.fnmatch(path.name, pattern) for pattern in PRIVATE_FILES) for path in windows_files), "Private file in Windows package"
-OUTPUT.mkdir(parents=True, exist_ok=True)
-source_archive = OUTPUT / f"JiufenVocabulary-source-{VERSION}.zip"
-windows_archive = OUTPUT / f"JiufenVocabulary-Windows-{VERSION}.zip"
-write_archive(source_archive, ROOT, source_paths(), "JiufenVocabulary-source")
-write_archive(windows_archive, WINDOWS, windows_files, WINDOWS.name)
-hashes = []
-for archive in (source_archive, windows_archive):
-    digest = hashlib.file_digest(archive.open("rb"), "sha256").hexdigest()
-    hashes.append(f"{digest}  {archive.name}")
-(OUTPUT / "SHA256SUMS.txt").write_text("\n".join(hashes) + "\n", encoding="utf-8")
-(OUTPUT / "发布说明.txt").write_text(
-    f"九分离线学习 {VERSION} 测试版\n\n"
-    "Windows：解压 Windows ZIP，保留整个目录，双击九分词汇离线学习.exe。\n"
-    "先在原 HTML 的备份与设置导出完整 JSON；新程序还未学习时导入，核对后再使用。\n"
-    "日常备份使用新程序顶部的完整同步档案。原 HTML 文件没有被替换。\n\n"
-    "源码：解压 source ZIP，或在 GitHub 仓库下载与克隆对应版本。\n"
-    "源码不含学习进度、测试数据库、Apple 签名资料或已安装依赖。\n"
-    "iOS：从当前版本 Release 下载配套的未签名 IPA，在 Windows 签名后覆盖安装。\n"
-    f"本版音色与界面随安装包更新，请在电脑和手机分别安装 {VERSION}。覆盖安装前分别导出完整同步档案，保留原 Apple 账号和 App 标识，不要先卸载。\n"
-    "此版可单独导入完整巧记内容包，并通过 USB 同步；音频和程序功能仍随安装包更新。\n"
-    "简单使用说明：打开 docs/简单使用说明.html，或点击软件顶部的使用说明。\n"
-    "自动化和 Xcode 验证、真机待验收项目详见 docs/验收清单.md。\n",
-    encoding="utf-8",
-)
-print(json.dumps({"directory": str(OUTPUT), "archives": [path.name for path in (source_archive, windows_archive)]}, ensure_ascii=False))
+def main():
+    subprocess.run([sys.executable, str(ROOT / "tools" / "verify_resources.py")], check=True)
+    assert (WINDOWS / "九分词汇离线学习.exe").is_file(), "Package Windows first"
+    app = WINDOWS / "resources" / "app"
+    subprocess.run([sys.executable, str(ROOT / "tools" / "verify_resources.py"), "--root", str(app)], check=True)
+    windows_files = sorted(path for path in WINDOWS.rglob("*") if path.is_file() and not fnmatch.fnmatch(path.name, "*.log"))
+    assert not any(any(fnmatch.fnmatch(path.name, pattern) for pattern in PRIVATE_FILES) for path in windows_files), "Private file in Windows package"
+    assert not (WINDOWS / "resources" / "usb").exists(), "Obsolete USB runtime in package"
+    source_files = source_paths()
+    assert not any(path.is_symlink() for path in windows_files), "Symlink in Windows package"
+    source_archive = OUTPUT / f"JiufenVocabulary-source-{VERSION}.zip"
+    windows_archive = OUTPUT / f"JiufenVocabulary-Windows-{VERSION}.zip"
+    for target in (source_archive, windows_archive, OUTPUT / "SHA256SUMS.txt", OUTPUT / "发布说明.txt"):
+        if target.exists():
+            raise FileExistsError(f"Keep the existing release; choose a new version or reviewed output directory: {target}")
+    OUTPUT.mkdir(parents=True, exist_ok=True)
+    write_archive(source_archive, ROOT, source_files, "JiufenVocabulary-source")
+    write_archive(windows_archive, WINDOWS, windows_files, WINDOWS.name)
+    hashes = []
+    for archive in (source_archive, windows_archive):
+        with archive.open("rb") as stream:
+            digest = hashlib.file_digest(stream, "sha256").hexdigest()
+        with zipfile.ZipFile(archive) as packaged:
+            assert packaged.testzip() is None, f"Corrupt archive: {archive}"
+        hashes.append(f"{digest}  {archive.name}")
+    (OUTPUT / "SHA256SUMS.txt").write_text("\n".join(hashes) + "\n", encoding="utf-8")
+    (OUTPUT / "发布说明.txt").write_text(
+        f"九分词汇 Windows 离线学习 {VERSION}\n\n"
+        "解压 Windows ZIP，保留整个目录，双击九分词汇离线学习.exe。\n"
+        "本版只维护 Windows，已移除 iPhone 应用、USB 同步与签名构建。运行成品不需要 Node、Python 或 Apple 驱动。\n\n"
+        "升级前：旧版导出完整备份并退出。新版沿用本机数据目录，旧档案先独立备份后迁移；新格式不供旧程序读取。\n"
+        "日常流程：今日学习 → 回忆与巧记 → 反馈 → 自动保存。外部 JSON 备份和恢复见备份与设置。\n"
+        "源码、测试与离线资源随 source ZIP 提供；归档不包含学习进度、测试数据库、凭据、开发模型或已安装依赖。\n"
+        "说明：docs/简单使用说明.html。验证边界：docs/验收清单.md。AI补全与整句朗读仍在后续计划。\n",
+        encoding="utf-8",
+    )
+    print(json.dumps({"directory": str(OUTPUT), "archives": [source_archive.name, windows_archive.name]}, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()

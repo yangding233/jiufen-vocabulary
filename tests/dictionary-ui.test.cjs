@@ -24,9 +24,8 @@ const root=path.resolve(__dirname,'..'),url=pathToFileURL(path.join(root,'web/in
      localStorage.setItem('dictionary-ui-doc',JSON.stringify(payload));value=true;
     }else if(method==='contentLoad')value=JSON.parse(localStorage.getItem('dictionary-ui-content')||'null');
     else if(method==='contentSave'){localStorage.setItem('dictionary-ui-content',JSON.stringify(payload));value=true;}
-    else if(method==='syncStatus')value={platform:'windows',deviceId:'dictionary-ui-pc',appVersion:'1.3.0'};
+    else if(method==='appStatus')value={platform:'windows',deviceId:'dictionary-ui-pc',appVersion:'2.0.0'};
     else if(method==='export'){window.dictionaryExports.push(payload);value=true;}
-    else if(method==='finishSync')value=true;
     else throw new Error('Unexpected native call: '+method);
     return {ok:true,value};
    }catch(e){return {ok:false,error:e.message};}}};
@@ -34,28 +33,29 @@ const root=path.resolve(__dirname,'..'),url=pathToFileURL(path.join(root,'web/in
   const p=await context.newPage(),errors=[],remote=[];p.on('pageerror',e=>errors.push(e.message));p.on('dialog',d=>d.accept());
   p.on('request',request=>{if(/^https?:/.test(request.url()))remote.push(request.url());});
   await p.goto(url);await p.waitForSelector('#start-new:not([disabled])');
+  const flush=()=>p.evaluate(()=>window.VocabPersistence?.flush());
   const doc=()=>p.evaluate(()=>JSON.parse(localStorage.getItem('dictionary-ui-doc')));
-  const state=()=>p.evaluate(()=>OfflineSync.materialize(JSON.parse(localStorage.getItem('dictionary-ui-doc'))));
+  const state=async()=>{await flush();return p.evaluate(()=>DesktopState.documentState(JSON.parse(localStorage.getItem('dictionary-ui-doc'))));};
   const row=id=>p.locator('[data-dict-word="'+id+'"]');
-  async function scan(){await p.locator('#dict-scan').click();await p.waitForFunction(()=>!document.getElementById('dict-scan').disabled&&document.getElementById('dict-rows').children.length>0);}
+  async function scan(){await p.locator('#dict-scan').click();await flush();await p.waitForFunction(()=>!document.getElementById('dict-scan').disabled&&document.getElementById('dict-rows').children.length>0);}
 
-  await p.locator('#start-new').click();await p.locator('[data-grade="good"]').click();
-  await p.locator('#tab-library').click();await p.locator('#open-word-import').click();
+  await p.locator('#start-new').click();await flush();await p.locator('[data-grade="good"]').click();await flush();
+  await p.locator('#tab-library').click();await flush();await p.locator('#open-word-import').click();await flush();
   await p.locator('#wi-text').fill('单词\t释义\nphotosynthesis\t\nserendipity\t这是用户明确填写的意思\nqzxvnotaword\t');
-  await p.locator('#wi-read').click();await p.waitForFunction(()=>!document.getElementById('wi-confirm').disabled);
-  await p.locator('#wi-book-name').fill('离线资料补全测试');await p.locator('#wi-confirm').click();
+  await p.locator('#wi-read').click();await flush();await p.waitForFunction(()=>!document.getElementById('wi-confirm').disabled);
+  await p.locator('#wi-book-name').fill('离线资料补全测试');await p.locator('#wi-confirm').click();await flush();
   await p.waitForFunction(()=>!document.getElementById('word-import-dialog').open);
   const book=await p.locator('#wordbook-filter').inputValue(),before=await state(),identity=await doc();
   const photosynthesis=before.words.find(w=>w.word==='photosynthesis'),serendipity=before.words.find(w=>w.word==='serendipity'),unknown=before.words.find(w=>w.word==='qzxvnotaword');
   assert(photosynthesis&&serendipity&&unknown);assert.equal(before.history.length,1);
   assert.equal(await p.evaluate(()=>typeof DictionaryData),'undefined','dictionary should load only when requested');
-  await p.locator('#open-dictionary').click();await p.locator('#dict-scan').click();
+  await p.locator('#open-dictionary').click();await flush();await p.locator('#dict-scan').click();await flush();
   await p.waitForFunction(()=>window.dictionaryLoadWaiting===true);
-  await p.locator('#dict-scope').selectOption('selected');await p.evaluate(()=>window.releaseDictionaryLoad());
+  await p.locator('#dict-scope').selectOption('selected');await flush();await p.evaluate(()=>window.releaseDictionaryLoad());
   await p.waitForFunction(()=>!document.getElementById('dict-scan').disabled);
   assert.equal(await p.locator('[data-dict-word]').count(),0,'an old in-flight scan cannot repopulate a changed scope');
   assert(await p.locator('#dict-apply').isDisabled());assert.deepEqual(await doc(),identity);
-  await p.locator('#dict-scope').selectOption('book');await scan();
+  await p.locator('#dict-scope').selectOption('book');await flush();await scan();
   assert.deepEqual(await doc(),identity,'lookup and preview may not persist changes');
   assert.match(await p.locator('#dict-source').textContent(),/ECDICT/);
   assert.match(await p.locator('#dict-source').textContent(),/未分英美|未区分英美/);
@@ -72,7 +72,7 @@ const root=path.resolve(__dirname,'..'),url=pathToFileURL(path.join(root,'web/in
   await row(serendipity.id).locator('[data-dict-field="meaning"]').uncheck();
   // Respect a per-field opt out, even though other fields and other rows are saved.
   await row(photosynthesis.id).locator('[data-dict-field="phonetic"]').uncheck();
-  assert.deepEqual(await doc(),identity);await p.locator('#dict-apply').click();
+  assert.deepEqual(await doc(),identity);await p.locator('#dict-apply').click();await flush();
   await p.waitForFunction(()=>document.getElementById('dict-summary').textContent.includes('本次已保存'));
   let s=await state(),saved=await doc();
   assert.match(s.words.find(w=>w.id===photosynthesis.id).meaning,/光合作用/);
@@ -84,31 +84,31 @@ const root=path.resolve(__dirname,'..'),url=pathToFileURL(path.join(root,'web/in
   assert(!s.words.find(w=>w.id===serendipity.id).phoneticUS&&!s.words.find(w=>w.id===serendipity.id).phoneticUK);
   assert.deepEqual(s.cards,before.cards);assert.deepEqual(s.history,before.history);
   assert.equal(saved.profileId,identity.profileId);assert.equal(saved.deviceId,identity.deviceId);
-  assert.equal(saved.baselineHash,identity.baselineHash);assert.deepEqual(saved.baseline,identity.baseline);
+  assert.deepEqual(s.baseline,before.baseline);
   assert.match(s.words.find(w=>w.id===photosynthesis.id).source,/ECDICT/);
   assert(Object.values(s.library.batches).some(batch=>batch?.kind==='dictionary'&&batch.items?.length));
   // Scope changes cannot submit a preview from the old range.
-  await p.locator('#dict-scope').selectOption('selected');assert(await p.locator('#dict-apply').isDisabled());
+  await p.locator('#dict-scope').selectOption('selected');await flush();assert(await p.locator('#dict-apply').isDisabled());
   assert.equal(await p.locator('#dict-rows').locator('[data-dict-word]').count(),0);
-  await p.locator('#dict-scan').click();await p.waitForFunction(()=>!document.getElementById('dict-scan').disabled);
+  await p.locator('#dict-scan').click();await flush();await p.waitForFunction(()=>!document.getElementById('dict-scan').disabled);
   assert.match(await p.locator('#dict-error').textContent(),/没有词条/);assert.deepEqual(await doc(),saved);
-  await p.locator('#dict-scope').selectOption('book');await scan();
+  await p.locator('#dict-scope').selectOption('book');await flush();await scan();
   assert(await row(photosynthesis.id).locator('[data-dict-field="phonetic"]').isChecked());
-  await p.evaluate(()=>window.failDictionarySave=true);await p.locator('#dict-apply').click();
+  await p.evaluate(()=>window.failDictionarySave=true);await p.locator('#dict-apply').click();await p.waitForFunction(()=>document.getElementById('dict-error').textContent.includes('保存没有完成'));
   assert.match(await p.locator('#dict-error').textContent(),/保存没有完成/);assert.deepEqual(await doc(),saved,'failed save must not leave partially filled fields');
-  await p.locator('#dict-apply').click();await p.waitForFunction(()=>document.getElementById('dict-summary').textContent.includes('本次已保存'));
+  await p.locator('#dict-apply').click();await flush();await p.waitForFunction(()=>document.getElementById('dict-summary').textContent.includes('本次已保存'));
   assert.equal(await p.locator('#dict-error').isVisible(),false);
-  assert(!((await p.locator('#usb-message').textContent()).startsWith('数据库未能保存：')));
+  assert(!((await p.locator('#local-message').textContent()).startsWith('数据库未能保存：')));
   s=await state();saved=await doc();assert(s.words.find(w=>w.id===photosynthesis.id).phonetic.trim());
-  await scan();assert(await p.locator('#dict-apply').isDisabled());assert.deepEqual(await doc(),saved,'repeat scan must add no metadata operations');
+  await scan();assert(await p.locator('#dict-apply').isDisabled());assert.deepEqual(await doc(),saved,'repeat scan must not change the snapshot');
   // A successful cold reload keeps provenance and ordinary learning state.
-  await p.locator('#dict-close').click();await p.reload();s=await state();
+  await p.locator('#dict-close').click();await flush();await flush();await p.reload();s=await state();
   assert.deepEqual(s.cards,before.cards);assert.deepEqual(s.history,before.history);
-  const reopened=await doc();assert.deepEqual(reopened.operations,saved.operations);assert.equal(reopened.profileId,saved.profileId);assert.equal(reopened.baselineHash,saved.baselineHash);
-  await p.locator('#tab-library').click();await p.locator('#wordbook-filter').selectOption(book);
-  await p.locator('#search').fill('photosynthesis');await p.locator('[data-open="'+photosynthesis.id+'"]').click();
-  assert.match(await p.locator('#detail-source').textContent(),/ECDICT/);await p.locator('#close-detail').click();
-  await p.locator('#search').fill('');await p.locator('#open-dictionary').click();await scan();
+  const reopened=await doc();assert.deepEqual(reopened.state.words,saved.state.words);assert.deepEqual(reopened.state.library,saved.state.library);assert.deepEqual(reopened.state.baseline,saved.state.baseline);assert.equal(reopened.profileId,saved.profileId);
+  await p.locator('#tab-library').click();await flush();await p.locator('#wordbook-filter').selectOption(book);await flush();
+  await p.locator('#search').fill('photosynthesis');await p.locator('[data-open="'+photosynthesis.id+'"]').click();await flush();
+  assert.match(await p.locator('#detail-source').textContent(),/ECDICT/);await p.locator('#close-detail').click();await flush();
+  await p.locator('#search').fill('');await p.locator('#open-dictionary').click();await flush();await scan();
   await p.setViewportSize({width:390,height:844});assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   assert(await p.locator('#dict-dialog').evaluate(el=>el.getBoundingClientRect().width<=innerWidth));
   fs.mkdirSync(path.join(root,'test-results'),{recursive:true});await p.screenshot({path:path.join(root,'test-results','dictionary-mobile.png'),fullPage:true});

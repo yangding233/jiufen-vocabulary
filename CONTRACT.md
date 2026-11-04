@@ -1,51 +1,33 @@
-# Offline USB vocabulary contract (v1)
+# Windows local learning contract (2.0.0)
 
-## Wordbooks extension (1.2.0 / clientProtocol 3)
+## Product scope
 
-Legacy documents retain schema 1. The first deliberate wordbook edit promotes the document to schema 2 while retaining profileId, deviceId, the original baseline JSON/hash and all existing operations. Optional materialized `state.library` contains books, memberships, import batches and field overrides. `library-set` writes are recorded per entity/field and use the existing causal conflict mechanism. Membership nulls are tombstones. Imported same-spelling entries may coexist with independent IDs/history; merging those learning histories is not automatic.
+The application is Windows-only and works without runtime network requests. There is no iPhone host, USB transport, pairing, receipt, background phone poll or multi-device merge UI.
 
-New clients exchange protocol 3. Both native hosts accept document schema 1 or 2; production USB checks protocol support before changing learning/content data. Resource/audio transfer is not part of this extension. File parsing is offline and previews are read-only; a confirmed import is persisted in a single SQLite transaction. Draft entries without meanings cannot be enrolled by the import UI. Original built-in lexical fields remain in the baseline; user content overrides are applied to the rendered state after catalogue refresh.
+The primary flow is today's task → recall/material → grade → local persistence → continue later. Wordbooks, file import, dictionary enrichment and personal notes are supporting library tools. History and external backup/recovery remain available.
 
-No cloud storage, telemetry or runtime internet. Existing vocabulary ID/schema remain.
+## Storage and compatibility
 
-## Shared JS sync engine
-`shared/sync-core.js` is UMD, exposed as `OfflineSync` in WKWebView and require() in Node.
+The existing Electron application name and user-data directory remain stable: `%APPDATA%/九分词汇离线学习/offline-v1`. `JIUFEN_DATA_DIR` is reserved for isolated development/test profiles. Tests must never default to a user's daily database.
 
-- `createDocument(state, deviceId)` returns `{format:'jiufen-usb',schema:1,profileId,deviceId,baseline,operations, ...}`. baseline is a deep copy of existing plain learning state (schema2).
-- `record(document, beforeState, afterState)` returns a NEW document, never mutates input. Called by the existing app's persist hook. Detect new feedback, removed feedback as undo, mastery/restore, personal-field/settings edits and newly added words. Keep local session; merge must rebuild/filter stale tails.
-- `materialize(document)` returns existing plain schema2 learning state, valid for current app, preserving unchanged baseline. Learning day Asia/Shanghai.
-- `mergeDocuments(local, incoming)` returns a NEW document, preserves local deviceId. Reject unrelated profile unless explicit bootstrap. Idempotent operation union, causal/Lamport ordering, field-level conflicts; undo references operation/event IDs, mastery protected from old feedback. Expose conflicts on document, not silent text loss.
-- `encodePacket(document, batchId)` -> JSON text with checksum (integrity, not authentication).
-- `decodePacket(text)` -> validated `{document,batchId}`. Bound input, schema, IDs/prototype keys, checksums.
-- `summary(document)` -> UI-friendly stats.
-- `resolveConflict(document, conflictId, value)` if supported, explicit resolution op.
+Current learning state is authoritative. Ordinary feedback must not reconstruct state from an ever-growing cross-device operation log. Saving uses the desktop bridge and an atomic SQLite transaction; the UI must distinguish a committed save from pending work and failures. A failed write must not be reported as saved. Process exit must account for any outstanding write.
 
-Persisted doc is one JSON string in native SQLite key `document`. Host validates max 50MB + format/schema, application validates full state and sync engine invariants. Every write transactional; backup previous value before replacing.
+The former `jiufen-usb` schema 1/2 document and checksummed packet are accepted only as legacy inputs. Materialize them during migration/recovery, preserve the old archive in an independent backup before replacing its active representation, and preserve the semantic state: vocabulary IDs/order, cards, histories, learning dates, plans, session, notes, personal cues, mastery and wordbook metadata. Do not invent new feedback timestamps or re-enroll existing words as a side effect of conversion.
 
-## Web -> native host
-Browser adapter `web/native-adapter.js` exposes synchronous `window.VocabNative.call(method,payload)`.
-Windows: `window.vocabHost.call` via Electron preload sendSync.
-iOS: `prompt('__JIUFEN_NATIVE__'+JSON.stringify({method,payload}), '')`; WKUIDelegate handles only the app's bundled file frame, returns JSON `{ok:true,value:...}` or `{ok:false,error:...}` without showing prompt.
+The new local representation is not a promise of reverse compatibility with pre-2.0 applications. A user who returns to an old executable needs the pre-upgrade backup. No automatic union of independent histories remains in the product.
 
-Methods:
-- `load` -> document object or null
-- `save` payload=document -> true (only after SQLite COMMIT)
-- `export` payload={name,content,type} -> true (Save dialog/share sheet)
-- `syncStatus` -> object `{platform,connected?,message}`
-- `prepareSync` payload=document -> true; saves and exports packet `Documents/Exchange/outgoing.json` on iOS (frozen sync session)
-- `finishSync` -> true; release iOS sync lock
-- `probeUsb` -> desktop device list or diagnostic result
-- `syncUsb` payload={bootstrap:boolean} -> desktop result; runs asynchronous natively, returns `{started:true}`; deliver progress through `window.dispatchEvent(new CustomEvent('vocab-sync-status',{detail:...}))`.
-- `readIncoming` -> iOS packet string or null
-- `ackIncoming` payload={batchId} -> true; native ack only after materialized document saved
+## Import, enrichment and recovery
 
-## USB protocol
-Fixed app bundle ID `com.jiufen.vocabulary` (re-signing may change it: Windows UI accepts actual installed bundle ID). File Sharing Documents root contains Exchange only; database lives in Application Support, private.
+File parsing and preview are read-only. Confirmed word imports and dictionary adoption commit as a unit. Existing card/history data survive lexical edits. Missing meanings remain drafts until completed and deliberately enrolled. Dictionary data load lazily and never generate audio or mnemonic content implicitly.
 
-1 iOS prepareSync -> snapshot packet outgoing.json, writes atomic, locks grading until finish.
-2 desktop reads outgoing, validates, merges; unpaired first phone adoption requires explicit `bootstrap` confirmation, never overwrites existing phone progress silently.
-3 desktop commits merged local doc and auto-backup, writes incoming.json.tmp then renames incoming.json.
-4 iOS polls while sync screen visible; JS decode/merge/materialize/validate, native save COMMIT, ackIncoming writes ack.json with batchId.
-5 desktop polls matching ack before reporting complete. Timeout retains pending batch and retries idempotently. No direct copying database files.
+Full backups include current learning state, custom words, books and notes. Export cancellation does not update the confirmed external-backup time. Recovery previews do not replace the active document. A confirmed replacement first preserves the current archive in an independent backup; malformed or invalid inputs leave it intact. Keep existing internal snapshots readable through the compatibility layer.
 
-Project areas: agent ios owns apps/ios and .github/workflows/build-ios.yml. Agent desktop owns apps/windows and tools/usb_transport.py. Core agent owns shared and core tests. Root owns web integration, release docs and end-to-end tests.
+## Code ownership and resource safety
+
+`web/` is the maintained interface. `shared/` owns reusable data rules, with any browser copies checked for equality. Content-only tools must not edit personal learning state. The Windows preload exposes a narrow allowlist of operations; renderer Node integration remains disabled and runtime network access blocked.
+
+Release checks reject embedded personal progress and mismatched offline resources. Release archives exclude databases, backups, credentials, development environments and models. Third-party license notices ship with the software.
+
+## Validation
+
+Meaningful regression covers old archive conversion, invalid archive rejection, save failure/retry, rapid feedback, close/reopen persistence, mastery undo, personal notes, independent recovery, import and enrichment. Performance measurements must describe the fixture, runtime and measured interaction; they do not establish a universal latency guarantee for all computers.

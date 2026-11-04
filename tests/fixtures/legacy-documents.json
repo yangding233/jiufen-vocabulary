@@ -1,0 +1,1683 @@
+[
+  {
+    "name": "schema1 feedback undo mastered settings notes and task",
+    "document": {
+      "format": "jiufen-usb",
+      "schema": 1,
+      "profileId": "fixture-profile-schema1",
+      "deviceId": "windows-fixture",
+      "baseline": {
+        "schema": 2,
+        "app": "jiufen-mnemonic-learning",
+        "revision": 0,
+        "writer": "fixture",
+        "updatedAt": "2026-10-31T01:00:00Z",
+        "words": [
+          {
+            "id": "jf-0",
+            "word": "alpha",
+            "meaning": "义0",
+            "sentence": "",
+            "phonetic": "/a/",
+            "group": "常规 List 01"
+          },
+          {
+            "id": "jf-1",
+            "word": "beta",
+            "meaning": "义1",
+            "sentence": "",
+            "phonetic": "/a/",
+            "group": "常规 List 01"
+          },
+          {
+            "id": "jf-2",
+            "word": "gamma",
+            "meaning": "义2",
+            "sentence": "",
+            "phonetic": "/a/",
+            "group": "常规 List 01"
+          }
+        ],
+        "cards": {
+          "jf-0": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          },
+          "jf-1": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          },
+          "jf-2": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          }
+        },
+        "settings": {
+          "dailyTarget": 50,
+          "dailyNew": 20,
+          "studyDays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "dailyLists": 2,
+          "mode": "mnemonic",
+          "targetDate": null
+        },
+        "history": [],
+        "session": null,
+        "undo": null,
+        "dailyPlan": null,
+        "baseline": {
+          "date": "2026-10-31",
+          "ids": [],
+          "source": "fixture"
+        },
+        "meta": {
+          "lastBackupAt": null,
+          "migrated": 0
+        }
+      },
+      "baselineHash": "d9eaa7b624b5bd0b15e3dc3d95dc15931af7fe70f82b2ecbea5b87f7c0469f6b",
+      "operations": [
+        {
+          "kind": "event",
+          "event": {
+            "id": "feedback-1",
+            "wordId": "jf-0",
+            "day": "2026-10-31",
+            "at": "2026-10-31T10:00:00Z",
+            "kind": "new",
+            "grade": "good",
+            "nextDue": "2026-11-01",
+            "interval": 1
+          },
+          "id": "windows-fixture:1",
+          "deviceId": "windows-fixture",
+          "seq": 1,
+          "lamport": 1,
+          "context": {},
+          "at": "2026-11-04T11:48:06.422Z"
+        },
+        {
+          "kind": "event",
+          "event": {
+            "id": "feedback-2",
+            "wordId": "jf-0",
+            "day": "2026-11-01",
+            "at": "2026-11-01T10:00:00Z",
+            "kind": "review",
+            "grade": "hard",
+            "nextDue": "2026-11-02",
+            "interval": 1
+          },
+          "id": "windows-fixture:2",
+          "deviceId": "windows-fixture",
+          "seq": 2,
+          "lamport": 2,
+          "context": {
+            "windows-fixture": 1
+          },
+          "at": "2026-11-04T11:48:06.424Z"
+        },
+        {
+          "kind": "undo",
+          "eventId": "feedback-2",
+          "id": "windows-fixture:3",
+          "deviceId": "windows-fixture",
+          "seq": 3,
+          "lamport": 3,
+          "context": {
+            "windows-fixture": 2
+          },
+          "at": "2026-11-04T11:48:06.432Z"
+        },
+        {
+          "kind": "event",
+          "event": {
+            "id": "mastery-3",
+            "wordId": "jf-1",
+            "day": "2026-10-31",
+            "at": "2026-10-31T10:00:00Z",
+            "kind": "mastery",
+            "grade": "mastered",
+            "nextDue": null,
+            "interval": 0
+          },
+          "id": "windows-fixture:4",
+          "deviceId": "windows-fixture",
+          "seq": 4,
+          "lamport": 4,
+          "context": {
+            "windows-fixture": 3
+          },
+          "at": "2026-11-04T11:48:06.432Z"
+        },
+        {
+          "kind": "card-set",
+          "wordId": "jf-0",
+          "field": "favorite",
+          "value": true,
+          "id": "windows-fixture:5",
+          "deviceId": "windows-fixture",
+          "seq": 5,
+          "lamport": 5,
+          "context": {
+            "windows-fixture": 4
+          },
+          "at": "2026-11-04T11:48:06.433Z"
+        },
+        {
+          "kind": "card-set",
+          "wordId": "jf-0",
+          "field": "note",
+          "value": "保留个人笔记",
+          "id": "windows-fixture:6",
+          "deviceId": "windows-fixture",
+          "seq": 6,
+          "lamport": 6,
+          "context": {
+            "windows-fixture": 5
+          },
+          "at": "2026-11-04T11:48:06.433Z"
+        },
+        {
+          "kind": "card-set",
+          "wordId": "jf-0",
+          "field": "memoryAnchor",
+          "value": "熟词",
+          "id": "windows-fixture:7",
+          "deviceId": "windows-fixture",
+          "seq": 7,
+          "lamport": 7,
+          "context": {
+            "windows-fixture": 6
+          },
+          "at": "2026-11-04T11:48:06.433Z"
+        },
+        {
+          "kind": "card-set",
+          "wordId": "jf-0",
+          "field": "memoryScene",
+          "value": "保留画面",
+          "id": "windows-fixture:8",
+          "deviceId": "windows-fixture",
+          "seq": 8,
+          "lamport": 8,
+          "context": {
+            "windows-fixture": 7
+          },
+          "at": "2026-11-04T11:48:06.433Z"
+        },
+        {
+          "kind": "setting-set",
+          "field": "fontSize",
+          "value": "large",
+          "id": "windows-fixture:9",
+          "deviceId": "windows-fixture",
+          "seq": 9,
+          "lamport": 9,
+          "context": {
+            "windows-fixture": 8
+          },
+          "at": "2026-11-04T11:48:06.433Z"
+        },
+        {
+          "kind": "setting-set",
+          "field": "audioRate",
+          "value": 0.75,
+          "id": "windows-fixture:10",
+          "deviceId": "windows-fixture",
+          "seq": 10,
+          "lamport": 10,
+          "context": {
+            "windows-fixture": 9
+          },
+          "at": "2026-11-04T11:48:06.433Z"
+        },
+        {
+          "kind": "setting-set",
+          "field": "adaptiveReview",
+          "value": true,
+          "id": "windows-fixture:11",
+          "deviceId": "windows-fixture",
+          "seq": 11,
+          "lamport": 11,
+          "context": {
+            "windows-fixture": 10
+          },
+          "at": "2026-11-04T11:48:06.433Z"
+        },
+        {
+          "kind": "baseline-set",
+          "value": {
+            "date": "2026-10-31",
+            "ids": [],
+            "source": "保留旧迁移来源"
+          },
+          "id": "windows-fixture:12",
+          "deviceId": "windows-fixture",
+          "seq": 12,
+          "lamport": 12,
+          "context": {
+            "windows-fixture": 11
+          },
+          "at": "2026-11-04T11:48:06.433Z"
+        },
+        {
+          "kind": "meta-set",
+          "field": "lastBackupAt",
+          "value": "2026-11-04T01:00:00Z",
+          "id": "windows-fixture:13",
+          "deviceId": "windows-fixture",
+          "seq": 13,
+          "lamport": 13,
+          "context": {
+            "windows-fixture": 12
+          },
+          "at": "2026-11-04T11:48:06.433Z"
+        }
+      ],
+      "localState": {
+        "session": {
+          "id": "session-fixture",
+          "kind": "schedule",
+          "source": "new",
+          "day": "2026-11-04",
+          "mode": "mnemonic",
+          "queue": [
+            {
+              "id": "jf-0",
+              "kind": "review"
+            },
+            {
+              "id": "jf-2",
+              "kind": "new"
+            }
+          ],
+          "cursor": 1,
+          "initialCount": 2,
+          "shown": true,
+          "typed": "gamma",
+          "updatedAt": "2026-11-04T01:00:00Z"
+        },
+        "undo": null,
+        "dailyPlan": null,
+        "revision": 0,
+        "writer": "fixture",
+        "updatedAt": "2026-10-31T01:00:00Z"
+      },
+      "conflicts": [],
+      "createdAt": "2026-11-04T11:48:06.419Z"
+    },
+    "expected": {
+      "schema": 2,
+      "app": "jiufen-mnemonic-learning",
+      "revision": 0,
+      "writer": "fixture",
+      "updatedAt": "2026-10-31T01:00:00Z",
+      "words": [
+        {
+          "id": "jf-0",
+          "word": "alpha",
+          "meaning": "义0",
+          "sentence": "",
+          "phonetic": "/a/",
+          "group": "常规 List 01"
+        },
+        {
+          "id": "jf-1",
+          "word": "beta",
+          "meaning": "义1",
+          "sentence": "",
+          "phonetic": "/a/",
+          "group": "常规 List 01"
+        },
+        {
+          "id": "jf-2",
+          "word": "gamma",
+          "meaning": "义2",
+          "sentence": "",
+          "phonetic": "/a/",
+          "group": "常规 List 01"
+        }
+      ],
+      "cards": {
+        "jf-0": {
+          "seen": true,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": true,
+          "due": "2026-11-01",
+          "interval": 1,
+          "streak": 1,
+          "lastGrade": "good",
+          "legacyGrade": null,
+          "lastScheduledDay": "2026-10-31",
+          "learnedOn": "2026-10-31",
+          "lastSeen": "2026-10-31T10:00:00Z",
+          "updatedAt": "2026-11-04T11:48:06.422Z",
+          "reviewCount": 1,
+          "lapses": 0,
+          "note": "保留个人笔记",
+          "memoryAnchor": "熟词",
+          "memoryScene": "保留画面"
+        },
+        "jf-1": {
+          "seen": true,
+          "mastered": true,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": null,
+          "interval": 0,
+          "streak": 0,
+          "lastGrade": null,
+          "legacyGrade": null,
+          "lastScheduledDay": null,
+          "learnedOn": null,
+          "lastSeen": null,
+          "updatedAt": "2026-11-04T11:48:06.432Z",
+          "reviewCount": 0,
+          "lapses": 0,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": "",
+          "masteryUpdatedAt": "2026-11-04T11:48:06.432Z"
+        },
+        "jf-2": {
+          "seen": false,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": null,
+          "interval": 0,
+          "streak": 0,
+          "lastGrade": null,
+          "legacyGrade": null,
+          "lastScheduledDay": null,
+          "learnedOn": null,
+          "lastSeen": null,
+          "updatedAt": null,
+          "reviewCount": 0,
+          "lapses": 0,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": ""
+        }
+      },
+      "settings": {
+        "dailyTarget": 50,
+        "dailyNew": 20,
+        "studyDays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "dailyLists": 2,
+        "mode": "mnemonic",
+        "targetDate": null,
+        "fontSize": "large",
+        "audioRate": 0.75,
+        "adaptiveReview": true
+      },
+      "history": [
+        {
+          "id": "feedback-1",
+          "wordId": "jf-0",
+          "day": "2026-10-31",
+          "at": "2026-10-31T10:00:00Z",
+          "kind": "new",
+          "grade": "good",
+          "nextDue": "2026-11-01",
+          "interval": 1
+        },
+        {
+          "id": "mastery-3",
+          "wordId": "jf-1",
+          "day": "2026-10-31",
+          "at": "2026-10-31T10:00:00Z",
+          "kind": "mastery",
+          "grade": "mastered",
+          "nextDue": null,
+          "interval": 0
+        }
+      ],
+      "session": {
+        "id": "session-fixture",
+        "kind": "schedule",
+        "source": "new",
+        "day": "2026-11-04",
+        "mode": "mnemonic",
+        "queue": [
+          {
+            "id": "jf-0",
+            "kind": "review"
+          },
+          {
+            "id": "jf-2",
+            "kind": "new"
+          }
+        ],
+        "cursor": 1,
+        "initialCount": 2,
+        "shown": true,
+        "typed": "gamma",
+        "updatedAt": "2026-11-04T01:00:00Z"
+      },
+      "undo": null,
+      "dailyPlan": null,
+      "baseline": {
+        "date": "2026-10-31",
+        "ids": [],
+        "source": "保留旧迁移来源"
+      },
+      "meta": {
+        "lastBackupAt": "2026-11-04T01:00:00Z",
+        "migrated": 0
+      }
+    },
+    "packet": "{\"format\":\"jiufen-usb-packet\",\"schema\":1,\"algorithm\":\"sha256\",\"checksum\":\"770f6d2f0fd8743fc52913de5dd24d751aea15d03e05d9bf27f3e55aa75e1342\",\"payload\":\"{\\\"document\\\":{\\\"format\\\":\\\"jiufen-usb\\\",\\\"schema\\\":1,\\\"profileId\\\":\\\"fixture-profile-schema1\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"baseline\\\":{\\\"schema\\\":2,\\\"app\\\":\\\"jiufen-mnemonic-learning\\\",\\\"revision\\\":0,\\\"writer\\\":\\\"fixture\\\",\\\"updatedAt\\\":\\\"2026-10-31T01:00:00Z\\\",\\\"words\\\":[{\\\"id\\\":\\\"jf-0\\\",\\\"word\\\":\\\"alpha\\\",\\\"meaning\\\":\\\"义0\\\",\\\"sentence\\\":\\\"\\\",\\\"phonetic\\\":\\\"/a/\\\",\\\"group\\\":\\\"常规 List 01\\\"},{\\\"id\\\":\\\"jf-1\\\",\\\"word\\\":\\\"beta\\\",\\\"meaning\\\":\\\"义1\\\",\\\"sentence\\\":\\\"\\\",\\\"phonetic\\\":\\\"/a/\\\",\\\"group\\\":\\\"常规 List 01\\\"},{\\\"id\\\":\\\"jf-2\\\",\\\"word\\\":\\\"gamma\\\",\\\"meaning\\\":\\\"义2\\\",\\\"sentence\\\":\\\"\\\",\\\"phonetic\\\":\\\"/a/\\\",\\\"group\\\":\\\"常规 List 01\\\"}],\\\"cards\\\":{\\\"jf-0\\\":{\\\"seen\\\":false,\\\"mastered\\\":false,\\\"planned\\\":true,\\\"suspended\\\":false,\\\"favorite\\\":false,\\\"due\\\":null,\\\"interval\\\":0,\\\"streak\\\":0,\\\"lastGrade\\\":null,\\\"legacyGrade\\\":null,\\\"lastScheduledDay\\\":null,\\\"learnedOn\\\":null,\\\"lastSeen\\\":null,\\\"updatedAt\\\":null,\\\"reviewCount\\\":0,\\\"lapses\\\":0,\\\"note\\\":\\\"\\\",\\\"memoryAnchor\\\":\\\"\\\",\\\"memoryScene\\\":\\\"\\\"},\\\"jf-1\\\":{\\\"seen\\\":false,\\\"mastered\\\":false,\\\"planned\\\":true,\\\"suspended\\\":false,\\\"favorite\\\":false,\\\"due\\\":null,\\\"interval\\\":0,\\\"streak\\\":0,\\\"lastGrade\\\":null,\\\"legacyGrade\\\":null,\\\"lastScheduledDay\\\":null,\\\"learnedOn\\\":null,\\\"lastSeen\\\":null,\\\"updatedAt\\\":null,\\\"reviewCount\\\":0,\\\"lapses\\\":0,\\\"note\\\":\\\"\\\",\\\"memoryAnchor\\\":\\\"\\\",\\\"memoryScene\\\":\\\"\\\"},\\\"jf-2\\\":{\\\"seen\\\":false,\\\"mastered\\\":false,\\\"planned\\\":true,\\\"suspended\\\":false,\\\"favorite\\\":false,\\\"due\\\":null,\\\"interval\\\":0,\\\"streak\\\":0,\\\"lastGrade\\\":null,\\\"legacyGrade\\\":null,\\\"lastScheduledDay\\\":null,\\\"learnedOn\\\":null,\\\"lastSeen\\\":null,\\\"updatedAt\\\":null,\\\"reviewCount\\\":0,\\\"lapses\\\":0,\\\"note\\\":\\\"\\\",\\\"memoryAnchor\\\":\\\"\\\",\\\"memoryScene\\\":\\\"\\\"}},\\\"settings\\\":{\\\"dailyTarget\\\":50,\\\"dailyNew\\\":20,\\\"studyDays\\\":[0,1,2,3,4,5,6],\\\"dailyLists\\\":2,\\\"mode\\\":\\\"mnemonic\\\",\\\"targetDate\\\":null},\\\"history\\\":[],\\\"session\\\":null,\\\"undo\\\":null,\\\"dailyPlan\\\":null,\\\"baseline\\\":{\\\"date\\\":\\\"2026-10-31\\\",\\\"ids\\\":[],\\\"source\\\":\\\"fixture\\\"},\\\"meta\\\":{\\\"lastBackupAt\\\":null,\\\"migrated\\\":0}},\\\"baselineHash\\\":\\\"d9eaa7b624b5bd0b15e3dc3d95dc15931af7fe70f82b2ecbea5b87f7c0469f6b\\\",\\\"operations\\\":[{\\\"kind\\\":\\\"event\\\",\\\"event\\\":{\\\"id\\\":\\\"feedback-1\\\",\\\"wordId\\\":\\\"jf-0\\\",\\\"day\\\":\\\"2026-10-31\\\",\\\"at\\\":\\\"2026-10-31T10:00:00Z\\\",\\\"kind\\\":\\\"new\\\",\\\"grade\\\":\\\"good\\\",\\\"nextDue\\\":\\\"2026-11-01\\\",\\\"interval\\\":1},\\\"id\\\":\\\"windows-fixture:1\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":1,\\\"lamport\\\":1,\\\"context\\\":{},\\\"at\\\":\\\"2026-11-04T11:48:06.422Z\\\"},{\\\"kind\\\":\\\"event\\\",\\\"event\\\":{\\\"id\\\":\\\"feedback-2\\\",\\\"wordId\\\":\\\"jf-0\\\",\\\"day\\\":\\\"2026-11-01\\\",\\\"at\\\":\\\"2026-11-01T10:00:00Z\\\",\\\"kind\\\":\\\"review\\\",\\\"grade\\\":\\\"hard\\\",\\\"nextDue\\\":\\\"2026-11-02\\\",\\\"interval\\\":1},\\\"id\\\":\\\"windows-fixture:2\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":2,\\\"lamport\\\":2,\\\"context\\\":{\\\"windows-fixture\\\":1},\\\"at\\\":\\\"2026-11-04T11:48:06.424Z\\\"},{\\\"kind\\\":\\\"undo\\\",\\\"eventId\\\":\\\"feedback-2\\\",\\\"id\\\":\\\"windows-fixture:3\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":3,\\\"lamport\\\":3,\\\"context\\\":{\\\"windows-fixture\\\":2},\\\"at\\\":\\\"2026-11-04T11:48:06.432Z\\\"},{\\\"kind\\\":\\\"event\\\",\\\"event\\\":{\\\"id\\\":\\\"mastery-3\\\",\\\"wordId\\\":\\\"jf-1\\\",\\\"day\\\":\\\"2026-10-31\\\",\\\"at\\\":\\\"2026-10-31T10:00:00Z\\\",\\\"kind\\\":\\\"mastery\\\",\\\"grade\\\":\\\"mastered\\\",\\\"nextDue\\\":null,\\\"interval\\\":0},\\\"id\\\":\\\"windows-fixture:4\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":4,\\\"lamport\\\":4,\\\"context\\\":{\\\"windows-fixture\\\":3},\\\"at\\\":\\\"2026-11-04T11:48:06.432Z\\\"},{\\\"kind\\\":\\\"card-set\\\",\\\"wordId\\\":\\\"jf-0\\\",\\\"field\\\":\\\"favorite\\\",\\\"value\\\":true,\\\"id\\\":\\\"windows-fixture:5\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":5,\\\"lamport\\\":5,\\\"context\\\":{\\\"windows-fixture\\\":4},\\\"at\\\":\\\"2026-11-04T11:48:06.433Z\\\"},{\\\"kind\\\":\\\"card-set\\\",\\\"wordId\\\":\\\"jf-0\\\",\\\"field\\\":\\\"note\\\",\\\"value\\\":\\\"保留个人笔记\\\",\\\"id\\\":\\\"windows-fixture:6\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":6,\\\"lamport\\\":6,\\\"context\\\":{\\\"windows-fixture\\\":5},\\\"at\\\":\\\"2026-11-04T11:48:06.433Z\\\"},{\\\"kind\\\":\\\"card-set\\\",\\\"wordId\\\":\\\"jf-0\\\",\\\"field\\\":\\\"memoryAnchor\\\",\\\"value\\\":\\\"熟词\\\",\\\"id\\\":\\\"windows-fixture:7\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":7,\\\"lamport\\\":7,\\\"context\\\":{\\\"windows-fixture\\\":6},\\\"at\\\":\\\"2026-11-04T11:48:06.433Z\\\"},{\\\"kind\\\":\\\"card-set\\\",\\\"wordId\\\":\\\"jf-0\\\",\\\"field\\\":\\\"memoryScene\\\",\\\"value\\\":\\\"保留画面\\\",\\\"id\\\":\\\"windows-fixture:8\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":8,\\\"lamport\\\":8,\\\"context\\\":{\\\"windows-fixture\\\":7},\\\"at\\\":\\\"2026-11-04T11:48:06.433Z\\\"},{\\\"kind\\\":\\\"setting-set\\\",\\\"field\\\":\\\"fontSize\\\",\\\"value\\\":\\\"large\\\",\\\"id\\\":\\\"windows-fixture:9\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":9,\\\"lamport\\\":9,\\\"context\\\":{\\\"windows-fixture\\\":8},\\\"at\\\":\\\"2026-11-04T11:48:06.433Z\\\"},{\\\"kind\\\":\\\"setting-set\\\",\\\"field\\\":\\\"audioRate\\\",\\\"value\\\":0.75,\\\"id\\\":\\\"windows-fixture:10\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":10,\\\"lamport\\\":10,\\\"context\\\":{\\\"windows-fixture\\\":9},\\\"at\\\":\\\"2026-11-04T11:48:06.433Z\\\"},{\\\"kind\\\":\\\"setting-set\\\",\\\"field\\\":\\\"adaptiveReview\\\",\\\"value\\\":true,\\\"id\\\":\\\"windows-fixture:11\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":11,\\\"lamport\\\":11,\\\"context\\\":{\\\"windows-fixture\\\":10},\\\"at\\\":\\\"2026-11-04T11:48:06.433Z\\\"},{\\\"kind\\\":\\\"baseline-set\\\",\\\"value\\\":{\\\"date\\\":\\\"2026-10-31\\\",\\\"ids\\\":[],\\\"source\\\":\\\"保留旧迁移来源\\\"},\\\"id\\\":\\\"windows-fixture:12\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":12,\\\"lamport\\\":12,\\\"context\\\":{\\\"windows-fixture\\\":11},\\\"at\\\":\\\"2026-11-04T11:48:06.433Z\\\"},{\\\"kind\\\":\\\"meta-set\\\",\\\"field\\\":\\\"lastBackupAt\\\",\\\"value\\\":\\\"2026-11-04T01:00:00Z\\\",\\\"id\\\":\\\"windows-fixture:13\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":13,\\\"lamport\\\":13,\\\"context\\\":{\\\"windows-fixture\\\":12},\\\"at\\\":\\\"2026-11-04T11:48:06.433Z\\\"}],\\\"localState\\\":{\\\"session\\\":{\\\"id\\\":\\\"session-fixture\\\",\\\"kind\\\":\\\"schedule\\\",\\\"source\\\":\\\"new\\\",\\\"day\\\":\\\"2026-11-04\\\",\\\"mode\\\":\\\"mnemonic\\\",\\\"queue\\\":[{\\\"id\\\":\\\"jf-0\\\",\\\"kind\\\":\\\"review\\\"},{\\\"id\\\":\\\"jf-2\\\",\\\"kind\\\":\\\"new\\\"}],\\\"cursor\\\":1,\\\"initialCount\\\":2,\\\"shown\\\":true,\\\"typed\\\":\\\"gamma\\\",\\\"updatedAt\\\":\\\"2026-11-04T01:00:00Z\\\"},\\\"undo\\\":null,\\\"dailyPlan\\\":null,\\\"revision\\\":0,\\\"writer\\\":\\\"fixture\\\",\\\"updatedAt\\\":\\\"2026-10-31T01:00:00Z\\\"},\\\"conflicts\\\":[],\\\"createdAt\\\":\\\"2026-11-04T11:48:06.419Z\\\"},\\\"batchId\\\":\\\"fixture-packet\\\",\\\"clientProtocol\\\":2,\\\"contentPack\\\":{\\\"format\\\":\\\"jiufen-content\\\",\\\"schema\\\":1,\\\"version\\\":\\\"2026-11-03.2\\\",\\\"createdAt\\\":\\\"2026-11-03T00:00:00.000Z\\\",\\\"entries\\\":[{\\\"id\\\":\\\"jf-0\\\",\\\"word\\\":\\\"alpha\\\",\\\"usage\\\":{\\\"sentence\\\":\\\"Alpha is the first letter.\\\"}}],\\\"checksum\\\":\\\"3e73e28a07a28564c7a3343226eb51a4541fb3467504febb87387e50c77d7fd0\\\"}}\"}"
+  },
+  {
+    "name": "undo an event already in the legacy baseline",
+    "document": {
+      "format": "jiufen-usb",
+      "schema": 1,
+      "profileId": "fixture-baseline-undo",
+      "deviceId": "new-pc",
+      "baseline": {
+        "schema": 2,
+        "app": "jiufen-mnemonic-learning",
+        "revision": 0,
+        "writer": "fixture",
+        "updatedAt": "2026-10-31T01:00:00Z",
+        "words": [
+          {
+            "id": "jf-0",
+            "word": "alpha",
+            "meaning": "义0",
+            "sentence": "",
+            "phonetic": "/a/",
+            "group": "常规 List 01"
+          },
+          {
+            "id": "jf-1",
+            "word": "beta",
+            "meaning": "义1",
+            "sentence": "",
+            "phonetic": "/a/",
+            "group": "常规 List 01"
+          },
+          {
+            "id": "jf-2",
+            "word": "gamma",
+            "meaning": "义2",
+            "sentence": "",
+            "phonetic": "/a/",
+            "group": "常规 List 01"
+          }
+        ],
+        "cards": {
+          "jf-0": {
+            "seen": true,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": "2026-11-01",
+            "interval": 1,
+            "streak": 1,
+            "lastGrade": "good",
+            "legacyGrade": null,
+            "lastScheduledDay": "2026-10-31",
+            "learnedOn": "2026-10-31",
+            "lastSeen": "2026-10-31T10:00:00Z",
+            "updatedAt": "2026-11-04T11:48:06.434Z",
+            "reviewCount": 1,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          },
+          "jf-1": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          },
+          "jf-2": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          }
+        },
+        "settings": {
+          "dailyTarget": 50,
+          "dailyNew": 20,
+          "studyDays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "dailyLists": 2,
+          "mode": "mnemonic",
+          "targetDate": null
+        },
+        "history": [
+          {
+            "id": "feedback-4",
+            "wordId": "jf-0",
+            "day": "2026-10-31",
+            "at": "2026-10-31T10:00:00Z",
+            "kind": "new",
+            "grade": "good",
+            "nextDue": "2026-11-01",
+            "interval": 1
+          }
+        ],
+        "session": null,
+        "undo": {
+          "wordId": "jf-0",
+          "card": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          },
+          "session": {
+            "id": "session",
+            "kind": "schedule",
+            "source": "new",
+            "day": "2026-10-31",
+            "mode": "mnemonic",
+            "queue": [
+              {
+                "id": "jf-0",
+                "kind": "new"
+              }
+            ],
+            "cursor": 0,
+            "initialCount": 1,
+            "shown": false,
+            "typed": "",
+            "updatedAt": "2026-10-31T10:00:00Z"
+          },
+          "eventId": "feedback-4"
+        },
+        "dailyPlan": null,
+        "baseline": {
+          "date": "2026-10-31",
+          "ids": [],
+          "source": "fixture"
+        },
+        "meta": {
+          "lastBackupAt": null,
+          "migrated": 0
+        }
+      },
+      "baselineHash": "bfaf5293583e41c62c3a7cc140ed378d9f79226d455d843fb847dc1a529416c0",
+      "operations": [
+        {
+          "kind": "undo",
+          "eventId": "feedback-4",
+          "restoreWordId": "jf-0",
+          "restoreLearning": {
+            "seen": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "mastered": false
+          },
+          "id": "new-pc:1",
+          "deviceId": "new-pc",
+          "seq": 1,
+          "lamport": 1,
+          "context": {},
+          "at": "2026-11-04T11:48:06.435Z"
+        }
+      ],
+      "localState": {
+        "session": {
+          "id": "session",
+          "kind": "schedule",
+          "source": "new",
+          "day": "2026-10-31",
+          "mode": "mnemonic",
+          "queue": [
+            {
+              "id": "jf-0",
+              "kind": "new"
+            }
+          ],
+          "cursor": 0,
+          "initialCount": 1,
+          "shown": false,
+          "typed": "",
+          "updatedAt": "2026-10-31T10:00:00Z"
+        },
+        "undo": null,
+        "dailyPlan": null,
+        "revision": 0,
+        "writer": "fixture",
+        "updatedAt": "2026-10-31T01:00:00Z"
+      },
+      "conflicts": [],
+      "createdAt": "2026-11-04T11:48:06.435Z"
+    },
+    "expected": {
+      "schema": 2,
+      "app": "jiufen-mnemonic-learning",
+      "revision": 0,
+      "writer": "fixture",
+      "updatedAt": "2026-10-31T01:00:00Z",
+      "words": [
+        {
+          "id": "jf-0",
+          "word": "alpha",
+          "meaning": "义0",
+          "sentence": "",
+          "phonetic": "/a/",
+          "group": "常规 List 01"
+        },
+        {
+          "id": "jf-1",
+          "word": "beta",
+          "meaning": "义1",
+          "sentence": "",
+          "phonetic": "/a/",
+          "group": "常规 List 01"
+        },
+        {
+          "id": "jf-2",
+          "word": "gamma",
+          "meaning": "义2",
+          "sentence": "",
+          "phonetic": "/a/",
+          "group": "常规 List 01"
+        }
+      ],
+      "cards": {
+        "jf-0": {
+          "seen": false,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": null,
+          "interval": 0,
+          "streak": 0,
+          "lastGrade": null,
+          "legacyGrade": null,
+          "lastScheduledDay": null,
+          "learnedOn": null,
+          "lastSeen": null,
+          "updatedAt": "2026-11-04T11:48:06.434Z",
+          "reviewCount": 0,
+          "lapses": 0,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": ""
+        },
+        "jf-1": {
+          "seen": false,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": null,
+          "interval": 0,
+          "streak": 0,
+          "lastGrade": null,
+          "legacyGrade": null,
+          "lastScheduledDay": null,
+          "learnedOn": null,
+          "lastSeen": null,
+          "updatedAt": null,
+          "reviewCount": 0,
+          "lapses": 0,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": ""
+        },
+        "jf-2": {
+          "seen": false,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": null,
+          "interval": 0,
+          "streak": 0,
+          "lastGrade": null,
+          "legacyGrade": null,
+          "lastScheduledDay": null,
+          "learnedOn": null,
+          "lastSeen": null,
+          "updatedAt": null,
+          "reviewCount": 0,
+          "lapses": 0,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": ""
+        }
+      },
+      "settings": {
+        "dailyTarget": 50,
+        "dailyNew": 20,
+        "studyDays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "dailyLists": 2,
+        "mode": "mnemonic",
+        "targetDate": null
+      },
+      "history": [],
+      "session": {
+        "id": "session",
+        "kind": "schedule",
+        "source": "new",
+        "day": "2026-10-31",
+        "mode": "mnemonic",
+        "queue": [
+          {
+            "id": "jf-0",
+            "kind": "new"
+          }
+        ],
+        "cursor": 0,
+        "initialCount": 1,
+        "shown": false,
+        "typed": "",
+        "updatedAt": "2026-10-31T10:00:00Z"
+      },
+      "undo": null,
+      "dailyPlan": null,
+      "baseline": {
+        "date": "2026-10-31",
+        "ids": [],
+        "source": "fixture"
+      },
+      "meta": {
+        "lastBackupAt": null,
+        "migrated": 0
+      }
+    }
+  },
+  {
+    "name": "schema2 imported wordbook and content overlays",
+    "document": {
+      "format": "jiufen-usb",
+      "schema": 2,
+      "profileId": "fixture-profile-schema2",
+      "deviceId": "windows-fixture",
+      "baseline": {
+        "schema": 2,
+        "app": "jiufen-mnemonic-learning",
+        "revision": 0,
+        "writer": "fixture",
+        "updatedAt": "2026-10-31T01:00:00Z",
+        "words": [
+          {
+            "id": "jf-0",
+            "word": "alpha",
+            "meaning": "义0",
+            "sentence": "",
+            "phonetic": "/a/",
+            "group": "常规 List 01"
+          },
+          {
+            "id": "jf-1",
+            "word": "beta",
+            "meaning": "义1",
+            "sentence": "",
+            "phonetic": "/a/",
+            "group": "常规 List 01"
+          },
+          {
+            "id": "jf-2",
+            "word": "gamma",
+            "meaning": "义2",
+            "sentence": "",
+            "phonetic": "/a/",
+            "group": "常规 List 01"
+          }
+        ],
+        "cards": {
+          "jf-0": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          },
+          "jf-1": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          },
+          "jf-2": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          }
+        },
+        "settings": {
+          "dailyTarget": 50,
+          "dailyNew": 20,
+          "studyDays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "dailyLists": 2,
+          "mode": "mnemonic",
+          "targetDate": null
+        },
+        "history": [],
+        "session": null,
+        "undo": null,
+        "dailyPlan": null,
+        "baseline": {
+          "date": "2026-10-31",
+          "ids": [],
+          "source": "fixture"
+        },
+        "meta": {
+          "lastBackupAt": null,
+          "migrated": 0
+        }
+      },
+      "baselineHash": "d9eaa7b624b5bd0b15e3dc3d95dc15931af7fe70f82b2ecbea5b87f7c0469f6b",
+      "operations": [
+        {
+          "kind": "word-add",
+          "word": {
+            "id": "custom:imported",
+            "word": "novel",
+            "meaning": "小说",
+            "phonetic": "/nɒvl/",
+            "sentence": "Read a novel.",
+            "group": "我的词表"
+          },
+          "card": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          },
+          "id": "windows-fixture:1",
+          "deviceId": "windows-fixture",
+          "seq": 1,
+          "lamport": 1,
+          "context": {},
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "books",
+          "key": "book:jiufen",
+          "value": {
+            "id": "book:jiufen",
+            "name": "九分常规词表",
+            "createdAt": "2026-10-28T00:00:00.000Z",
+            "archived": false,
+            "builtin": true
+          },
+          "id": "windows-fixture:2",
+          "deviceId": "windows-fixture",
+          "seq": 2,
+          "lamport": 2,
+          "context": {
+            "windows-fixture": 1
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "books",
+          "key": "book:reading",
+          "value": {
+            "id": "book:reading",
+            "name": "我的阅读词书",
+            "createdAt": "2026-11-04T00:00:00Z",
+            "archived": false,
+            "builtin": false
+          },
+          "id": "windows-fixture:3",
+          "deviceId": "windows-fixture",
+          "seq": 3,
+          "lamport": 3,
+          "context": {
+            "windows-fixture": 2
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "batches",
+          "key": "batch:fixture",
+          "value": {
+            "id": "batch:fixture",
+            "bookId": "book:reading",
+            "name": "fixture.tsv",
+            "createdAt": "2026-11-04T00:00:00Z",
+            "rows": 2,
+            "added": 1,
+            "linked": 1,
+            "updated": 0,
+            "skipped": 0,
+            "errors": 0
+          },
+          "id": "windows-fixture:4",
+          "deviceId": "windows-fixture",
+          "seq": 4,
+          "lamport": 4,
+          "context": {
+            "windows-fixture": 3
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "members",
+          "key": "book:jiufen",
+          "field": "jf-0",
+          "value": {
+            "wordId": "jf-0",
+            "chapter": "常规 List 01",
+            "order": 0
+          },
+          "id": "windows-fixture:5",
+          "deviceId": "windows-fixture",
+          "seq": 5,
+          "lamport": 5,
+          "context": {
+            "windows-fixture": 4
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "members",
+          "key": "book:jiufen",
+          "field": "jf-1",
+          "value": {
+            "wordId": "jf-1",
+            "chapter": "常规 List 01",
+            "order": 1
+          },
+          "id": "windows-fixture:6",
+          "deviceId": "windows-fixture",
+          "seq": 6,
+          "lamport": 6,
+          "context": {
+            "windows-fixture": 5
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "members",
+          "key": "book:jiufen",
+          "field": "jf-2",
+          "value": {
+            "wordId": "jf-2",
+            "chapter": "常规 List 01",
+            "order": 2
+          },
+          "id": "windows-fixture:7",
+          "deviceId": "windows-fixture",
+          "seq": 7,
+          "lamport": 7,
+          "context": {
+            "windows-fixture": 6
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "members",
+          "key": "book:reading",
+          "field": "jf-0",
+          "value": {
+            "wordId": "jf-0",
+            "chapter": "第一章",
+            "order": 0
+          },
+          "id": "windows-fixture:8",
+          "deviceId": "windows-fixture",
+          "seq": 8,
+          "lamport": 8,
+          "context": {
+            "windows-fixture": 7
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "members",
+          "key": "book:reading",
+          "field": "custom:imported",
+          "value": {
+            "wordId": "custom:imported",
+            "chapter": "第一章",
+            "order": 1
+          },
+          "id": "windows-fixture:9",
+          "deviceId": "windows-fixture",
+          "seq": 9,
+          "lamport": 9,
+          "context": {
+            "windows-fixture": 8
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "overrides",
+          "key": "jf-0",
+          "field": "meaning",
+          "value": "首字母",
+          "id": "windows-fixture:10",
+          "deviceId": "windows-fixture",
+          "seq": 10,
+          "lamport": 10,
+          "context": {
+            "windows-fixture": 9
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "overrides",
+          "key": "jf-0",
+          "field": "phonetic",
+          "value": "",
+          "id": "windows-fixture:11",
+          "deviceId": "windows-fixture",
+          "seq": 11,
+          "lamport": 11,
+          "context": {
+            "windows-fixture": 10
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "overrides",
+          "key": "jf-0",
+          "field": "sentence",
+          "value": "Alpha is a letter.",
+          "id": "windows-fixture:12",
+          "deviceId": "windows-fixture",
+          "seq": 12,
+          "lamport": 12,
+          "context": {
+            "windows-fixture": 11
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "library-set",
+          "section": "overrides",
+          "key": "jf-0",
+          "field": "source",
+          "value": "旧版补全来源",
+          "id": "windows-fixture:13",
+          "deviceId": "windows-fixture",
+          "seq": 13,
+          "lamport": 13,
+          "context": {
+            "windows-fixture": 12
+          },
+          "at": "2026-11-04T11:48:06.437Z"
+        },
+        {
+          "kind": "event",
+          "event": {
+            "id": "feedback-5",
+            "wordId": "custom:imported",
+            "day": "2026-11-04",
+            "at": "2026-11-04T10:00:00Z",
+            "kind": "new",
+            "grade": "again",
+            "nextDue": "2026-11-05",
+            "interval": 1
+          },
+          "id": "windows-fixture:14",
+          "deviceId": "windows-fixture",
+          "seq": 14,
+          "lamport": 14,
+          "context": {
+            "windows-fixture": 13
+          },
+          "at": "2026-11-04T11:48:06.438Z"
+        }
+      ],
+      "localState": {
+        "session": null,
+        "undo": {
+          "wordId": "custom:imported",
+          "card": {
+            "seen": false,
+            "mastered": false,
+            "planned": true,
+            "suspended": false,
+            "favorite": false,
+            "due": null,
+            "interval": 0,
+            "streak": 0,
+            "lastGrade": null,
+            "legacyGrade": null,
+            "lastScheduledDay": null,
+            "learnedOn": null,
+            "lastSeen": null,
+            "updatedAt": null,
+            "reviewCount": 0,
+            "lapses": 0,
+            "note": "",
+            "memoryAnchor": "",
+            "memoryScene": ""
+          },
+          "session": {
+            "id": "session",
+            "kind": "schedule",
+            "source": "new",
+            "day": "2026-11-04",
+            "mode": "mnemonic",
+            "queue": [
+              {
+                "id": "custom:imported",
+                "kind": "new"
+              }
+            ],
+            "cursor": 0,
+            "initialCount": 1,
+            "shown": false,
+            "typed": "",
+            "updatedAt": "2026-11-04T10:00:00Z"
+          },
+          "eventId": "feedback-5"
+        },
+        "dailyPlan": null,
+        "revision": 0,
+        "writer": "fixture",
+        "updatedAt": "2026-10-31T01:00:00Z"
+      },
+      "conflicts": [],
+      "createdAt": "2026-11-04T11:48:06.436Z"
+    },
+    "expected": {
+      "schema": 2,
+      "app": "jiufen-mnemonic-learning",
+      "revision": 0,
+      "writer": "fixture",
+      "updatedAt": "2026-10-31T01:00:00Z",
+      "words": [
+        {
+          "id": "jf-0",
+          "word": "alpha",
+          "meaning": "首字母",
+          "sentence": "Alpha is a letter.",
+          "phonetic": "",
+          "group": "常规 List 01",
+          "source": "旧版补全来源"
+        },
+        {
+          "id": "jf-1",
+          "word": "beta",
+          "meaning": "义1",
+          "sentence": "",
+          "phonetic": "/a/",
+          "group": "常规 List 01"
+        },
+        {
+          "id": "jf-2",
+          "word": "gamma",
+          "meaning": "义2",
+          "sentence": "",
+          "phonetic": "/a/",
+          "group": "常规 List 01"
+        },
+        {
+          "id": "custom:imported",
+          "word": "novel",
+          "meaning": "小说",
+          "phonetic": "/nɒvl/",
+          "sentence": "Read a novel.",
+          "group": "我的词表"
+        }
+      ],
+      "cards": {
+        "jf-0": {
+          "seen": false,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": null,
+          "interval": 0,
+          "streak": 0,
+          "lastGrade": null,
+          "legacyGrade": null,
+          "lastScheduledDay": null,
+          "learnedOn": null,
+          "lastSeen": null,
+          "updatedAt": null,
+          "reviewCount": 0,
+          "lapses": 0,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": ""
+        },
+        "jf-1": {
+          "seen": false,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": null,
+          "interval": 0,
+          "streak": 0,
+          "lastGrade": null,
+          "legacyGrade": null,
+          "lastScheduledDay": null,
+          "learnedOn": null,
+          "lastSeen": null,
+          "updatedAt": null,
+          "reviewCount": 0,
+          "lapses": 0,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": ""
+        },
+        "jf-2": {
+          "seen": false,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": null,
+          "interval": 0,
+          "streak": 0,
+          "lastGrade": null,
+          "legacyGrade": null,
+          "lastScheduledDay": null,
+          "learnedOn": null,
+          "lastSeen": null,
+          "updatedAt": null,
+          "reviewCount": 0,
+          "lapses": 0,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": ""
+        },
+        "custom:imported": {
+          "seen": true,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": "2026-11-05",
+          "interval": 1,
+          "streak": 0,
+          "lastGrade": "again",
+          "legacyGrade": null,
+          "lastScheduledDay": "2026-11-04",
+          "learnedOn": "2026-11-04",
+          "lastSeen": "2026-11-04T10:00:00Z",
+          "updatedAt": "2026-11-04T11:48:06.438Z",
+          "reviewCount": 1,
+          "lapses": 1,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": ""
+        }
+      },
+      "settings": {
+        "dailyTarget": 50,
+        "dailyNew": 20,
+        "studyDays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "dailyLists": 2,
+        "mode": "mnemonic",
+        "targetDate": null
+      },
+      "history": [
+        {
+          "id": "feedback-5",
+          "wordId": "custom:imported",
+          "day": "2026-11-04",
+          "at": "2026-11-04T10:00:00Z",
+          "kind": "new",
+          "grade": "again",
+          "nextDue": "2026-11-05",
+          "interval": 1
+        }
+      ],
+      "session": null,
+      "undo": {
+        "wordId": "custom:imported",
+        "card": {
+          "seen": false,
+          "mastered": false,
+          "planned": true,
+          "suspended": false,
+          "favorite": false,
+          "due": null,
+          "interval": 0,
+          "streak": 0,
+          "lastGrade": null,
+          "legacyGrade": null,
+          "lastScheduledDay": null,
+          "learnedOn": null,
+          "lastSeen": null,
+          "updatedAt": null,
+          "reviewCount": 0,
+          "lapses": 0,
+          "note": "",
+          "memoryAnchor": "",
+          "memoryScene": ""
+        },
+        "session": {
+          "id": "session",
+          "kind": "schedule",
+          "source": "new",
+          "day": "2026-11-04",
+          "mode": "mnemonic",
+          "queue": [
+            {
+              "id": "custom:imported",
+              "kind": "new"
+            }
+          ],
+          "cursor": 0,
+          "initialCount": 1,
+          "shown": false,
+          "typed": "",
+          "updatedAt": "2026-11-04T10:00:00Z"
+        },
+        "eventId": "feedback-5"
+      },
+      "dailyPlan": null,
+      "baseline": {
+        "date": "2026-10-31",
+        "ids": [],
+        "source": "fixture"
+      },
+      "meta": {
+        "lastBackupAt": null,
+        "migrated": 0
+      },
+      "library": {
+        "schema": 1,
+        "books": {
+          "book:jiufen": {
+            "id": "book:jiufen",
+            "name": "九分常规词表",
+            "createdAt": "2026-10-28T00:00:00.000Z",
+            "archived": false,
+            "builtin": true
+          },
+          "book:reading": {
+            "id": "book:reading",
+            "name": "我的阅读词书",
+            "createdAt": "2026-11-04T00:00:00Z",
+            "archived": false,
+            "builtin": false
+          }
+        },
+        "members": {
+          "book:jiufen": {
+            "jf-0": {
+              "wordId": "jf-0",
+              "chapter": "常规 List 01",
+              "order": 0
+            },
+            "jf-1": {
+              "wordId": "jf-1",
+              "chapter": "常规 List 01",
+              "order": 1
+            },
+            "jf-2": {
+              "wordId": "jf-2",
+              "chapter": "常规 List 01",
+              "order": 2
+            }
+          },
+          "book:reading": {
+            "jf-0": {
+              "wordId": "jf-0",
+              "chapter": "第一章",
+              "order": 0
+            },
+            "custom:imported": {
+              "wordId": "custom:imported",
+              "chapter": "第一章",
+              "order": 1
+            }
+          }
+        },
+        "batches": {
+          "batch:fixture": {
+            "id": "batch:fixture",
+            "bookId": "book:reading",
+            "name": "fixture.tsv",
+            "createdAt": "2026-11-04T00:00:00Z",
+            "rows": 2,
+            "added": 1,
+            "linked": 1,
+            "updated": 0,
+            "skipped": 0,
+            "errors": 0
+          }
+        },
+        "overrides": {
+          "jf-0": {
+            "meaning": "首字母",
+            "phonetic": "",
+            "sentence": "Alpha is a letter.",
+            "source": "旧版补全来源"
+          }
+        }
+      }
+    },
+    "packet": "{\"format\":\"jiufen-usb-packet\",\"schema\":1,\"algorithm\":\"sha256\",\"checksum\":\"3482923a98b02737be90d6d7d05528df991fa55fb7b076e2f652d121fc53855d\",\"payload\":\"{\\\"document\\\":{\\\"format\\\":\\\"jiufen-usb\\\",\\\"schema\\\":2,\\\"profileId\\\":\\\"fixture-profile-schema2\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"baseline\\\":{\\\"schema\\\":2,\\\"app\\\":\\\"jiufen-mnemonic-learning\\\",\\\"revision\\\":0,\\\"writer\\\":\\\"fixture\\\",\\\"updatedAt\\\":\\\"2026-10-31T01:00:00Z\\\",\\\"words\\\":[{\\\"id\\\":\\\"jf-0\\\",\\\"word\\\":\\\"alpha\\\",\\\"meaning\\\":\\\"义0\\\",\\\"sentence\\\":\\\"\\\",\\\"phonetic\\\":\\\"/a/\\\",\\\"group\\\":\\\"常规 List 01\\\"},{\\\"id\\\":\\\"jf-1\\\",\\\"word\\\":\\\"beta\\\",\\\"meaning\\\":\\\"义1\\\",\\\"sentence\\\":\\\"\\\",\\\"phonetic\\\":\\\"/a/\\\",\\\"group\\\":\\\"常规 List 01\\\"},{\\\"id\\\":\\\"jf-2\\\",\\\"word\\\":\\\"gamma\\\",\\\"meaning\\\":\\\"义2\\\",\\\"sentence\\\":\\\"\\\",\\\"phonetic\\\":\\\"/a/\\\",\\\"group\\\":\\\"常规 List 01\\\"}],\\\"cards\\\":{\\\"jf-0\\\":{\\\"seen\\\":false,\\\"mastered\\\":false,\\\"planned\\\":true,\\\"suspended\\\":false,\\\"favorite\\\":false,\\\"due\\\":null,\\\"interval\\\":0,\\\"streak\\\":0,\\\"lastGrade\\\":null,\\\"legacyGrade\\\":null,\\\"lastScheduledDay\\\":null,\\\"learnedOn\\\":null,\\\"lastSeen\\\":null,\\\"updatedAt\\\":null,\\\"reviewCount\\\":0,\\\"lapses\\\":0,\\\"note\\\":\\\"\\\",\\\"memoryAnchor\\\":\\\"\\\",\\\"memoryScene\\\":\\\"\\\"},\\\"jf-1\\\":{\\\"seen\\\":false,\\\"mastered\\\":false,\\\"planned\\\":true,\\\"suspended\\\":false,\\\"favorite\\\":false,\\\"due\\\":null,\\\"interval\\\":0,\\\"streak\\\":0,\\\"lastGrade\\\":null,\\\"legacyGrade\\\":null,\\\"lastScheduledDay\\\":null,\\\"learnedOn\\\":null,\\\"lastSeen\\\":null,\\\"updatedAt\\\":null,\\\"reviewCount\\\":0,\\\"lapses\\\":0,\\\"note\\\":\\\"\\\",\\\"memoryAnchor\\\":\\\"\\\",\\\"memoryScene\\\":\\\"\\\"},\\\"jf-2\\\":{\\\"seen\\\":false,\\\"mastered\\\":false,\\\"planned\\\":true,\\\"suspended\\\":false,\\\"favorite\\\":false,\\\"due\\\":null,\\\"interval\\\":0,\\\"streak\\\":0,\\\"lastGrade\\\":null,\\\"legacyGrade\\\":null,\\\"lastScheduledDay\\\":null,\\\"learnedOn\\\":null,\\\"lastSeen\\\":null,\\\"updatedAt\\\":null,\\\"reviewCount\\\":0,\\\"lapses\\\":0,\\\"note\\\":\\\"\\\",\\\"memoryAnchor\\\":\\\"\\\",\\\"memoryScene\\\":\\\"\\\"}},\\\"settings\\\":{\\\"dailyTarget\\\":50,\\\"dailyNew\\\":20,\\\"studyDays\\\":[0,1,2,3,4,5,6],\\\"dailyLists\\\":2,\\\"mode\\\":\\\"mnemonic\\\",\\\"targetDate\\\":null},\\\"history\\\":[],\\\"session\\\":null,\\\"undo\\\":null,\\\"dailyPlan\\\":null,\\\"baseline\\\":{\\\"date\\\":\\\"2026-10-31\\\",\\\"ids\\\":[],\\\"source\\\":\\\"fixture\\\"},\\\"meta\\\":{\\\"lastBackupAt\\\":null,\\\"migrated\\\":0}},\\\"baselineHash\\\":\\\"d9eaa7b624b5bd0b15e3dc3d95dc15931af7fe70f82b2ecbea5b87f7c0469f6b\\\",\\\"operations\\\":[{\\\"kind\\\":\\\"word-add\\\",\\\"word\\\":{\\\"id\\\":\\\"custom:imported\\\",\\\"word\\\":\\\"novel\\\",\\\"meaning\\\":\\\"小说\\\",\\\"phonetic\\\":\\\"/nɒvl/\\\",\\\"sentence\\\":\\\"Read a novel.\\\",\\\"group\\\":\\\"我的词表\\\"},\\\"card\\\":{\\\"seen\\\":false,\\\"mastered\\\":false,\\\"planned\\\":true,\\\"suspended\\\":false,\\\"favorite\\\":false,\\\"due\\\":null,\\\"interval\\\":0,\\\"streak\\\":0,\\\"lastGrade\\\":null,\\\"legacyGrade\\\":null,\\\"lastScheduledDay\\\":null,\\\"learnedOn\\\":null,\\\"lastSeen\\\":null,\\\"updatedAt\\\":null,\\\"reviewCount\\\":0,\\\"lapses\\\":0,\\\"note\\\":\\\"\\\",\\\"memoryAnchor\\\":\\\"\\\",\\\"memoryScene\\\":\\\"\\\"},\\\"id\\\":\\\"windows-fixture:1\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":1,\\\"lamport\\\":1,\\\"context\\\":{},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"books\\\",\\\"key\\\":\\\"book:jiufen\\\",\\\"value\\\":{\\\"id\\\":\\\"book:jiufen\\\",\\\"name\\\":\\\"九分常规词表\\\",\\\"createdAt\\\":\\\"2026-10-28T00:00:00.000Z\\\",\\\"archived\\\":false,\\\"builtin\\\":true},\\\"id\\\":\\\"windows-fixture:2\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":2,\\\"lamport\\\":2,\\\"context\\\":{\\\"windows-fixture\\\":1},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"books\\\",\\\"key\\\":\\\"book:reading\\\",\\\"value\\\":{\\\"id\\\":\\\"book:reading\\\",\\\"name\\\":\\\"我的阅读词书\\\",\\\"createdAt\\\":\\\"2026-11-04T00:00:00Z\\\",\\\"archived\\\":false,\\\"builtin\\\":false},\\\"id\\\":\\\"windows-fixture:3\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":3,\\\"lamport\\\":3,\\\"context\\\":{\\\"windows-fixture\\\":2},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"batches\\\",\\\"key\\\":\\\"batch:fixture\\\",\\\"value\\\":{\\\"id\\\":\\\"batch:fixture\\\",\\\"bookId\\\":\\\"book:reading\\\",\\\"name\\\":\\\"fixture.tsv\\\",\\\"createdAt\\\":\\\"2026-11-04T00:00:00Z\\\",\\\"rows\\\":2,\\\"added\\\":1,\\\"linked\\\":1,\\\"updated\\\":0,\\\"skipped\\\":0,\\\"errors\\\":0},\\\"id\\\":\\\"windows-fixture:4\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":4,\\\"lamport\\\":4,\\\"context\\\":{\\\"windows-fixture\\\":3},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"members\\\",\\\"key\\\":\\\"book:jiufen\\\",\\\"field\\\":\\\"jf-0\\\",\\\"value\\\":{\\\"wordId\\\":\\\"jf-0\\\",\\\"chapter\\\":\\\"常规 List 01\\\",\\\"order\\\":0},\\\"id\\\":\\\"windows-fixture:5\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":5,\\\"lamport\\\":5,\\\"context\\\":{\\\"windows-fixture\\\":4},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"members\\\",\\\"key\\\":\\\"book:jiufen\\\",\\\"field\\\":\\\"jf-1\\\",\\\"value\\\":{\\\"wordId\\\":\\\"jf-1\\\",\\\"chapter\\\":\\\"常规 List 01\\\",\\\"order\\\":1},\\\"id\\\":\\\"windows-fixture:6\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":6,\\\"lamport\\\":6,\\\"context\\\":{\\\"windows-fixture\\\":5},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"members\\\",\\\"key\\\":\\\"book:jiufen\\\",\\\"field\\\":\\\"jf-2\\\",\\\"value\\\":{\\\"wordId\\\":\\\"jf-2\\\",\\\"chapter\\\":\\\"常规 List 01\\\",\\\"order\\\":2},\\\"id\\\":\\\"windows-fixture:7\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":7,\\\"lamport\\\":7,\\\"context\\\":{\\\"windows-fixture\\\":6},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"members\\\",\\\"key\\\":\\\"book:reading\\\",\\\"field\\\":\\\"jf-0\\\",\\\"value\\\":{\\\"wordId\\\":\\\"jf-0\\\",\\\"chapter\\\":\\\"第一章\\\",\\\"order\\\":0},\\\"id\\\":\\\"windows-fixture:8\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":8,\\\"lamport\\\":8,\\\"context\\\":{\\\"windows-fixture\\\":7},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"members\\\",\\\"key\\\":\\\"book:reading\\\",\\\"field\\\":\\\"custom:imported\\\",\\\"value\\\":{\\\"wordId\\\":\\\"custom:imported\\\",\\\"chapter\\\":\\\"第一章\\\",\\\"order\\\":1},\\\"id\\\":\\\"windows-fixture:9\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":9,\\\"lamport\\\":9,\\\"context\\\":{\\\"windows-fixture\\\":8},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"overrides\\\",\\\"key\\\":\\\"jf-0\\\",\\\"field\\\":\\\"meaning\\\",\\\"value\\\":\\\"首字母\\\",\\\"id\\\":\\\"windows-fixture:10\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":10,\\\"lamport\\\":10,\\\"context\\\":{\\\"windows-fixture\\\":9},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"overrides\\\",\\\"key\\\":\\\"jf-0\\\",\\\"field\\\":\\\"phonetic\\\",\\\"value\\\":\\\"\\\",\\\"id\\\":\\\"windows-fixture:11\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":11,\\\"lamport\\\":11,\\\"context\\\":{\\\"windows-fixture\\\":10},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"overrides\\\",\\\"key\\\":\\\"jf-0\\\",\\\"field\\\":\\\"sentence\\\",\\\"value\\\":\\\"Alpha is a letter.\\\",\\\"id\\\":\\\"windows-fixture:12\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":12,\\\"lamport\\\":12,\\\"context\\\":{\\\"windows-fixture\\\":11},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"library-set\\\",\\\"section\\\":\\\"overrides\\\",\\\"key\\\":\\\"jf-0\\\",\\\"field\\\":\\\"source\\\",\\\"value\\\":\\\"旧版补全来源\\\",\\\"id\\\":\\\"windows-fixture:13\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":13,\\\"lamport\\\":13,\\\"context\\\":{\\\"windows-fixture\\\":12},\\\"at\\\":\\\"2026-11-04T11:48:06.437Z\\\"},{\\\"kind\\\":\\\"event\\\",\\\"event\\\":{\\\"id\\\":\\\"feedback-5\\\",\\\"wordId\\\":\\\"custom:imported\\\",\\\"day\\\":\\\"2026-11-04\\\",\\\"at\\\":\\\"2026-11-04T10:00:00Z\\\",\\\"kind\\\":\\\"new\\\",\\\"grade\\\":\\\"again\\\",\\\"nextDue\\\":\\\"2026-11-05\\\",\\\"interval\\\":1},\\\"id\\\":\\\"windows-fixture:14\\\",\\\"deviceId\\\":\\\"windows-fixture\\\",\\\"seq\\\":14,\\\"lamport\\\":14,\\\"context\\\":{\\\"windows-fixture\\\":13},\\\"at\\\":\\\"2026-11-04T11:48:06.438Z\\\"}],\\\"localState\\\":{\\\"session\\\":null,\\\"undo\\\":{\\\"wordId\\\":\\\"custom:imported\\\",\\\"card\\\":{\\\"seen\\\":false,\\\"mastered\\\":false,\\\"planned\\\":true,\\\"suspended\\\":false,\\\"favorite\\\":false,\\\"due\\\":null,\\\"interval\\\":0,\\\"streak\\\":0,\\\"lastGrade\\\":null,\\\"legacyGrade\\\":null,\\\"lastScheduledDay\\\":null,\\\"learnedOn\\\":null,\\\"lastSeen\\\":null,\\\"updatedAt\\\":null,\\\"reviewCount\\\":0,\\\"lapses\\\":0,\\\"note\\\":\\\"\\\",\\\"memoryAnchor\\\":\\\"\\\",\\\"memoryScene\\\":\\\"\\\"},\\\"session\\\":{\\\"id\\\":\\\"session\\\",\\\"kind\\\":\\\"schedule\\\",\\\"source\\\":\\\"new\\\",\\\"day\\\":\\\"2026-11-04\\\",\\\"mode\\\":\\\"mnemonic\\\",\\\"queue\\\":[{\\\"id\\\":\\\"custom:imported\\\",\\\"kind\\\":\\\"new\\\"}],\\\"cursor\\\":0,\\\"initialCount\\\":1,\\\"shown\\\":false,\\\"typed\\\":\\\"\\\",\\\"updatedAt\\\":\\\"2026-11-04T10:00:00Z\\\"},\\\"eventId\\\":\\\"feedback-5\\\"},\\\"dailyPlan\\\":null,\\\"revision\\\":0,\\\"writer\\\":\\\"fixture\\\",\\\"updatedAt\\\":\\\"2026-10-31T01:00:00Z\\\"},\\\"conflicts\\\":[],\\\"createdAt\\\":\\\"2026-11-04T11:48:06.436Z\\\"},\\\"batchId\\\":\\\"fixture-packet-schema2\\\",\\\"clientProtocol\\\":3}\"}"
+  }
+]

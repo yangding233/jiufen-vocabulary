@@ -1,4 +1,4 @@
-(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./sync-core.js'));else root.ContentPack=factory(root.OfflineSync);})(typeof globalThis!=='undefined'?globalThis:this,function(core){
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./desktop-state.js'));else root.ContentPack=factory(root.DesktopState);})(typeof globalThis!=='undefined'?globalThis:this,function(core){
  'use strict';
  const MAX_BYTES=25*1024*1024,BAD=new Set(['__proto__','prototype','constructor']);
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k),object=o=>o!==null&&typeof o==='object'&&!Array.isArray(o);
@@ -13,7 +13,7 @@
   for(const key of Object.keys(value)){assert(!BAD.has(key),'不安全字段 '+key);safe(value[key],depth+1);}
  }
  function canonical(value){if(Array.isArray(value))return '['+value.map(canonical).join(',')+']';if(object(value))return '{'+Object.keys(value).sort().map(k=>JSON.stringify(k)+':'+canonical(value[k])).join(',')+'}';return JSON.stringify(value);}
- function sha256(text){assert(core&&typeof core.sha256==='function','请先加载 sync-core.js');return core.sha256(text);}
+ function sha256(text){assert(core&&typeof core.sha256==='function','请先加载 desktop-state.js');return core.sha256(text);}
  function checksum(pack){const unsigned={};for(const k of Object.keys(pack))if(k!=='checksum')unsigned[k]=pack[k];return sha256(canonical(unsigned));}
  function keys(value,allowed,label){assert(object(value),label+'必须是对象');for(const k of Object.keys(value))assert(allowed.includes(k),label+'不允许字段 '+k);}
  function text(value,label,max=8000,nonempty=false){assert(typeof value==='string'&&value.length<=max&&(!nonempty||value.trim().length>0),label+'文本无效');}

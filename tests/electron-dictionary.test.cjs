@@ -12,10 +12,10 @@ const exe=process.env.JIUFEN_TEST_EXE||path.join(root,'apps/windows/node_modules
   app=await electron.launch({executablePath:exe,args:process.env.JIUFEN_TEST_EXE?[]:[path.join(root,'apps/windows')],env:{...process.env,JIUFEN_DATA_DIR:data}});
   p=await app.firstWindow();p.on('pageerror',e=>errors.push(e.message));p.on('dialog',d=>d.accept());
   await p.waitForLoadState('domcontentloaded');
-  await p.waitForFunction(()=>typeof Dictionary==='object'&&typeof OfflineSync==='object'&&window.vocabHost?.call('load')?.value?.baseline);
+  await p.waitForFunction(()=>typeof Dictionary==='object'&&typeof DesktopState==='object'&&window.vocabHost?.call('load')?.value?.state);
  }
- const doc=()=>p.evaluate(()=>{const r=vocabHost.call('load');if(!r.ok)throw new Error(r.error);return r.value;});
- const state=()=>p.evaluate(()=>OfflineSync.materialize(vocabHost.call('load').value));
+ const doc=()=>p.evaluate(async()=>{await window.VocabPersistence.flush();const r=vocabHost.call('load');if(!r.ok)throw new Error(r.error);return r.value;});
+ const state=()=>p.evaluate(async()=>{await window.VocabPersistence.flush();return DesktopState.documentState(vocabHost.call('load').value);});
  async function scan(){
   await p.getByRole('button',{name:'补齐释义与音标',exact:true}).click();
   await p.locator('#dict-scope').selectOption('book');await p.locator('#dict-scan').click();
@@ -37,7 +37,7 @@ const exe=process.env.JIUFEN_TEST_EXE||path.join(root,'apps/windows/node_modules
   assert(await row(photosynthesis.id).locator('[data-dict-field="phonetic"]').isChecked());
   assert.equal(await row(serendipity.id).locator('[data-dict-field="meaning"]').isChecked(),false);
   await p.locator('#dict-apply').click();
-  await p.waitForFunction(id=>OfflineSync.materialize(vocabHost.call('load').value).words.find(w=>w.id===id).meaning.length>0,photosynthesis.id);
+  await p.waitForFunction(id=>DesktopState.documentState(vocabHost.call('load').value).words.find(w=>w.id===id).meaning.length>0,photosynthesis.id);
   let s=await state(),saved=await doc();
   assert(s.words.find(w=>w.id===photosynthesis.id).phonetic.trim());
   assert.equal(s.words.find(w=>w.id===serendipity.id).meaning,'用户自填释义，请保留');
@@ -45,21 +45,21 @@ const exe=process.env.JIUFEN_TEST_EXE||path.join(root,'apps/windows/node_modules
   assert.equal(s.words.find(w=>w.id===unknown.id).meaning,'');
   assert.deepEqual(s.cards,before.cards);assert.deepEqual(s.history,before.history);
   assert.equal(saved.profileId,original.profileId);assert.equal(saved.deviceId,original.deviceId);
-  assert.equal(saved.baselineHash,original.baselineHash);assert.deepEqual(saved.baseline,original.baseline);
+  assert.equal(saved.format,'jiufen-desktop');assert.equal(Object.hasOwn(saved,'operations'),false);
   assert.equal(s.cards[photosynthesis.id].planned,false,'filling metadata must not enroll new cards');
   await app.close();app=null;assert(fs.existsSync(path.join(data,'progress.sqlite')));
   await launch();s=await state();const reopened=await doc();
   assert.equal(s.words.find(w=>w.id===photosynthesis.id).meaning,OfflineSyncValue(saved,photosynthesis.id,'meaning'));
   assert(s.words.find(w=>w.id===photosynthesis.id).phonetic.trim());
   assert.equal(s.words.find(w=>w.id===serendipity.id).meaning,'用户自填释义，请保留');
-  assert.deepEqual(reopened.operations,saved.operations);assert.deepEqual(s.cards,before.cards);assert.deepEqual(s.history,before.history);
+  assert.deepEqual(reopened.state.library,saved.state.library);assert.deepEqual(s.cards,before.cards);assert.deepEqual(s.history,before.history);
   await p.locator('#tab-library').click();await p.locator('#wordbook-filter').selectOption(bookId);
   assert.match(await p.locator('#wordbook-summary').textContent(),/待完善释义 1/);
   await scan();assert(await p.locator('#dict-apply').isDisabled());assert.deepEqual(await doc(),reopened,'rescanning complete fields is idempotent');
   assert(await p.evaluate(()=>typeof require==='undefined'));assert.deepEqual(errors,[]);
   await p.screenshot({path:path.join(root,'test-results','electron-dictionary-window.png'),fullPage:false});
   await app.close();app=null;
-  console.log('PASS real Electron offline dictionary preview, missing-field fill, user meaning preservation, unmatched draft, SQLite cold restart, idempotence and original learning/profile/baseline preservation. Isolated database: '+data);
+  console.log('PASS real Electron offline dictionary preview, missing-field fill, user meaning preservation, unmatched draft, SQLite cold restart, idempotence and original learning/profile preservation. Isolated database: '+data);
  }finally{if(app)await app.close();}
- function OfflineSyncValue(document,id,field){return require('../shared/sync-core').materialize(document).words.find(w=>w.id===id)[field];}
+ function OfflineSyncValue(document,id,field){return require('../shared/desktop-state').documentState(document).words.find(w=>w.id===id)[field];}
 })().catch(e=>{console.error(e);process.exit(1);});

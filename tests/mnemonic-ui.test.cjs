@@ -10,28 +10,29 @@ const {pathToFileURL}=require('node:url'),path=require('node:path'),fs=require('
   if(method==='save'){localStorage.setItem('mnemonic-test-document',JSON.stringify(payload));return {ok:true,value:true};}
   if(method==='contentLoad')return {ok:true,value:JSON.parse(localStorage.getItem('mnemonic-test-content')||'null')};
   if(method==='contentSave'){localStorage.setItem('mnemonic-test-content',JSON.stringify(payload));return {ok:true,value:true};}
-  if(method==='syncStatus')return {ok:true,value:{deviceId:'mnemonic-content-test',platform:'windows'}};
+  if(method==='appStatus')return {ok:true,value:{deviceId:'mnemonic-content-test',platform:'windows'}};
   return {ok:false,error:'Unexpected test method '+method};
  }};});
  const p=await context.newPage(),errors=[];p.on('pageerror',error=>errors.push(error.message));
  const file=pathToFileURL(path.resolve(__dirname,'../web/index.html')).href;
- const state=()=>p.evaluate(()=>OfflineSync.materialize(JSON.parse(localStorage.getItem('mnemonic-test-document'))));
- const open=async word=>{if(await p.locator('#word-dialog').evaluate(dialog=>dialog.open))await p.locator('#close-detail').click();await p.locator('#tab-library').click();await p.locator('#search').fill(word);const id=await p.evaluate(word=>OfflineSync.materialize(JSON.parse(localStorage.getItem('mnemonic-test-document'))).words.find(w=>w.word.toLowerCase()===word.toLowerCase()).id,word);await p.locator(`[data-open="${id}"]`).click();};
+ const flush=()=>p.evaluate(()=>window.VocabPersistence?.flush());
+ const state=async()=>{await flush();return p.evaluate(()=>DesktopState.documentState(JSON.parse(localStorage.getItem('mnemonic-test-document'))));};
+ const open=async word=>{if(await p.locator('#word-dialog').evaluate(dialog=>dialog.open))await p.locator('#close-detail').click();await flush();await p.locator('#tab-library').click();await flush();await p.locator('#search').fill(word);const id=await p.evaluate(word=>DesktopState.documentState(JSON.parse(localStorage.getItem('mnemonic-test-document'))).words.find(w=>w.word.toLowerCase()===word.toLowerCase()).id,word);await p.locator(`[data-open="${id}"]`).click();await flush();};
  await p.goto(file);await p.waitForSelector('#start-new:not([disabled])');
- await p.locator('#start-new').click();await p.locator('[data-grade="good"]').click();
+ await p.locator('#start-new').click();await flush();await p.locator('[data-grade="good"]').click();await flush();
  await open('Africa');assert(!/待补|暂未提供/.test(await p.locator('#detail-memory').textContent()));
  assert(await p.locator('#detail-memory .cue-part').count()>0);
- await p.locator('#detail-anchor').fill('我的非洲提示');await p.locator('#detail-scene').fill('我在非洲旅行的个人画面');await p.locator('#save-detail').click();
- await open('age');await p.locator('#detail-memory [data-reject-cue]').click();await p.locator('#close-detail').click();
+ await p.locator('#detail-anchor').fill('我的非洲提示');await p.locator('#detail-scene').fill('我在非洲旅行的个人画面');await p.locator('#save-detail').click();await flush();
+ await open('age');await p.locator('#detail-memory [data-reject-cue]').click();await flush();await p.locator('#close-detail').click();await flush();
  const previous=await state();assert.equal(previous.history.length,1);
  // A persisted old built-in memory must not shadow the newly shipped content.
- await p.evaluate(()=>{const d=JSON.parse(localStorage.getItem('mnemonic-test-document'));d.baseline.words.find(w=>w.word==='Africa').memory={kind:'待补巧记',anchor:'旧版空提示',scene:'旧版占位'};d.baselineHash=OfflineSync.createDocument(d.baseline,d.deviceId).baselineHash;localStorage.setItem('mnemonic-test-document',JSON.stringify(d));});
- await p.reload();
- const boot=await p.evaluate(()=>({usb:document.getElementById('usb-message').textContent,fatal:document.getElementById('fatal').hidden,warning:document.getElementById('storage-warning').textContent}));
+ await p.evaluate(()=>{const d=JSON.parse(localStorage.getItem('mnemonic-test-document'));d.state.words.find(w=>w.word==='Africa').memory={kind:'待补巧记',anchor:'旧版空提示',scene:'旧版占位'};localStorage.setItem('mnemonic-test-document',JSON.stringify(d));});
+ await flush();await p.reload();
+ const boot=await p.evaluate(()=>({usb:document.getElementById('local-message').textContent,fatal:document.getElementById('fatal').hidden,warning:document.getElementById('storage-warning').textContent}));
  assert.deepEqual(errors,[],JSON.stringify(boot));assert(!boot.usb.includes('无法载入'),JSON.stringify(boot));
  await p.waitForSelector('#tab-library');await open('Africa');
  assert.equal(await p.locator('#detail-anchor').inputValue(),'我的非洲提示');assert.equal(await p.locator('#detail-scene').inputValue(),'我在非洲旅行的个人画面');
- await p.locator('#detail-memory summary').filter({hasText:'查看内置方案'}).click();
+ await p.locator('#detail-memory summary').filter({hasText:'查看内置方案'}).click();await flush();
  assert(!/旧版空提示|旧版占位|待补巧记/.test(await p.locator('#detail-memory').textContent()));
  await open('age');assert.match(await p.locator('#detail-memory').textContent(),/已停用/);
  await open('aging');assert.match(await p.locator('#detail-memory').textContent(),/先记基础词 age/);assert.match(await p.locator('#detail-memory .base-scene').textContent(),/age/);

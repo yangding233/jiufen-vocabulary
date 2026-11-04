@@ -1,12 +1,12 @@
 {
   "name": "jiufen-vocabulary-desktop",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Offline vocabulary desktop and USB synchronization",
+  "description": "Offline vocabulary learning for Windows",
   "main": "main.cjs",
   "scripts": {
     "start": "electron .",
-    "test": "node --test storage.test.cjs sync-manager.test.cjs",
+    "test": "node --test storage.test.cjs",
     "package": "node package.cjs",
     "smoke": "electron . --smoke-test"
   },
