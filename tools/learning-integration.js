@@ -89,7 +89,7 @@ function exportResult(result,successText){
 }
 function refreshSyncOverview(){
  if(!nativeEnabled)return;
- try{const info=VocabNative.call('syncStatus');el('app-version').textContent='软件 '+(info.appVersion||'1.2.0');el('sync-brief').textContent=info.pendingBatch?'有待确认的同步，请展开查看':info.lastSync?.at?'上次同步 '+new Date(info.lastSync.at).toLocaleString('zh-CN'):'尚无成功同步记录';el('usb-summary').textContent=info.prepared?'手机已准备同步':info.connected===true?'设备已连接':'数据线同步';}catch(e){}
+ try{const info=VocabNative.call('syncStatus');el('app-version').textContent='软件 '+(info.appVersion||'1.3.0');el('sync-brief').textContent=info.pendingBatch?'有待确认的同步，请展开查看':info.lastSync?.at?'上次同步 '+new Date(info.lastSync.at).toLocaleString('zh-CN'):'尚无成功同步记录';el('usb-summary').textContent=info.prepared?'手机已准备同步':info.connected===true?'设备已连接':'数据线同步';}catch(e){}
 }
 async function loadBackupList(){
  const target=el('backup-list');

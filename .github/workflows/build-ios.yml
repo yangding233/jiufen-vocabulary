@@ -24,7 +24,7 @@ jobs:
           python3 apps/ios/verify-resources.py
           python3 tools/update_mnemonics.py --check
       - name: Verify offline merge rules
-        run: node --test tests/sync-core.test.cjs tests/wordbooks.test.cjs tests/word-import.test.cjs tests/mnemonics.test.cjs tests/content-pack.test.cjs tests/learning-tools.test.cjs
+        run: node --test tests/sync-core.test.cjs tests/wordbooks.test.cjs tests/word-import.test.cjs tests/dictionary.test.cjs tests/dictionary-data.test.cjs tests/mnemonics.test.cjs tests/content-pack.test.cjs tests/learning-tools.test.cjs
       - name: Build the arm64 iPhone application without signing
         run: |
           set -euo pipefail

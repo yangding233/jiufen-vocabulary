@@ -44,9 +44,9 @@ html_path=ROOT/'web/index.html'
 html=html_path.read_text(encoding='utf-8')
 html=re.sub(r'(<span id="app-version">)软件 [0-9.]+',r'\g<1>软件 1.2.0',html,count=1)
 panel=(ROOT/'tools/import-panel.html').read_text(encoding='utf-8')
-match=re.search(r'(<section class="panel wordbooks-panel"[\s\S]*?</dialog>)[\r\n]*',html)
-if match: html=html[:match.start()]+panel+html[match.end():]
-else: html=html.replace('<section id="view-library" role="tabpanel" aria-labelledby="tab-library" hidden>', '<section id="view-library" role="tabpanel" aria-labelledby="tab-library" hidden>\n'+panel,1)
+html=re.sub(r'<section class="panel wordbooks-panel"[\s\S]*?</section>[\r\n]*','',html)
+html=re.sub(r'<dialog id="word-import-dialog"[\s\S]*?</dialog>[\r\n]*','',html)
+html=re.sub(r'(<section id="view-library" role="tabpanel" aria-labelledby="tab-library" hidden>)[\r\n]*',lambda m:m[1]+'\n'+panel.rstrip()+'\n',html,count=1)
 html=html.replace('<option value="unplanned">','<option value="draft">待完善释义</option><option value="unplanned">') if '<option value="draft">' not in html else html
 scripts='<script src="wordbooks.js"></script><script src="sync-core.js"></script><script src="word-import.js"></script><script src="vendor/xlsx.full.min.js"></script>'
 if 'src="wordbooks.js"' not in html:html=html.replace('<script src="sync-core.js"></script>',scripts,1)
@@ -58,3 +58,5 @@ style_path=ROOT/'web/style.css'
 style=style_path.read_text(encoding='utf-8').split('/* User wordbooks and local import */')[0].rstrip()
 style_path.write_text(style+'\n'+(ROOT/'tools/import-style.css').read_text(encoding='utf-8'),encoding='utf-8')
 print('Prepared wordbook and local import UI')
+import subprocess,sys
+subprocess.run([sys.executable,str(ROOT/'tools/upgrade_dictionary.py')],check=True)

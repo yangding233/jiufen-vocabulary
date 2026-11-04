@@ -6,3 +6,7 @@
 *.wav -text
 *.png -text
 *.m4a -text
+
+web/dictionary-data.js text eol=lf
+web/dictionary-manifest.json text eol=lf
+web/vendor/LICENSE-ECDICT.txt text eol=lf

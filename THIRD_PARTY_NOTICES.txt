@@ -795,3 +795,12 @@ Official source: https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.
 Bundled file SHA256: cc015130aa8521e7f088f88898eba949ccdcbfb38df0bd129b44b7273c3a6f41
 Full license: web/vendor/LICENSE-SheetJS.txt
 The parser is bundled for offline use; imported spreadsheets are processed locally.
+
+
+ECDICT community English-Chinese reference dictionary subset (offline lookup)
+Upstream: https://github.com/skywind3000/ECDICT
+Pinned commit: 39cfb9672c0906b63569e0453c2e6abfb9ab182a
+Copyright (c) 2025 Linwei, MIT License, full text: web/vendor/LICENSE-ECDICT.txt
+50,000 source-backed entries selected from a mixed-source community compilation.
+Original transcription marks are retained; no claim of verified modern IPA or separate GB/US phonetics.
+See docs/离线词典来源.md and web/dictionary-manifest.json for provenance, derivation and checksums.

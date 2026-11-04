@@ -1,0 +1,12 @@
+<dialog id="dict-dialog" aria-labelledby="dict-title">
+  <div class="row spread"><h2 id="dict-title">补齐释义与音标</h2><button id="dict-close">关闭</button></div>
+  <p class="small muted">先查已有词库，再查本机离线词典。默认只补空缺；已有资料需要你逐项勾选才会替换。预览不会修改词库。</p>
+  <div class="row"><label class="field">处理范围<select id="dict-scope"><option value="book">当前词库筛选范围</option><option value="selected">已选词条</option><option value="all">全部词条</option></select></label><button id="dict-scan" class="primary">查找可补资料</button></div>
+  <p id="dict-source" class="small muted">词典按需从安装包载入，查词不需要网络。</p>
+  <p id="dict-error" class="error" role="alert" hidden></p>
+  <p id="dict-summary" class="notice" role="status" aria-live="polite">选择范围后，点击“查找可补资料”。</p>
+  <div id="dict-rows"></div>
+  <div class="row spread"><button id="dict-prev" disabled>上一页</button><span id="dict-page" class="small muted"></span><button id="dict-next" disabled>下一页</button></div>
+  <div class="row"><button id="dict-apply" class="primary" disabled>保存选中的补全资料</button></div>
+  <p class="small muted">词典内容是参考资料。大小写不同、词形变化和未查到的词会单独提示。普通音标不自动标成英式或美式；此功能不生成巧记、例句和读音。</p>
+</dialog>

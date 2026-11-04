@@ -1,0 +1,31 @@
+{
+  "format": "jiufen-dictionary",
+  "schema": 1,
+  "version": "39cfb9672c09-common-v1",
+  "source": {
+    "id": "ecdict",
+    "name": "ECDICT 社区英汉词典",
+    "version": "39cfb9672c09-common-v1",
+    "commit": "39cfb9672c0906b63569e0453c2e6abfb9ab182a",
+    "url": "https://github.com/skywind3000/ECDICT/tree/39cfb9672c0906b63569e0453c2e6abfb9ab182a",
+    "license": "MIT",
+    "licenseFile": "vendor/LICENSE-ECDICT.txt",
+    "phoneticLabel": "词典音标（保留原库标记，未分英美）",
+    "sourceSha256": "d1ecbdf9ee2b920afb6f430ca6b6bb9f559588cf0dff86e04bd255f9390843cc",
+    "notice": "社区汇编词典，资料可能有误；词义与读音需结合词性和语境核对。"
+  },
+  "file": "dictionary-data.js",
+  "sha256": "bdfc6b899d4f98b239cec92242b1a1c51bf150f8ed3aeb8e05bebdf9cc89a1eb",
+  "bytes": 7438016,
+  "entryCount": 50000,
+  "withPhonetic": 40040,
+  "selection": {
+    "sourceRows": 770611,
+    "baseEntries": 38044,
+    "additionalVariants": 11956,
+    "baseLimit": 40000,
+    "totalLimit": 50000,
+    "frequencyLimit": 30000,
+    "rule": "Oxford/exam tags/Collins or BNC-FRQ top30000, bounded priority selection, then source-backed inflections by base-word priority"
+  }
+}

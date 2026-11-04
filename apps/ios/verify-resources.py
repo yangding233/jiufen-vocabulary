@@ -5,12 +5,18 @@ import plistlib
 import re
 import sys
 import xml.etree.ElementTree as ET
+import hashlib
 
 ROOT = Path(__file__).resolve().parents[2]
 html = (ROOT / "web" / "index.html").read_text(encoding="utf-8")
-for path in [*(ROOT / "web" / name for name in ["native-adapter.js", "pako.min.js", "style.css", "app.js", "learning-tools.js", "content-pack.js", "wordbooks.js", "word-import.js", "vendor/xlsx.full.min.js"]), ROOT / "shared" / "sync-core.js"]:
+for path in [*(ROOT / "web" / name for name in ["native-adapter.js", "pako.min.js", "style.css", "app.js", "learning-tools.js", "content-pack.js", "wordbooks.js", "word-import.js", "dictionary.js", "dictionary-data.js", "dictionary-manifest.json", "vendor/xlsx.full.min.js"]), ROOT / "shared" / "sync-core.js"]:
     assert path.is_file() and path.stat().st_size > 100, f"Missing runtime: {path}"
 embedded = re.search(r'<script\s+id="portable-state"\s+type="application/json">([\s\S]*?)</script>', html)
+dictionary_manifest=json.loads((ROOT/'web/dictionary-manifest.json').read_text(encoding='utf-8'))
+dictionary_data=(ROOT/'web/dictionary-data.js').read_bytes()
+assert dictionary_manifest['entryCount']==50000 and len(dictionary_data)==dictionary_manifest['bytes']
+assert hashlib.sha256(dictionary_data).hexdigest()==dictionary_manifest['sha256'], 'Offline dictionary checksum mismatch'
+assert (ROOT/'web/vendor/LICENSE-ECDICT.txt').is_file()
 assert embedded and json.loads(embedded.group(1)) is None, "Do not upload an exported HTML containing personal learning state."
 vocabulary = re.search(r'<script\s+id="vocabulary-data"\s+type="application/json">([\s\S]*?)</script>', html)
 assert vocabulary, "Vocabulary data is missing."
@@ -21,11 +27,11 @@ assert all(w["memory"]["kind"] not in {"待补巧记", "形近对照候选"} for
 for source in re.findall(r'<(?:script|iframe)\b[^>]*\bsrc=["\']([^"\']+)', html, re.I):
     assert not re.match(r'^(?:https?:)?//', source), f"Offline app includes remote runtime: {source}"
     if not source.startswith("data:"):
-        assert ".." not in source and source in ["native-adapter.js", "sync-core.js", "pako.min.js", "app.js", "host-hooks.js", "sync-panel.js", "learning-tools.js", "content-pack.js", "wordbooks.js", "word-import.js", "vendor/xlsx.full.min.js"], f"Unexpected runtime asset: {source}"
+        assert ".." not in source and source in ["native-adapter.js", "sync-core.js", "pako.min.js", "app.js", "host-hooks.js", "sync-panel.js", "learning-tools.js", "content-pack.js", "wordbooks.js", "word-import.js", "dictionary.js", "vendor/xlsx.full.min.js"], f"Unexpected runtime asset: {source}"
 for path in (ROOT / "web").rglob("*"):
     assert not path.is_symlink(), f"Do not bundle symlinks: {path.name}"
     if path.is_file():
-        assert path.suffix.lower() in {".html", ".js", ".css", ".json", ".wav", ".mp3", ".m4a"} or path.name == "LICENSE-SheetJS.txt", f"Unexpected offline file: {path.name}"
+        assert path.suffix.lower() in {".html", ".js", ".css", ".json", ".wav", ".mp3", ".m4a"} or path.name in {"LICENSE-SheetJS.txt", "LICENSE-ECDICT.txt"}, f"Unexpected offline file: {path.name}"
 content = json.loads((ROOT / "web/content-pack.json").read_text(encoding="utf-8"))
 assert content["format"] == "jiufen-content" and content["schema"] == 1 and len(content["entries"]) == 1493
 assert {entry["id"] for entry in content["entries"]} == {word["id"] for word in words}
